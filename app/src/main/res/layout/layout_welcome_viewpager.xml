@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/welcome_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_illustration" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/welcome_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_to_xdc_pay"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_18" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/welcome_msg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:gravity="center"
+        android:padding="@dimen/margin_20"
+        android:text="@string/sample_text"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+</LinearLayout>

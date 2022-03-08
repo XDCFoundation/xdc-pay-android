@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">XDCPayLeeway</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_to_xdc_pay">Welcome to XDC Pay</string>
+    <string name="sample_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</string>
+    <string name="manage_digital_assets">Manage your digital assets</string>
+</resources>
