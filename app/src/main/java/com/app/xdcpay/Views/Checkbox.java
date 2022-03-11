@@ -4,24 +4,20 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatCheckBox;
 
-/**
- * Created by parangat on 10/1/19.
- */
-
-public class EditText extends AppCompatEditText {
-    public EditText(Context context) {
+public class Checkbox extends AppCompatCheckBox {
+    public Checkbox(Context context) {
         super(context);
         applyCustomFont(context);
     }
 
-    public EditText(Context context, AttributeSet attrs) {
+    public Checkbox(Context context, AttributeSet attrs) {
         super(context, attrs);
         applyCustomFont(context);
     }
 
-    public EditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public Checkbox(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         applyCustomFont(context);
     }

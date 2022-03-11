@@ -4,4 +4,22 @@
     <string name="welcome_to_xdc_pay">Welcome to XDC Pay</string>
     <string name="sample_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</string>
     <string name="manage_digital_assets">Manage your digital assets</string>
+    <string name="wallet_setup">Wallet Setup</string>
+    <string name="import_existing_or_create_new_one">Import existing or create new one</string>
+    <string name="import_using_secret_recovery_phrase">Import using secret recovery phrase</string>
+    <string name="create_new_wallet">Create new wallet</string>
+    <string name="secret_recovery_phrase">Secret Recovery Phrase</string>
+    <string name="secret_phrase_hint_text">Enter your secret twelve word phrase here to restore your vault.</string>
+    <string name="show_seed_phrase">Show seed phrase</string>
+    <string name="password">Password</string>
+    <string name="new_pass_hint">New Password (min 8 chars)</string>
+    <string name="show">Show</string>
+    <string name="password_strength">Password strength</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="import_text">Import</string>
+    <string name="this_password_will_unlock_your_wallet">This password will unlock your wallet</string>
+    <string name="must_be_at_least_8_characters">Must be at least 8 characters</string>
+    <string name="sign_in_with_biometric">Sign in with Biometric?</string>
+    <string name="i_understand_that_xdc_pay_cannot_recover_this_password_for_me">I understand that XDC Pay cannot recover this password for me</string>
+    <string name="create_password">Create password</string>
 </resources>
