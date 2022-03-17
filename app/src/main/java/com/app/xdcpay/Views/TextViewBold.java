@@ -27,7 +27,7 @@ public class TextViewBold extends AppCompatTextView {
     }
 
     private void applyCustomFont(Context context) {
-        Typeface customFont = FontCache.getTypeface("fonts/Avenir-Medium.ttf", context);
+        Typeface customFont = FontCache.getTypeface("fonts/Inter-SemiBold.ttf", context);
         setTypeface(customFont);
     }
 }

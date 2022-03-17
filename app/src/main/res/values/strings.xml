@@ -22,4 +22,21 @@
     <string name="sign_in_with_biometric">Sign in with Biometric?</string>
     <string name="i_understand_that_xdc_pay_cannot_recover_this_password_for_me">I understand that XDC Pay cannot recover this password for me</string>
     <string name="create_password">Create password</string>
+    <string name="these_12_words_are_the_only_way_to_restore_your_xdcpay_accounts_save_them_somewhere_safe_and_secret">These 12 words are the only way to restore your XDCPay accounts. Save them somewhere safe and secret.</string>
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="write_down_these_12_words_down_or_copy_them_to_a_password_manager">Write down these 12 words down, or copy them to a password manager</string>
+    <string name="continue_text">Continue</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="account_1">Account 1</string>
+    <string name="xdc_mainnet">XDC Mainnet</string>
+    <string name="_4550_xdc">4550 XDC</string>
+    <string name="_372_30_usd">$372.30 USD</string>
+    <string name="code">Xdc58a9…7cA4</string>
+    <string name="buy">Buy</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="select_service">Select Service</string>
+    <string name="qr_code">QR code</string>
 </resources>

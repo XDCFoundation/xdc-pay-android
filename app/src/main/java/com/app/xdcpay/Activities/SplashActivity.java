@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(SplashActivity.this, WelcomePagerAdapter.class));
+        startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
         finish();
     }
 }

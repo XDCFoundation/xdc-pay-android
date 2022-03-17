@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Activities.HomeActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/top_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:elevation="@dimen/margin_10">
+
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/margin_10"
+                    android:src="@drawable/ic_menu" />
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/account_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="@string/account_1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_16" />
+
+                <com.app.xdcpay.Views.TextView
+                    android:id="@+id/network_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/account_name"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/margin_10"
+                    android:text="@string/xdc_mainnet"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/margin_10" />
+
+                <ImageView
+                    android:id="@+id/scan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/margin_10"
+                    android:src="@drawable/ic_scan" />
+
+            </RelativeLayout>
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_10"
+                android:text="@string/_4550_xdc"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_32" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/_372_30_usd"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/margin_16" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_10dp_light_blue"
+                android:padding="@dimen/margin_10"
+                android:text="@string/code"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/margin_12" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_10"
+                android:orientation="horizontal">
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:drawableTop="@drawable/ic_buy"
+                    android:drawablePadding="@dimen/margin_5"
+                    android:gravity="center"
+                    android:text="@string/buy"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:drawableTop="@drawable/ic_send"
+                    android:drawablePadding="@dimen/margin_5"
+                    android:gravity="center"
+                    android:text="@string/send"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:drawableTop="@drawable/ic_receive"
+                    android:drawablePadding="@dimen/margin_5"
+                    android:gravity="center"
+                    android:text="@string/receive"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+            </LinearLayout>
+
+            
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/navDrawer"
+            android:name="com.app.xdcpay.Fragments.NavDrawerFragment"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:layout="@layout/fragment_nav_drawer"
+            tools:layout="@layout/fragment_nav_drawer" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

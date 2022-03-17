@@ -1,5 +1,6 @@
 package com.app.xdcpay.Activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -27,11 +28,12 @@ public class WelcomeActivity extends BaseActivity {
     public void getId() {
         viewPager = findViewById(R.id.view_pager);
         dots_ll = findViewById(R.id.dots_ll);
+        setData();
     }
 
     @Override
     public void setListener() {
-
+        findViewById(R.id.get_started).setOnClickListener(this);
     }
 
     @Override
@@ -61,7 +63,12 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.get_started:
+                startActivity(new Intent(WelcomeActivity.this, WalletSetupActivity.class));
+                finish();
+                break;
+        }
     }
 
     private void addBottomDots(int currentPage) {
@@ -71,12 +78,12 @@ public class WelcomeActivity extends BaseActivity {
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(Color.parseColor("#000000"));
+            dots[i].setTextSize(30);
+            dots[i].setTextColor(Color.parseColor("#9FA9BA"));
             dots_ll.addView(dots[i]);
         }
 
         if (dots.length > 0)
-            dots[currentPage].setTextColor(Color.parseColor("#B32505"));
+            dots[currentPage].setTextColor(Color.parseColor("#2149B9"));
     }
 }

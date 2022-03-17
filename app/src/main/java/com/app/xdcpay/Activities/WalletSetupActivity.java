@@ -1,7 +1,6 @@
 package com.app.xdcpay.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,7 +22,8 @@ public class WalletSetupActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-
+        findViewById(R.id.create_wallet).setOnClickListener(this);
+        findViewById(R.id.import_wallet).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +33,14 @@ public class WalletSetupActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.import_wallet:
+                startActivity(new Intent(WalletSetupActivity.this, ImportWalletActivity.class));
+                break;
 
+            case R.id.create_wallet:
+                startActivity(new Intent(WalletSetupActivity.this, CreateWalletActivity.class));
+                break;
+        }
     }
 }
