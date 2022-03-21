@@ -28,33 +28,27 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_10"
             android:background="@drawable/rounded_corner_5dp_light_grey_border"
-            android:drawableRight="@drawable/ic_back"
-            android:padding="@dimen/margin_10"
-            android:text="@string/select_service"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/margin_14" />
+            android:drawableLeft="@drawable/ic_simplex"
+            android:drawableRight="@drawable/ic_next"
+            android:padding="@dimen/margin_10" />
 
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_10"
             android:background="@drawable/rounded_corner_5dp_light_grey_border"
-            android:drawableRight="@drawable/ic_back"
-            android:padding="@dimen/margin_10"
-            android:text="@string/select_service"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/margin_14" />
+            android:drawableLeft="@drawable/ic_kucoin"
+            android:drawableRight="@drawable/ic_next"
+            android:padding="@dimen/margin_10" />
 
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_10"
             android:background="@drawable/rounded_corner_5dp_light_grey_border"
-            android:drawableRight="@drawable/ic_back"
-            android:padding="@dimen/margin_10"
-            android:text="@string/select_service"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/margin_14" />
+            android:drawableLeft="@drawable/ic_gate_io"
+            android:drawableRight="@drawable/ic_next"
+            android:padding="@dimen/margin_10" />
     </LinearLayout>
 
 </LinearLayout>

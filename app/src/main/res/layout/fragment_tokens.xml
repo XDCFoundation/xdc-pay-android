@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.TokensFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tokens_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/add_token"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_20"
+        android:background="@drawable/rounded_corner_5dp_green_bg"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_50"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingRight="@dimen/margin_50"
+        android:paddingBottom="@dimen/margin_10"
+        android:text="@string/add_token"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/margin_16" />
+
+</RelativeLayout>

@@ -49,6 +49,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/account_name"
                     android:layout_centerHorizontal="true"
+                    android:drawableStart="@drawable/ic_green_dot"
+                    android:drawablePadding="@dimen/margin_10"
                     android:padding="@dimen/margin_10"
                     android:text="@string/xdc_mainnet"
                     android:textColor="@color/colorGrey"
@@ -101,6 +103,7 @@
                 android:orientation="horizontal">
 
                 <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/buy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_20"
@@ -112,6 +115,7 @@
                     android:textSize="@dimen/margin_14" />
 
                 <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_20"
@@ -123,6 +127,7 @@
                     android:textSize="@dimen/margin_14" />
 
                 <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/receive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_20"
@@ -134,7 +139,27 @@
                     android:textSize="@dimen/margin_14" />
             </LinearLayout>
 
-            
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/favorite_view_pager_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:tabIndicatorColor="@color/colorBlue"
+                app:tabIndicatorHeight="3dp"
+                app:tabMinWidth="@dimen/margin_40"
+                app:tabSelectedTextColor="@color/colorBlue"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabTextColor="@color/colorGrey" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/favorite_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
         <fragment

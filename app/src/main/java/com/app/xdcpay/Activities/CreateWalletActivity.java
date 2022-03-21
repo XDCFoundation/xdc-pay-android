@@ -1,7 +1,6 @@
 package com.app.xdcpay.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,7 +22,8 @@ public class CreateWalletActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-
+        findViewById(R.id.back).setOnClickListener(this);
+        findViewById(R.id.create_password).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +33,18 @@ public class CreateWalletActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.back:
+                finish();
+                break;
 
+            case R.id.create_password:
+                Intent intent = new Intent(CreateWalletActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+        }
     }
 }

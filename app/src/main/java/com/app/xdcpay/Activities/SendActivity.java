@@ -6,12 +6,12 @@ import android.view.View;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 
-public class BuyActivity extends BaseActivity {
+public class SendActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buy);
+        setContentView(R.layout.activity_send);
     }
 
     @Override

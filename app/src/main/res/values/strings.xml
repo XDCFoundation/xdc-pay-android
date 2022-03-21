@@ -39,4 +39,24 @@
     <string name="receive">Receive</string>
     <string name="select_service">Select Service</string>
     <string name="qr_code">QR code</string>
+    <string name="send_from">Send From</string>
+    <string name="recipient_address">Recipient Address</string>
+    <string name="wallet_address">Wallet address</string>
+    <string name="amount">Amount</string>
+    <string name="available_4550_xdc">Available: 4550 XDC</string>
+    <string name="gas_price_gwei">Gas Price (GWEI)</string>
+    <string name="gas_limit">Gas Limit</string>
+    <string name="gas_limit_must_be_greater_than_2100_and_less_than_415800000">Gas Limit must be greater than 2100 and less than 415800000</string>
+    <string name="transaction_note_optional">Transaction Note (Optional)</string>
+    <string name="next">Next</string>
+    <string name="transactions">Transactions</string>
+    <string name="tokens">Tokens</string>
+    <string name="_100_eurg">100 EURG</string>
+    <string name="add_token">Add Token</string>
+    <string name="token_address">Token Address</string>
+    <string name="token_contract_address">Token Contract Address</string>
+    <string name="token_symbol">Token Symbol</string>
+    <string name="like_xdc">Like ‘XDC’</string>
+    <string name="decimals_of_precision">Decimals of Precision</string>
+    <string name="add">Add</string>
 </resources>

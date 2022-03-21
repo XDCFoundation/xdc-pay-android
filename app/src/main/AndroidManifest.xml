@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.QrCodeActivity"></activity>
+        <activity android:name=".Activities.AddTokenActivity"></activity>
+        <activity android:name=".Activities.SendActivity" />
+        <activity android:name=".Activities.QrCodeActivity" />
         <activity android:name=".Activities.BuyActivity" />
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.SecureWalletActivity" />

@@ -33,7 +33,7 @@ public class QrCodeActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-
+        findViewById(R.id.back).setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +75,10 @@ public class QrCodeActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 }

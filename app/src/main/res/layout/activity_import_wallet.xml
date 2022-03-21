@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="@dimen/margin_20"
-                android:background="@drawable/rounded_corner_5dp_light_green_bg"
+                android:background="@drawable/rounded_corner_5dp_green_bg"
                 android:gravity="center"
                 android:padding="@dimen/margin_10"
                 android:text="@string/import_text"

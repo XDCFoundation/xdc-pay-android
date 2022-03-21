@@ -34,6 +34,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     public void setListener() {
         findViewById(R.id.get_started).setOnClickListener(this);
+
     }
 
     @Override
