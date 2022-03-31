@@ -10,6 +10,7 @@ import com.app.xdcpay.Utils.BaseActivity;
 
 public class NetworksActivity extends BaseActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
