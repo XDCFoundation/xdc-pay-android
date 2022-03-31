@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".Activities.SendActivity">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20">
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_from"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:drawableStart="@drawable/ic_profile"
+                android:drawableEnd="@drawable/ic_drop_down"
+                android:drawablePadding="@dimen/margin_10"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:text="@string/account_1"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/recipient_address"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:drawableEnd="@drawable/ic_scan"
+                android:drawablePadding="@dimen/margin_10"
+                android:hint="@string/wallet_address"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10">
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amount"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/available_4550_xdc"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/margin_14" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:padding="@dimen/margin_10">
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="0.00"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="0 USD"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/margin_14" />
+
+            </RelativeLayout>
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/gas_price_gwei"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:text="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/gas_limit"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:hint="0.00"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/gas_limit_must_be_greater_than_2100_and_less_than_415800000"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/margin_12" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/transaction_note_optional"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:id="@+id/create_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:background="@drawable/rounded_corner_5dp_green_bg"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/next"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/margin_16" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

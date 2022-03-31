@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".Activities.SecureWalletActivity">
+
+
+    <include layout="@layout/layout_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20">
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/these_12_words_are_the_only_way_to_restore_your_xdcpay_accounts_save_them_somewhere_safe_and_secret"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/margin_12" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/seed_phrases_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_10" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/copy_to_clipboard"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/write_down_these_12_words_down_or_copy_them_to_a_password_manager"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/margin_12" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:id="@+id/create_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_40"
+                android:background="@drawable/rounded_corner_5dp_green_bg"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/continue_text"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/margin_16" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

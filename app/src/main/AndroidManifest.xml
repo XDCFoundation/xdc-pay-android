@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.app.xdcpay">
+
+    <dist:module dist:instant="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.SettingsActivity"></activity>
+        <activity android:name=".Activities.AdvanceSettings" />
+        <activity android:name=".Activities.AddTokenActivity" />
+        <activity android:name=".Activities.SendActivity" />
+        <activity android:name=".Activities.QrCodeActivity" />
+        <activity android:name=".Activities.BuyActivity" />
+        <activity android:name=".Activities.HomeActivity" />
+        <activity android:name=".Activities.SecureWalletActivity" />
+        <activity android:name=".Activities.CreateWalletActivity" />
+        <activity android:name=".Activities.ImportWalletActivity" />
+        <activity android:name=".Activities.WalletSetupActivity" />
+        <activity android:name=".Activities.WelcomeActivity" />
+        <activity android:name=".Activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

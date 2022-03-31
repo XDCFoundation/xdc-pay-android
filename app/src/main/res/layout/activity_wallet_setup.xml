@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Activities.WalletSetupActivity">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_30"
+        android:src="@drawable/ic_logo" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/wallet_setup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_logo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/wallet_setup"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_18" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wallet_setup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_10"
+        android:text="@string/import_existing_or_create_new_one"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/import_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/create_wallet"
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_30"
+        android:background="@drawable/rounded_corner_5dp_blue_border"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:text="@string/import_using_secret_recovery_phrase"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/margin_16" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/create_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_30"
+        android:background="@drawable/rounded_corner_5dp_green_bg"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:text="@string/create_new_wallet"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/margin_16" />
+</RelativeLayout>
