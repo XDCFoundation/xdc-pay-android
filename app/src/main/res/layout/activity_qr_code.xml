@@ -11,8 +11,7 @@
         android:id="@+id/top_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:elevation="@dimen/margin_10">
+        android:background="@color/colorWhite">
 
 
         <ImageView
@@ -50,8 +49,15 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/network_name"
-            android:layout_marginTop="@dimen/margin_10"
             android:background="@color/colorGrey" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/margin_10"
+            android:src="@drawable/ic_scan" />
     </RelativeLayout>
 
     <ImageView
@@ -77,19 +83,19 @@
         android:layout_gravity="center">
 
         <com.app.xdcpay.Views.TextView
+            android:id="@+id/wallet_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/code_txt"
-            android:layout_centerHorizontal="true"
             android:padding="@dimen/margin_10"
-            android:text="@string/code"
             android:textColor="@color/colorGrey"
             android:textSize="@dimen/margin_14" />
 
         <ImageView
+            android:id="@+id/copy_to_clipboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_copy_grey" />
+            android:padding="@dimen/margin_5"
+            android:src="@drawable/ic_copy_grey_small" />
     </LinearLayout>
 </LinearLayout>

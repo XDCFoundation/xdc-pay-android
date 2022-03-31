@@ -30,12 +30,14 @@
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.EditText
+                android:id="@+id/seed_phrase_ed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:gravity="top"
                 android:hint="@string/secret_phrase_hint_text"
+                android:inputType="textPassword|textMultiLine"
                 android:lines="6"
                 android:padding="@dimen/margin_10"
                 android:textSize="@dimen/margin_14" />
@@ -62,11 +64,13 @@
                 android:background="@drawable/rounded_corner_5dp_light_grey_border">
 
                 <com.app.xdcpay.Views.EditText
+                    android:id="@+id/password_ed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@id/show"
                     android:background="@android:color/transparent"
                     android:hint="@string/new_pass_hint"
+                    android:inputType="textPassword"
                     android:padding="@dimen/margin_10"
                     android:singleLine="true"
                     android:textSize="@dimen/margin_14" />
@@ -77,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:inputType="textPassword"
                     android:padding="@dimen/margin_10"
                     android:text="@string/show"
                     android:textColor="@color/colorBlack"
@@ -107,12 +112,14 @@
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.EditText
+                android:id="@+id/confirm_password_ed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:hint="@string/confirm_password"
                 android:padding="@dimen/margin_10"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:textSize="@dimen/margin_14" />
 

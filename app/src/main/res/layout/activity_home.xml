@@ -68,6 +68,7 @@
             </RelativeLayout>
 
             <com.app.xdcpay.Views.TextViewMedium
+                android:id="@+id/wallet_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -77,6 +78,7 @@
                 android:textSize="@dimen/margin_32" />
 
             <com.app.xdcpay.Views.TextViewMedium
+                android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -85,13 +87,13 @@
                 android:textSize="@dimen/margin_16" />
 
             <com.app.xdcpay.Views.TextViewMedium
+                android:id="@+id/wallet_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_10dp_light_blue"
                 android:padding="@dimen/margin_10"
-                android:text="@string/code"
                 android:textColor="@color/colorBlue"
                 android:textSize="@dimen/margin_12" />
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".Activities.AdvanceSettings">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_15">
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/state_logs"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/state_log_txt"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_green_border"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/download_state_logs"
+                android:textColor="@color/colorGreen"
+                android:textSize="@dimen/margin_14" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

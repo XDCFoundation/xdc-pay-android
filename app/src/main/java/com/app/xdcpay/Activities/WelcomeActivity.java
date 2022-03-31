@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.app.xdcpay.Adapters.WelcomePagerAdapter;
@@ -73,18 +74,16 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private void addBottomDots(int currentPage) {
-        TextView[] dots = new TextView[2];
+        ImageView[] dots = new ImageView[2];
 
         dots_ll.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(30);
-            dots[i].setTextColor(Color.parseColor("#9FA9BA"));
+            dots[i] = new ImageView(this);
+            dots[i].setImageResource(R.drawable.ic_not_filled);
+            dots[i].setPadding(10,0,10,0);
             dots_ll.addView(dots[i]);
         }
 
         if (dots.length > 0)
-            dots[currentPage].setTextColor(Color.parseColor("#2149B9"));
-    }
+            dots[currentPage].setImageResource(R.drawable.ic_filled);    }
 }
