@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.SettingsActivity"></activity>
+        <activity android:name=".Activities.NetworksActivity"></activity>
+        <activity android:name=".Activities.SettingsActivity" />
         <activity android:name=".Activities.AdvanceSettings" />
         <activity android:name=".Activities.AddTokenActivity" />
         <activity android:name=".Activities.SendActivity" />
