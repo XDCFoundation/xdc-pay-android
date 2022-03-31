@@ -76,5 +76,19 @@
     <string name="advance_settings">Advance Settings</string>
     <string name="security_privacy"><![CDATA[Security & Privacy]]></string>
     <string name="networks">Networks</string>
+    <string name="add_networks">Add Network</string>
+    <string name="network_name">Network name</string>
+    <string name="apothem_network">XDC Apothem Network</string>
+    <string name="rpc_url">RPC URL</string>
+    <string name="chain_id">Chain ID</string>
+    <string name="currency_symbol">Currency Symbol</string>
+    <string name="block_explore_url">Block Explorer Url</string>
     <string name="contacts">Contacts</string>
+
+
+<!--    hint-->
+    <string name="hint_rpc_url">New RPC Network</string>
+    <string name="hint_currency_symbol">Symbol (Optional)</string>
+    <string name="hint_block_explore_url">Block Explorer Url (Optional)</string>
+
 </resources>

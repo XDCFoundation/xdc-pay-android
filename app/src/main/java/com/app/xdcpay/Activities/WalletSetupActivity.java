@@ -35,7 +35,9 @@ public class WalletSetupActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.import_wallet:
-                startActivity(new Intent(WalletSetupActivity.this, ImportWalletActivity.class));
+// changed for testing
+//                startActivity(new Intent(WalletSetupActivity.this, ImportWalletActivity.class));
+                startActivity(new Intent(WalletSetupActivity.this, HomeActivity.class));
                 break;
 
             case R.id.create_wallet:
