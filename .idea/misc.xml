@@ -14,7 +14,9 @@
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_blue_border.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_green_bg.xml" value="0.168" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_light_grey_border.xml" value="0.168" />
+        <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_contacts.xml" value="0.21435185185185185" />
         <entry key="app/src/main/res/layout/activity_create_wallet.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_import_wallet.xml" value="0.2625" />

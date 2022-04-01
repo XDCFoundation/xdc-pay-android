@@ -43,7 +43,7 @@ public class NetworksActivity extends BaseActivity {
         recycler_Networks = findViewById(R.id.recycler_Networks);
         tvTitle = findViewById(R.id.tvTitle);
         ivBack = findViewById(R.id.ivBack);
-        ivAddNetworks = findViewById(R.id.ivAddNetworks);
+        ivAddNetworks = findViewById(R.id.ivAdd);
         linear_network = findViewById(R.id.linear_network);
         tvTitle.setText(getString(R.string.networks));
     }
@@ -79,7 +79,7 @@ public class NetworksActivity extends BaseActivity {
                 finish();
                 break;
 
-            case R.id.ivAddNetworks:
+            case R.id.ivAdd:
                 Intent intentNetwork = new Intent(NetworksActivity.this, AddNetworkActivity.class);
                 startActivity(intentNetwork);
                 finish();

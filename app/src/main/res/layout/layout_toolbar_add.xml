@@ -23,7 +23,7 @@
         android:textSize="@dimen/margin_16" />
 
     <ImageView
-        android:id="@+id/ivAddNetworks"
+        android:id="@+id/ivAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15"

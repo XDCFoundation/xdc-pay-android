@@ -59,6 +59,7 @@
     <string name="like_xdc">Like ‘XDC’</string>
     <string name="decimals_of_precision">Decimals of Precision</string>
     <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
     <string name="error_password_empty">Password Required</string>
     <string name="error_password_not_match">Password does not match</string>
     <string name="error_check_terms">Please Agree , XDCPay Can’t Recover Your Password</string>
@@ -84,11 +85,14 @@
     <string name="currency_symbol">Currency Symbol</string>
     <string name="block_explore_url">Block Explorer Url</string>
     <string name="contacts">Contacts</string>
+    <string name="contacts_name">Username</string>
 
 
-<!--    hint-->
+    <!--    hint-->
     <string name="hint_rpc_url">New RPC Network</string>
     <string name="hint_currency_symbol">Symbol (Optional)</string>
     <string name="hint_block_explore_url">Block Explorer Url (Optional)</string>
+    <string name="hint_wallet_address">Contact’s Wallet Address</string>
+    <string name="hint_username">Contact’s Name</string>
 
 </resources>
