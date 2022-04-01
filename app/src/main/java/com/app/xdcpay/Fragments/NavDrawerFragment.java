@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.app.xdcpay.Activities.NetworksActivity;
+import com.app.xdcpay.Activities.ContactsActivity;
 import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -19,7 +19,7 @@ import com.app.xdcpay.Views.TextViewMedium;
  * A simple {@link Fragment} subclass.
  */
 public class NavDrawerFragment extends Fragment {
-    TextViewMedium tvSettings;
+    TextViewMedium tvSettings, tvHelp;
 
     public NavDrawerFragment() {
         // Required empty public constructor
@@ -34,11 +34,19 @@ public class NavDrawerFragment extends Fragment {
                 fragment_nav_drawer, container, false);
 
         tvSettings = v.findViewById(R.id.tvSettings);
+        tvHelp = v.findViewById(R.id.tvHelp);
 
         tvSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+        tvHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ContactsActivity.class);
                 startActivity(intent);
             }
         });
