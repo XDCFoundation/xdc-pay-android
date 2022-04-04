@@ -26,7 +26,7 @@ public class ContactsActivity extends BaseActivity {
     public void getId() {
         ivAdd = findViewById(R.id.ivAdd);
         tvTitle = findViewById(R.id.tvTitle);
-        back = findViewById(R.id.back);
+        back = findViewById(R.id.ivBack);
         tvTitle.setText(getText(R.string.contacts));
     }
 
