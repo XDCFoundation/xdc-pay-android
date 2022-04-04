@@ -61,4 +61,12 @@ public class SaveWalletDetails {
 
     }
 
+    public void saveIsLogin(boolean s) {
+        result = false;
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("is_login", s);
+        result = editor.commit();
+
+    }
+
 }

@@ -45,4 +45,10 @@ public class ReadWalletDetails {
         res = prefs.getString("password", "");
         return res;
     }
+
+    public boolean getIsLogin() {
+        boolean res;
+        res = prefs.getBoolean("is_login", false);
+        return res;
+    }
 }
