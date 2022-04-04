@@ -36,8 +36,8 @@ public class WalletSetupActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.import_wallet:
 // changed for testing
-//                startActivity(new Intent(WalletSetupActivity.this, ImportWalletActivity.class));
-                startActivity(new Intent(WalletSetupActivity.this, HomeActivity.class));
+                startActivity(new Intent(WalletSetupActivity.this, ImportWalletActivity.class));
+//                startActivity(new Intent(WalletSetupActivity.this, HomeActivity.class));
                 break;
 
             case R.id.create_wallet:
