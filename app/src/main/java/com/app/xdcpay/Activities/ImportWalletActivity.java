@@ -80,6 +80,7 @@ public class ImportWalletActivity extends BaseActivity {
                                     saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
                                     saveWalletDetails.saveSeedPhrase(walletData.getSeedPhrase());
                                     saveWalletDetails.savePassword(walletData.getPassword());
+                                    saveWalletDetails.saveIsLogin(true);
 
                                     new Handler().postDelayed(new Runnable() {
                                         @Override

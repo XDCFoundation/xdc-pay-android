@@ -50,6 +50,7 @@
         android:background="@color/colorLightGrey" />
 
     <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/view_on_observatory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_15"
@@ -84,6 +85,7 @@
         android:textSize="@dimen/margin_16" />
 
     <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_15"

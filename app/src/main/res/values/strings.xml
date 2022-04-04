@@ -77,4 +77,9 @@
     <string name="security_privacy"><![CDATA[Security & Privacy]]></string>
     <string name="networks">Networks</string>
     <string name="contacts">Contacts</string>
+    <string name="secure_wallet">Secure Wallet</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="biometric">Biometric</string>
+    <string name="log_in">Log in</string>
+    <string name="restore_from_seed_phrase">Restore from seed phrase</string>
 </resources>
