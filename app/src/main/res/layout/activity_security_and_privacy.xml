@@ -221,8 +221,6 @@
                         android:id="@+id/switch_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textOff="@string/text_off"
-                        android:textOn="@string/text_on"
                         android:checked="true"
                         android:theme="@style/BrandedSwitch"
                         app:switchPadding="8dp" />

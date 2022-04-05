@@ -10,7 +10,7 @@
 
     <style name="BrandedSwitch" parent="AppTheme">
         <item name="colorAccent">#39ac39</item>
-        <item name="colorOnSecondary">#390c39</item>
+        <item name="colorControlActivated">#39ac39</item>
 
     </style>
 
