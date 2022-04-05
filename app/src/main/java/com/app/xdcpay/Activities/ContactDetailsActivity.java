@@ -1,13 +1,11 @@
 package com.app.xdcpay.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
