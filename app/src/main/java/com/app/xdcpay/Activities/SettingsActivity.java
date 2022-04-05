@@ -11,7 +11,7 @@ import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
 
 public class SettingsActivity extends BaseActivity {
-    private TextViewMedium tv_Networks, title, tv_Contacts;
+    private TextViewMedium tv_Networks, title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
