@@ -35,6 +35,7 @@ public class ContactsActivity extends BaseActivity {
     public void setListener() {
         back.setOnClickListener(this);
         ivAdd.setOnClickListener(this);
+        linear_contact.setOnClickListener(this);
     }
 
     @Override
@@ -53,14 +54,19 @@ public class ContactsActivity extends BaseActivity {
             case R.id.ivBack:
                 onBackPressed();
                 break;
+            case R.id.linear_contact:
+                Intent intent = new Intent(ContactsActivity.this, ContactDetailsActivity.class);
+                startActivity(intent);
+                finish();
+                break;
         }
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ContactsActivity.this, SettingsActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(ContactsActivity.this, SettingsActivity.class);
+//        startActivity(intent);
+        super.onBackPressed();
         finish();
-//        super.onBackPressed();
     }
 }

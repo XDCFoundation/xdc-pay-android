@@ -93,4 +93,26 @@
     <string name="biometric">Biometric</string>
     <string name="log_in">Log in</string>
     <string name="restore_from_seed_phrase">Restore from seed phrase</string>
+    <string name="edit_contact">Edit Contact</string>
+    <string name="contacts_name">Username</string>
+    <string name="reveal_seed_words">Reveal Seed Words</string>
+    <string name="change_password">Change Password</string>
+    <string name="auto_locker_timer">Auto-Lock Timer</string>
+    <string name="show_private_key">Show Private Key</string>
+    <string name="signin_biometric">Sign-in with biometrics</string>
+    <string name="auto_lock_time">5 minutes</string>
+    <string name="auto_lock_txt">Set the idle time in minutes before the wallet will be locked.</string>
+    <string name="text_on">On</string>
+    <string name="text_off">Off</string>
+
+    <!--    hint-->
+    <string name="hint_rpc_url">New RPC Network</string>
+    <string name="hint_currency_symbol">Symbol (Optional)</string>
+    <string name="hint_block_explore_url">Block Explorer Url (Optional)</string>
+    <string name="hint_wallet_address">Contact’s Wallet Address</string>
+    <string name="hint_username">Contact’s Name</string>
+    <string name="reveal_seed_words_hint">Do not recover your seed words in a public place! These words can be used to steal all your accounts.</string>
+    <string name="change_password_hint">Create your new password for XDC Pay so that you can login to your account.</string>
+    <string name="private_key_hint">This is the private key for the current selected account. Never disclose this key.</string>
+
 </resources>

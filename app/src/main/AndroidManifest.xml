@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Activities.SecurityAndPrivacyActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.EditContactActivity"
             android:exported="false" />
         <activity
@@ -43,7 +46,8 @@
         <activity android:name=".Activities.ImportWalletActivity" />
         <activity android:name=".Activities.WalletSetupActivity" />
         <activity android:name=".Activities.WelcomeActivity" />
-        <activity android:name=".Activities.SplashActivity"
+        <activity
+            android:name=".Activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

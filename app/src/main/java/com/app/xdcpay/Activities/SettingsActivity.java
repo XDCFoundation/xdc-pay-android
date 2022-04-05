@@ -11,7 +11,7 @@ import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
 
 public class SettingsActivity extends BaseActivity {
-    private TextViewMedium tv_Networks, title,tv_Contacts;
+    private TextViewMedium tv_Networks, title, tv_Contacts, security_privacy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +25,15 @@ public class SettingsActivity extends BaseActivity {
         tv_Networks = findViewById(R.id.tv_Networks);
         title = findViewById(R.id.title);
         tv_Contacts = findViewById(R.id.tv_Contacts);
+        security_privacy = findViewById(R.id.security_privacy);
 
     }
 
     @Override
     public void setListener() {
         tv_Networks.setOnClickListener(this);
+        tv_Contacts.setOnClickListener(this);
+        security_privacy.setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +52,11 @@ public class SettingsActivity extends BaseActivity {
             case R.id.tv_Contacts:
                 Intent intentContact = new Intent(SettingsActivity.this, ContactsActivity.class);
                 startActivity(intentContact);
+                finish();
+                break;
+            case R.id.security_privacy:
+                Intent intentSecurity = new Intent(SettingsActivity.this, SecurityAndPrivacyActivity.class);
+                startActivity(intentSecurity);
                 finish();
                 break;
         }

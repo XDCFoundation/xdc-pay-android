@@ -46,6 +46,7 @@
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/security_privacy"
             android:drawableRight="@drawable/ic_next"
             android:padding="@dimen/margin_10"
             android:text="@string/security_privacy"

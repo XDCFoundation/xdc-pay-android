@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.xdcpay.Activities.BrowserActivity;
+import com.app.xdcpay.Activities.ContactsActivity;
+import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Activities.SplashActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.Constants;
+import com.app.xdcpay.Views.TextViewMedium;
 
 import androidx.fragment.app.Fragment;
 
@@ -22,6 +25,7 @@ import androidx.fragment.app.Fragment;
 public class NavDrawerFragment extends Fragment implements View.OnClickListener {
     View v;
     ReadWalletDetails readWalletDetails;
+    TextViewMedium tvSettings, tvHelp;
 
     public NavDrawerFragment() {
         // Required empty public constructor
@@ -35,7 +39,23 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
         v = inflater.inflate(R.layout.fragment_nav_drawer, container, false);
         getViewId();
         setListener();
+        tvSettings = v.findViewById(R.id.tvSettings);
+        tvHelp = v.findViewById(R.id.tvHelp);
 
+        tvSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+        tvHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ContactsActivity.class);
+                startActivity(intent);
+            }
+        });
         return v;
     }
 

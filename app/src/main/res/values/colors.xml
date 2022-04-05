@@ -19,4 +19,5 @@
     <color name="bgTextColor">#FAFAFA</color>
     <color name="bgButton">#FAFAFA</color>
     <color name="edit_color">#1F48B8</color>
+    <color name="btn_green">#19BE46</color>
 </resources>

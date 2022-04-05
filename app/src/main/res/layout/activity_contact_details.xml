@@ -32,7 +32,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_profile" />
 
-                <TextView
+                <com.app.xdcpay.Views.TextViewMedium
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -41,7 +41,7 @@
                     android:textColor="@color/colorBlackText"
                     android:textSize="@dimen/margin_16" />
 
-                <TextView
+                <com.app.xdcpay.Views.TextViewMedium
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -50,7 +50,7 @@
                     android:textColor="@color/colorGreyText"
                     android:textSize="@dimen/margin_12" />
 
-                <TextView
+                <com.app.xdcpay.Views.TextViewMedium
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_36_5"
-                    android:backgroundTint="@color/colorLine" />
+                    android:background="@color/colorLine" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

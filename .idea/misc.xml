@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.290625" />
+        <entry key="app/src/main/res/drawable-v24/ic_plus.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_buy.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_copy_grey.xml" value="0.1765" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/drawable/rounded_corner_10dp_light_blue.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_blue_border.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_green_bg.xml" value="0.168" />
+        <entry key="app/src/main/res/drawable/rounded_corner_5dp_green_border.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_light_grey_border.xml" value="0.168" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
@@ -24,9 +26,12 @@
         <entry key="app/src/main/res/layout/activity_edit_contact.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_import_wallet.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_network_details.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/activity_networks.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/activity_security_and_privacy.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_send.xml" value="0.21712962962962962" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_nav_drawer.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/fragment_tokens.xml" value="0.2625" />
