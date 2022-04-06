@@ -43,6 +43,7 @@
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.Checkbox
+                android:id="@+id/show_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
@@ -81,7 +82,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:inputType="textPassword"
                     android:padding="@dimen/margin_10"
                     android:text="@string/show"
                     android:textColor="@color/colorBlack"
@@ -89,10 +89,12 @@
             </RelativeLayout>
 
             <ProgressBar
+                android:id="@+id/password_strength_progress"
                 style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10" />
+                android:layout_marginTop="@dimen/margin_10"
+                android:max="100" />
 
             <com.app.xdcpay.Views.TextView
                 android:layout_width="wrap_content"
@@ -118,8 +120,8 @@
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:hint="@string/confirm_password"
-                android:padding="@dimen/margin_10"
                 android:inputType="textPassword"
+                android:padding="@dimen/margin_10"
                 android:singleLine="true"
                 android:textSize="@dimen/margin_14" />
 

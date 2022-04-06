@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.XDCJava.FleekClient;
 import com.XDCJava.Model.WalletData;
@@ -22,6 +27,8 @@ import java.io.File;
 public class ImportWalletActivity extends BaseActivity {
     private EditText seed_phrase, password, confirm_password;
     private TextView title;
+    private ProgressBar progressBar;
+    private CheckBox show_cb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,7 @@ public class ImportWalletActivity extends BaseActivity {
         password = findViewById(R.id.password_ed);
         confirm_password = findViewById(R.id.confirm_password_ed);
         seed_phrase = findViewById(R.id.seed_phrase_ed);
+        progressBar = findViewById(R.id.password_strength_progress);
 
         title.setText(getResources().getString(R.string.import_from_seed));
     }
@@ -43,6 +51,26 @@ public class ImportWalletActivity extends BaseActivity {
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.import_tv).setOnClickListener(this);
+
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (Validations.isPasswordValid(password.getText().toString()))
+                    progressBar.setProgress(90);
+                else
+                    progressBar.setProgress(20);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override
@@ -120,6 +148,10 @@ public class ImportWalletActivity extends BaseActivity {
             password.setError(getResources().getString(R.string.error_password_empty));
         else if (!Validations.hasText(confirm_password))
             confirm_password.setError(getResources().getString(R.string.error_password_empty));
+        else if (password.getText().toString().length() < 8)
+            Toast.makeText(ImportWalletActivity.this, getResources().getString(R.string.password_length_msg), Toast.LENGTH_SHORT).show();
+        else if (!Validations.isPasswordValid(password.getText().toString()))
+            Toast.makeText(ImportWalletActivity.this, getResources().getString(R.string.password_strength_msg), Toast.LENGTH_SHORT).show();
         else if (!password.getText().toString().equals(confirm_password.getText().toString()))
             confirm_password.setError(getResources().getString(R.string.error_password_not_match));
         else return true;

@@ -82,4 +82,6 @@
     <string name="biometric">Biometric</string>
     <string name="log_in">Log in</string>
     <string name="restore_from_seed_phrase">Restore from seed phrase</string>
+    <string name="password_strength_msg">Password must contain at least an uppercase letter, a number, at least one special character</string>
+    <string name="password_length_msg">Password should have a minimum of 8 characters.</string>
 </resources>
