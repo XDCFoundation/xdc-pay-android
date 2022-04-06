@@ -73,7 +73,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_10"
-                android:text="@string/_4550_xdc"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_32" />
 
@@ -82,20 +81,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/_372_30_usd"
                 android:textColor="@color/colorGrey"
                 android:textSize="@dimen/margin_16" />
 
-            <com.app.xdcpay.Views.TextViewMedium
-                android:id="@+id/wallet_address"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_10dp_light_blue"
-                android:padding="@dimen/margin_10"
-                android:textColor="@color/colorBlue"
-                android:textSize="@dimen/margin_12" />
+                android:gravity="center">
+
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/wallet_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="@dimen/margin_200"
+                    android:padding="@dimen/margin_10"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="@dimen/margin_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/margin_10"
+                    android:src="@drawable/ic_copy_grey"
+                    android:tint="@color/colorBlue" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"

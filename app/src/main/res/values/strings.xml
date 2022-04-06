@@ -115,4 +115,6 @@
     <string name="change_password_hint">Create your new password for XDC Pay so that you can login to your account.</string>
     <string name="private_key_hint">This is the private key for the current selected account. Never disclose this key.</string>
 
+    <string name="password_strength_msg">Password must contain at least an uppercase letter, a number, at least one special character</string>
+    <string name="password_length_msg">Password should have a minimum of 8 characters.</string>
 </resources>

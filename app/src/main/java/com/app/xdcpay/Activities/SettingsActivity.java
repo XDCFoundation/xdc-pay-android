@@ -27,10 +27,17 @@ public class SettingsActivity extends BaseActivity {
         tv_Contacts = findViewById(R.id.tv_Contacts);
         security_privacy = findViewById(R.id.security_privacy);
 
+        setData();
     }
 
     @Override
     public void setListener() {
+        findViewById(R.id.back).setOnClickListener(this);
+        findViewById(R.id.genral).setOnClickListener(this);
+        findViewById(R.id.advance).setOnClickListener(this);
+        findViewById(R.id.security).setOnClickListener(this);
+        findViewById(R.id.networks).setOnClickListener(this);
+        findViewById(R.id.contacts).setOnClickListener(this);
         tv_Networks.setOnClickListener(this);
         tv_Contacts.setOnClickListener(this);
         security_privacy.setOnClickListener(this);
@@ -38,7 +45,7 @@ public class SettingsActivity extends BaseActivity {
 
     @Override
     public void setData() {
-
+        title.setText(getResources().getString(R.string.settings));
     }
 
     @Override
@@ -62,11 +69,5 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-//        Intent intent = new Intent(ContactsActivity.this, SettingsActivity.class);
-//        startActivity(intent);
-        super.onBackPressed();
-        finish();
     }
 }

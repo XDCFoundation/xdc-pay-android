@@ -71,8 +71,14 @@ public class HomeActivity extends BaseActivity {
         FleekClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), Constants.CONNECTED_NETWORK, new EventCallback() {
             @Override
             public void success(String balance) throws Exception {
-                wallet_address.setText(readWalletDetails.getAccountAddress());
-                wallet_balance.setText(balance + " XDC");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        wallet_address.setText(readWalletDetails.getAccountAddress());
+                        wallet_balance.setText(balance + " XDC");
+                    }
+                });
+
             }
 
             @Override

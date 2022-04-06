@@ -65,6 +65,7 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
 
     private void setListener() {
         v.findViewById(R.id.view_on_observatory).setOnClickListener(this);
+        v.findViewById(R.id.settings).setOnClickListener(this);
         v.findViewById(R.id.logout).setOnClickListener(this);
     }
 
@@ -76,6 +77,10 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
                 intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
                 intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
                 startActivity(intent1);
+                break;
+
+            case R.id.settings:
+                startActivity(new Intent(getContext(), SettingsActivity.class));
                 break;
 
             case R.id.logout:
