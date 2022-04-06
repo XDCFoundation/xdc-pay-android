@@ -35,9 +35,9 @@ public class SettingsActivity extends BaseActivity {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.genral).setOnClickListener(this);
         findViewById(R.id.advance).setOnClickListener(this);
-        findViewById(R.id.security).setOnClickListener(this);
-        findViewById(R.id.networks).setOnClickListener(this);
-        findViewById(R.id.contacts).setOnClickListener(this);
+//        findViewById(R.id.security).setOnClickListener(this);
+//        findViewById(R.id.networks).setOnClickListener(this);
+//        findViewById(R.id.contacts).setOnClickListener(this);
         tv_Networks.setOnClickListener(this);
         tv_Contacts.setOnClickListener(this);
         security_privacy.setOnClickListener(this);
@@ -69,5 +69,5 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
-    }
 }
+
