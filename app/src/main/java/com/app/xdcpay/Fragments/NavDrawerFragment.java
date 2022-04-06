@@ -39,10 +39,9 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
         v = inflater.inflate(R.layout.fragment_nav_drawer, container, false);
         getViewId();
         setListener();
-        tvSettings = v.findViewById(R.id.tvSettings);
-        tvHelp = v.findViewById(R.id.tvHelp);
 
-        tvSettings.setOnClickListener(new View.OnClickListener() {
+
+        /*tvSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), SettingsActivity.class);
@@ -55,18 +54,21 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
                 Intent intent = new Intent(getContext(), ContactsActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         return v;
     }
 
     private void getViewId() {
+        tvSettings = v.findViewById(R.id.tvSettings);
+        tvHelp = v.findViewById(R.id.tvHelp);
         readWalletDetails = new ReadWalletDetails(getContext());
     }
 
     private void setListener() {
         v.findViewById(R.id.view_on_observatory).setOnClickListener(this);
-        v.findViewById(R.id.settings).setOnClickListener(this);
+//        v.findViewById(R.id.settings).setOnClickListener(this);
         v.findViewById(R.id.logout).setOnClickListener(this);
+        tvSettings.setOnClickListener(this);
     }
 
     @Override
@@ -79,7 +81,7 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
                 startActivity(intent1);
                 break;
 
-            case R.id.settings:
+            case R.id.tvSettings:
                 startActivity(new Intent(getContext(), SettingsActivity.class));
                 break;
 
