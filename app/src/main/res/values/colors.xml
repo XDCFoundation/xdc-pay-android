@@ -6,6 +6,8 @@
 
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#2A2A2A</color>
+    <color name="colorBlackText">#1F1F1F</color>
+    <color name="colorGreyText">#848484</color>
     <color name="colorBlue">#2149B9</color>
     <color name="colorGreen">#03BE46</color>
     <color name="colorLightGrey">#DDDEDD</color>
@@ -13,4 +15,9 @@
     <color name="colorLightGreen">#80DEA2</color>
     <color name="colorLightBlue">#F4F6FC</color>
     <color name="colorRed">#FE0035</color>
+    <color name="colorLine">#E3E7EB</color>
+    <color name="bgTextColor">#FAFAFA</color>
+    <color name="bgButton">#FAFAFA</color>
+    <color name="edit_color">#1F48B8</color>
+    <color name="btn_green">#19BE46</color>
 </resources>

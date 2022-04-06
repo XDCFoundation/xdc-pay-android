@@ -75,6 +75,7 @@ public class CreateWalletActivity extends BaseActivity {
                         @Override
                         public void failure(Throwable t) {
 
+
                         }
 
                         @Override

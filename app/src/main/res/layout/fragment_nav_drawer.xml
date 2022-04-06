@@ -70,6 +70,7 @@
         android:drawableLeft="@drawable/ic_settings"
         android:drawablePadding="@dimen/margin_20"
         android:padding="@dimen/margin_15"
+        android:id="@+id/tvSettings"
         android:text="@string/settings"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_16" />
@@ -82,6 +83,7 @@
         android:drawablePadding="@dimen/margin_20"
         android:padding="@dimen/margin_15"
         android:text="@string/info_help"
+        android:id="@+id/tvHelp"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_16" />
 

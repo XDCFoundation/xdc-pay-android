@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".Activities.AddContactActivity">
+
+    <include layout="@layout/layout_toolbar_edit" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20">
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="@string/wallet_address"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:id="@+id/etWalletAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:drawableEnd="@drawable/ic_scan"
+                android:hint="@string/hint_wallet_address"
+                android:inputType="textCapSentences"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="@string/contacts_name"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.EditText
+                android:id="@+id/etUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:hint="@string/hint_username"
+                android:inputType="textCapSentences"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textSize="@dimen/margin_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_30"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_contactCancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_12"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner_5dp_green_bg"
+                    android:backgroundTint="@color/bgButton"
+                    android:padding="@dimen/margin_10"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="@dimen/margin_16"
+                    tools:targetApi="lollipop" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_updateContact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner_5dp_green_bg"
+                    android:backgroundTint="@color/colorLightGreen"
+                    android:padding="@dimen/margin_10"
+                    android:text="@string/update"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/margin_16"
+                    tools:targetApi="lollipop" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

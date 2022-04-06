@@ -16,6 +16,27 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activities.SecurityAndPrivacyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.EditContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ContactDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.AddContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ContactsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.NetworkDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.AddNetworkActivity"
+            android:exported="false" />
         <activity android:name=".Activities.BrowserActivity" />
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.NetworksActivity" />
