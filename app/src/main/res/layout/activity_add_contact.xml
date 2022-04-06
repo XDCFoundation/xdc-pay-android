@@ -7,7 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".Activities.AddContactActivity">
+    tools:context=".Activities.Contacts.AddContactActivity">
 
     <include layout="@layout/layout_toolbar" />
 
@@ -35,9 +35,9 @@
                 android:id="@+id/etWalletAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_scan"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
+                android:drawableEnd="@drawable/ic_scan"
                 android:hint="@string/hint_wallet_address"
                 android:inputType="textCapSentences"
                 android:padding="@dimen/margin_10"
@@ -67,21 +67,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="@dimen/margin_30"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_contactCancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAllCaps="false"
                     android:layout_marginRight="@dimen/margin_12"
+                    android:layout_weight="1"
                     android:background="@drawable/rounded_corner_5dp_green_bg"
+                    android:backgroundTint="@color/bgButton"
                     android:padding="@dimen/margin_10"
                     android:text="@string/cancel"
-                    android:backgroundTint="@color/bgButton"
+                    android:textAllCaps="false"
                     android:textColor="@color/colorBlackText"
                     android:textSize="@dimen/margin_16" />
 

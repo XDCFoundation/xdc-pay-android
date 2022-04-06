@@ -22,6 +22,7 @@
     <string name="sign_in_with_biometric">Sign in with Biometric?</string>
     <string name="i_understand_that_xdc_pay_cannot_recover_this_password_for_me">I understand that XDC Pay cannot recover this password for me</string>
     <string name="create_password">Create password</string>
+    <string name="key_warning">Do not share your private key with anyone. Anyone with your private key fully control your account</string>
     <string name="these_12_words_are_the_only_way_to_restore_your_xdcpay_accounts_save_them_somewhere_safe_and_secret">These 12 words are the only way to restore your XDCPay accounts. Save them somewhere safe and secret.</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="write_down_these_12_words_down_or_copy_them_to_a_password_manager">Write down these 12 words down, or copy them to a password manager</string>
@@ -99,13 +100,23 @@
     <string name="change_password">Change Password</string>
     <string name="auto_locker_timer">Auto-Lock Timer</string>
     <string name="show_private_key">Show Private Key</string>
+    <string name="error_private_key">Private key not found</string>
     <string name="signin_biometric">Sign-in with biometrics</string>
     <string name="auto_lock_time">5 minutes</string>
     <string name="auto_lock_txt">Set the idle time in minutes before the wallet will be locked.</string>
     <string name="text_on">On</string>
     <string name="text_off">Off</string>
+    <string name="password_to_continue">Enter Password to continue</string>
+    <string name="reveal">Reveal</string>
+    <string name="secret_seed">Secret seed words</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="security_privacy_settings">Security and Privacy Settings</string>
+    <string name="secret_content">Write down these 12 words and keep it safe on multiple places. You will not be able to recover your wallet if you lose this recover phrase.</string>
 
     <!--    hint-->
+    <string name="hint_private_key">Your private key</string>
     <string name="hint_rpc_url">New RPC Network</string>
     <string name="hint_currency_symbol">Symbol (Optional)</string>
     <string name="hint_block_explore_url">Block Explorer Url (Optional)</string>

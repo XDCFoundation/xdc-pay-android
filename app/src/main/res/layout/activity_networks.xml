@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".Activities.NetworksActivity">
+    tools:context=".Activities.Networks.NetworksActivity">
 
     <include layout="@layout/layout_toolbar_add" />
 

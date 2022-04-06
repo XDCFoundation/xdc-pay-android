@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".Activities.SecurityAndPrivacyActivity">
+    tools:context=".Activities.SecurityPrivacy.SecurityAndPrivacyActivity">
 
     <include layout="@layout/layout_toolbar" />
 
@@ -225,10 +225,11 @@
                         android:theme="@style/BrandedSwitch"
                         app:switchPadding="8dp" />
 
-                    <TextView
+                    <com.app.xdcpay.Views.TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_10"
+                        android:id="@+id/tv_switch"
                         android:fontFamily="@font/inter_regular"
                         android:text="@string/text_on"
                         android:textColor="@color/colorBlack"

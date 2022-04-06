@@ -1,7 +1,4 @@
-package com.app.xdcpay.Activities;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
+package com.app.xdcpay.Activities.Networks;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +7,6 @@ import android.widget.ImageView;
 
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
-import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
 
 public class NetworkDetailsActivity extends BaseActivity {

@@ -1,4 +1,4 @@
-package com.app.xdcpay.Activities;
+package com.app.xdcpay.Activities.Contacts;
 
 import androidx.appcompat.widget.AppCompatButton;
 

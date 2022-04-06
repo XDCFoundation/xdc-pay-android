@@ -7,7 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".Activities.NetworkDetailsActivity">
+    tools:context=".Activities.Networks.NetworkDetailsActivity">
 
     <include layout="@layout/layout_toolbar" />
 

@@ -17,9 +17,14 @@
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_blue_border.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_green_bg.xml" value="0.168" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_green_border.xml" value="0.149" />
+        <entry key="app/src/main/res/drawable/rounded_corner_5dp_light_green_bg.xml" value="0.1325" />
+        <entry key="app/src/main/res/drawable/rounded_corner_5dp_light_grey1_border.xml" value="0.1335" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_light_grey_border.xml" value="0.168" />
+        <entry key="app/src/main/res/drawable/warning_bg.xml" value="0.1325" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_change_password_screen.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_contact_details.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_contacts.xml" value="0.21435185185185185" />
         <entry key="app/src/main/res/layout/activity_create_wallet.xml" value="0.22" />
@@ -30,11 +35,17 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_network_details.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/activity_networks.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/activity_private_key.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_reveal_seed_phrase.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_security_and_privacy.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_seed_phrase_password.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_send.xml" value="0.21712962962962962" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/activity_show_private_key.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_wallet_setup.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/fragment_nav_drawer.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/fragment_tokens.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/item_seedphrase.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_network_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_tokens_list_row.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2625" />
