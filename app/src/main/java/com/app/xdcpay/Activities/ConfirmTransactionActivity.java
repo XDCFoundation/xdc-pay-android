@@ -3,29 +3,33 @@ package com.app.xdcpay.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
 
-public class SendActivity extends BaseActivity {
-    private TextViewMedium btn_next;
+public class ConfirmTransactionActivity extends BaseActivity {
+    private TextViewMedium btnConfirm;
+    private ImageView iv_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send);
+        setContentView(R.layout.activity_confirm_transaction);
     }
 
     @Override
     public void getId() {
-        btn_next = findViewById(R.id.btn_next);
+        btnConfirm = findViewById(R.id.btnConfirm);
+        iv_back = findViewById(R.id.iv_back);
+        setData();
     }
 
     @Override
     public void setListener() {
-        findViewById(R.id.back).setOnClickListener(this);
-        findViewById(R.id.btn_next).setOnClickListener(this);
+        btnConfirm.setOnClickListener(this);
+        iv_back.setOnClickListener(this);
     }
 
     @Override
@@ -36,13 +40,12 @@ public class SendActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.back:
+            case R.id.btnConfirm:
+                Intent i = new Intent(ConfirmTransactionActivity.this, SentActivity.class);
+                startActivity(i);
                 finish();
                 break;
-
-            case R.id.btn_next:
-                Intent i = new Intent(SendActivity.this, ConfirmTransactionActivity.class);
-                startActivity(i);
+            case R.id.iv_back:
                 finish();
                 break;
         }

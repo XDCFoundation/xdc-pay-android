@@ -19,9 +19,9 @@
     <color name="colorRed">#FE0035</color>
     <color name="colorLine">#E3E7EB</color>
     <color name="bgTextColor">#FAFAFA</color>
-    <color name="bgButton">#FAFAFA</color>
     <color name="bottom_sheet">#EBEBEB</color>
     <color name="edit_color">#1F48B8</color>
     <color name="btn_green">#19BE46</color>
     <color name="warning_color">#FFECF0</color>
+    <color name="reset_color">#2149BA</color>
 </resources>
