@@ -1,6 +1,5 @@
-package com.app.xdcpay.Activities;
+package com.app.xdcpay.Activities.Networks;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,8 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Adapters.NetworkListAdapter;
-import com.app.xdcpay.Adapters.TokensAdapter;
 import com.app.xdcpay.Model.NetworkList;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;

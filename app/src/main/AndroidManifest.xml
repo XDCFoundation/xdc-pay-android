@@ -7,39 +7,56 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activities.SecurityAndPrivacyActivity"
+            android:name=".Activities.SecurityPrivacy.ShowPrivateKeyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.PrivateKeyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.ChangePasswordScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.RevealSeedPhraseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.SeedPhrasePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.SecurityAndPrivacyActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.EditContactActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ContactDetailsActivity"
+            android:name=".Activities.Contacts.ContactDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.AddContactActivity"
+            android:name=".Activities.Contacts.AddContactActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ContactsActivity"
+            android:name=".Activities.Contacts.ContactsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.NetworkDetailsActivity"
+            android:name=".Activities.Networks.NetworkDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.AddNetworkActivity"
+            android:name=".Activities.Networks.AddNetworkActivity"
             android:exported="false" />
         <activity android:name=".Activities.BrowserActivity" />
         <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.NetworksActivity" />
+        <activity android:name=".Activities.Networks.NetworksActivity" />
         <activity android:name=".Activities.SettingsActivity" />
         <activity android:name=".Activities.AdvanceSettings" />
         <activity android:name=".Activities.AddTokenActivity" />
@@ -52,7 +69,8 @@
         <activity android:name=".Activities.ImportWalletActivity" />
         <activity android:name=".Activities.WalletSetupActivity" />
         <activity android:name=".Activities.WelcomeActivity" />
-        <activity android:name=".Activities.SplashActivity"
+        <activity
+            android:name=".Activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

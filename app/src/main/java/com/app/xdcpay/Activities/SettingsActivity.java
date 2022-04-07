@@ -1,11 +1,12 @@
 package com.app.xdcpay.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.app.xdcpay.Activities.Contacts.ContactsActivity;
+import com.app.xdcpay.Activities.Networks.NetworksActivity;
+import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;

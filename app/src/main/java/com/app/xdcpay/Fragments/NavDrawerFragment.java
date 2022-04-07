@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.xdcpay.Activities.BrowserActivity;
-import com.app.xdcpay.Activities.ContactsActivity;
 import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Activities.SplashActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;

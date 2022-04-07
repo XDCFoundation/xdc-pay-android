@@ -1,4 +1,4 @@
-package com.app.xdcpay.Activities;
+package com.app.xdcpay.Activities.Networks;
 
 import android.content.Intent;
 import android.os.Bundle;

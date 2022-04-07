@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".Activities.ContactsActivity">
+    tools:context=".Activities.Contacts.ContactsActivity">
 
     <include layout="@layout/layout_toolbar_add" />
 
