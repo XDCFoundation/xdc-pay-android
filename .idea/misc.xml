@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.290625" />
         <entry key="app/src/main/res/drawable-v24/ic_plus.xml" value="0.149" />
+        <entry key="app/src/main/res/drawable/bg_round_corner.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_buy.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_copy_grey.xml" value="0.1765" />
@@ -23,6 +24,7 @@
         <entry key="app/src/main/res/drawable/warning_bg.xml" value="0.1325" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_browser.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password_screen.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_contact_details.xml" value="0.23333333333333334" />
@@ -44,8 +46,10 @@
         <entry key="app/src/main/res/layout/activity_show_private_key.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_wallet_setup.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/fragment_nav_drawer.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/fragment_timer_bottom_sheet.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/fragment_tokens.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/item_seedphrase.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/item_time_locker.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_network_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_tokens_list_row.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2625" />

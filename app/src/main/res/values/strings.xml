@@ -99,6 +99,7 @@
     <string name="reveal_seed_words">Reveal Seed Words</string>
     <string name="change_password">Change Password</string>
     <string name="auto_locker_timer">Auto-Lock Timer</string>
+    <string name="auto_timer">Auto Lock Timer</string>
     <string name="show_private_key">Show Private Key</string>
     <string name="error_private_key">Private key not found</string>
     <string name="signin_biometric">Sign-in with biometrics</string>
