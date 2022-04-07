@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Fragments.BottomSheet.TimerBottomSheetFragment;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextView;
 import com.app.xdcpay.Views.TextViewBold;
 import com.app.xdcpay.Views.TextViewMedium;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SecurityAndPrivacyActivity extends BaseActivity {
     private TextViewBold btn_revealSeedPhrase, btn_changePassword, btn_showPrivateKey;
@@ -21,6 +24,7 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
     private TextView tv_switch;
     private TextViewMedium title;
     private ImageView back;
+    private EditText edit_timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
         switch_btn = findViewById(R.id.switch_btn);
         tv_switch = findViewById(R.id.tv_switch);
         title = findViewById(R.id.title);
+        edit_timer = findViewById(R.id.edit_timer);
         back = findViewById(R.id.back);
         setData();
     }
@@ -46,6 +51,7 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
         btn_changePassword.setOnClickListener(this);
         btn_showPrivateKey.setOnClickListener(this);
         btn_showPrivateKey.setOnClickListener(this);
+        edit_timer.setOnClickListener(this);
         back.setOnClickListener(this);
 
         switch_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -78,6 +84,17 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
             case R.id.btn_showPrivateKey:
                 Intent privateKeyIntent = new Intent(SecurityAndPrivacyActivity.this, PrivateKeyActivity.class);
                 startActivity(privateKeyIntent);
+                break;
+            case R.id.edit_timer:
+                TimerBottomSheetFragment fragment = new TimerBottomSheetFragment();
+                Bundle b = new Bundle();
+                b.putString("contentId", edit_timer.getText().toString());
+//                b.putString("createdByUserId", data.getContents().getCreatedBy().getUserId());
+//                b.putString("ipfsUrl", data.getContents().getIpfsUrl());
+//                b.putInt("position", itemPos);
+//                b.putInt("commentSize", data.getCommentsSize());
+                fragment.setArguments(b);
+                fragment.show(getSupportFragmentManager(), "TAG");
                 break;
             case R.id.back:
                 finish();

@@ -1,5 +1,6 @@
 package com.app.xdcpay.Activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,12 +35,18 @@ public class BrowserActivity extends BaseActivity {
         findViewById(R.id.back).setOnClickListener(this);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void setData() {
         title.setText(getIntent().getStringExtra(Constants.TITLE));
+
+//        webView.setWebViewClient(new MyBrowser());
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
+//        webView.getSettings().setLoadWithOverviewMode(true);
+//        webView.getSettings().setUseWideViewPort(true);
+        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setWebViewClient(new WebViewClient() {
 
             @Override
@@ -62,4 +69,12 @@ public class BrowserActivity extends BaseActivity {
     public void onClick(View v) {
 
     }
+
+//    private class MyBrowser extends WebViewClient {
+//        @Override
+//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//            view.loadUrl(url);
+//            return true;
+//        }
+//    }
 }

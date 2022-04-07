@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="colorWhite">#ffffff</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="colorBlack">#2A2A2A</color>
     <color name="colorBlackText">#1F1F1F</color>
     <color name="colorGreyText">#848484</color>
@@ -19,6 +20,7 @@
     <color name="colorLine">#E3E7EB</color>
     <color name="bgTextColor">#FAFAFA</color>
     <color name="bgButton">#FAFAFA</color>
+    <color name="bottom_sheet">#EBEBEB</color>
     <color name="edit_color">#1F48B8</color>
     <color name="btn_green">#19BE46</color>
     <color name="warning_color">#FFECF0</color>
