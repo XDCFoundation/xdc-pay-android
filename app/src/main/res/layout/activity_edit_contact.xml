@@ -78,7 +78,7 @@
                     android:layout_marginRight="@dimen/margin_12"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_corner_5dp_green_bg"
-                    android:backgroundTint="@color/bgButton"
+                    android:backgroundTint="@color/bgTextColor"
                     android:padding="@dimen/margin_10"
                     android:text="@string/cancel"
                     android:textAllCaps="false"

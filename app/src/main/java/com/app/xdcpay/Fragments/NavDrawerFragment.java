@@ -18,9 +18,6 @@ import com.app.xdcpay.Views.TextViewMedium;
 
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class NavDrawerFragment extends Fragment implements View.OnClickListener {
     View v;
     ReadWalletDetails readWalletDetails;
@@ -38,7 +35,6 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
         v = inflater.inflate(R.layout.fragment_nav_drawer, container, false);
         getViewId();
         setListener();
-
 
         /*tvSettings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -41,11 +41,15 @@
     <string name="select_service">Select Service</string>
     <string name="qr_code">QR code</string>
     <string name="send_from">Send From</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
     <string name="recipient_address">Recipient Address</string>
     <string name="wallet_address">Wallet address</string>
     <string name="amount">Amount</string>
     <string name="available_4550_xdc">Available: 4550 XDC</string>
     <string name="gas_price_gwei">Gas Price (GWEI)</string>
+    <string name="max_transaction">Max Transaction Fee</string>
+    <string name="total">Total</string>
     <string name="gas_limit">Gas Limit</string>
     <string name="gas_limit_must_be_greater_than_2100_and_less_than_415800000">Gas Limit must be greater than 2100 and less than 415800000</string>
     <string name="transaction_note_optional">Transaction Note (Optional)</string>
@@ -112,7 +116,16 @@
     <string name="secret_seed">Secret seed words</string>
     <string name="confirm_your_password">Confirm your password</string>
     <string name="confirm">Confirm</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="details">Details</string>
+    <string name="transaction_log">Transaction Log</string>
+    <string name="sent">Sent</string>
+    <string name="transaction_created">Transaction created with a value of 100 XDC at 16:29 on 10/11/2021.</string>
+    <string name="transaction_submitted">Transaction submitted with estimated gas fee of 1.00 GWEI at 16:29 on 10/11/2021.</string>
+    <string name="transaction_confirmed">Transaction Confirmed at</string>
+    <string name="confirm_transaction">Confirm Transaction</string>
     <string name="reset_password">Reset Password</string>
+    <string name="reset">Reset</string>
     <string name="security_privacy_settings">Security and Privacy Settings</string>
     <string name="secret_content">Write down these 12 words and keep it safe on multiple places. You will not be able to recover your wallet if you lose this recover phrase.</string>
 
@@ -122,7 +135,9 @@
     <string name="hint_currency_symbol">Symbol (Optional)</string>
     <string name="hint_block_explore_url">Block Explorer Url (Optional)</string>
     <string name="hint_wallet_address">Contact’s Wallet Address</string>
+    <string name="hint_address">xdc084f58d39d6a0d5e89464….4594</string>
     <string name="hint_username">Contact’s Name</string>
+    <string name="hint_XDC">100 XDC</string>
     <string name="reveal_seed_words_hint">Do not recover your seed words in a public place! These words can be used to steal all your accounts.</string>
     <string name="change_password_hint">Create your new password for XDC Pay so that you can login to your account.</string>
     <string name="private_key_hint">This is the private key for the current selected account. Never disclose this key.</string>

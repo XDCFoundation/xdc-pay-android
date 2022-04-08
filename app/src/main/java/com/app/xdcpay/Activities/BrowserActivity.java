@@ -1,6 +1,7 @@
 package com.app.xdcpay.Activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -70,7 +71,14 @@ public class BrowserActivity extends BaseActivity {
 
     }
 
-//    private class MyBrowser extends WebViewClient {
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(BrowserActivity.this, SentActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    //    private class MyBrowser extends WebViewClient {
 //        @Override
 //        public boolean shouldOverrideUrlLoading(WebView view, String url) {
 //            view.loadUrl(url);
