@@ -116,6 +116,13 @@
     <string name="secret_seed">Secret seed words</string>
     <string name="confirm_your_password">Confirm your password</string>
     <string name="confirm">Confirm</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="details">Details</string>
+    <string name="transaction_log">Transaction Log</string>
+    <string name="sent">Sent</string>
+    <string name="transaction_created">Transaction created with a value of 100 XDC at 16:29 on 10/11/2021.</string>
+    <string name="transaction_submitted">Transaction submitted with estimated gas fee of 1.00 GWEI at 16:29 on 10/11/2021.</string>
+    <string name="transaction_confirmed">Transaction Confirmed at</string>
     <string name="confirm_transaction">Confirm Transaction</string>
     <string name="reset_password">Reset Password</string>
     <string name="reset">Reset</string>

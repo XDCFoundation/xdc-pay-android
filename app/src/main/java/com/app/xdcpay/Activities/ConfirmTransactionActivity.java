@@ -46,8 +46,15 @@ public class ConfirmTransactionActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.iv_back:
-                finish();
+               onBackPressed();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ConfirmTransactionActivity.this, SendActivity.class);
+        startActivity(i);
+        finish();
     }
 }

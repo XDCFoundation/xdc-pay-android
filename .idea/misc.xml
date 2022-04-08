@@ -12,7 +12,9 @@
         <entry key="app/src/main/res/drawable/ic_circle_white_bg.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_copy_grey.xml" value="0.1765" />
         <entry key="app/src/main/res/drawable/ic_copy_grey_small.xml" value="0.1915" />
+        <entry key="app/src/main/res/drawable/ic_done.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_drop_down.xml" value="0.1915" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_green_dot.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.1765" />
