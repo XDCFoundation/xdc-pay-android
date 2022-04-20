@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Activities.HelpActivity">
+
+    <include
+        android:id="@+id/idInclude"
+        layout="@layout/layout_toolbar" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/help_text"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_13"
+        app:layout_constraintStart_toStartOf="@id/idInclude"
+        app:layout_constraintTop_toBottomOf="@id/idInclude" />
+
+    <com.app.xdcpay.Views.TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:text="@string/terms_service"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/margin_13"
+        app:layout_constraintStart_toStartOf="@id/text"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

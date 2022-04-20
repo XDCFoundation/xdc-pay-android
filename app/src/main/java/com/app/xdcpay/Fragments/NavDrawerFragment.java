@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.xdcpay.Activities.BrowserActivity;
+import com.app.xdcpay.Activities.HelpActivity;
 import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Activities.SplashActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
@@ -64,6 +65,7 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
 //        v.findViewById(R.id.settings).setOnClickListener(this);
         v.findViewById(R.id.logout).setOnClickListener(this);
         tvSettings.setOnClickListener(this);
+        tvHelp.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +80,9 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
 
             case R.id.tvSettings:
                 startActivity(new Intent(getContext(), SettingsActivity.class));
+                break;
+            case R.id.tvHelp:
+                startActivity(new Intent(getContext(), HelpActivity.class));
                 break;
 
             case R.id.logout:
