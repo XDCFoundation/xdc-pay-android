@@ -46,9 +46,9 @@
             android:background="@color/colorLightGrey" />
 
         <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/security"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/security_privacy"
             android:drawableRight="@drawable/ic_next"
             android:padding="@dimen/margin_10"
             android:text="@string/security_privacy"
@@ -61,9 +61,9 @@
             android:background="@color/colorLightGrey" />
 
         <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/networks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_Networks"
             android:drawableRight="@drawable/ic_next"
             android:padding="@dimen/margin_10"
             android:text="@string/networks"
@@ -76,9 +76,9 @@
             android:background="@color/colorLightGrey" />
 
         <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/contacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_Contacts"
             android:drawableRight="@drawable/ic_next"
             android:padding="@dimen/margin_10"
             android:text="@string/contacts"

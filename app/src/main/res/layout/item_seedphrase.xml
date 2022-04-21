@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/llMain"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginBottom="@dimen/margin_5"
+        android:orientation="horizontal">
+
+        <com.app.xdcpay.Views.TextView
+            android:id="@+id/tvWords"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+            android:gravity="center"
+            android:text="@string/contacts"
+            android:paddingVertical="@dimen/margin_7"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/margin_12" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

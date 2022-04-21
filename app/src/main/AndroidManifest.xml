@@ -1,24 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.app.xdcpay">
-
-    <dist:module dist:instant="true" />
-
+    <!-- <dist:module dist:instant="true" /> -->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        tools:replace="android:supportsRtl"
+        tools:targetApi="m">
+        <activity
+            android:name=".Activities.HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ConfirmTransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.ShowPrivateKeyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.PrivateKeyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.ChangePasswordScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.RevealSeedPhraseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.SeedPhrasePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SecurityPrivacy.SecurityAndPrivacyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.EditContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Contacts.ContactDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Contacts.AddContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Contacts.ContactsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Networks.NetworkDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Networks.AddNetworkActivity"
+            android:exported="false" />
         <activity android:name=".Activities.BrowserActivity" />
         <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.NetworksActivity" />
+        <activity android:name=".Activities.Networks.NetworksActivity" />
         <activity android:name=".Activities.SettingsActivity" />
         <activity android:name=".Activities.AdvanceSettings" />
         <activity android:name=".Activities.AddTokenActivity" />
@@ -31,7 +83,9 @@
         <activity android:name=".Activities.ImportWalletActivity" />
         <activity android:name=".Activities.WalletSetupActivity" />
         <activity android:name=".Activities.WelcomeActivity" />
-        <activity android:name=".Activities.SplashActivity">
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

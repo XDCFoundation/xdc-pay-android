@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorBlack</item>
     </style>
 
+    <style name="BrandedSwitch" parent="AppTheme">
+        <item name="colorAccent">#39ac39</item>
+        <item name="colorControlActivated">#39ac39</item>
+
+    </style>
+
 </resources>

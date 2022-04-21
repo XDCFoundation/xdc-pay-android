@@ -103,12 +103,6 @@ public class CreateWalletActivity extends BaseActivity {
         return false;
     }
 
-
-
-
-
-    
-
     private void updatePasswordStrengthView(String password) {
 
     }

@@ -8,21 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.xdcpay.Activities.BrowserActivity;
+import com.app.xdcpay.Activities.HelpActivity;
 import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Activities.SplashActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.Constants;
+import com.app.xdcpay.Views.TextViewMedium;
 
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class NavDrawerFragment extends Fragment implements View.OnClickListener {
     View v;
     ReadWalletDetails readWalletDetails;
+    TextViewMedium tvSettings, tvHelp;
 
     public NavDrawerFragment() {
         // Required empty public constructor
@@ -37,17 +37,35 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
         getViewId();
         setListener();
 
+        /*tvSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+        tvHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ContactsActivity.class);
+                startActivity(intent);
+            }
+        });*/
         return v;
     }
 
     private void getViewId() {
+        tvSettings = v.findViewById(R.id.tvSettings);
+        tvHelp = v.findViewById(R.id.tvHelp);
         readWalletDetails = new ReadWalletDetails(getContext());
     }
 
     private void setListener() {
         v.findViewById(R.id.view_on_observatory).setOnClickListener(this);
-        v.findViewById(R.id.settings).setOnClickListener(this);
+//        v.findViewById(R.id.settings).setOnClickListener(this);
         v.findViewById(R.id.logout).setOnClickListener(this);
+        tvSettings.setOnClickListener(this);
+        tvHelp.setOnClickListener(this);
     }
 
     @Override
@@ -60,8 +78,11 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
                 startActivity(intent1);
                 break;
 
-            case R.id.settings:
+            case R.id.tvSettings:
                 startActivity(new Intent(getContext(), SettingsActivity.class));
+                break;
+            case R.id.tvHelp:
+                startActivity(new Intent(getContext(), HelpActivity.class));
                 break;
 
             case R.id.logout:
