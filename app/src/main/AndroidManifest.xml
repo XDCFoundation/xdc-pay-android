@@ -21,6 +21,9 @@
         tools:replace="android:supportsRtl"
         tools:targetApi="m">
         <activity
+            android:name=".Activities.HelpActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.SentActivity"
             android:exported="false" />
         <activity
