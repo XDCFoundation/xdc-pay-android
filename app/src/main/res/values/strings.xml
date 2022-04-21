@@ -146,4 +146,16 @@
     <string name="password_length_msg">Password should have a minimum of 8 characters.</string>
     <string name="terms_service">Terms of Service</string>
     <string name="help_text">Dear <b>XDC</b>Pay Users,\n\n <b>XDC</b>Pay is a beta software.\n\nWhen you log in to <b>XDC</b>Pay, your current account’s address is visible to every new site you visit.This can be used to look up your account balances of XDC and other tokens.\n\nFor your privacy, for now, please sign out of XDC Pay when you’re done using a site.\n\nRelated Links</string>
+    <string name="title_activity_scanner">ScannerActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="recipient_address_required">Recipient Address Required</string>
+    <string name="sender_address_required">Sender Address Required</string>
+    <string name="amount_required">Amount Required</string>
+    <string name="gas_price_required">Gas Price Required</string>
 </resources>

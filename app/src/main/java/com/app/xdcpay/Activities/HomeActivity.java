@@ -1,10 +1,15 @@
 package com.app.xdcpay.Activities;
 
+import static com.app.xdcpay.Activities.ScannerActivity.ACTIVITY_NAME;
+
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.XDCJava.FleekClient;
@@ -19,7 +24,9 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -32,7 +39,9 @@ public class HomeActivity extends BaseActivity {
     private TabLayout tabLayout;
     private DrawerLayout drawerLayout;
     private ReadWalletDetails readWalletDetails;
+    private ImageView scan;
     private TextView wallet_balance, amount, wallet_address;
+    private static final int REQUEST_CAMERA_PERMISSION = 201;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,7 @@ public class HomeActivity extends BaseActivity {
         tabLayout = findViewById(R.id.favorite_view_pager_tabs);
         wallet_address = findViewById(R.id.wallet_address);
         wallet_balance = findViewById(R.id.wallet_balance);
+        scan = findViewById(R.id.scan);
 
         setData();
     }
@@ -58,6 +68,7 @@ public class HomeActivity extends BaseActivity {
         findViewById(R.id.send).setOnClickListener(this);
         findViewById(R.id.receive).setOnClickListener(this);
         findViewById(R.id.menu).setOnClickListener(this);
+        scan.setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +102,13 @@ public class HomeActivity extends BaseActivity {
                 Log.e("get balance msg", message);
             }
         });
+
+        if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+//            cameraSource.start(surfaceView.getHolder());
+        } else {
+            ActivityCompat.requestPermissions(HomeActivity.this, new
+                    String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+        }
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -135,6 +153,12 @@ public class HomeActivity extends BaseActivity {
 
             case R.id.receive:
                 startActivity(new Intent(HomeActivity.this, QrCodeActivity.class));
+                break;
+            case R.id.scan:
+                Intent i = new Intent(HomeActivity.this, ScannerActivity.class);
+                i.putExtra(ACTIVITY_NAME, "HomeActivity");
+                startActivity(i);
+
                 break;
 
             case R.id.menu:
