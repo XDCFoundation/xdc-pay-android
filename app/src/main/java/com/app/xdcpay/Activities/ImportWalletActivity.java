@@ -88,8 +88,7 @@ public class ImportWalletActivity extends BaseActivity {
             case R.id.import_tv:
                 if (isValid())
                     try {
-                        File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES +
-                                File.separator + "web3j");
+                        File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES + File.separator + "web3j");
                         path.mkdir();
 
                         FleekClient.getInstance().importWallet(seed_phrase.getText().toString(), password.getText().toString(), path, new CreateAccountCallback() {

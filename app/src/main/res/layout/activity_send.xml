@@ -28,6 +28,7 @@
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.EditText
+                android:id="@+id/etSenderAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
@@ -35,6 +36,7 @@
                 android:drawableStart="@drawable/ic_profile"
                 android:drawableEnd="@drawable/ic_drop_down"
                 android:drawablePadding="@dimen/margin_10"
+                android:ellipsize="middle"
                 android:padding="@dimen/margin_10"
                 android:singleLine="true"
                 android:text="@string/account_1"
@@ -49,18 +51,37 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
 
-            <com.app.xdcpay.Views.EditText
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
-                android:drawableEnd="@drawable/ic_scan"
-                android:drawablePadding="@dimen/margin_10"
-                android:hint="@string/wallet_address"
-                android:padding="@dimen/margin_10"
-                android:singleLine="true"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/margin_14" />
+                android:padding="@dimen/margin_5">
+
+                <com.app.xdcpay.Views.EditText
+                    android:id="@+id/etReceiverAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_5"
+                    android:layout_toLeftOf="@+id/iv_barcode"
+                    android:background="@color/colorWhite"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:ellipsize="middle"
+                    android:hint="@string/wallet_address"
+                    android:padding="@dimen/margin_5"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+                <ImageView
+                    android:id="@+id/iv_barcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_scan" />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -91,14 +112,19 @@
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:padding="@dimen/margin_10">
 
-                <com.app.xdcpay.Views.TextViewMedium
-                    android:layout_width="wrap_content"
+                <com.app.xdcpay.Views.EditText
+                    android:id="@+id/etAmount"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_5"
+                    android:layout_toLeftOf="@+id/tv_usd"
+                    android:background="@color/colorWhite"
                     android:hint="0.00"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/margin_14" />
 
                 <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/tv_usd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -119,11 +145,12 @@
             <com.app.xdcpay.Views.EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etGasPrice"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:padding="@dimen/margin_10"
                 android:singleLine="true"
-                android:text="1"
+                android:hint="1"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
 
@@ -165,6 +192,7 @@
             <com.app.xdcpay.Views.EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etNote"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:padding="@dimen/margin_10"
