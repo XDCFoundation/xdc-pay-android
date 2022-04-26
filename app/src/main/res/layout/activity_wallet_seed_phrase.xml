@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".Activities.CreateWallet.WalletSeedPhraseActivity">
+
+    <include
+        android:id="@+id/include_layout"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_continue"
+        android:layout_below="@+id/include_layout"
+        android:background="@color/colorWhite"
+        android:fillViewport="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".Activities.SecurityPrivacy.RevealSeedPhraseActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.app.xdcpay.Views.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_28"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginRight="@dimen/margin_28"
+                android:layout_marginBottom="@dimen/margin_24"
+                android:gravity="center"
+                android:text="@string/secret_content"
+                android:textColor="@color/colorGreyText"
+                android:textSize="@dimen/margin_12" />
+
+            <GridView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_18"
+                android:layout_marginEnd="@dimen/margin_18"
+                android:fitsSystemWindows="true"
+                android:gravity="center"
+                android:numColumns="3" />
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:id="@+id/tv_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_28"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginRight="@dimen/margin_28"
+                android:text="@string/copy_to_clipboard"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/margin_14" />
+
+            <com.app.xdcpay.Views.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_28"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_28"
+                android:layout_marginBottom="@dimen/margin_24"
+                android:gravity="center"
+                android:text="@string/write_down_these_12_words_down_or_copy_them_to_a_password_manager"
+                android:textColor="@color/colorGreyText"
+                android:textSize="@dimen/margin_12" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_30"
+        android:layout_marginBottom="@dimen/margin_30"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_16"
+        android:background="@drawable/rounded_corner_5dp_green_bg"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:text="@string/continue_text"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/margin_16" />
+</RelativeLayout>

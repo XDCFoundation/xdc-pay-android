@@ -3,6 +3,7 @@ package com.app.xdcpay.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.app.xdcpay.Activities.CreateWallet.ConfirmSeedPhraseActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.Validations;
@@ -20,7 +21,10 @@ public class SplashActivity extends AppCompatActivity {
         if (readWalletDetails.getIsLogin())
             startActivity(new Intent(SplashActivity.this, HomeActivity.class));
         else if (Validations.hasText(readWalletDetails.getAccountAddress()))
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            if (readWalletDetails.getIsSeedPhraseConfirm())
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            else
+                startActivity(new Intent(SplashActivity.this, ConfirmSeedPhraseActivity.class));
         else
             startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
         finish();

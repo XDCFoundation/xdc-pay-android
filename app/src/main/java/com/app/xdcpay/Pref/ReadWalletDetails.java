@@ -51,4 +51,10 @@ public class ReadWalletDetails {
         res = prefs.getBoolean("is_login", false);
         return res;
     }
+
+    public boolean getIsSeedPhraseConfirm() {
+        boolean res;
+        res = prefs.getBoolean("isSeedPhraseConfirm", false);
+        return res;
+    }
 }

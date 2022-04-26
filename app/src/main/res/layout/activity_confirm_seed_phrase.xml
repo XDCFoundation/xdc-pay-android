@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Activities.CreateWallet.ConfirmSeedPhraseActivity">
+
+    <include
+        android:id="@+id/idInclude"
+        layout="@layout/layout_toolbar" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_46"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/word_1"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_14"
+        app:layout_constraintStart_toStartOf="@id/idInclude"
+        app:layout_constraintTop_toBottomOf="@id/idInclude" />
+
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/text1"
+        app:layout_constraintTop_toBottomOf="@id/text1">
+
+        <com.app.xdcpay.Views.EditText
+            android:id="@+id/etWord1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:layout_marginBottom="@dimen/margin_3"
+            android:layout_toStartOf="@+id/ivWord1"
+            android:background="@color/colorWhite"
+            android:hint="@string/secret_seed"
+            android:padding="@dimen/margin_10"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGreyText"
+            android:textSize="@dimen/text_14" />
+
+        <ImageView
+            android:id="@+id/ivWord1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginRight="@dimen/margin_14"
+            android:src="@drawable/ic_check"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_22"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/word_2"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_14"
+        app:layout_constraintStart_toStartOf="@id/rl_1"
+        app:layout_constraintTop_toBottomOf="@id/rl_1" />
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/text2"
+        app:layout_constraintTop_toBottomOf="@id/text2">
+
+        <com.app.xdcpay.Views.EditText
+            android:id="@+id/etWord2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:layout_marginBottom="@dimen/margin_3"
+            android:layout_toStartOf="@+id/ivWord1"
+            android:background="@color/colorWhite"
+            android:hint="@string/secret_seed"
+            android:padding="@dimen/margin_10"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGreyText"
+            android:textSize="@dimen/text_14" />
+
+        <ImageView
+            android:id="@+id/ivWord2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginRight="@dimen/margin_14"
+            android:src="@drawable/ic_check"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_22"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/word_2"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_14"
+        app:layout_constraintStart_toStartOf="@id/rl2"
+        app:layout_constraintTop_toBottomOf="@id/rl2" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/text3"
+        app:layout_constraintTop_toBottomOf="@id/text3">
+
+        <com.app.xdcpay.Views.EditText
+            android:id="@+id/etWord3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:layout_marginBottom="@dimen/margin_3"
+            android:layout_toStartOf="@+id/ivWord1"
+            android:background="@color/colorWhite"
+            android:hint="@string/secret_seed"
+            android:padding="@dimen/margin_10"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGreyText"
+            android:textSize="@dimen/text_14" />
+
+        <ImageView
+            android:id="@+id/ivWord3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginRight="@dimen/margin_14"
+            android:src="@drawable/ic_check"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/confirm_recovery_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_30"
+        android:background="@drawable/rounded_corner_5dp_green_bg"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:text="@string/confirm_recover_phase"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
