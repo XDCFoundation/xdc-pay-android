@@ -158,4 +158,9 @@
     <string name="sender_address_required">Sender Address Required</string>
     <string name="amount_required">Amount Required</string>
     <string name="gas_price_required">Gas Price Required</string>
+    <string name="hide">Hide</string>
+    <string name="my_accounts">My Accounts</string>
+    <string name="create_account">Create Account</string>
+    <string name="import_account">Import Account</string>
+    <string name="delete_account">Delete Account</string>
 </resources>

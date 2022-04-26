@@ -81,7 +81,7 @@ public class HomeActivity extends BaseActivity {
 
         FleekClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), Constants.CONNECTED_NETWORK, new EventCallback() {
             @Override
-            public void success(String balance) throws Exception {
+            public void success(final String balance) throws Exception {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

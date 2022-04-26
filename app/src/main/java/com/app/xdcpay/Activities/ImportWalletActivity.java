@@ -6,8 +6,10 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,7 +28,7 @@ import java.io.File;
 
 public class ImportWalletActivity extends BaseActivity {
     private EditText seed_phrase, password, confirm_password;
-    private TextView title;
+    private TextView title, show;
     private ProgressBar progressBar;
     private CheckBox show_cb;
 
@@ -43,14 +45,26 @@ public class ImportWalletActivity extends BaseActivity {
         confirm_password = findViewById(R.id.confirm_password_ed);
         seed_phrase = findViewById(R.id.seed_phrase_ed);
         progressBar = findViewById(R.id.password_strength_progress);
+        show_cb = findViewById(R.id.show_cb);
+        show = findViewById(R.id.show);
 
-        title.setText(getResources().getString(R.string.import_from_seed));
+        setData();
     }
 
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.import_tv).setOnClickListener(this);
+        show.setOnClickListener(this);
+        show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (!b)
+                    seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
+                else
+                    seed_phrase.setTransformationMethod(null);
+            }
+        });
 
         password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -75,7 +89,7 @@ public class ImportWalletActivity extends BaseActivity {
 
     @Override
     public void setData() {
-
+        title.setText(getResources().getString(R.string.import_from_seed));
     }
 
     @Override
@@ -83,6 +97,16 @@ public class ImportWalletActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.back:
                 finish();
+                break;
+
+            case R.id.show:
+                if (show.getText().toString().equals(getResources().getString(R.string.show))) {
+                    seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
+                    show.setText(getResources().getString(R.string.hide));
+                } else {
+                    seed_phrase.setTransformationMethod(null);
+                    show.setText(getResources().getString(R.string.show));
+                }
                 break;
 
             case R.id.import_tv:
@@ -94,8 +118,6 @@ public class ImportWalletActivity extends BaseActivity {
                         FleekClient.getInstance().importWallet(seed_phrase.getText().toString(), password.getText().toString(), path, new CreateAccountCallback() {
                             @Override
                             public void success(WalletData walletData) {
-
-                                // txt_info.setText("Account address: " + walletData.getAccountAddress() + "\n" + "privateKey: " + walletData.getPrivateKey());
                                 Gson gson = new Gson();
                                 String json = gson.toJson(walletData);
 //                            SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, "userwallet", json);

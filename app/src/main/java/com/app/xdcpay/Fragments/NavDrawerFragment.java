@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.app.xdcpay.Activities.BrowserActivity;
 import com.app.xdcpay.Activities.HelpActivity;
@@ -16,6 +17,7 @@ import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Views.TextViewMedium;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import androidx.fragment.app.Fragment;
 
@@ -62,7 +64,7 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
 
     private void setListener() {
         v.findViewById(R.id.view_on_observatory).setOnClickListener(this);
-//        v.findViewById(R.id.settings).setOnClickListener(this);
+        v.findViewById(R.id.account_name).setOnClickListener(this);
         v.findViewById(R.id.logout).setOnClickListener(this);
         tvSettings.setOnClickListener(this);
         tvHelp.setOnClickListener(this);
@@ -71,6 +73,13 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.account_name:
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(requireActivity());
+                bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
+                bottomSheetDialog.show();
+                break;
+
             case R.id.view_on_observatory:
                 Intent intent1 = new Intent(getContext(), BrowserActivity.class);
                 intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
@@ -81,6 +90,7 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
             case R.id.tvSettings:
                 startActivity(new Intent(getContext(), SettingsActivity.class));
                 break;
+
             case R.id.tvHelp:
                 startActivity(new Intent(getContext(), HelpActivity.class));
                 break;
