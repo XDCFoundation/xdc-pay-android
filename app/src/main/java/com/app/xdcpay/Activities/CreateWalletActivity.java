@@ -3,9 +3,13 @@ package com.app.xdcpay.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.XDCJava.FleekClient;
@@ -17,6 +21,7 @@ import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
+import com.app.xdcpay.Views.TextView;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -24,6 +29,8 @@ import java.io.File;
 public class CreateWalletActivity extends BaseActivity {
     private EditText password, confirm_password;
     private CheckBox terms_cb;
+    private ProgressBar progressBar;
+    private TextView show_hide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +43,34 @@ public class CreateWalletActivity extends BaseActivity {
         password = findViewById(R.id.password_ed);
         confirm_password = findViewById(R.id.confirm_password_ed);
         terms_cb = findViewById(R.id.terms_cb);
+        progressBar = findViewById(R.id.password_strength_progress);
+        show_hide = findViewById(R.id.show_hide);
     }
 
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.create_password).setOnClickListener(this);
+        show_hide.setOnClickListener(this);
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (Validations.isPasswordValid(password.getText().toString()))
+                    progressBar.setProgress(90);
+                else
+                    progressBar.setProgress(20);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 
@@ -98,6 +126,16 @@ public class CreateWalletActivity extends BaseActivity {
                         }
                     });
 
+                }
+                break;
+
+            case R.id.show_hide:
+                if (password.getTransformationMethod() == null) {
+                    show_hide.setText(R.string.show);
+                    password.setTransformationMethod(new PasswordTransformationMethod());
+                } else {
+                    password.setTransformationMethod(null);
+                    show_hide.setText(R.string.hide);
                 }
                 break;
         }
