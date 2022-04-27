@@ -7,6 +7,7 @@ import android.view.View;
 import com.app.xdcpay.Activities.Contacts.ContactsActivity;
 import com.app.xdcpay.Activities.Networks.NetworksActivity;
 import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
+import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -33,7 +34,7 @@ public class SettingsActivity extends BaseActivity {
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
-        findViewById(R.id.genral).setOnClickListener(this);
+        findViewById(R.id.generalSetting).setOnClickListener(this);
         findViewById(R.id.advance).setOnClickListener(this);
 //        findViewById(R.id.security).setOnClickListener(this);
 //        findViewById(R.id.networks).setOnClickListener(this);
@@ -64,6 +65,12 @@ public class SettingsActivity extends BaseActivity {
             case R.id.security_privacy:
                 Intent intentSecurity = new Intent(SettingsActivity.this, SecurityAndPrivacyActivity.class);
                 startActivity(intentSecurity);
+                finish();
+                break;
+
+                case R.id.generalSetting:
+                Intent intentGeneral = new Intent(SettingsActivity.this, GeneralSettingsActivity.class);
+                startActivity(intentGeneral);
                 finish();
                 break;
         }

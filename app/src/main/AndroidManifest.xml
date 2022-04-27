@@ -69,6 +69,9 @@
             android:name=".Activities.EditContactActivity"
             android:exported="false" />
         <activity
+            android:name=".Activities.Settings.GeneralSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Contacts.ContactDetailsActivity"
             android:exported="false" />
         <activity
@@ -87,7 +90,7 @@
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.Networks.NetworksActivity" />
         <activity android:name=".Activities.SettingsActivity" />
-        <activity android:name=".Activities.AdvanceSettings" />
+        <activity android:name=".Activities.Settings.AdvanceSettings" />
         <activity android:name=".Activities.AddTokenActivity" />
         <activity android:name=".Activities.SendActivity" />
         <activity android:name=".Activities.QrCodeActivity" />

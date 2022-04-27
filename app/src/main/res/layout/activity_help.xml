@@ -11,27 +11,106 @@
         android:id="@+id/idInclude"
         layout="@layout/layout_toolbar" />
 
-    <com.app.xdcpay.Views.TextView
-        android:id="@+id/text"
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_16"
         android:layout_marginTop="@dimen/margin_32"
         android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/text_version"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_16"
+        app:layout_constraintStart_toStartOf="@id/idInclude"
+        app:layout_constraintTop_toBottomOf="@id/idInclude" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/tvVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/hint_version"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14"
+        app:layout_constraintStart_toStartOf="@id/version"
+        app:layout_constraintTop_toBottomOf="@id/version" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
         android:text="@string/help_text"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_13"
-        app:layout_constraintStart_toStartOf="@id/idInclude"
-        app:layout_constraintTop_toBottomOf="@id/idInclude" />
+        app:layout_constraintStart_toStartOf="@id/tvVersion"
+        app:layout_constraintTop_toBottomOf="@id/tvVersion" />
+
+    <com.app.xdcpay.Views.TextViewBold
+        android:id="@+id/tvLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/hint_link"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14"
+        app:layout_constraintStart_toStartOf="@id/text"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/privacyPolicy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/privacy_policy"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/margin_13"
+        app:layout_constraintStart_toStartOf="@id/tvLink"
+        app:layout_constraintTop_toBottomOf="@id/tvLink" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/support_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/support_center"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/margin_13"
+        app:layout_constraintStart_toStartOf="@id/privacyPolicy"
+        app:layout_constraintTop_toBottomOf="@id/privacyPolicy" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/visitOurWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/visit_website"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/margin_13"
+        app:layout_constraintStart_toStartOf="@id/support_center"
+        app:layout_constraintTop_toBottomOf="@id/support_center" />
 
     <com.app.xdcpay.Views.TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_16"
-        android:text="@string/terms_service"
+        android:id="@+id/contactUs"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/contact_us"
         android:textColor="@color/colorBlue"
         android:textSize="@dimen/margin_13"
-        app:layout_constraintStart_toStartOf="@id/text"
-        app:layout_constraintTop_toBottomOf="@id/text" />
+        app:layout_constraintStart_toStartOf="@id/visitOurWebsite"
+        app:layout_constraintTop_toBottomOf="@id/visitOurWebsite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
