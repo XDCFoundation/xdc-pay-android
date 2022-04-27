@@ -146,7 +146,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
             } else {
                 randomNo3 = number[i];
             }
-        Log.d("randomNo", " .." + randomNo + " .. " + randomNo2 + " .. " + randomNo3);
+
         text1.setText(getString(R.string.word) + " " + randomNo);
         text2.setText(getString(R.string.word) + " " + randomNo2);
         text3.setText(getString(R.string.word) + " " + randomNo3);
@@ -156,7 +156,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         seedText1 = strList.get(randomNo - 1);
         seedText2 = strList.get(randomNo2 - 1);
         seedText3 = strList.get(randomNo3 - 1);
-        Log.d("randomNo", "  1 .." + seedText1 + " .. " + seedText2 + " .. " + seedText3 + "\n" + splited);
+
     }
 
     @Override
