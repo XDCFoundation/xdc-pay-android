@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.XDCAndroid.XDC20Client;
 import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Adapters.NetworkListAdapter;
 import com.app.xdcpay.Model.NetworkList;
@@ -61,6 +62,7 @@ public class NetworksActivity extends BaseActivity {
         recycler_Networks.setAdapter(networkListAdapter);
         networkLists.clear();
 
+//        XDC20Client.getInstance().getinfo();
 
         setNetworkList();
     }
