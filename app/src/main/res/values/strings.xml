@@ -115,6 +115,7 @@
     <string name="reveal">Reveal</string>
     <string name="secret_seed">Secret seed words</string>
     <string name="confirm_your_password">Confirm your password</string>
+    <string name="confirm_recover_phase">Confirm Recovery Phase</string>
     <string name="confirm">Confirm</string>
     <string name="confirmed">Confirmed</string>
     <string name="details">Details</string>
@@ -163,4 +164,9 @@
     <string name="create_account">Create Account</string>
     <string name="import_account">Import Account</string>
     <string name="delete_account">Delete Account</string>
+    <string name="word">Word</string>
+    <string name="word_1">Word 1</string>
+    <string name="word_2">Word 2</string>
+    <string name="word_3">Word 3</string>
+    <string name="wrong_secret_phrase">Wrong Seed phrase</string>
 </resources>

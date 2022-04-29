@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.XDCJava.FleekClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
+import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
+import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
@@ -64,12 +66,24 @@ public class CreateWalletActivity extends BaseActivity {
                     FleekClient.getInstance().generateWallet(path, password.getText().toString(), new CreateAccountCallback() {
                         @Override
                         public void success(WalletData walletData) {
-                            Intent intent = new Intent(CreateWalletActivity.this, HomeActivity.class);
-                            intent.putExtra(Constants.WALLET_DATA, new Gson().toJson(walletData));
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                            if (walletData != null) {
+                                SaveWalletDetails saveWalletDetails = new SaveWalletDetails(CreateWalletActivity.this);
+                                saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
+                                saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
+                                saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
+                                saveWalletDetails.saveSeedPhrase(walletData.getSeedPhrase());
+                                saveWalletDetails.savePassword(walletData.getPassword());
+//                                saveWalletDetails.saveIsLogin(true);
+
+                                Intent intent = new Intent(CreateWalletActivity.this, WalletSeedPhraseActivity.class);
+                                intent.putExtra(Constants.WALLET_DATA, new Gson().toJson(walletData));
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(CreateWalletActivity.this, "No Data Found!", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                         @Override
@@ -90,11 +104,13 @@ public class CreateWalletActivity extends BaseActivity {
     }
 
     private boolean isValid() {
+        String strPassword = password.getText().toString().trim();
+        String strConfirmPassword = confirm_password.getText().toString().trim();
         if (!Validations.hasText(password))
             password.setError(getResources().getString(R.string.error_password_empty));
         else if (!Validations.hasText(confirm_password))
             confirm_password.setError(getResources().getString(R.string.error_password_empty));
-        else if (!password.equals(confirm_password))
+        else if (!strPassword.equals(strConfirmPassword))
             confirm_password.setError(getResources().getString(R.string.error_password_not_match));
         else if (!terms_cb.isChecked())
             Toast.makeText(CreateWalletActivity.this, getResources().getString(R.string.error_check_terms), Toast.LENGTH_SHORT).show();

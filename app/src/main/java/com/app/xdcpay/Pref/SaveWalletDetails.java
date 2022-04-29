@@ -69,4 +69,12 @@ public class SaveWalletDetails {
 
     }
 
+    public void IsSeedPhaseConfirm(boolean s) {
+        result = false;
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("isSeedPhraseConfirm", s);
+        result = editor.commit();
+
+    }
+
 }
