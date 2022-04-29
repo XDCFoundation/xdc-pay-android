@@ -53,6 +53,7 @@
                     android:hint="@string/new_pass_hint"
                     android:inputType="textPassword"
                     android:padding="@dimen/margin_10"
+                    android:maxLength="15"
                     android:singleLine="true"
                     android:textSize="@dimen/margin_14" />
 
@@ -73,7 +74,9 @@
                 style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10" />
+                android:layout_marginTop="@dimen/margin_10"
+                android:outlineSpotShadowColor="@color/colorGreen" />
+
 
             <com.app.xdcpay.Views.TextView
                 android:layout_width="wrap_content"
@@ -101,6 +104,8 @@
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:padding="@dimen/margin_10"
+                android:maxLength="15"
+
                 android:singleLine="true"
                 android:textSize="@dimen/margin_14" />
 

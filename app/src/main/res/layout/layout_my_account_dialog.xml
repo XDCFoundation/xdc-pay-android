@@ -32,6 +32,7 @@
         android:drawableLeft="@drawable/ic_add"
         android:drawablePadding="@dimen/margin_10"
         android:padding="@dimen/margin_15"
+        android:id="@+id/create_account"
         android:text="@string/create_account"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />
@@ -47,6 +48,7 @@
         android:drawableLeft="@drawable/ic_import"
         android:drawablePadding="@dimen/margin_10"
         android:padding="@dimen/margin_15"
+        android:id="@+id/import_account"
         android:text="@string/import_account"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />

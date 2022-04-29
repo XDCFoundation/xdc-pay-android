@@ -100,6 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@string/available_4550_xdc"
+                    android:id="@+id/availableBalance"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/margin_14" />
 

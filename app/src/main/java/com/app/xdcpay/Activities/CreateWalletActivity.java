@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.XDCJava.FleekClient;
+import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
@@ -21,7 +21,7 @@ import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
-import com.app.xdcpay.Views.TextView;
+import com.app.xdcpay.Views.TextViewMedium;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -30,7 +30,7 @@ public class CreateWalletActivity extends BaseActivity {
     private EditText password, confirm_password;
     private CheckBox terms_cb;
     private ProgressBar progressBar;
-    private TextView show_hide;
+    private TextViewMedium show_hide, title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +45,14 @@ public class CreateWalletActivity extends BaseActivity {
         terms_cb = findViewById(R.id.terms_cb);
         progressBar = findViewById(R.id.password_strength_progress);
         show_hide = findViewById(R.id.show_hide);
+        title = findViewById(R.id.title);
     }
 
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.create_password).setOnClickListener(this);
+        title.setText(R.string.create_new_wallet);
         show_hide.setOnClickListener(this);
         password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -60,10 +62,7 @@ public class CreateWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (Validations.isPasswordValid(password.getText().toString()))
-                    progressBar.setProgress(90);
-                else
-                    progressBar.setProgress(20);
+                updatePasswordStrengthView(password, progressBar);
             }
 
             @Override
@@ -91,7 +90,7 @@ public class CreateWalletActivity extends BaseActivity {
                     File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES +
                             File.separator + "web3j");
                     path.mkdir();
-                    FleekClient.getInstance().generateWallet(path, password.getText().toString(), new CreateAccountCallback() {
+                    XDCpayClient.getInstance().generateWallet(path, password.getText().toString(), new CreateAccountCallback() {
                         @Override
                         public void success(WalletData walletData) {
                             if (walletData != null) {

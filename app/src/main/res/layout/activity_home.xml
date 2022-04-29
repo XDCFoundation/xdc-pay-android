@@ -108,6 +108,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/margin_10"
+                    android:clickable="true"
+                    android:id="@+id/img_copywalletAd"
                     android:src="@drawable/ic_copy_grey"
                     android:tint="@color/colorBlue" />
             </LinearLayout>
