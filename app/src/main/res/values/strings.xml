@@ -47,6 +47,7 @@
     <string name="wallet_address">Wallet address</string>
     <string name="amount">Amount</string>
     <string name="available_4550_xdc">Available: 4550 XDC</string>
+    <string name="availableBalance">Available:  %s XDC</string>
     <string name="gas_price_gwei">Gas Price (GWEI)</string>
     <string name="max_transaction">Max Transaction Fee</string>
     <string name="total">Total</string>
@@ -90,6 +91,8 @@
     <string name="apothem_network">XDC Apothem Network</string>
     <string name="rpc_url">RPC URL</string>
     <string name="chain_id">Chain ID</string>
+    <string name="add_acc_name">Please add Accountname</string>
+    <string name="copied">Address Copied to clipboard</string>
     <string name="currency_symbol">Currency Symbol</string>
     <string name="block_explore_url">Block Explorer Url</string>
     <string name="contacts">Contacts</string>
@@ -161,6 +164,8 @@
     <string name="gas_price_required">Gas Price Required</string>
     <string name="hide">Hide</string>
     <string name="my_accounts">My Accounts</string>
+    <string name="add_accounts">Add Account</string>
+    <string name="accounts_name">Account name</string>
     <string name="create_account">Create Account</string>
     <string name="import_account">Import Account</string>
     <string name="delete_account">Delete Account</string>

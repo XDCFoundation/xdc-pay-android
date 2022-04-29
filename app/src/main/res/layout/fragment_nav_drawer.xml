@@ -23,7 +23,7 @@
             android:src="@drawable/ic_profile" />
 
         <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/account_name"
+            android:id="@+id/accountname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/profile_iv"
@@ -36,7 +36,7 @@
         <com.app.xdcpay.Views.TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/account_name"
+            android:layout_below="@id/accountname"
             android:layout_marginTop="@dimen/margin_5"
             android:layout_toRightOf="@id/profile_iv"
             android:text="@string/edit"

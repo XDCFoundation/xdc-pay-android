@@ -7,6 +7,7 @@ import android.view.View;
 import com.app.xdcpay.Activities.Contacts.ContactsActivity;
 import com.app.xdcpay.Activities.Networks.NetworksActivity;
 import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
+import com.app.xdcpay.Activities.Settings.AdvanceSettings;
 import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -62,6 +63,11 @@ public class SettingsActivity extends BaseActivity {
                 startActivity(intentContact);
                 finish();
                 break;
+            case R.id.advance:
+                Intent intentadvance = new Intent(SettingsActivity.this, AdvanceSettings.class);
+                startActivity(intentadvance);
+                finish();
+                break;
             case R.id.security_privacy:
                 Intent intentSecurity = new Intent(SettingsActivity.this, SecurityAndPrivacyActivity.class);
                 startActivity(intentSecurity);
@@ -71,6 +77,11 @@ public class SettingsActivity extends BaseActivity {
                 case R.id.generalSetting:
                 Intent intentGeneral = new Intent(SettingsActivity.this, GeneralSettingsActivity.class);
                 startActivity(intentGeneral);
+                finish();
+                break;
+
+            case R.id.back:
+
                 finish();
                 break;
         }

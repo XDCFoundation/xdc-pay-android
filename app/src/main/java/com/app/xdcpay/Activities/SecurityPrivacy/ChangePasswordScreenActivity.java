@@ -8,11 +8,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.XDCJava.FleekClient;
+import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
-import com.app.xdcpay.Activities.CreateWalletActivity;
-import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
@@ -68,7 +66,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
                     File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES +
                             File.separator + "web3j");
                     path.mkdir();
-                    FleekClient.getInstance().generateWallet(path, password.getText().toString(), new CreateAccountCallback() {
+                    XDCpayClient.getInstance().generateWallet(path, password.getText().toString(), new CreateAccountCallback() {
                         @Override
                         public void success(WalletData walletData) {
                             Intent intent = new Intent(ChangePasswordScreenActivity.this, SecurityAndPrivacyActivity.class);
