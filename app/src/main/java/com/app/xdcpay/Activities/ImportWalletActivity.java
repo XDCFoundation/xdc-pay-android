@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.XDCJava.FleekClient;
+import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Pref.SaveWalletDetails;
@@ -56,6 +56,7 @@ public class ImportWalletActivity extends BaseActivity {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.import_tv).setOnClickListener(this);
         show.setOnClickListener(this);
+        if(seed_phrase.getText().toString().length()>0)
         show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -74,10 +75,7 @@ public class ImportWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (Validations.isPasswordValid(password.getText().toString()))
-                    progressBar.setProgress(90);
-                else
-                    progressBar.setProgress(20);
+                updatePasswordStrengthView(password, progressBar);
             }
 
             @Override
@@ -101,10 +99,11 @@ public class ImportWalletActivity extends BaseActivity {
 
             case R.id.show:
                 if (show.getText().toString().equals(getResources().getString(R.string.show))) {
-                    seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
+                    if(password.getText().toString().length()>0)
+                    password.setTransformationMethod(new PasswordTransformationMethod());
                     show.setText(getResources().getString(R.string.hide));
                 } else {
-                    seed_phrase.setTransformationMethod(null);
+                    password.setTransformationMethod(null);
                     show.setText(getResources().getString(R.string.show));
                 }
                 break;
@@ -115,7 +114,7 @@ public class ImportWalletActivity extends BaseActivity {
                         File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES + File.separator + "web3j");
                         path.mkdir();
 
-                        FleekClient.getInstance().importWallet(seed_phrase.getText().toString(), password.getText().toString(), path, new CreateAccountCallback() {
+                        XDCpayClient.getInstance().importWallet(seed_phrase.getText().toString(), password.getText().toString(), path, new CreateAccountCallback() {
                             @Override
                             public void success(WalletData walletData) {
                                 Gson gson = new Gson();

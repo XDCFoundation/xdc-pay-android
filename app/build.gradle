@@ -23,8 +23,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_16
-        targetCompatibility JavaVersion.VERSION_16
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding true
@@ -64,5 +64,8 @@ dependencies {
 
     implementation project(':XDCJava')
 //    implementation project(":XDC3Android")
+
+    //password strength
+    implementation 'com.github.yesterselga:password-strength-checker-android:v1.0'
 
 }

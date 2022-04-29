@@ -68,7 +68,11 @@ public class BrowserActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 
     @Override

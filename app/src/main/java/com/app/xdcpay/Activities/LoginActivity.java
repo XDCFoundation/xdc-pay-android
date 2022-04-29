@@ -31,6 +31,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void setListener() {
         findViewById(R.id.login).setOnClickListener(this);
+        findViewById(R.id.create_wallet).setOnClickListener(this);
+        findViewById(R.id.restore_from_seed).setOnClickListener(this);
+
     }
 
     @Override
@@ -54,6 +57,26 @@ public class LoginActivity extends BaseActivity {
                     startActivity(intent);
                 } else
                     Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_password_not_match), Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.create_wallet:
+
+                    Intent intent = new Intent(LoginActivity.this, CreateWalletActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                break;
+
+            case R.id.restore_from_seed:
+
+                Intent intentsedd = new Intent(LoginActivity.this, ImportWalletActivity.class);
+                intentsedd.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intentsedd.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intentsedd.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentsedd);
+
                 break;
         }
     }
