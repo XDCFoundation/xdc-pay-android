@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Activities.Settings.GeneralSettingsActivity">
+
+    <include
+        android:id="@+id/idInclude"
+        layout="@layout/layout_toolbar" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/tvLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/current_language"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/margin_14"
+        app:layout_constraintStart_toStartOf="@id/idInclude"
+        app:layout_constraintTop_toBottomOf="@id/idInclude" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/etSenderAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/rounded_corner_5dp_light_grey_border"
+        android:drawableEnd="@drawable/ic_drop_down"
+        android:drawablePadding="@dimen/margin_10"
+        android:ellipsize="middle"
+        android:padding="@dimen/margin_10"
+        android:singleLine="true"
+        android:text="@string/english"
+        android:layout_margin="@dimen/margin_16"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="@id/tvLanguage"
+        app:layout_constraintTop_toBottomOf="@id/tvLanguage"
+        android:textSize="@dimen/margin_14" />
+</androidx.constraintlayout.widget.ConstraintLayout>

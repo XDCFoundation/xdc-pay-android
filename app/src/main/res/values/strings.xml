@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">XDCPayLeeway</string>
+    <string name="app_name">XDCPay</string>
     <string name="get_started">Get Started</string>
     <string name="welcome_to_xdc_pay">Welcome to XDC Pay</string>
     <string name="sample_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</string>
@@ -146,7 +146,7 @@
     <string name="password_strength_msg">Password must contain at least an uppercase letter, a number, at least one special character</string>
     <string name="password_length_msg">Password should have a minimum of 8 characters.</string>
     <string name="terms_service">Terms of Service</string>
-    <string name="help_text">Dear <b>XDC</b>Pay Users,\n\n <b>XDC</b>Pay is a beta software.\n\nWhen you log in to <b>XDC</b>Pay, your current account’s address is visible to every new site you visit.This can be used to look up your account balances of XDC and other tokens.\n\nFor your privacy, for now, please sign out of XDC Pay when you’re done using a site.\n\nRelated Links</string>
+    <string name="help_text">Dear <b>XDC</b>Pay Users,\n\n <b>XDC</b>Pay is a beta software.\n\nWhen you log in to <b>XDC</b>Pay, your current account’s address is visible to every new site you visit.This can be used to look up your account balances of XDC and other tokens.\n\nFor your privacy, for now, please sign out of XDC Pay when you’re done using a site.</string>
     <string name="title_activity_scanner">ScannerActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -169,4 +169,13 @@
     <string name="word_2">Word 2</string>
     <string name="word_3">Word 3</string>
     <string name="wrong_secret_phrase">Wrong Seed phrase</string>
+    <string name="text_version">XDCPay Version</string>
+    <string name="hint_version">1.0.1</string>
+    <string name="hint_link">Link:</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="support_center">Support Center</string>
+    <string name="visit_website">Visit Our Website</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="current_language">Current Language</string>
+    <string name="english">English</string>
 </resources>

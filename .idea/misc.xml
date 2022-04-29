@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/drawable/ic_green_dot.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.1765" />
+        <entry key="app/src/main/res/drawable/ic_simplex.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/ic_success.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/rounded_corner_10dp_light_blue.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/rounded_corner_5dp_blue_border.xml" value="0.1915" />
@@ -30,7 +31,9 @@
         <entry key="app/src/main/res/drawable/warning_bg.xml" value="0.1325" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_advance_settings.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/layout/activity_browser.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_buy.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password_screen.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_confirm_seed_phrase.xml" value="0.23333333333333334" />
@@ -39,6 +42,7 @@
         <entry key="app/src/main/res/layout/activity_contacts.xml" value="0.21435185185185185" />
         <entry key="app/src/main/res/layout/activity_create_wallet.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_edit_contact.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_general_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_help.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_import_wallet.xml" value="0.2625" />

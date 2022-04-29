@@ -6,5 +6,10 @@ public class Constants {
     public static final String TITLE = "title";
     public static final String URL = "url";
     public static final String OBSERVER_URL = "https://observer.xdc.org/address-details/";
+    public static final String WEBSITE_URL = "https://www.xdc.org/";
+    public static final String CONTACT_US_URL = "https://www.xdc.org/contact-us";
+
+    public static final String SIMPLEX_URL = "https://simplex.bringtotheblock.net/";
+    public static final String APOTHEM_NET_URL = "http://faucet.apothem.network/";
 
 }
