@@ -32,6 +32,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="account_1">Account 1</string>
     <string name="xdc_mainnet">XDC Mainnet</string>
+    <string name="xdc_apothem_testnet">XDC Apothem Testnet</string>
+    <string name="localhost_8545">Localhost 8545</string>
     <string name="_4550_xdc">4550 XDC</string>
     <string name="_372_30_usd">$372.30 USD</string>
     <string name="code">Xdc58a9…7cA4</string>

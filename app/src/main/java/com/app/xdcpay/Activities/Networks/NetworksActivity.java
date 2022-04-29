@@ -1,5 +1,10 @@
 package com.app.xdcpay.Activities.Networks;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,11 +13,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import com.XDCAndroid.XDC20Client;
 import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Adapters.NetworkListAdapter;
-import com.app.xdcpay.Model.NetworkList;
+import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Model.NetworkViewModal;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -25,10 +32,11 @@ public class NetworksActivity extends BaseActivity {
     private TextViewMedium tvTitle;
     private ImageView ivBack, ivAddNetworks;
     private NetworkListAdapter networkListAdapter;
-    private final List<NetworkList> networkLists = new ArrayList<>();
-    private NetworkList networkModelList;
-    private String[] networkTitle = {"XDC ApothemNetwork", "Localhost 8545", "Pegasus Test Network (v1.1)", "Lio Test Network (v1.1)"
-            , "Orion Test Network (v1.1)", "XDC Devnet", "Localhost 8545", "Custom RPC"};
+    private final List<NetworkEntity> networkLists = new ArrayList<>();
+    private NetworkEntity networkModelList;
+    private String[] networkTitle = {"XDC ApothemNetwork", "Localhost 8545", "Pegasus Test Network (v1.1)",
+            "Lio Test Network (v1.1)", "Orion Test Network (v1.1)", "XDC Devnet", "Localhost 8545", "Custom RPC"};
+    private NetworkViewModal networkViewModal;
 
     private LinearLayout linear_network;
 
@@ -46,6 +54,7 @@ public class NetworksActivity extends BaseActivity {
         ivAddNetworks = findViewById(R.id.ivAdd);
         linear_network = findViewById(R.id.linear_network);
         tvTitle.setText(getString(R.string.networks));
+        setData();
     }
 
     @Override
@@ -57,18 +66,36 @@ public class NetworksActivity extends BaseActivity {
 
     @Override
     public void setData() {
-        networkListAdapter = new NetworkListAdapter(networkLists, this);
-        recycler_Networks.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        networkListAdapter = new NetworkListAdapter(getApplicationContext(),
+                NetworkDataBase.getInstance(getApplicationContext()).getNetworkDao().getNetworkList());
+
+        recycler_Networks.setLayoutManager(new LinearLayoutManager(this));
+        recycler_Networks.setHasFixedSize(true);
         recycler_Networks.setAdapter(networkListAdapter);
-        networkLists.clear();
 
-//        XDC20Client.getInstance().getinfo();
+//        networkViewModal = ViewModelProviders.of(this).get(NetworkViewModal.class);
+//        networkViewModal.getAllCourses().observe(this, new Observer<List<NetworkEntity>>() {
+//            @Override
+//            public void onChanged(List<NetworkEntity> networkEntities) {
+//
+//                // when the data is changed in our models we are adding that list to our adapter class.
+////                networkListAdapter.sub
+//            }
+//        });
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-        setNetworkList();
-    }
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                // on recycler view item swiped then we are deleting the item of our recycler view.
+//                viewmodal.delete(adapter.getCourseAt(viewHolder.getAdapterPosition()));
+//                Toast.makeText(MainActivity.this, "Course deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recycler_Networks);
 
-    private void setNetworkList() {
-        networkModelList = new NetworkList();
     }
 
     @Override
