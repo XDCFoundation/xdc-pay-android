@@ -26,6 +26,7 @@
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvXDCTitle"
                 android:layout_marginTop="@dimen/margin_20"
                 android:text="@string/apothem_network"
                 android:textColor="@color/colorBlue"

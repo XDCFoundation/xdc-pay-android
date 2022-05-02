@@ -180,4 +180,6 @@
     <string name="contact_us">Contact Us</string>
     <string name="current_language">Current Language</string>
     <string name="english">English</string>
+    <string name="txt_xdc">XDC</string>
+
 </resources>

@@ -12,4 +12,24 @@ public class Constants {
     public static final String SIMPLEX_URL = "https://simplex.bringtotheblock.net/";
     public static final String APOTHEM_NET_URL = "http://faucet.apothem.network/";
 
+    //MainNet Network
+    public static final String MAIN_NET_NAME = "XDC MAinnet";
+    public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";
+    public static final String MAIN_NET_ID = "50";
+    public static final String MAIN_NET_SYMBOL = "XDC";
+    public static final String MAIN_NET_URL = "https://observer.xdc.org";
+
+    // Apothem Network
+    public static final String APOTHEM_NAME = "XDC Apothem Testnet";
+    public static final String APOTHEM_RPC_URL = "https://apothemxdcpayrpc.blocksscan.io/";
+    public static final String APOTHEM_ID = "51";
+    public static final String APOTHEM_SYMBOL = "XDC";
+    public static final String APOTHEM_URL = "https://explorer.apothem.network";
+
+    //LocalHost_8545
+    public static final String LOCALHOST_8545_NAME = "Localhost 8545";
+    public static final String LOCALHOST_RPC_URL = "https://localhost:8545";
+    public static final String LOCALHOST_ID = "";
+    public static final String LOCALHOST_SYMBOL = "";
+    public static final String LOCALHOST_URL = "";
 }
