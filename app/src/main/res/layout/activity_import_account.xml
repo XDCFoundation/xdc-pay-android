@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Activities.Accounts.ImportAccountActivity">
+
+    <include
+        android:id="@+id/idInclude"
+        layout="@layout/layout_toolbar" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_29"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_29"
+        android:gravity="center"
+        android:text="@string/txt_imported"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_12"
+        app:layout_constraintStart_toStartOf="@id/idInclude"
+        app:layout_constraintTop_toBottomOf="@id/idInclude" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/textSelectKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_16"
+        android:text="@string/type"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14"
+        app:layout_constraintStart_toStartOf="@id/text"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
+    <RelativeLayout
+        android:id="@+id/linearLayoutSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_20"
+        android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/textSelectKey"
+        app:layout_constraintTop_toBottomOf="@id/textSelectKey">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spnType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:entries="@array/report_video_options"
+            android:padding="@dimen/margin_15"
+            android:textAlignment="center" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/margin_5"
+            android:padding="@dimen/margin_5"
+            android:src="@drawable/ic_drop_down" />
+    </RelativeLayout>
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/textPrivateKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_20"
+        android:text="@string/paste_private_key"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14"
+        app:layout_constraintStart_toStartOf="@id/linearLayoutSpinner"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutSpinner" />
+
+    <com.app.xdcpay.Views.EditText
+        android:id="@+id/etPrivateKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_20"
+        android:background="@drawable/rounded_corner_5dp_light_grey_border"
+        android:hint="@string/hint_key"
+        android:textColorHint="@color/colorGreyText"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/margin_10"
+        android:textSize="@dimen/margin_14"
+        app:layout_constraintStart_toStartOf="@id/textPrivateKey"
+        app:layout_constraintTop_toBottomOf="@id/textPrivateKey" />
+
+    <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/btn_Import"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_22"
+        android:layout_marginTop="@dimen/margin_22"
+        android:background="@drawable/rounded_corner_5dp_light_green_bg"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:text="@string/import_text"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/margin_16"
+        app:layout_constraintStart_toStartOf="@id/etPrivateKey"
+        app:layout_constraintTop_toBottomOf="@id/etPrivateKey"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

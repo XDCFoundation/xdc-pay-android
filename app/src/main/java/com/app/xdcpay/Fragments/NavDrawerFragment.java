@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.Activities.BrowserActivity;
 import com.app.xdcpay.Activities.HelpActivity;
 import com.app.xdcpay.Activities.SettingsActivity;
@@ -16,6 +17,7 @@ import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.Constants;
+import com.app.xdcpay.Views.TextView;
 import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -77,6 +79,14 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(requireActivity());
                 bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
+                TextView tvImportAccount = bottomSheetDialog.findViewById(R.id.tvImportAccount);
+                tvImportAccount.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getContext(), ImportAccountActivity.class);
+                        startActivity(i);
+                    }
+                });
                 bottomSheetDialog.show();
                 break;
 

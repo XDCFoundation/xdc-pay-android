@@ -139,6 +139,7 @@
     <string name="hint_block_explore_url">Block Explorer Url (Optional)</string>
     <string name="hint_wallet_address">Contact’s Wallet Address</string>
     <string name="hint_address">xdc084f58d39d6a0d5e89464….4594</string>
+    <string name="hint_key">eg. ce4085d87dc63992e358f5c1a8bd4c4de647bb0cfdec034d00c3c9532535f324</string>
     <string name="hint_username">Contact’s Name</string>
     <string name="hint_XDC">100 XDC</string>
     <string name="reveal_seed_words_hint">Do not recover your seed words in a public place! These words can be used to steal all your accounts.</string>
@@ -181,5 +182,14 @@
     <string name="current_language">Current Language</string>
     <string name="english">English</string>
     <string name="txt_xdc">XDC</string>
+    <string name="type">Type</string>
+    <string name="paste_private_key">Paste your private key string</string>
+    <string name="private_key">Enter your private key</string>
+    <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>
 
+
+    <string-array name="report_video_options">
+        <item>Private</item>
+
+    </string-array>
 </resources>

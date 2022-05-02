@@ -45,6 +45,7 @@
         <entry key="app/src/main/res/layout/activity_general_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_help.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_import_account.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_import_wallet.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
@@ -68,6 +69,7 @@
         <entry key="app/src/main/res/layout/fragment_tokens.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/item_seedphrase.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/item_time_locker.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/layout_my_account_dialog.xml" value="0.23013698630136986" />
         <entry key="app/src/main/res/layout/layout_network_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_tokens_list_row.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2625" />
