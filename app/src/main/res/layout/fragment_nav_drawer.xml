@@ -63,6 +63,18 @@
         android:textSize="@dimen/margin_16" />
 
     <com.app.xdcpay.Views.TextViewMedium
+        android:id="@+id/tvtransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:drawableLeft="@drawable/ic_settings"
+        android:drawablePadding="@dimen/margin_20"
+        android:padding="@dimen/margin_15"
+        android:text="@string/transaction"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_16" />
+
+    <com.app.xdcpay.Views.TextViewMedium
         android:id="@+id/tvSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

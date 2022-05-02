@@ -12,4 +12,8 @@ public class Constants {
     public static final String SIMPLEX_URL = "https://simplex.bringtotheblock.net/";
     public static final String APOTHEM_NET_URL = "http://faucet.apothem.network/";
 
+
+    public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
+    public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
+
 }

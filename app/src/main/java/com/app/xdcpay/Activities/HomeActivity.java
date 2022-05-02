@@ -17,6 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Fragments.TokensFragment;
@@ -35,23 +42,17 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.core.app.ActivityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 
 public class HomeActivity extends BaseActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private DrawerLayout drawerLayout;
     private ReadWalletDetails readWalletDetails;
-    private ImageView scan,img_copy_walletadd;
+    private ImageView scan, img_copy_walletadd;
     private TextView wallet_balance, amount, wallet_address;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     TextViewMedium tvSettings, tvHelp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,8 @@ public class HomeActivity extends BaseActivity {
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
         findViewById(R.id.accountname).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
+        findViewById(R.id.tvtransaction).setOnClickListener(this);
+
         tvSettings.setOnClickListener(this);
         tvHelp.setOnClickListener(this);
         scan.setOnClickListener(this);
@@ -197,7 +200,6 @@ public class HomeActivity extends BaseActivity {
                 break;
 
 
-
             case R.id.accountname:
 
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
@@ -207,8 +209,7 @@ public class HomeActivity extends BaseActivity {
                 TextView importAccount = (TextView) bottomSheetDialog.findViewById(R.id.import_account);
                 createAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         opencreateAccountDialog();
                         bottomSheetDialog.dismiss();
                     }
@@ -216,8 +217,7 @@ public class HomeActivity extends BaseActivity {
 
                 importAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
                         intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
                         intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
@@ -245,6 +245,12 @@ public class HomeActivity extends BaseActivity {
 
                 break;
 
+            case R.id.tvtransaction:
+                startActivity(new Intent(HomeActivity.this, TransactionActivity.class));
+                drawerLayout.closeDrawer(Gravity.LEFT);
+
+                break;
+
             case R.id.tvHelp:
                 startActivity(new Intent(HomeActivity.this, HelpActivity.class));
                 drawerLayout.closeDrawer(Gravity.LEFT);
@@ -264,8 +270,7 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
-    private void opencreateAccountDialog()
-    {
+    private void opencreateAccountDialog() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
         bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         bottomSheetDialog.setContentView(R.layout.layout_add_account_dialog);
@@ -274,22 +279,17 @@ public class HomeActivity extends BaseActivity {
         TextViewBold addAccount = (TextViewBold) bottomSheetDialog.findViewById(R.id.btn_addAccount);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
 
         addAccount.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if(account_addname.getText().toString().length()==0)
-                {
+            public void onClick(View v) {
+                if (account_addname.getText().toString().length() == 0) {
                     showtoast(getResources().getString(R.string.add_acc_name));
-                }
-                else
-                {
+                } else {
                     bottomSheetDialog.dismiss();
                 }
 
