@@ -196,10 +196,7 @@ public class HomeActivity extends BaseActivity {
                     drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
-
-
             case R.id.accountname:
-
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
@@ -242,7 +239,6 @@ public class HomeActivity extends BaseActivity {
             case R.id.tvSettings:
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
                 drawerLayout.closeDrawer(Gravity.LEFT);
-
                 break;
 
             case R.id.tvHelp:
