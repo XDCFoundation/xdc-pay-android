@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app.xdcpay.Adapters.NFTsAdapter;
 import com.app.xdcpay.Adapters.TransactionsAdapter;
 import com.app.xdcpay.R;
 
@@ -16,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TransactionsFragment extends Fragment {
+public class NFTFragment extends Fragment {
     private View v;
-    private RecyclerView recyclerView;
+    private RecyclerView nft_rv;
 
-    public TransactionsFragment() {
+    public NFTFragment() {
         // Required empty public constructor
     }
 
@@ -29,19 +30,19 @@ public class TransactionsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_transactions, container, false);
+        v = inflater.inflate(R.layout.fragment_nft, container, false);
         getViewId();
         setData();
         return v;
     }
 
     private void getViewId() {
-        recyclerView = v.findViewById(R.id.transactions_rv);
+        nft_rv = v.findViewById(R.id.nft_rv);
     }
 
     private void setData() {
-        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(transactionsAdapter);
+        NFTsAdapter transactionsAdapter = new NFTsAdapter(getContext());
+        nft_rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        nft_rv.setAdapter(transactionsAdapter);
     }
 }
