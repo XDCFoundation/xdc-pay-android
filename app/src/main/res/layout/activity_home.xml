@@ -50,9 +50,10 @@
                     android:layout_below="@id/account_name"
                     android:layout_centerHorizontal="true"
                     android:drawableStart="@drawable/ic_green_dot"
-                    android:drawablePadding="@dimen/margin_10"
+                    android:drawablePadding="@dimen/margin_5"
                     android:padding="@dimen/margin_10"
                     android:text="@string/xdc_mainnet"
+                    android:drawableEnd="@drawable/ic_drop_down"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/margin_10" />
 
@@ -108,6 +109,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/margin_10"
+                    android:clickable="true"
+                    android:id="@+id/img_copywalletAd"
                     android:src="@drawable/ic_copy_grey"
                     android:tint="@color/colorBlue" />
             </LinearLayout>

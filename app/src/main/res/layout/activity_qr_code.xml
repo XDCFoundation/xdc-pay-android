@@ -22,15 +22,19 @@
             android:padding="@dimen/margin_10"
             android:src="@drawable/ic_back" />
 
-        <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/code_txt"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_10"
-            android:text="@string/qr_code"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/margin_16" />
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/margin_10"
+            android:src="@drawable/ic_scan" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/network_name"
+            android:background="@color/colorGrey" />
 
         <com.app.xdcpay.Views.TextView
             android:id="@+id/network_name"
@@ -45,19 +49,15 @@
             android:textColor="@color/colorGrey"
             android:textSize="@dimen/margin_10" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/network_name"
-            android:background="@color/colorGrey" />
-
-        <ImageView
+        <com.app.xdcpay.Views.TextViewMedium
+            android:id="@+id/code_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:padding="@dimen/margin_10"
-            android:src="@drawable/ic_scan" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="@string/qr_code"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/margin_16" />
     </RelativeLayout>
 
     <ImageView
@@ -66,6 +66,31 @@
         android:layout_height="@dimen/margin_300"
         android:layout_gravity="center"
         android:layout_margin="@dimen/margin_20" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/copy_to_clipboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/margin_5"
+            android:src="@drawable/ic_copy_grey_small" />
+
+        <com.app.xdcpay.Views.TextViewMedium
+            android:id="@+id/wallet_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:maxWidth="@dimen/margin_200"
+            android:padding="@dimen/margin_10"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textSize="@dimen/margin_12" />
+    </LinearLayout>
 
     <com.app.xdcpay.Views.TextViewMedium
         android:layout_width="wrap_content"
@@ -76,26 +101,4 @@
         android:text="@string/account_1"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_16" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <com.app.xdcpay.Views.TextView
-            android:id="@+id/wallet_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/margin_10"
-            android:textColor="@color/colorGrey"
-            android:textSize="@dimen/margin_14" />
-
-        <ImageView
-            android:id="@+id/copy_to_clipboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/margin_5"
-            android:src="@drawable/ic_copy_grey_small" />
-    </LinearLayout>
 </LinearLayout>

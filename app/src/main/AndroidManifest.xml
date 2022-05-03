@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.app.xdcpay">
     <!-- <dist:module dist:instant="true" /> -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -20,6 +26,15 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:supportsRtl"
         tools:targetApi="m">
+        <activity
+            android:name=".Activities.CreateWallet.ConfirmSeedPhraseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.CreateWallet.WalletSeedPhraseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ScannerActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.HelpActivity"
             android:exported="false" />
@@ -54,6 +69,9 @@
             android:name=".Activities.EditContactActivity"
             android:exported="false" />
         <activity
+            android:name=".Activities.Settings.GeneralSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Contacts.ContactDetailsActivity"
             android:exported="false" />
         <activity
@@ -72,7 +90,7 @@
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.Networks.NetworksActivity" />
         <activity android:name=".Activities.SettingsActivity" />
-        <activity android:name=".Activities.AdvanceSettings" />
+        <activity android:name=".Activities.Settings.AdvanceSettings" />
         <activity android:name=".Activities.AddTokenActivity" />
         <activity android:name=".Activities.SendActivity" />
         <activity android:name=".Activities.QrCodeActivity" />

@@ -20,11 +20,11 @@
             android:layout_width="@dimen/margin_50"
             android:layout_height="@dimen/margin_50"
             android:layout_marginRight="@dimen/margin_10"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/profile_icon" />
 
         <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/account_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/accountname"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/profile_iv"
             android:drawableRight="@drawable/ic_drop_down"
@@ -36,7 +36,7 @@
         <com.app.xdcpay.Views.TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/account_name"
+            android:layout_below="@id/accountname"
             android:layout_marginTop="@dimen/margin_5"
             android:layout_toRightOf="@id/profile_iv"
             android:text="@string/edit"

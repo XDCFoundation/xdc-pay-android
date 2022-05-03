@@ -61,6 +61,7 @@ public class NetworksActivity extends BaseActivity {
         recycler_Networks.setAdapter(networkListAdapter);
         networkLists.clear();
 
+//        XDC20Client.getInstance().getinfo();
 
         setNetworkList();
     }

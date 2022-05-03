@@ -16,7 +16,7 @@
         android:padding="@dimen/margin_15">
 
         <com.app.xdcpay.Views.TextViewMedium
-            android:id="@+id/genral"
+            android:id="@+id/generalSetting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_next"

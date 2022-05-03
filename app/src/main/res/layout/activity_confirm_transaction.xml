@@ -51,7 +51,7 @@
             android:textSize="@dimen/margin_10" />
 
         <com.app.xdcpay.Views.TextView
-            android:id="@+id/scan"
+            android:id="@+id/tvReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -107,7 +107,7 @@
             android:background="@color/colorWhite" />
 
         <RelativeLayout
-            android:id="@+id/iv_circle"
+            android:id="@+id/id_circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/scan"
@@ -118,14 +118,12 @@
                 android:id="@+id/iv_circle"
                 android:layout_width="@dimen/margin_20"
                 android:layout_height="@dimen/margin_20"
-                android:layout_below="@+id/scan"
                 android:src="@drawable/ic_circle_white_bg" />
 
             <ImageView
-                android:id="@+id/iv_circle"
+                android:id="@+id/iv_dropdown"
                 android:layout_width="@dimen/margin_10"
                 android:layout_height="@dimen/margin_10"
-                android:layout_below="@+id/scan"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_drop_down" />
@@ -136,7 +134,7 @@
             android:id="@+id/tv_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_circle"
+            android:layout_below="@+id/id_circle"
             android:layout_marginLeft="@dimen/margin_10"
             android:layout_marginTop="@dimen/margin_10"
             android:text="@string/to"

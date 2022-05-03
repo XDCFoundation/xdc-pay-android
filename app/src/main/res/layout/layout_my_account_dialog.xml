@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_corner"
+    android:orientation="vertical">
+
+    <com.app.xdcpay.Views.TextViewBold
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:text="@string/my_accounts"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/account_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <com.app.xdcpay.Views.TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_add"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:id="@+id/create_account"
+        android:text="@string/create_account"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+    <com.app.xdcpay.Views.TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_import"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:id="@+id/import_account"
+        android:text="@string/import_account"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+</LinearLayout>

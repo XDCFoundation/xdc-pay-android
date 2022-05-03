@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -49,16 +48,17 @@
                     android:id="@+id/password_ed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/show"
+                    android:layout_toLeftOf="@id/show_hide"
                     android:background="@android:color/transparent"
                     android:hint="@string/new_pass_hint"
                     android:inputType="textPassword"
                     android:padding="@dimen/margin_10"
+                    android:maxLength="15"
                     android:singleLine="true"
                     android:textSize="@dimen/margin_14" />
 
                 <com.app.xdcpay.Views.TextViewMedium
-                    android:id="@+id/show"
+                    android:id="@+id/show_hide"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -70,10 +70,13 @@
             </RelativeLayout>
 
             <ProgressBar
+                android:id="@+id/password_strength_progress"
                 style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10" />
+                android:layout_marginTop="@dimen/margin_10"
+                android:outlineSpotShadowColor="@color/colorGreen" />
+
 
             <com.app.xdcpay.Views.TextView
                 android:layout_width="wrap_content"
@@ -101,6 +104,8 @@
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:padding="@dimen/margin_10"
+                android:maxLength="15"
+
                 android:singleLine="true"
                 android:textSize="@dimen/margin_14" />
 
@@ -134,7 +139,6 @@
                     android:layout_alignParentRight="true" />
             </RelativeLayout>
 
-
             <com.app.xdcpay.Views.Checkbox
                 android:id="@+id/terms_cb"
                 android:layout_width="wrap_content"
@@ -157,7 +161,6 @@
                 android:text="@string/create_password"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/margin_16" />
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

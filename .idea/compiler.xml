@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="xdc-xdcpay-android.app" target="17" />
       <module name="xdc_pay_android.app" target="17" />
+      <module name="xdcpay-android.app" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

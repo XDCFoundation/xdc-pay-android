@@ -1,17 +1,22 @@
 package com.app.xdcpay.Activities.Networks;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
+
+import java.lang.ref.WeakReference;
 
 public class AddNetworkActivity extends BaseActivity {
     private AppCompatButton btn_addNetwork;
@@ -19,6 +24,8 @@ public class AddNetworkActivity extends BaseActivity {
     private TextViewMedium title;
     private EditText etNetworkName, etRPCUrl, etChainId, etCurrencySymbol, etBlockExplorer;
     private String str_currencySymbol, str_blockExplorer;
+    NetworkEntity networkEntity;
+    NetworkDataBase networkDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,7 @@ public class AddNetworkActivity extends BaseActivity {
         etCurrencySymbol = findViewById(R.id.etCurrencySymbol);
         etBlockExplorer = findViewById(R.id.etBlockExplorer);
         title.setText(getString(R.string.add_networks));
+        setData();
     }
 
     @Override
@@ -47,7 +55,7 @@ public class AddNetworkActivity extends BaseActivity {
 
     @Override
     public void setData() {
-
+        networkDataBase = NetworkDataBase.getInstance(AddNetworkActivity.this);
     }
 
     @Override
@@ -63,6 +71,12 @@ public class AddNetworkActivity extends BaseActivity {
                     } else if (etBlockExplorer.getText().toString().isEmpty()) {
                         str_blockExplorer = "";
                     }
+                    networkEntity = new NetworkEntity(
+                            etNetworkName.getText().toString(),
+                            etRPCUrl.getText().toString(),
+                            etChainId.getText().toString(),
+                            str_currencySymbol, str_blockExplorer);
+                    new InsertTask(AddNetworkActivity.this,networkEntity).execute();
                 }
                 break;
         }
@@ -86,5 +100,20 @@ public class AddNetworkActivity extends BaseActivity {
         else return true;
 
         return false;
+    }
+
+    private class InsertTask extends AsyncTask<Void,Void,Boolean> {
+        private WeakReference<AddNetworkActivity> activityReference;
+        private NetworkEntity networkEntity;
+        public InsertTask(AddNetworkActivity addNetworkActivity, NetworkEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().networkDataBase.getNetworkDao().insertNetwork(networkEntity);
+            return null;
+        }
     }
 }
