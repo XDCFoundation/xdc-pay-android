@@ -12,6 +12,12 @@ public class Constants {
     public static final String SIMPLEX_URL = "https://simplex.bringtotheblock.net/";
     public static final String APOTHEM_NET_URL = "http://faucet.apothem.network/";
 
+    //network Constants
+    public static String NETWORK_NAME = "NETWORK_NAME";
+    public static String NETWORK_RPC_URL = "NETWORK_URL";
+    public static String CHAIN_ID = "CHAIN_ID";
+    public static String CURRENCY_SYMBOL = "CURRENCY_SYMBOL";
+    public static String BLOCK_EXPLORE_URL = "BLOCK_EXPLORER_URL";
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC MAinnet";
     public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";

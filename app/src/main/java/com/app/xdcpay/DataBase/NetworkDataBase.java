@@ -1,5 +1,8 @@
 package com.app.xdcpay.DataBase;
 
+import static com.app.xdcpay.Utils.DatabaseConstants.DATABASE_NAME;
+import static com.app.xdcpay.Utils.DatabaseConstants.DATABASE_VERSION;
+
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -15,7 +18,7 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import com.app.xdcpay.DataBase.DAO.AddNetworkDAO;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 
-@Database(entities = {NetworkEntity.class}, version = 1)
+@Database(entities = {NetworkEntity.class}, version = DATABASE_VERSION)
 public abstract class NetworkDataBase extends RoomDatabase {
 
     // below line is to create instance for our database class.
@@ -27,13 +30,12 @@ public abstract class NetworkDataBase extends RoomDatabase {
     public static synchronized NetworkDataBase getInstance(Context context) {
         if (instance == null) {
             // if the instance is null we are creating a new instance
-            instance = Room.databaseBuilder(context, NetworkDataBase.class, "network_database").allowMainThreadQueries().build();
+            instance = Room.databaseBuilder(context, NetworkDataBase.class, DATABASE_NAME).allowMainThreadQueries().build();
             //                    .fallbackToDestructiveMigration()
             //                    .addCallback(roomCallback).build();
         }
         return instance;
     }
-
 
         private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
             @Override
