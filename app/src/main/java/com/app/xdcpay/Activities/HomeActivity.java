@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.Fragments.TokensFragment;
 import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Pref.ReadWalletDetails;
@@ -218,7 +219,8 @@ public class HomeActivity extends BaseActivity {
                     @Override
                     public void onClick(View v)
                     {
-                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
+//                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
+                        Intent intent1 = new Intent(HomeActivity.this, ImportAccountActivity.class);
                         intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
                         intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
                         startActivity(intent1);
