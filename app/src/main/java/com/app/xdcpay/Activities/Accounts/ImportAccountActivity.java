@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.XDCJava.FleekClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Activities.HomeActivity;
@@ -105,45 +104,45 @@ public class ImportAccountActivity extends BaseActivity {
             File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES + File.separator + "web3j");
             path.mkdir();
 
-            FleekClient.getInstance().importWallet(etPrivateKey.getText().toString(), etPrivateKey.getText().toString(), path, new CreateAccountCallback() {
-                @Override
-                public void success(WalletData walletData) {
-                    Gson gson = new Gson();
-                    String json = gson.toJson(walletData);
-//                            SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, "userwallet", json);
-
-                    if (walletData != null) {
-                        SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ImportAccountActivity.this);
-                        saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
-                        saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
-                        saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
-                        saveWalletDetails.saveSeedPhrase(walletData.getSeedPhrase());
-                        saveWalletDetails.savePassword(walletData.getPassword());
-                        saveWalletDetails.saveIsLogin(true);
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(ImportAccountActivity.this, HomeActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                            }
-                        }, 500);
-                    }
-                }
-
-                @Override
-                public void failure(Throwable t) {
-                    //txt_info.setText(t.getMessage());
-                }
-
-                @Override
-                public void failure(String message) {
-                    //txt_info.setText(message);
-                }
-            });
+//            FleekClient.getInstance().importWallet(etPrivateKey.getText().toString(), etPrivateKey.getText().toString(), path, new CreateAccountCallback() {
+//                @Override
+//                public void success(WalletData walletData) {
+//                    Gson gson = new Gson();
+//                    String json = gson.toJson(walletData);
+////                            SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, "userwallet", json);
+//
+//                    if (walletData != null) {
+//                        SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ImportAccountActivity.this);
+//                        saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
+//                        saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
+//                        saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
+//                        saveWalletDetails.saveSeedPhrase(walletData.getSeedPhrase());
+//                        saveWalletDetails.savePassword(walletData.getPassword());
+//                        saveWalletDetails.saveIsLogin(true);
+//
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                Intent intent = new Intent(ImportAccountActivity.this, HomeActivity.class);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                startActivity(intent);
+//                            }
+//                        }, 500);
+//                    }
+//                }
+//
+//                @Override
+//                public void failure(Throwable t) {
+//                    //txt_info.setText(t.getMessage());
+//                }
+//
+//                @Override
+//                public void failure(String message) {
+//                    //txt_info.setText(message);
+//                }
+//            });
         } catch (Exception e) {
             e.printStackTrace();
         }

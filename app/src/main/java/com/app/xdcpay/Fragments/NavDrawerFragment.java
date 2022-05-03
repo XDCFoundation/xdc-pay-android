@@ -62,14 +62,11 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
         tvSettings = v.findViewById(R.id.tvSettings);
         tvHelp = v.findViewById(R.id.tvHelp);
         readWalletDetails = new ReadWalletDetails(getContext());
+
     }
 
     private void setListener() {
-        v.findViewById(R.id.view_on_observatory).setOnClickListener(this);
-        v.findViewById(R.id.account_name).setOnClickListener(this);
-        v.findViewById(R.id.logout).setOnClickListener(this);
-        tvSettings.setOnClickListener(this);
-        tvHelp.setOnClickListener(this);
+
     }
 
     @Override
@@ -79,7 +76,7 @@ public class NavDrawerFragment extends Fragment implements View.OnClickListener 
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(requireActivity());
                 bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
-                TextView tvImportAccount = bottomSheetDialog.findViewById(R.id.tvImportAccount);
+                TextView tvImportAccount = bottomSheetDialog.findViewById(R.id.import_account);
                 tvImportAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
