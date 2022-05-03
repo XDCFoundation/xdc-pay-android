@@ -1,5 +1,11 @@
 package com.app.xdcpay.Activities.Networks;
 
+import static com.app.xdcpay.Utils.Constants.BLOCK_EXPLORE_URL;
+import static com.app.xdcpay.Utils.Constants.CHAIN_ID;
+import static com.app.xdcpay.Utils.Constants.CURRENCY_SYMBOL;
+import static com.app.xdcpay.Utils.Constants.NETWORK_NAME;
+import static com.app.xdcpay.Utils.Constants.NETWORK_RPC_URL;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +16,6 @@ import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
 
 public class NetworkDetailsActivity extends BaseActivity {
-    public static String NETWORK_NAME = "NETWORK_NAME";
-    public static String NETWORK_RPC_URL = "NETWORK_URL";
-    public static String CHAIN_ID = "CHAIN_ID";
-    public static String CURRENCY_SYMBOL = "CURRENCY_SYMBOL";
-    public static String BLOCK_EXPLORE_URL = "BLOCK_EXPLORER_URL";
     private ImageView back;
     private TextViewMedium title;
     private TextViewMedium tvXDCTitle, tvNetworkName, tvRPCUrl, tvChainId, tvCurrencySymbol, tvBlockExplorer;
