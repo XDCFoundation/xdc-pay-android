@@ -356,4 +356,12 @@ public class XDCpayClient {
         /*EthGasPrice ethGasPrice = web3.ethGasPrice().sendAsync().get();
         return ethGasPrice.getGasPrice();*/
     }
+
+
+   //Bhavisha
+    public String getAccountaddFromPrivatekey(String private_key) throws IOException {
+
+        Credentials credentials = Credentials.create(private_key);
+        return  credentials.getAddress();
+    }
 }

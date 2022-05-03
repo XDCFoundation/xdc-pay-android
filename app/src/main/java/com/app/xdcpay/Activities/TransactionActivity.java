@@ -11,10 +11,14 @@ import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.xdcpay.Adapters.TransactionsAdapter;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -28,6 +32,8 @@ import java.io.IOException;
 public class TransactionActivity extends BaseActivity {
     public static String ACTIVITY_NAME = "ACTIVITY_NAME";
     private TextViewMedium tvTitle;
+    ImageView ivAdd;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +45,28 @@ public class TransactionActivity extends BaseActivity {
     public void getId() {
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText(getResources().getString(R.string.transactions));
+        ivAdd = findViewById(R.id.ivAdd);
+        ivAdd.setVisibility(View.GONE);
+        recyclerView = findViewById(R.id.transactions_rv);
         setData();
     }
 
     @Override
     public void setListener() {
-        findViewById(R.id.back).setOnClickListener(this);
+        findViewById(R.id.ivBack).setOnClickListener(this);
     }
 
     @Override
     public void setData() {
-        
+        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(TransactionActivity.this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(TransactionActivity.this));
+        recyclerView.setAdapter(transactionsAdapter);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.back:
+            case R.id.ivBack:
                 finish();
                 break;
         }

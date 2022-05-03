@@ -56,28 +56,28 @@ public class SettingsActivity extends BaseActivity {
             case R.id.tv_Networks:
                 Intent intent = new Intent(SettingsActivity.this, NetworksActivity.class);
                 startActivity(intent);
-                finish();
+               // finish();
                 break;
             case R.id.tv_Contacts:
                 Intent intentContact = new Intent(SettingsActivity.this, ContactsActivity.class);
                 startActivity(intentContact);
-                finish();
+                //finish();
                 break;
             case R.id.advance:
                 Intent intentadvance = new Intent(SettingsActivity.this, AdvanceSettings.class);
                 startActivity(intentadvance);
-                finish();
+                //finish();
                 break;
             case R.id.security_privacy:
                 Intent intentSecurity = new Intent(SettingsActivity.this, SecurityAndPrivacyActivity.class);
                 startActivity(intentSecurity);
-                finish();
+               // finish();
                 break;
 
                 case R.id.generalSetting:
                 Intent intentGeneral = new Intent(SettingsActivity.this, GeneralSettingsActivity.class);
                 startActivity(intentGeneral);
-                finish();
+                //finish();
                 break;
 
             case R.id.back:

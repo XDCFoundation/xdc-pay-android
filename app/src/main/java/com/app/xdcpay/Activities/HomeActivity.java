@@ -27,7 +27,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Fragments.TokensFragment;
-import com.app.xdcpay.Fragments.TransactionsFragment;
+import com.app.xdcpay.Fragments.NFTFragment;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
@@ -94,8 +94,8 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void setData() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
+        adapter.addFragment(new NFTFragment(), getResources().getString(R.string.nfts));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 

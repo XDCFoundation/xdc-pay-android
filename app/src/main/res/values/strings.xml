@@ -56,10 +56,14 @@
     <string name="transaction_note_optional">Transaction Note (Optional)</string>
     <string name="next">Next</string>
     <string name="transactions">Transactions</string>
+    <string name="nfts">NFTs</string>
+
     <string name="transaction">Transaction</string>
     <string name="no_transactions">No transaction history</string>
     <string name="tokens">Tokens</string>
     <string name="_100_eurg">100 EURG</string>
+    <string name="lts">LTS</string>
+
     <string name="add_token">Add Token</string>
     <string name="token_address">Token Address</string>
     <string name="token_contract_address">Token Contract Address</string>
