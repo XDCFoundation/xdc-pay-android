@@ -37,6 +37,7 @@ import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Fragments.TokensFragment;
 //import com.app.xdcpay.Fragments.TransactionsFragment;
+import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Interface.ImportAccountCallback;
 import com.app.xdcpay.Fragments.NFTFragment;
 import com.app.xdcpay.Pref.ReadWalletDetails;
@@ -118,11 +119,11 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
     @Override
     public void setData() {
-//        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
-//        adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
-//        viewPager.setAdapter(adapter);
-//        tabLayout.setupWithViewPager(viewPager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
+        adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
 
         XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), Constants.CONNECTED_NETWORK, new EventCallback() {
             @Override

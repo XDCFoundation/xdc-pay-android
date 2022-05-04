@@ -63,7 +63,7 @@ dependencies {
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0'
 
     implementation project(':XDCJava')
-    implementation project(":XDC3Android")
+//    implementation project(":XDC3Android")
 
     //password strength
     implementation 'com.github.yesterselga:password-strength-checker-android:v1.0'
