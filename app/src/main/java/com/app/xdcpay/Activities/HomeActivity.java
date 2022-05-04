@@ -8,6 +8,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,7 +27,18 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
+import com.app.xdcpay.Activities.Networks.NetworkDetailsActivity;
+import com.app.xdcpay.Activities.Networks.NetworksActivity;
+import com.app.xdcpay.Adapters.ImportedAccountAdapter;
+import com.app.xdcpay.Adapters.NetworkListAdapter;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Fragments.TokensFragment;
+//import com.app.xdcpay.Fragments.TransactionsFragment;
+import com.app.xdcpay.Fragments.TransactionsFragment;
+import com.app.xdcpay.Interface.ImportAccountCallback;
 import com.app.xdcpay.Fragments.NFTFragment;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
@@ -39,11 +51,23 @@ import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-public class HomeActivity extends BaseActivity {
+
+public class HomeActivity extends BaseActivity implements ImportAccountCallback {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private DrawerLayout drawerLayout;
@@ -52,6 +76,10 @@ public class HomeActivity extends BaseActivity {
     private TextView wallet_balance, amount, wallet_address;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     TextViewMedium tvSettings, tvHelp;
+
+    private ImportedAccountAdapter importedAccountAdapter;
+    NetworkDataBase networkDataBase;
+    AccountEntity accountEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +112,6 @@ public class HomeActivity extends BaseActivity {
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
         findViewById(R.id.accountname).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
-        findViewById(R.id.tvtransaction).setOnClickListener(this);
-
         tvSettings.setOnClickListener(this);
         tvHelp.setOnClickListener(this);
         scan.setOnClickListener(this);
@@ -94,8 +120,8 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void setData() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
-        adapter.addFragment(new NFTFragment(), getResources().getString(R.string.nfts));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -207,6 +233,26 @@ public class HomeActivity extends BaseActivity {
                 bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
                 TextView createAccount = (TextView) bottomSheetDialog.findViewById(R.id.create_account);
                 TextView importAccount = (TextView) bottomSheetDialog.findViewById(R.id.import_account);
+                RecyclerView account_rv = (RecyclerView) bottomSheetDialog.findViewById(R.id.account_rv);
+
+                importedAccountAdapter = new ImportedAccountAdapter(getApplicationContext(),
+                        NetworkDataBase.getInstance(getApplicationContext()).getAccountDao().getAccountList(), this);
+
+                account_rv.setLayoutManager(new LinearLayoutManager(this));
+                account_rv.setHasFixedSize(true);
+                account_rv.setAdapter(importedAccountAdapter);
+
+                new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                    }
+                }).attachToRecyclerView(account_rv);
+
                 createAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -218,11 +264,14 @@ public class HomeActivity extends BaseActivity {
                 importAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
+
+//                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
+                        Intent intent1 = new Intent(HomeActivity.this, ImportAccountActivity.class);
                         intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
                         intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
                         startActivity(intent1);
                         bottomSheetDialog.dismiss();
+                        finish();
                     }
                 });
 
@@ -298,5 +347,46 @@ public class HomeActivity extends BaseActivity {
 
 
         bottomSheetDialog.show();
+    }
+
+    @Override
+    public void AccountListOnClickListener(int pos, List<AccountEntity> networkLists) {
+        Intent intent = new Intent(HomeActivity.this, NetworkDetailsActivity.class);
+//        intent.putExtra(NETWORK_NAME, networkLists.get(pos).getNetworkName());
+//        intent.putExtra(NETWORK_RPC_URL, networkLists.get(pos).getRpcUrl());
+//        intent.putExtra(CHAIN_ID, networkLists.get(pos).getChainId());
+//        intent.putExtra(CURRENCY_SYMBOL, networkLists.get(pos).getCurrencySymbol());
+//        intent.putExtra(BLOCK_EXPLORE_URL, networkLists.get(pos).getBlockExplorerUrl());
+//        startActivity(intent);
+//        finish();
+    }
+
+    @Override
+    public void AccountDeleteOnClickListener(int pos, List<AccountEntity> accountEntity) {
+//        WeakReference<HomeActivity> activityReference;
+//        activityReference = new WeakReference<>(addNetworkActivity);
+//        activityReference.get().networkDataBase.getAccountDao().de(accountEntity);
+        new InsertTask(HomeActivity.this, accountEntity,pos).execute();
+    }
+
+    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<HomeActivity> activityReference;
+        private List<AccountEntity> networkEntity;
+        private int position;
+
+        public InsertTask(HomeActivity addNetworkActivity, List<AccountEntity> networkEntity, int position) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+            this.position = position;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().networkDataBase.getAccountDao().deleteById(networkEntity.get(position).getAccountPrivateKey());
+            Intent i = new Intent(HomeActivity.this, HomeActivity.class);
+            startActivity(i);
+            finish();
+            return null;
+        }
     }
 }

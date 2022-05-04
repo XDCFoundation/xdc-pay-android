@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linear_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10"
+        android:layout_marginStart="@dimen/margin_5"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_5"
+        android:layout_marginBottom="@dimen/margin_5"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/account_profile"
+            android:layout_width="@dimen/margin_40"
+            android:layout_height="@dimen/margin_40"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_5"
+            android:src="@drawable/profile_icon" />
+
+        <com.app.xdcpay.Views.TextViewMedium
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAccountName"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/margin_14" />
+
+        <LinearLayout
+            android:id="@+id/linear_imported"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.app.xdcpay.Views.TextViewMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_14"
+                android:text="@string/imported_text"
+                android:textColor="@color/colorWhite"
+                android:paddingTop="@dimen/margin_5"
+                android:paddingBottom="@dimen/margin_5"
+                android:paddingLeft="@dimen/margin_10"
+                android:paddingRight="@dimen/margin_10"
+                android:background="@color/colorLightGreen"
+                android:textSize="@dimen/margin_14" />
+
+            <ImageView
+                android:id="@+id/account_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/margin_7"
+                android:layout_marginLeft="@dimen/margin_5"
+                android:src="@drawable/ic_delete" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

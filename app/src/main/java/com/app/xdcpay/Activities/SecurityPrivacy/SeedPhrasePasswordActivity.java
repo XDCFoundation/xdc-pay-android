@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.app.xdcpay.Activities.ImportWalletActivity;
+import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
@@ -15,8 +16,9 @@ import com.app.xdcpay.Views.TextViewMedium;
 
 public class SeedPhrasePasswordActivity extends BaseActivity {
     EditText et_password;
-    TextViewMedium reveal_tv,title;
+    TextViewMedium reveal_tv, title;
     ImageView back;
+    private ReadWalletDetails readWalletDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
 
     @Override
     public void getId() {
+        readWalletDetails = new ReadWalletDetails(SeedPhrasePasswordActivity.this);
         et_password = findViewById(R.id.et_password);
         reveal_tv = findViewById(R.id.reveal_tv);
         back = findViewById(R.id.back);
@@ -48,11 +51,14 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.reveal_tv:
-                if (isValid()) {
-                    Intent i = new Intent(SeedPhrasePasswordActivity.this, RevealSeedPhraseActivity.class);
-                    startActivity(i);
-                    break;
-                }
+                if (isValid())
+                    if (et_password.getText().toString().equals(readWalletDetails.getPassword())) {
+                        Intent i = new Intent(SeedPhrasePasswordActivity.this, RevealSeedPhraseActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+                    } else
+                        Toast.makeText(this, getResources().getString(R.string.error_password_not_match), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.back:
                 finish();

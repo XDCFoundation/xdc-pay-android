@@ -43,12 +43,12 @@
         android:background="@color/colorLightGrey" />
 
     <com.app.xdcpay.Views.TextView
+        android:id="@+id/import_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_import"
         android:drawablePadding="@dimen/margin_10"
         android:padding="@dimen/margin_15"
-        android:id="@+id/import_account"
         android:text="@string/import_account"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />

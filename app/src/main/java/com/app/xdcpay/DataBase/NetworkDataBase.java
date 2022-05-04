@@ -16,16 +16,20 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.app.xdcpay.DataBase.DAO.AddNetworkDAO;
+import com.app.xdcpay.DataBase.DAO.Add_ImportAccountDao;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 
-@Database(entities = {NetworkEntity.class}, version = DATABASE_VERSION)
+@Database(entities = {NetworkEntity.class, AccountEntity.class}, version = DATABASE_VERSION)
 public abstract class NetworkDataBase extends RoomDatabase {
 
     // below line is to create instance for our database class.
     private static NetworkDataBase instance;
 
     // below line is to create abstract variable for dao.
-    public abstract AddNetworkDAO getNetworkDao();
+    public abstract AddNetworkDAO getDatabaseDao();
+
+    public abstract Add_ImportAccountDao getAccountDao();
 
     public static synchronized NetworkDataBase getInstance(Context context) {
         if (instance == null) {
@@ -37,21 +41,22 @@ public abstract class NetworkDataBase extends RoomDatabase {
         return instance;
     }
 
-        private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
-            @Override
-            public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                super.onCreate(db);
-                // this method is called when database is created
-                // and below line is to populate our data.
-                new PopulateDbAsyncTask(instance).execute();
-            }
-        };
+    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            // this method is called when database is created
+            // and below line is to populate our data.
+            new PopulateDbAsyncTask(instance).execute();
+        }
+    };
 
     // we are creating an async task class to perform task in background.
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         PopulateDbAsyncTask(NetworkDataBase instance) {
-            AddNetworkDAO dao = instance.getNetworkDao();
+//            AddNetworkDAO dao = instance.getDatabaseDao();
         }
+
         @Override
         protected Void doInBackground(Void... voids) {
             return null;

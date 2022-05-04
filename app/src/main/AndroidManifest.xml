@@ -27,6 +27,9 @@
         tools:replace="android:supportsRtl"
         tools:targetApi="m">
         <activity
+            android:name=".Activities.Accounts.ImportAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.CreateWallet.ConfirmSeedPhraseActivity"
             android:exported="false" />
         <activity

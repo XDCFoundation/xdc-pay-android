@@ -71,7 +71,7 @@ public class NetworksActivity extends BaseActivity implements NetworkListInterfa
     @Override
     public void setData() {
         networkListAdapter = new NetworkListAdapter(getApplicationContext(),
-                NetworkDataBase.getInstance(getApplicationContext()).getNetworkDao().getNetworkList(),this);
+                NetworkDataBase.getInstance(getApplicationContext()).getDatabaseDao().getNetworkList(),this);
 
         recycler_Networks.setLayoutManager(new LinearLayoutManager(this));
         recycler_Networks.setHasFixedSize(true);

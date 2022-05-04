@@ -39,7 +39,7 @@
             android:layout_height="@dimen/margin_50"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/margin_5"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/profile_icon" />
 
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="wrap_content"

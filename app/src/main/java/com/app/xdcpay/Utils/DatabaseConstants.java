@@ -11,4 +11,10 @@ public class DatabaseConstants {
     public static final String NETWORK_FIELD_3 = "chain_id";
     public static final String NETWORK_FIELD_4 = "currency_symbol";
     public static final String NETWORK_FIELD_5 = "block_explorer_url";
+
+    public static final String ACCOUNT_TABLE_NAME = "importAccount_table";
+    public static final String ACCOUNT_FIELD_1 = "accountName";
+    public static final String ACCOUNT_FIELD_2 = "accountAddress";
+    public static final String ACCOUNT_FIELD_3 = "accountPrivateKey";
+    public static final String ACCOUNT_FIELD_4 = "accountPublicKey";
 }
