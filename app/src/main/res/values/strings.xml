@@ -188,4 +188,9 @@
     <string name="contact_us">Contact Us</string>
     <string name="current_language">Current Language</string>
     <string name="english">English</string>
+    <string name="password_updated">Password updated successfully</string>
+    <string name="usd_united_states_dollar">USD - United States Dollar</string>
+    <string name="currency_conversion">Currency Conversion</string>
+    <string name="updated_tue_jul_27_2021_16_38_11_gmt_0530">Updated Tue Jul 27 2021 16:38:11 GMT+0530</string>
+    <string name="hide_tokens_without_balance">Hide Tokens Without Balance</string>
 </resources>

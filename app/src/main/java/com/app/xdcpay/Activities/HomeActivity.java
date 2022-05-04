@@ -134,7 +134,7 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("wallet Address", wallet_balance.getText().toString());
+                ClipData clip = ClipData.newPlainText("wallet Address", wallet_address.getText().toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HomeActivity.this, getString(R.string.copied), Toast.LENGTH_LONG).show();
             }
