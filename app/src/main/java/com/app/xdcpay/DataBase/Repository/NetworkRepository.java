@@ -3,8 +3,6 @@ package com.app.xdcpay.DataBase.Repository;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import androidx.lifecycle.LiveData;
-
 import com.app.xdcpay.DataBase.DAO.AddNetworkDAO;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
@@ -13,7 +11,7 @@ import java.util.List;
 
 public class NetworkRepository {
     private AddNetworkDAO networkDao;
-    private LiveData<List<NetworkEntity>> allNetworkList;
+    private List<NetworkEntity> allNetworkList;
 
     public NetworkRepository(Application application) {
         NetworkDataBase database = NetworkDataBase.getInstance(application);
@@ -42,7 +40,7 @@ public class NetworkRepository {
     }
 
     // below method is to read all the Network.
-    public LiveData<List<NetworkEntity>> getAllNetworks() {
+    public List<NetworkEntity> getAllNetworks() {
         return allNetworkList;
     }
 

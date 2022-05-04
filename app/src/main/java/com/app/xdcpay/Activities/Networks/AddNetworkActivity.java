@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.app.xdcpay.Activities.HomeActivity;
+import com.app.xdcpay.Activities.SendActivity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.R;
@@ -76,7 +78,7 @@ public class AddNetworkActivity extends BaseActivity {
                             etRPCUrl.getText().toString(),
                             etChainId.getText().toString(),
                             str_currencySymbol, str_blockExplorer);
-                    new InsertTask(AddNetworkActivity.this,networkEntity).execute();
+                    new InsertTask(AddNetworkActivity.this, networkEntity).execute();
                 }
                 break;
         }
@@ -102,9 +104,10 @@ public class AddNetworkActivity extends BaseActivity {
         return false;
     }
 
-    private class InsertTask extends AsyncTask<Void,Void,Boolean> {
+    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<AddNetworkActivity> activityReference;
         private NetworkEntity networkEntity;
+
         public InsertTask(AddNetworkActivity addNetworkActivity, NetworkEntity networkEntity) {
             activityReference = new WeakReference<>(addNetworkActivity);
             this.networkEntity = networkEntity;
@@ -113,6 +116,7 @@ public class AddNetworkActivity extends BaseActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getNetworkDao().insertNetwork(networkEntity);
+            startActivity(new Intent(AddNetworkActivity.this, NetworksActivity.class));
             return null;
         }
     }

@@ -2,24 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_10">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/linear"
+        android:id="@+id/id_linear_network"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_5"
+        android:layout_marginStart="@dimen/margin_10"
         android:layout_marginTop="@dimen/margin_5"
         android:layout_marginEnd="@dimen/margin_5"
-        android:layout_marginBottom="@dimen/margin_5"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/profile_iv"
+            android:id="@+id/profile_iv1"
             android:layout_width="@dimen/margin_10"
             android:layout_height="@dimen/margin_10"
             android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_6"
             android:src="@drawable/ic_green_dot" />
 
         <com.app.xdcpay.Views.TextViewMedium
@@ -28,6 +27,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/margin_14"
             android:layout_weight="1"
+            android:id="@+id/tv_Networks"
             android:text="@string/_100_eurg"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/margin_14" />
@@ -38,13 +38,12 @@
             android:layout_alignParentRight="true"
             android:padding="@dimen/margin_10"
             android:src="@drawable/ic_next" />
-
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/linear"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_below="@id/id_linear_network"
+        android:layout_marginTop="@dimen/margin_5"
         android:background="@color/colorLine" />
 </RelativeLayout>

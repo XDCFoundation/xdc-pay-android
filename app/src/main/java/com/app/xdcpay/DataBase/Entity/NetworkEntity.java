@@ -1,27 +1,35 @@
 package com.app.xdcpay.DataBase.Entity;
 
+import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_1;
+import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_2;
+import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_3;
+import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_4;
+import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_5;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "addNetwork_table")
+import com.app.xdcpay.Utils.DatabaseConstants;
+
+@Entity(tableName = DatabaseConstants.NETWORK_TABLE_NAME)
 public class NetworkEntity {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name = "network_name")
+    @ColumnInfo(name = NETWORK_FIELD_1)
     public String networkName;
 
-    @ColumnInfo(name = "rpc_url")
+    @ColumnInfo(name = NETWORK_FIELD_2)
     public String rpcUrl;
 
-    @ColumnInfo(name = "chain_id")
+    @ColumnInfo(name = NETWORK_FIELD_3)
     public String chainId;
 
-    @ColumnInfo(name = "currency_symbol")
+    @ColumnInfo(name = NETWORK_FIELD_4)
     public String currencySymbol;
 
-    @ColumnInfo(name = "block_explorer_url")
+    @ColumnInfo(name = NETWORK_FIELD_5)
     public String blockExplorerUrl;
 
     // below line we are creating constructor class.

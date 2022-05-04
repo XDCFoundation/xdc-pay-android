@@ -1,6 +1,7 @@
 package com.app.xdcpay.DataBase.DAO;
 
-import androidx.lifecycle.LiveData;
+import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_TABLE_NAME;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -30,6 +31,6 @@ public interface AddNetworkDAO {
     void deleteAllCourses();*/
 
     // below line is to read all the data from our database.
-    @Query("SELECT * FROM addNetwork_table ORDER BY network_name ASC")
-    LiveData<List<NetworkEntity>> getNetworkList();
+    @Query("SELECT * FROM " + NETWORK_TABLE_NAME)
+    List<NetworkEntity> getNetworkList();
 }

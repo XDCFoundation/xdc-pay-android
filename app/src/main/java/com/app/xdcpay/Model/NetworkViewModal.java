@@ -4,7 +4,6 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.Repository.NetworkRepository;
@@ -14,7 +13,7 @@ import java.util.List;
 public class NetworkViewModal extends AndroidViewModel {
     NetworkRepository repository;
     // below line is to create a variable for live data where all the courses are present.
-    private LiveData<List<NetworkEntity>> allNetworkList;
+    private List<NetworkEntity> allNetworkList;
 
     public NetworkViewModal(@NonNull Application application) {
         super(application);
@@ -43,7 +42,7 @@ public class NetworkViewModal extends AndroidViewModel {
 //    }
 
     // below method is to get all the courses in our list.
-    public LiveData<List<NetworkEntity>> getAllCourses() {
+    public List<NetworkEntity> getAllCourses() {
         return allNetworkList;
     }
 
