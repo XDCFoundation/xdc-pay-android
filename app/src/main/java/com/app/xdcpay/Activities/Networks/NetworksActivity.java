@@ -1,10 +1,10 @@
 package com.app.xdcpay.Activities.Networks;
 
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.BLOCK_EXPLORE_URL;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.CHAIN_ID;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.CURRENCY_SYMBOL;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.NETWORK_NAME;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.NETWORK_RPC_URL;
+import static com.app.xdcpay.Utils.Constants.BLOCK_EXPLORE_URL;
+import static com.app.xdcpay.Utils.Constants.CHAIN_ID;
+import static com.app.xdcpay.Utils.Constants.CURRENCY_SYMBOL;
+import static com.app.xdcpay.Utils.Constants.NETWORK_NAME;
+import static com.app.xdcpay.Utils.Constants.NETWORK_RPC_URL;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -37,8 +37,6 @@ public class NetworksActivity extends BaseActivity implements NetworkListInterfa
     private NetworkListAdapter networkListAdapter;
     private final List<NetworkEntity> networkLists = new ArrayList<>();
     private NetworkEntity networkModelList;
-    private String[] networkTitle = {"XDC ApothemNetwork", "Localhost 8545", "Pegasus Test Network (v1.1)",
-            "Lio Test Network (v1.1)", "Orion Test Network (v1.1)", "XDC Devnet", "Localhost 8545", "Custom RPC"};
 
     private LinearLayout linear_network, linear_network_Apothem, linear_network_localHost;
 

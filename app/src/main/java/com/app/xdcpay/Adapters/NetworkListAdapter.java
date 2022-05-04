@@ -1,11 +1,5 @@
 package com.app.xdcpay.Adapters;
 
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.BLOCK_EXPLORE_URL;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.CHAIN_ID;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.CURRENCY_SYMBOL;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.NETWORK_NAME;
-import static com.app.xdcpay.Activities.Networks.NetworkDetailsActivity.NETWORK_RPC_URL;
-
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;

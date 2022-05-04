@@ -1,1 +1,2 @@
 include ':app', ':XDCJava'
+include ':XDC3Android'
