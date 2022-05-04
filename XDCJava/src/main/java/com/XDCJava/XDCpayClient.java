@@ -372,4 +372,12 @@ public class XDCpayClient {
 
         return walletData;
     }
+
+
+   //Bhavisha
+    public String getAccountaddFromPrivatekey(String private_key) throws IOException {
+
+        Credentials credentials = Credentials.create(private_key);
+        return  credentials.getAddress();
+    }
 }

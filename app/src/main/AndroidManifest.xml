@@ -39,6 +39,10 @@
             android:name=".Activities.ScannerActivity"
             android:exported="false" />
         <activity
+            android:name=".Activities.TransactionActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".Activities.HelpActivity"
             android:exported="false" />
         <activity

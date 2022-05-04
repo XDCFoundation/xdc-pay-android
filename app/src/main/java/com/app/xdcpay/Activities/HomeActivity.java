@@ -23,6 +23,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
@@ -36,6 +43,7 @@ import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Fragments.TokensFragment;
 import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Interface.ImportAccountCallback;
+import com.app.xdcpay.Fragments.NFTFragment;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
@@ -72,6 +80,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
     private TextView wallet_balance, amount, wallet_address;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     TextViewMedium tvSettings, tvHelp;
+
     private ImportedAccountAdapter importedAccountAdapter;
     NetworkDataBase networkDataBase;
     AccountEntity accountEntity;
@@ -114,7 +123,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
     @Override
     public void setData() {
-        networkDataBase = NetworkDataBase.getInstance(HomeActivity.this);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
@@ -156,7 +164,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
             @Override
             public void onClick(View v) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("wallet Address", wallet_balance.getText().toString());
+                ClipData clip = ClipData.newPlainText("wallet Address", wallet_address.getText().toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HomeActivity.this, getString(R.string.copied), Toast.LENGTH_LONG).show();
             }
@@ -221,7 +229,9 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                     drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
+
             case R.id.accountname:
+
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
@@ -258,6 +268,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                 importAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
+                    public void onClick(View v) {
 //                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
                         Intent intent1 = new Intent(HomeActivity.this, ImportAccountActivity.class);
                         intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
@@ -284,6 +296,13 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
             case R.id.tvSettings:
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
                 drawerLayout.closeDrawer(Gravity.LEFT);
+
+                break;
+
+            case R.id.tvtransaction:
+                startActivity(new Intent(HomeActivity.this, TransactionActivity.class));
+                drawerLayout.closeDrawer(Gravity.LEFT);
+
                 break;
 
             case R.id.tvHelp:

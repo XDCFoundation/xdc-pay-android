@@ -147,6 +147,10 @@ public class CreateWalletActivity extends BaseActivity {
             password.setError(getResources().getString(R.string.error_password_empty));
         else if (!Validations.hasText(confirm_password))
             confirm_password.setError(getResources().getString(R.string.error_password_empty));
+        else if (password.getText().toString().length() < 8)
+            Toast.makeText(CreateWalletActivity.this, getResources().getString(R.string.password_length_msg), Toast.LENGTH_SHORT).show();
+        else if (!Validations.isPasswordValid(password.getText().toString()))
+            Toast.makeText(CreateWalletActivity.this, getResources().getString(R.string.password_strength_msg), Toast.LENGTH_SHORT).show();
         else if (!strPassword.equals(strConfirmPassword))
             confirm_password.setError(getResources().getString(R.string.error_password_not_match));
         else if (!terms_cb.isChecked())

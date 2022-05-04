@@ -31,6 +31,7 @@ public class GeneralSettingsActivity extends BaseActivity {
     @Override
     public void setData() {
         title.setText(getString(R.string.general_settings));
+
     }
 
     @Override
