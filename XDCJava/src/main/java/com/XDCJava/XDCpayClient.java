@@ -358,9 +358,18 @@ public class XDCpayClient {
     }
 
     //Bhavisha
-    public String getAccountAddFromPrivateKey(String private_key) throws IOException {
+    public WalletData getAccountAddFromPrivateKey(String private_key) {
+        WalletData walletData = null;
+        try {
+            Credentials credentials = Credentials.create(private_key);
+            walletData = new WalletData();
+            walletData.setAccountAddress(credentials.getAddress());
+            walletData.setPrivateKey(credentials.getEcKeyPair().getPrivateKey().toString(16));
+            walletData.setPublickeyKey(credentials.getEcKeyPair().getPublicKey().toString(16));
+        } catch (Exception e) {
+//            callback.failure(e.getLocalizedMessage());
+        }
 
-        Credentials credentials = Credentials.create(private_key);
-        return  credentials.getAddress();
+        return walletData;
     }
 }

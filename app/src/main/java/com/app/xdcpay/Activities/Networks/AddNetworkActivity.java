@@ -115,7 +115,7 @@ public class AddNetworkActivity extends BaseActivity {
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            activityReference.get().networkDataBase.getNetworkDao().insertNetwork(networkEntity);
+            activityReference.get().networkDataBase.getDatabaseDao().insertNetwork(networkEntity);
             startActivity(new Intent(AddNetworkActivity.this, NetworksActivity.class));
             return null;
         }

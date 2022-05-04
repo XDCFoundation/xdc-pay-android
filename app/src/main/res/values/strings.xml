@@ -17,6 +17,7 @@
     <string name="password_strength">Password strength</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="import_text">Import</string>
+    <string name="imported_text">Imported</string>
     <string name="this_password_will_unlock_your_wallet">This password will unlock your wallet</string>
     <string name="must_be_at_least_8_characters">Must be at least 8 characters</string>
     <string name="sign_in_with_biometric">Sign in with Biometric?</string>
@@ -31,6 +32,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="account_1">Account 1</string>
+    <string name="account">Account</string>
     <string name="xdc_mainnet">XDC Mainnet</string>
     <string name="xdc_apothem_testnet">XDC Apothem Testnet</string>
     <string name="localhost_8545">Localhost 8545</string>
@@ -187,7 +189,7 @@
     <string name="current_language">Current Language</string>
     <string name="english">English</string>
     <string name="txt_xdc">XDC</string>
-    <string name="type">Type</string>
+    <string name="type">Key Type</string>
     <string name="paste_private_key">Paste your private key string</string>
     <string name="private_key">Enter your private key</string>
     <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>

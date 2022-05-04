@@ -3,6 +3,8 @@ package com.app.xdcpay.Activities.Accounts;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
@@ -11,20 +13,27 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
+import com.app.xdcpay.Activities.HomeActivity;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
 
-import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class ImportAccountActivity extends BaseActivity {
     private AppCompatSpinner spnType;
     private EditText etPrivateKey;
     private TextViewMedium title, btn_Import;
     private ImageView back;
+    AccountEntity accountEntity;
+    NetworkDataBase networkDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +83,14 @@ public class ImportAccountActivity extends BaseActivity {
     @Override
     public void setData() {
         title.setText(getString(R.string.import_account));
+        networkDataBase = NetworkDataBase.getInstance(ImportAccountActivity.this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
-                finish();
+                onBackPressed();
                 break;
             case R.id.btn_Import:
                 if (isValid())
@@ -91,11 +101,19 @@ public class ImportAccountActivity extends BaseActivity {
 
     private void checkYourKey(String privateKey) {
         try {
-            File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES + File.separator + "web3j");
-            path.mkdir();
-            String address = XDCpayClient.getInstance().getAccountAddFromPrivateKey(privateKey);
-            Log.d("ImportAccount: ", "" + address);
+            WalletData walletData = XDCpayClient.getInstance().getAccountAddFromPrivateKey(privateKey);
 
+            if (walletData != null) {
+                SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ImportAccountActivity.this);
+                saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
+                saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
+                saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
+                accountEntity = new AccountEntity(
+                        getString(R.string.imported_text), walletData.getAccountAddress() ,
+                        walletData.getPrivateKey(), walletData.getPublickeyKey());
+                new InsertTask(ImportAccountActivity.this, accountEntity).execute();
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -112,6 +130,27 @@ public class ImportAccountActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+        Intent i = new Intent(ImportAccountActivity.this, HomeActivity.class);
+        startActivity(i);
         finish();
+    }
+
+    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<ImportAccountActivity> activityReference;
+        private AccountEntity networkEntity;
+
+        public InsertTask(ImportAccountActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().networkDataBase.getAccountDao().insertNetwork(networkEntity);
+            Intent i = new Intent(ImportAccountActivity.this, HomeActivity.class);
+            startActivity(i);
+            finish();
+            return null;
+        }
     }
 }

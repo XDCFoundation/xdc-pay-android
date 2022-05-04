@@ -15,7 +15,7 @@ public class NetworkRepository {
 
     public NetworkRepository(Application application) {
         NetworkDataBase database = NetworkDataBase.getInstance(application);
-        networkDao = database.getNetworkDao();
+        networkDao = database.getDatabaseDao();
         allNetworkList = networkDao.getNetworkList();
     }
 
