@@ -25,16 +25,21 @@ public class GeneralSettingsActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-
+        findViewById(R.id.back).setOnClickListener(this);
     }
 
     @Override
     public void setData() {
         title.setText(getString(R.string.general_settings));
+
     }
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 }

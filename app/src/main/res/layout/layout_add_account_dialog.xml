@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_corner"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_21"
+        android:background="@color/colorLightGrey" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_15"
+            android:src="@drawable/ic_back" />
+
+        <com.app.xdcpay.Views.TextViewBold
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="@string/add_accounts"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/margin_16" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+
+
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/create_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:text="@string/accounts_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+
+
+
+    <com.app.xdcpay.Views.EditText
+        android:id="@+id/account_addname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        android:background="@drawable/grey_border"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+
+    <com.app.xdcpay.Views.TextViewBold
+        android:id="@+id/btn_addAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginRight="@dimen/margin_16"
+        android:background="@drawable/rounded_corner_5dp_green_bg"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:text="@string/add"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/margin_15"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/margin_16"
+        android:textStyle="bold" />
+</LinearLayout>

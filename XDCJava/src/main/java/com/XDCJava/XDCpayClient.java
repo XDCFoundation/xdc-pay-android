@@ -15,9 +15,7 @@ import org.web3j.crypto.TransactionEncoder;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameterName;
-import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.request.Transaction;
-import org.web3j.protocol.core.methods.response.EthEstimateGas;
 import org.web3j.protocol.core.methods.response.EthGasPrice;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
@@ -35,17 +33,17 @@ import java.math.BigInteger;
 import java.util.concurrent.ExecutionException;
 
 
-public class FleekClient {
+public class XDCpayClient {
     private Web3j web3;
-    public static FleekClient instance;
+    public static XDCpayClient instance;
     private static double weiToXDC = 1000000000000000000d;
     //private static final String scAddress = "0x4bEE72D70368F3CB0625170Bdd9F1D51F9E690De";
     private static final String scAddress = "0xA522A6676A8B3fE6726F98F7906D33e97959CD44";
     private static final String GENERIC_FAILURE_MESSAGE = "Something went wrong, Please try after sometime..";
 
-    public static FleekClient getInstance() {
+    public static XDCpayClient getInstance() {
         if (instance == null)
-            instance = new FleekClient();
+            instance = new XDCpayClient();
 
         return instance;
     }
@@ -357,5 +355,13 @@ public class FleekClient {
 //        return estimatedGas;
         /*EthGasPrice ethGasPrice = web3.ethGasPrice().sendAsync().get();
         return ethGasPrice.getGasPrice();*/
+    }
+
+
+   //Bhavisha
+    public String getAccountaddFromPrivatekey(String private_key) throws IOException {
+
+        Credentials credentials = Credentials.create(private_key);
+        return  credentials.getAddress();
     }
 }

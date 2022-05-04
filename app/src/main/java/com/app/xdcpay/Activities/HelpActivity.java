@@ -59,10 +59,10 @@ public class HelpActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.privacyPolicy:
-//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.xdc.org")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.PRIVACY_POLICY_URL)));
                 break;
             case R.id.support_center:
-//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.xdc.org/resources")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.SUPPORT_CENTER_URL)));
                 break;
             case R.id.contactUs:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.CONTACT_US_URL)));

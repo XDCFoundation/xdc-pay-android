@@ -38,4 +38,8 @@ public class Constants {
     public static final String LOCALHOST_ID = "";
     public static final String LOCALHOST_SYMBOL = "";
     public static final String LOCALHOST_URL = "";
+
+    public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
+    public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
+
 }
