@@ -1,5 +1,8 @@
 package com.app.xdcpay.Activities;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
@@ -89,6 +93,14 @@ public class QrCodeActivity extends BaseActivity {
             case R.id.back:
                 finish();
                 break;
+
+            case R.id.copy_to_clipboard:
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("wallet Address", address.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                showtoast(getResources().getString(R.string.copied));
+                break;
+
         }
     }
 }

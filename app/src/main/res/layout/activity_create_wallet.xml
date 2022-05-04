@@ -52,8 +52,8 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/new_pass_hint"
                     android:inputType="textPassword"
-                    android:padding="@dimen/margin_10"
                     android:maxLength="15"
+                    android:padding="@dimen/margin_10"
                     android:singleLine="true"
                     android:textSize="@dimen/margin_14" />
 
