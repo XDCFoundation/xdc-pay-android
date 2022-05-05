@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ImportAccountCallback {
     void AccountListOnClickListener(int pos, List<AccountEntity> networkLists);
-    void AccountDeleteOnClickListener(int pos, List<AccountEntity> networkLists);
+    void AccountDeleteOnClickListener(String strPrivateKey);
 
 }

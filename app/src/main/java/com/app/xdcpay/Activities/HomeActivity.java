@@ -119,6 +119,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
     @Override
     public void setData() {
+        networkDataBase = NetworkDataBase.getInstance(HomeActivity.this);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
@@ -135,7 +136,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                         wallet_balance.setText(balance + " XDC");
                     }
                 });
-
             }
 
             @Override
@@ -211,11 +211,11 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
             case R.id.receive:
                 startActivity(new Intent(HomeActivity.this, QrCodeActivity.class));
                 break;
+
             case R.id.scan:
                 Intent i = new Intent(HomeActivity.this, ScannerActivity.class);
                 i.putExtra(ACTIVITY_NAME, "HomeActivity");
                 startActivity(i);
-
                 break;
 
             case R.id.menu:
@@ -224,7 +224,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                 else
                     drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
-
 
             case R.id.accountname:
 
@@ -274,7 +273,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                         finish();
                     }
                 });
-
 
                 bottomSheetDialog.show();
                 drawerLayout.closeDrawer(Gravity.LEFT);
@@ -362,27 +360,27 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
     }
 
     @Override
-    public void AccountDeleteOnClickListener(int pos, List<AccountEntity> accountEntity) {
+    public void AccountDeleteOnClickListener(String strPrivateKey) {
 //        WeakReference<HomeActivity> activityReference;
 //        activityReference = new WeakReference<>(addNetworkActivity);
 //        activityReference.get().networkDataBase.getAccountDao().de(accountEntity);
-        new InsertTask(HomeActivity.this, accountEntity,pos).execute();
+        new InsertTask(HomeActivity.this, strPrivateKey).execute();
     }
 
     private class InsertTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<HomeActivity> activityReference;
-        private List<AccountEntity> networkEntity;
-        private int position;
+        private String strPrivateKey;
 
-        public InsertTask(HomeActivity addNetworkActivity, List<AccountEntity> networkEntity, int position) {
+        public InsertTask(HomeActivity addNetworkActivity, String strPrivateKey) {
             activityReference = new WeakReference<>(addNetworkActivity);
-            this.networkEntity = networkEntity;
-            this.position = position;
+            this.strPrivateKey = strPrivateKey;
+            this.strPrivateKey = strPrivateKey;
         }
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            activityReference.get().networkDataBase.getAccountDao().deleteById(networkEntity.get(position).getAccountPrivateKey());
+
+            activityReference.get().networkDataBase.getAccountDao().deleteById(strPrivateKey);
             Intent i = new Intent(HomeActivity.this, HomeActivity.class);
             startActivity(i);
             finish();
