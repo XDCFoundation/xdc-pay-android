@@ -88,6 +88,8 @@
         <entry key="app/src/main/res/layout/import_acount_row.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/item_seedphrase.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/item_time_locker.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/layout_add_account_dialog.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/layout_delete_account_dialog.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_my_account_dialog.xml" value="0.23013698630136986" />
         <entry key="app/src/main/res/layout/layout_network_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_tokens_list_row.xml" value="0.2625" />

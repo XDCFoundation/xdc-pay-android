@@ -73,8 +73,10 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
     private TextView wallet_balance, amount, wallet_address;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     TextViewMedium tvSettings, tvHelp;
+    String xdcBalance = "";
 
     private ImportedAccountAdapter importedAccountAdapter;
+    BottomSheetDialog bottomSheetDialogImport;
     NetworkDataBase networkDataBase;
 
     @Override
@@ -129,7 +131,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                     @Override
                     public void run() {
                         wallet_address.setText(readWalletDetails.getAccountAddress());
-                        wallet_balance.setText(balance + " XDC");
+                        xdcBalance = balance + " " + getString(R.string.txt_xdc);
+                        wallet_balance.setText(xdcBalance);
                     }
                 });
             }
@@ -222,13 +225,12 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                 break;
 
             case R.id.accountname:
-
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
-                bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                bottomSheetDialog.setContentView(R.layout.layout_my_account_dialog);
-                TextView createAccount = (TextView) bottomSheetDialog.findViewById(R.id.create_account);
-                TextView importAccount = (TextView) bottomSheetDialog.findViewById(R.id.import_account);
-                RecyclerView account_rv = (RecyclerView) bottomSheetDialog.findViewById(R.id.account_rv);
+                bottomSheetDialogImport = new BottomSheetDialog(HomeActivity.this);
+                bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                bottomSheetDialogImport.setContentView(R.layout.layout_my_account_dialog);
+                TextView createAccount = (TextView) bottomSheetDialogImport.findViewById(R.id.create_account);
+                TextView importAccount = (TextView) bottomSheetDialogImport.findViewById(R.id.import_account);
+                RecyclerView account_rv = (RecyclerView) bottomSheetDialogImport.findViewById(R.id.account_rv);
 
                 importedAccountAdapter = new ImportedAccountAdapter(getApplicationContext(),
                         NetworkDataBase.getInstance(getApplicationContext()).getAccountDao().getAccountList(), this);
@@ -252,7 +254,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                     @Override
                     public void onClick(View v) {
                         opencreateAccountDialog();
-                        bottomSheetDialog.dismiss();
+                        bottomSheetDialogImport.dismiss();
                     }
                 });
 
@@ -265,12 +267,12 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                         intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
                         intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
                         startActivity(intent1);
-                        bottomSheetDialog.dismiss();
+                        bottomSheetDialogImport.dismiss();
                         finish();
                     }
                 });
 
-                bottomSheetDialog.show();
+                bottomSheetDialogImport.show();
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
@@ -357,10 +359,38 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
     @Override
     public void AccountDeleteOnClickListener(String strPrivateKey) {
-//        WeakReference<HomeActivity> activityReference;
-//        activityReference = new WeakReference<>(addNetworkActivity);
-//        activityReference.get().networkDataBase.getAccountDao().de(accountEntity);
-        new InsertTask(HomeActivity.this, strPrivateKey).execute();
+
+        verifyAccountDelete(strPrivateKey);
+
+    }
+
+    private void verifyAccountDelete(String strPrivateKey) {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
+        bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        bottomSheetDialog.setContentView(R.layout.layout_delete_account_dialog);
+        ImageView back = (ImageView) bottomSheetDialog.findViewById(R.id.back);
+        TextViewBold tv_amount = (TextViewBold) bottomSheetDialog.findViewById(R.id.tv_amount);
+        TextViewBold btn_deleteAcc = (TextViewBold) bottomSheetDialog.findViewById(R.id.btn_deleteAcc);
+
+        tv_amount.setText(xdcBalance);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+
+            }
+        });
+
+        btn_deleteAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialogImport.dismiss();
+                bottomSheetDialog.dismiss();
+                new InsertTask(HomeActivity.this, strPrivateKey).execute();
+
+            }
+        });
+        bottomSheetDialog.show();
     }
 
     private class InsertTask extends AsyncTask<Void, Void, Boolean> {

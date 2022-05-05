@@ -51,6 +51,7 @@
     <string name="wallet_address">Wallet address</string>
     <string name="amount">Amount</string>
     <string name="available_4550_xdc">Available: 4550 XDC</string>
+    <string name="available_amount">Available Amount:</string>
     <string name="availableBalance">Available:  %s XDC</string>
     <string name="gas_price_gwei">Gas Price (GWEI)</string>
     <string name="max_transaction">Max Transaction Fee</string>
@@ -203,6 +204,8 @@
     <string name="paste_private_key">Paste your private key string</string>
     <string name="private_key">Enter your private key</string>
     <string name="remove">Remove</string>
+    <string name="delete_text_1">Before deleting please transfer the amount of this account in one of your available account or send it to another wallet address</string>
+    <string name="delete_text_2">Once deleted you will not be able to recover the amount</string>
     <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>
 
 
