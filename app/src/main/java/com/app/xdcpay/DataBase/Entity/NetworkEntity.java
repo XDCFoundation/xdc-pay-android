@@ -6,6 +6,9 @@ import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_3;
 import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_4;
 import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_FIELD_5;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -13,7 +16,7 @@ import androidx.room.PrimaryKey;
 import com.app.xdcpay.Utils.DatabaseConstants;
 
 @Entity(tableName = DatabaseConstants.NETWORK_TABLE_NAME)
-public class NetworkEntity {
+public class NetworkEntity implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
@@ -89,5 +92,43 @@ public class NetworkEntity {
 
     public void setBlockExplorerUrl(String blockExplorerUrl) {
         this.blockExplorerUrl = blockExplorerUrl;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(networkName);
+        dest.writeString(rpcUrl);
+        dest.writeString(chainId);
+        dest.writeString(currencySymbol);
+        dest.writeString(blockExplorerUrl);
+    }
+
+    protected NetworkEntity(Parcel in) {
+        networkName = in.readString();
+        rpcUrl = in.readString();
+        chainId = in.readString();
+        currencySymbol = in.readString();
+        blockExplorerUrl = in.readString();
+
+    }
+
+    public static final Creator<NetworkEntity> CREATOR = new Creator<NetworkEntity>() {
+        @Override
+        public NetworkEntity createFromParcel(Parcel in) {
+            return new NetworkEntity(in);
+        }
+
+        @Override
+        public NetworkEntity[] newArray(int size) {
+            return new NetworkEntity[size];
+        }
+    };
+
+    public NetworkEntity() {
     }
 }

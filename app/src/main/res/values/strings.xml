@@ -202,6 +202,7 @@
     <string name="type">Key Type</string>
     <string name="paste_private_key">Paste your private key string</string>
     <string name="private_key">Enter your private key</string>
+    <string name="remove">Remove</string>
     <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>
 
 

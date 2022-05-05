@@ -25,7 +25,7 @@ public class AddNetworkActivity extends BaseActivity {
     private ImageView back;
     private TextViewMedium title;
     private EditText etNetworkName, etRPCUrl, etChainId, etCurrencySymbol, etBlockExplorer;
-    private String str_currencySymbol, str_blockExplorer;
+    private String str_currencySymbol = "", str_blockExplorer = "";
     NetworkEntity networkEntity;
     NetworkDataBase networkDataBase;
 
@@ -68,6 +68,8 @@ public class AddNetworkActivity extends BaseActivity {
                 break;
             case R.id.btn_addNetwork:
                 if (isValid()) {
+                    str_currencySymbol = etCurrencySymbol.getText().toString();
+                    str_blockExplorer = etBlockExplorer.getText().toString();
                     if (etCurrencySymbol.getText().toString().isEmpty()) {
                         str_currencySymbol = "";
                     } else if (etBlockExplorer.getText().toString().isEmpty()) {

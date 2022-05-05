@@ -3,8 +3,12 @@ package com.app.xdcpay.Activities.Networks;
 import static com.app.xdcpay.Utils.Constants.BLOCK_EXPLORE_URL;
 import static com.app.xdcpay.Utils.Constants.CHAIN_ID;
 import static com.app.xdcpay.Utils.Constants.CURRENCY_SYMBOL;
+import static com.app.xdcpay.Utils.Constants.NETWORK_CAN_DELETE;
+import static com.app.xdcpay.Utils.Constants.NETWORK_ID;
 import static com.app.xdcpay.Utils.Constants.NETWORK_NAME;
 import static com.app.xdcpay.Utils.Constants.NETWORK_RPC_URL;
+import static com.app.xdcpay.Utils.Constants.NO;
+import static com.app.xdcpay.Utils.Constants.YES;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -13,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -103,6 +108,7 @@ public class NetworksActivity extends BaseActivity implements NetworkListInterfa
                 intent.putExtra(CHAIN_ID, Constants.MAIN_NET_ID);
                 intent.putExtra(CURRENCY_SYMBOL, Constants.MAIN_NET_SYMBOL);
                 intent.putExtra(BLOCK_EXPLORE_URL, Constants.MAIN_NET_URL);
+                intent.putExtra(NETWORK_CAN_DELETE, NO);
                 startActivity(intent);
                 finish();
                 break;
@@ -114,6 +120,8 @@ public class NetworksActivity extends BaseActivity implements NetworkListInterfa
                 apothemIntent.putExtra(CHAIN_ID, Constants.APOTHEM_ID);
                 apothemIntent.putExtra(CURRENCY_SYMBOL, Constants.APOTHEM_SYMBOL);
                 apothemIntent.putExtra(BLOCK_EXPLORE_URL, Constants.APOTHEM_URL);
+                apothemIntent.putExtra(BLOCK_EXPLORE_URL, Constants.APOTHEM_URL);
+                apothemIntent.putExtra(NETWORK_CAN_DELETE, NO);
                 startActivity(apothemIntent);
                 finish();
                 break;
@@ -124,6 +132,7 @@ public class NetworksActivity extends BaseActivity implements NetworkListInterfa
                 localHostIntent.putExtra(CHAIN_ID, Constants.LOCALHOST_ID);
                 localHostIntent.putExtra(CURRENCY_SYMBOL, Constants.LOCALHOST_SYMBOL);
                 localHostIntent.putExtra(BLOCK_EXPLORE_URL, Constants.LOCALHOST_URL);
+                localHostIntent.putExtra(NETWORK_CAN_DELETE, NO);
                 startActivity(localHostIntent);
                 finish();
                 break;
@@ -149,12 +158,15 @@ public class NetworksActivity extends BaseActivity implements NetworkListInterfa
 
     @Override
     public void networkListOnClickListener(int pos, List<NetworkEntity> networkLists) {
+
         Intent intent = new Intent(NetworksActivity.this, NetworkDetailsActivity.class);
         intent.putExtra(NETWORK_NAME, networkLists.get(pos).getNetworkName());
         intent.putExtra(NETWORK_RPC_URL, networkLists.get(pos).getRpcUrl());
         intent.putExtra(CHAIN_ID, networkLists.get(pos).getChainId());
         intent.putExtra(CURRENCY_SYMBOL, networkLists.get(pos).getCurrencySymbol());
         intent.putExtra(BLOCK_EXPLORE_URL, networkLists.get(pos).getBlockExplorerUrl());
+        intent.putExtra(NETWORK_ID, networkLists.get(pos).getId());
+        intent.putExtra(NETWORK_CAN_DELETE, YES);
         startActivity(intent);
         finish();
     }

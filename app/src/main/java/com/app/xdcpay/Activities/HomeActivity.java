@@ -28,15 +28,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
-import com.app.xdcpay.Activities.Networks.NetworkDetailsActivity;
-import com.app.xdcpay.Activities.Networks.NetworksActivity;
+
 import com.app.xdcpay.Adapters.ImportedAccountAdapter;
-import com.app.xdcpay.Adapters.NetworkListAdapter;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Fragments.TokensFragment;
-//import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Interface.ImportAccountCallback;
 import com.app.xdcpay.Fragments.NFTFragment;
@@ -79,7 +76,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
     private ImportedAccountAdapter importedAccountAdapter;
     NetworkDataBase networkDataBase;
-    AccountEntity accountEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -349,7 +345,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
     @Override
     public void AccountListOnClickListener(int pos, List<AccountEntity> networkLists) {
-        Intent intent = new Intent(HomeActivity.this, NetworkDetailsActivity.class);
+
 //        intent.putExtra(NETWORK_NAME, networkLists.get(pos).getNetworkName());
 //        intent.putExtra(NETWORK_RPC_URL, networkLists.get(pos).getRpcUrl());
 //        intent.putExtra(CHAIN_ID, networkLists.get(pos).getChainId());
