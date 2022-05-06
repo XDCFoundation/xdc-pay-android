@@ -19,8 +19,7 @@ import java.util.Arrays;
 public class TimerBottomSheetFragment extends BottomSheetDialogFragment {
 
     private RecyclerView rvTimeLocker;
-    private final ArrayList<String> timeLockerList = new ArrayList<>(Arrays.asList("Immediately", "5 seconds", "15 seconds", "30 seconds",
-            "60 seconds", "5 minutes", "10 minutes"));
+    private final ArrayList<Integer> timeLockerList = new ArrayList<>(Arrays.asList(0, 5, 15, 30, 60, 300, 600));
     private TimeLockerAdapter timeLockerAdapter;
     private LinearLayoutManager layoutManager;
 
@@ -53,13 +52,12 @@ public class TimerBottomSheetFragment extends BottomSheetDialogFragment {
 
         layoutManager = new LinearLayoutManager(getActivity());
         rvTimeLocker.setLayoutManager(layoutManager);
-        timeLockerAdapter = new TimeLockerAdapter(timeLockerList);
+        timeLockerAdapter = new TimeLockerAdapter(requireActivity(), timeLockerList);
         rvTimeLocker.setAdapter(timeLockerAdapter);
         return view;
     }
 
     private void initViews(View v) {
         rvTimeLocker = v.findViewById(R.id.rvTimeLocker);
-
     }
 }

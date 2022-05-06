@@ -1,6 +1,9 @@
 package com.app.xdcpay.Utils;
 
+import android.app.ActivityManager;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.app.xdcpay.Activities.CreateWalletActivity;
+import com.app.xdcpay.Activities.HomeActivity;
+import com.app.xdcpay.Activities.LoginActivity;
+import com.app.xdcpay.Activities.SplashActivity;
+import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
+import com.app.xdcpay.Pref.ReadWalletDetails;
+import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.R;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     public abstract void onClick(View v);
 
+    Handler handler;
+    Runnable r;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -35,15 +48,50 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         getId();
         setListener();
 
+        handler = new Handler();
+        r = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                stopHandler();
+                ReadWalletDetails readWalletDetails = new ReadWalletDetails(BaseActivity.this);
+                if (readWalletDetails.getIsLogin()) {
+                    SaveWalletDetails saveWalletDetails = new SaveWalletDetails(BaseActivity.this);
+                    saveWalletDetails.saveIsLogin(false);
+                    Intent intent = new Intent(BaseActivity.this, SplashActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                }
+            }
+        };
+        startHandler();
+//
+//
+//        if (readWalletDetails.getIsLogin())
+//            startHandler();
+//        else
+//            stopHandler();
     }
 
-    public void showtoast(String message)
-    {
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ActivityManager.RunningAppProcessInfo myProcess = new ActivityManager.RunningAppProcessInfo();
+        ActivityManager.getMyMemoryState(myProcess);
+        boolean isInForeground = myProcess.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND;
+        if (!isInForeground)
+            stopHandler();
+    }
+
+    public void showtoast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void updatePasswordStrengthView(EditText password, ProgressBar progressBar)
-    {
+    public void updatePasswordStrengthView(EditText password, ProgressBar progressBar) {
         if (password.getText().toString().isEmpty()) {
             progressBar.setProgress(0);
             return;
@@ -59,6 +107,26 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         } else {
             progressBar.setProgress(100);
         }
+    }
+
+    @Override
+    public void onUserInteraction() {
+        // TODO Auto-generated method stub
+        super.onUserInteraction();
+        stopHandler();//stop first and then start
+        ReadWalletDetails readWalletDetails = new ReadWalletDetails(BaseActivity.this);
+        if (readWalletDetails.getIsLogin()) {
+            startHandler();
+        }
+    }
+
+    public void stopHandler() {
+        handler.removeCallbacks(r);
+    }
+
+    public void startHandler() {
+        ReadAutoLockTimerPref readAutoLockTimer = new ReadAutoLockTimerPref(BaseActivity.this);
+        handler.postDelayed(r, readAutoLockTimer.getTimer() * 1000);
     }
 
 }

@@ -203,7 +203,12 @@
     <string name="paste_private_key">Paste your private key string</string>
     <string name="private_key">Enter your private key</string>
     <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>
-
+    <string name="reset_account">Reset Account</string>
+    <string name="reset_account_hint">Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</string>
+    <string name="advanced_gas_controls">Advanced gas controls</string>
+    <string name="advance_gas_control_hint">Select this to show gas price and limit controls directly on the send and confirm screens.</string>
+    <string name="minutes">%s minutes</string>
+    <string name="seconds">%s seconds</string>
 
     <string-array name="report_video_options">
         <item>Private</item>
