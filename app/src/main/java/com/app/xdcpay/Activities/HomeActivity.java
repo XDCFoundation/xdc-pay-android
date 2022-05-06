@@ -1,6 +1,7 @@
 package com.app.xdcpay.Activities;
 
 import static com.app.xdcpay.Activities.ScannerActivity.ACTIVITY_NAME;
+import static com.app.xdcpay.Utils.Constants.ACCOUNT_NAME;
 
 import android.Manifest;
 import android.content.ClipData;
@@ -264,8 +265,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
 
 //                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
                         Intent intent1 = new Intent(HomeActivity.this, ImportAccountActivity.class);
-                        intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
-                        intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
+                        intent1.putExtra(ACCOUNT_NAME, getString(R.string.imported_text));
                         startActivity(intent1);
                         bottomSheetDialogImport.dismiss();
                         finish();
@@ -335,12 +335,14 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                 if (account_addname.getText().toString().length() == 0) {
                     showtoast(getResources().getString(R.string.add_acc_name));
                 } else {
+                    Intent i = new Intent(HomeActivity.this, ImportAccountActivity.class);
+                    i.putExtra(ACCOUNT_NAME, account_addname.getText().toString());
+                    startActivity(i);
                     bottomSheetDialog.dismiss();
                 }
 
             }
         });
-
 
         bottomSheetDialog.show();
     }

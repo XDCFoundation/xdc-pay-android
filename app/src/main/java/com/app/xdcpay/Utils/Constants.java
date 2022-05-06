@@ -19,9 +19,12 @@ public class Constants {
     public static String CURRENCY_SYMBOL = "CURRENCY_SYMBOL";
     public static String BLOCK_EXPLORE_URL = "BLOCK_EXPLORER_URL";
     public static String NETWORK_ID = "NETWORK_LIST_id";
-    public static String  NETWORK_CAN_DELETE= "NETWORK_CAN_DELETE";
-    public static String  YES= "Yes";
-    public static String  NO= "No";
+    public static String NETWORK_CAN_DELETE = "NETWORK_CAN_DELETE";
+    public static String YES = "Yes";
+    public static String NO = "No";
+    public static String ACCOUNT_NAME = "ACCOUNT_NAME";
+
+
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC MAinnet";
     public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";
