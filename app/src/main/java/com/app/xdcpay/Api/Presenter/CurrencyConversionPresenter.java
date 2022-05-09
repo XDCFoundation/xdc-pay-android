@@ -12,8 +12,6 @@ import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -64,7 +62,7 @@ public class CurrencyConversionPresenter implements IGetUSDValueOfXDCPresenter {
         if (apiResponse.getData().getXdc() != null) {
             USDValue = apiResponse.getData().getXdc().getQuote().getUSD().getPrice();
         }
-        if (apiResponse.getData().getXdc() != null) {
+        if (apiResponse.getData().getEth() != null) {
             USDValue = apiResponse.getData().getEth().getQuote().getUSD().getPrice();
         }
 
