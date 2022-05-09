@@ -5,6 +5,8 @@ public class Constants {
     public static final String WALLET_DATA = "wallet_data";
     public static final String TITLE = "title";
     public static final String URL = "url";
+        public static final String STRING_FORMAT = "%.2f";
+    public static final String TEXT_USD = " USD";
     public static final String OBSERVER_URL = "https://observer.xdc.org/address-details/";
     public static final String WEBSITE_URL = "https://www.xdc.org/";
     public static final String CONTACT_US_URL = "https://www.xdc.org/contact-us";
@@ -23,7 +25,6 @@ public class Constants {
     public static String YES = "Yes";
     public static String NO = "No";
     public static String ACCOUNT_NAME = "ACCOUNT_NAME";
-
 
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC MAinnet";

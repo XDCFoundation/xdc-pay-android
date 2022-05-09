@@ -24,6 +24,7 @@
             android:background="@color/bottom_sheet" />
 
         <com.app.xdcpay.Views.TextViewBold
+            android:id="@+id/tvHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -37,7 +38,7 @@
             android:id="@+id/rvTimeLocker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_10"
             android:layout_marginBottom="54dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

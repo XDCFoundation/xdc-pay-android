@@ -78,7 +78,7 @@
                 android:textSize="@dimen/margin_32" />
 
             <com.app.xdcpay.Views.TextViewMedium
-                android:id="@+id/amount"
+                android:id="@+id/currencyAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

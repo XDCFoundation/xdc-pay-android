@@ -1,7 +1,10 @@
 package com.app.xdcpay.Activities;
 
 import static com.app.xdcpay.Activities.ScannerActivity.ACTIVITY_NAME;
+import static com.app.xdcpay.Utils.ApiConstants.API_KEY;
 import static com.app.xdcpay.Utils.Constants.ACCOUNT_NAME;
+import static com.app.xdcpay.Utils.Constants.STRING_FORMAT;
+import static com.app.xdcpay.Utils.Constants.TEXT_USD;
 
 import android.Manifest;
 import android.content.ClipData;
@@ -11,6 +14,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -31,6 +35,8 @@ import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 
 import com.app.xdcpay.Adapters.ImportedAccountAdapter;
+import com.app.xdcpay.Api.Presenter.CurrencyConversionPresenter;
+import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
@@ -51,7 +57,9 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -64,21 +72,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-
-public class HomeActivity extends BaseActivity implements ImportAccountCallback {
+public class HomeActivity extends BaseActivity implements ImportAccountCallback, IGetUSDValueOfXDCView {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private DrawerLayout drawerLayout;
     private ReadWalletDetails readWalletDetails;
     private ImageView scan, img_copy_walletadd;
-    private TextView wallet_balance, amount, wallet_address;
+    private TextView wallet_balance, currencyAmount, wallet_address;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     TextViewMedium tvSettings, tvHelp;
     String xdcBalance = "";
+    String xdcWalletBalance = "";
 
     private ImportedAccountAdapter importedAccountAdapter;
     BottomSheetDialog bottomSheetDialogImport;
     NetworkDataBase networkDataBase;
+    private CurrencyConversionPresenter currencyConversionPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +100,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
         readWalletDetails = new ReadWalletDetails(HomeActivity.this);
         drawerLayout = findViewById(R.id.drawerLayout);
         viewPager = findViewById(R.id.favorite_view_pager);
+        currencyAmount = findViewById(R.id.currencyAmount);
         tabLayout = findViewById(R.id.favorite_view_pager_tabs);
         wallet_address = findViewById(R.id.wallet_address);
         wallet_balance = findViewById(R.id.wallet_balance);
@@ -98,8 +108,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
         img_copy_walletadd = findViewById(R.id.img_copywalletAd);
         tvSettings = findViewById(R.id.tvSettings);
         tvHelp = findViewById(R.id.tvHelp);
-
         setData();
+
     }
 
     @Override
@@ -132,6 +142,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                     @Override
                     public void run() {
                         wallet_address.setText(readWalletDetails.getAccountAddress());
+                        xdcWalletBalance = balance;
                         xdcBalance = balance + " " + getString(R.string.txt_xdc);
                         wallet_balance.setText(xdcBalance);
                     }
@@ -165,6 +176,13 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
                 Toast.makeText(HomeActivity.this, getString(R.string.copied), Toast.LENGTH_LONG).show();
             }
         });
+
+        currencyConversionPresenter = new CurrencyConversionPresenter(this);
+        Map<String, Object> currencyData = new HashMap<>();
+//        currencyData.put("symbol", readWalletDetails.getSelectedCurrency());
+        currencyData.put("symbol", getString(R.string.txt_xdc));
+        currencyData.put("CMC_PRO_API_KEY", API_KEY);
+        currencyConversionPresenter.onGetUSDValueOfXDC(currencyData, HomeActivity.this);
 
     }
 
@@ -414,5 +432,32 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback 
             finish();
             return null;
         }
+    }
+
+    @Override
+    public void onGetUSDValueOfXDCFailure(String failure) {
+//        Log.e("USDForXDC", failure);
+    }
+
+    @Override
+    public void onGetUSDValueOfXDCSuccess(double USDValue) {
+//        Log.e("USDForXDC", String.valueOf(USDValue));
+        updateBalance(USDValue);
+    }
+
+    private void updateBalance(double USDValue) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                if (!TextUtils.isEmpty(xdcWalletBalance)) {
+                    if (USDValue > 0) {
+                        currencyAmount.setText(getString(R.string.txt_dollar)
+                                + String.format(STRING_FORMAT, Double.parseDouble(xdcWalletBalance) * USDValue)
+                                + TEXT_USD);
+                    }
+                }
+            }
+        });
     }
 }
