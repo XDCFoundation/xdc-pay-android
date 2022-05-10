@@ -24,7 +24,6 @@
                 android:background="@color/colorWhite"
                 android:elevation="@dimen/margin_10">
 
-
                 <ImageView
                     android:id="@+id/menu"
                     android:layout_width="wrap_content"

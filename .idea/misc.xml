@@ -53,6 +53,7 @@
         <entry key="app/src/main/res/drawable/warning_bg.xml" value="0.1325" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_advance_settings.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/activity_browser.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password_screen.xml" value="0.23333333333333334" />
@@ -93,6 +94,7 @@
         <entry key="app/src/main/res/layout/layout_delete_account_dialog.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_my_account_dialog.xml" value="0.23013698630136986" />
         <entry key="app/src/main/res/layout/layout_network_row.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_timer_bottom_sheet_dialog.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_tokens_list_row.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar_add.xml" value="0.2625" />

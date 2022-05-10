@@ -58,9 +58,4 @@ public class ReadWalletDetails {
         return res;
     }
 
-    public String getSelectedCurrency() {
-        res = "";
-        res = prefs.getString("selectedCurrency", "");
-        return res;
-    }
 }

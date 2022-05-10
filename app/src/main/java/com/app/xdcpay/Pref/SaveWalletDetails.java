@@ -77,11 +77,5 @@ public class SaveWalletDetails {
 
     }
 
-    public void saveSelectedCurrency(String s) {
-        result = false;
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("selectedCurrency", s);
-        result = editor.commit();
 
-    }
 }

@@ -1,7 +1,7 @@
 package com.app.xdcpay.Utils;
 
 public class Constants {
-    public static int CONNECTED_NETWORK = 1;
+    public static String CONNECTED_NETWORK = "1";
     public static final String WALLET_DATA = "wallet_data";
     public static final String TITLE = "title";
     public static final String URL = "url";
@@ -27,7 +27,7 @@ public class Constants {
     public static String ACCOUNT_NAME = "ACCOUNT_NAME";
 
     //MainNet Network
-    public static final String MAIN_NET_NAME = "XDC MAinnet";
+    public static final String MAIN_NET_NAME = "XDC Mainnet";
     public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";
     public static final String MAIN_NET_ID = "50";
     public static final String MAIN_NET_SYMBOL = "XDC";

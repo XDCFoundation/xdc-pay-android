@@ -18,6 +18,7 @@ import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Interface.BottomSheetInterface;
+import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -96,7 +97,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
 
     @Override
     public void BottomSheetOnClickListener(int pos, String name) {
-        SaveWalletDetails saveWalletDetails = new SaveWalletDetails(GeneralSettingsActivity.this);
+        SavePreferences saveWalletDetails = new SavePreferences(GeneralSettingsActivity.this);
         saveWalletDetails.saveSelectedCurrency(name);
         bottomSheetDialogImport.dismiss();
     }
