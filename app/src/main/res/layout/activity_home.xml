@@ -50,10 +50,10 @@
                     android:layout_below="@id/account_name"
                     android:layout_centerHorizontal="true"
                     android:drawableStart="@drawable/ic_green_dot"
+                    android:drawableEnd="@drawable/ic_drop_down"
                     android:drawablePadding="@dimen/margin_5"
                     android:padding="@dimen/margin_10"
                     android:text="@string/xdc_mainnet"
-                    android:drawableEnd="@drawable/ic_drop_down"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/margin_10" />
 

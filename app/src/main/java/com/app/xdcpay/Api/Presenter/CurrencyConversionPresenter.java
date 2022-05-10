@@ -12,11 +12,14 @@ import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Map;
 
 public class CurrencyConversionPresenter implements IGetUSDValueOfXDCPresenter {
     private final IGetUSDValueOfXDCView view;
+    String currencySymbol;
 
     public CurrencyConversionPresenter(IGetUSDValueOfXDCView view) {
         this.view = view;
@@ -24,8 +27,10 @@ public class CurrencyConversionPresenter implements IGetUSDValueOfXDCPresenter {
     }
 
     @Override
-    public void onGetUSDValueOfXDC(Map<String, Object> currencyData, Context context) {
-        BaseApiManager.getInstance().getCurrencyConversionApi(new EventModel(currencyData, null, null, null, context));
+    public void onGetUSDValueOfXDC(Map<String, Object> currencyData, Context context, String currencySymbol) {
+        this.currencySymbol = currencySymbol;
+        BaseApiManager.getInstance().getCurrencyConversionApi(new EventModel(currencyData,
+                null, null, null, context), currencySymbol);
     }
 
     @Override
@@ -56,15 +61,35 @@ public class CurrencyConversionPresenter implements IGetUSDValueOfXDCPresenter {
         if (eventModel.responseObj == null) {
             return;
         }
+        String apiResponse = String.valueOf(eventModel.responseObj);
+        JSONObject jsonObj = null;
+        try {
+            jsonObj = new JSONObject(apiResponse);
+            String data = jsonObj.getString("data");
+            JSONObject jsonObject1 = new JSONObject(data);
+            String currency = jsonObject1.getString(currencySymbol);
+            JSONObject jsonObject2 = new JSONObject(currency);
+            String quote = jsonObject2.getString("quote");
+            JSONObject jsonObject3 = new JSONObject(quote);
+            String USD = jsonObject3.getString("USD");
+            JSONObject jsonObject4 = new JSONObject(USD);
+            double USDValue = jsonObject4.getDouble("price");
+            view.onGetUSDValueOfXDCSuccess(USDValue);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        ApiCurrencyConversionResponseModel apiResponse = (ApiCurrencyConversionResponseModel) eventModel.responseObj;
-        Double USDValue = null;
-        if (apiResponse.getData().getXdc() != null) {
-            USDValue = apiResponse.getData().getXdc().getQuote().getUSD().getPrice();
-        }
-        if (apiResponse.getData().getEth() != null) {
-            USDValue = apiResponse.getData().getEth().getQuote().getUSD().getPrice();
-        }
+//        JSONObject jsonObj = new JSONObject(apiResponse);
+//        String status = jsonObj.getString("status");
+//        JSONObject jsonObject1 = new JSONObject(status);
+//        int error_code = jsonObject1.getInt("error_code");
+//        Double USDValue = null;
+//        if (apiResponse.getData().getXdc() != null) {
+//            USDValue = apiResponse.getData().getXdc().getQuote().getUSD().getPrice();
+//        }
+//        if (apiResponse.getData().getEth() != null) {
+//            USDValue = apiResponse.getData().getEth().getQuote().getUSD().getPrice();
+//        }
 
        /* ApiCurrencyConversionResponseModel.DATA data = apiResponse.getData();
         Gson gson = new Gson();
@@ -78,7 +103,7 @@ public class CurrencyConversionPresenter implements IGetUSDValueOfXDCPresenter {
         }
         Log.d("CurrencyData:", "" + jsonString);*/
 
-        view.onGetUSDValueOfXDCSuccess(USDValue);
+//
 
     }
 }

@@ -13,11 +13,15 @@ import com.app.xdcpay.Utils.AppUtility;
 import com.app.xdcpay.Utils.EventConstants;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,24 +77,36 @@ public class BaseApiManager {
             instance = new BaseApiManager();
     }
 
-    public void getCurrencyConversionApi(final EventModel eventModel) {
-        Call<ApiCurrencyConversionResponseModel> call = apiService.getValueForCurrencyConversion((Map<String, Object>) eventModel.requestObj);
-        Log.d("ApiCurrencyResponse:", "" + call.request().url() + " : " + eventModel.requestObj);
-        call.enqueue(new Callback<ApiCurrencyConversionResponseModel>() {
+    public void getCurrencyConversionApi(final EventModel eventModel, String symbol) {
+        Call<ResponseBody> call = apiService.getValueForCurrencyConversion((Map<String, Object>) eventModel.requestObj);
+//        Log.d("ApiCurrencyResponse:", "" + call.request().url() + " : " + eventModel.requestObj);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ApiCurrencyConversionResponseModel> call, Response<ApiCurrencyConversionResponseModel> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 AppUtility.hideDialog();
-                ApiCurrencyConversionResponseModel responseModel = response.body();
+                try {
+                    String responseModel = response.body().string();
+                    JSONObject jsonObj = new JSONObject(responseModel);
+                    String status = jsonObj.getString("status");
+                    JSONObject jsonObject1 = new JSONObject(status);
+                    int error_code = jsonObject1.getInt("error_code");
 
-                if (responseModel == null || responseModel.getStatus().getErrorCode() != 0) {
-                    EventBus.getDefault().post(new EventModel(null, null, EventConstants.CURRENCY_CONVERSION_FAIL, eventModel.context));
-                } else {
-                    EventBus.getDefault().post(new EventModel(null, responseModel, EventConstants.CURRENCY_CONVERSION_SUCCESS, eventModel.context));
+                    if (error_code == 0) {
+                        String error_message = jsonObject1.getString("error_message");
+                        EventBus.getDefault().post(new EventModel(null, responseModel, EventConstants.CURRENCY_CONVERSION_SUCCESS, eventModel.context));
+
+                    } else {
+                        EventBus.getDefault().post(new EventModel(null, null, EventConstants.CURRENCY_CONVERSION_FAIL, eventModel.context));
+                    }
+
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<ApiCurrencyConversionResponseModel> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 AppUtility.hideDialog();
                 EventBus.getDefault().post(new EventModel(null, null, EventConstants.CURRENCY_CONVERSION_FAIL, eventModel.context));
             }

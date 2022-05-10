@@ -6,6 +6,7 @@ import com.app.xdcpay.Model.Api.ApiCurrencyConversionResponseModel;
 
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
@@ -13,5 +14,5 @@ import retrofit2.http.QueryMap;
 public interface ApiService {
 
     @GET(CURRENCY_CONVERSION)
-    Call<ApiCurrencyConversionResponseModel> getValueForCurrencyConversion(@QueryMap Map<String, Object> parameters);
+    Call<ResponseBody> getValueForCurrencyConversion(@QueryMap Map<String, Object> parameters);
 }
