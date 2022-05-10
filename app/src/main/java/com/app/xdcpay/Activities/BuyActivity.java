@@ -63,4 +63,10 @@ public class BuyActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
