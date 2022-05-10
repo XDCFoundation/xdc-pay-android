@@ -58,7 +58,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
         holder.account_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkCallback.AccountDeleteOnClickListener(position, networkLists);
+                networkCallback.AccountDeleteOnClickListener(networkLists.get(position).accountPrivateKey);
 
             }
         });

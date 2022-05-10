@@ -27,8 +27,8 @@ public interface AddNetworkDAO {
     // on below line we are making query to
     // delete all courses from our database.
 
-    /*@Query("DELETE FROM course_table")
-    void deleteAllCourses();*/
+    @Query("DELETE FROM addNetwork_table WHERE id = :id")
+    void deleteById(int id);
 
     // below line is to read all the data from our database.
     @Query("SELECT * FROM " + NETWORK_TABLE_NAME)

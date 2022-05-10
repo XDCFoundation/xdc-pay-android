@@ -23,14 +23,32 @@
             android:orientation="vertical"
             android:padding="@dimen/margin_20">
 
-            <com.app.xdcpay.Views.TextViewMedium
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvXDCTitle"
                 android:layout_marginTop="@dimen/margin_20"
-                android:text="@string/apothem_network"
-                android:textColor="@color/colorBlue"
-                android:textSize="@dimen/margin_14" />
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/tvXDCTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apothem_network"
+                    android:textColor="@color/colorBlue"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/margin_14" />
+
+                <com.app.xdcpay.Views.TextViewMedium
+                    android:id="@+id/tvRemove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remove"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/margin_14" />
+            </LinearLayout>
 
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"

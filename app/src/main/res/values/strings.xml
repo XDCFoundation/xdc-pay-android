@@ -202,6 +202,7 @@
     <string name="type">Key Type</string>
     <string name="paste_private_key">Paste your private key string</string>
     <string name="private_key">Enter your private key</string>
+    <string name="remove">Remove</string>
     <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>
     <string name="reset_account">Reset Account</string>
     <string name="reset_account_hint">Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</string>
