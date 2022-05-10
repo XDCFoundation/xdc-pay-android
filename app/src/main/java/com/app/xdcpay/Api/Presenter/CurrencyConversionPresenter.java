@@ -1,14 +1,13 @@
 package com.app.xdcpay.Api.Presenter;
 
 import android.content.Context;
-import android.util.Log;
+
 
 import com.app.xdcpay.Api.BaseApiManager;
 import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
-import com.app.xdcpay.Model.Api.ApiCurrencyConversionResponseModel;
+
 import com.app.xdcpay.Model.Api.EventModel;
 import com.app.xdcpay.Utils.EventConstants;
-import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

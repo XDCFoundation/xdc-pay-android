@@ -12,7 +12,6 @@ import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Views.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TimeLockerAdapter extends RecyclerView.Adapter<TimeLockerAdapter.SortByHolder> {
@@ -43,7 +42,7 @@ public class TimeLockerAdapter extends RecyclerView.Adapter<TimeLockerAdapter.So
                 if (CurrencyName.contains("-")) {
                     String[] split = CurrencyName.split("-");
                     String currencySubString = split[0];
-                    Toast.makeText(view.getContext(), "" + currencySubString, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(view.getContext(), "" + currencySubString, Toast.LENGTH_SHORT).show();
                     bottomSheetInterface.BottomSheetOnClickListener(holder.getPosition(), currencySubString);
                 }
 
