@@ -10,16 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
+import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TimerBottomSheetFragment extends BottomSheetDialogFragment {
+public class TimerBottomSheetFragment extends BottomSheetDialogFragment implements BottomSheetInterface {
 
     private RecyclerView rvTimeLocker;
-    private final ArrayList<Integer> timeLockerList = new ArrayList<>(Arrays.asList(0, 5, 15, 30, 60, 300, 600));
+    private final ArrayList<String> timeLockerList = new ArrayList<>(Arrays.asList("Immediately", "5 seconds", "15 seconds", "30 seconds",
+            "60 seconds", "5 minutes", "10 minutes"));
     private TimeLockerAdapter timeLockerAdapter;
     private LinearLayoutManager layoutManager;
 
@@ -52,12 +54,18 @@ public class TimerBottomSheetFragment extends BottomSheetDialogFragment {
 
         layoutManager = new LinearLayoutManager(getActivity());
         rvTimeLocker.setLayoutManager(layoutManager);
-        timeLockerAdapter = new TimeLockerAdapter(requireActivity(), timeLockerList);
+        timeLockerAdapter = new TimeLockerAdapter(timeLockerList, this);
         rvTimeLocker.setAdapter(timeLockerAdapter);
         return view;
     }
 
     private void initViews(View v) {
         rvTimeLocker = v.findViewById(R.id.rvTimeLocker);
+
+    }
+
+    @Override
+    public void BottomSheetOnClickListener(int pos, String name) {
+
     }
 }

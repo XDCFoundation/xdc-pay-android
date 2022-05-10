@@ -11,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
-import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.Interface.ImportAccountCallback;
-import com.app.xdcpay.Interface.NetworkListInterface;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Views.TextViewMedium;
 
@@ -43,7 +41,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         AccountEntity model = networkLists.get(position);
         holder.tvAccountName.setText(context.getString(R.string.account) + " " + (position + 1));
-//
+
 //        holder.id_linear_network.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -53,7 +51,9 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
 //            }
 //        });
         if (model.getAccountName().equals(context.getString(R.string.imported_text))) {
-
+            holder.linear_imported.setVisibility(View.VISIBLE);
+        } else {
+            holder.linear_imported.setVisibility(View.GONE);
         }
         holder.account_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +72,13 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     public static class AccountViewHolder extends RecyclerView.ViewHolder {
         private TextViewMedium tvAccountName;
         private ImageView account_delete;
-//        private LinearLayout id_linear_network;
+        private LinearLayout linear_imported;
 
         public AccountViewHolder(@NonNull View itemView) {
             super(itemView);
             tvAccountName = itemView.findViewById(R.id.tvAccountName);
             account_delete = itemView.findViewById(R.id.account_delete);
+            linear_imported = itemView.findViewById(R.id.linear_imported);
 //            id_linear_network = itemView.findViewById(R.id.id_linear_network);
         }
     }

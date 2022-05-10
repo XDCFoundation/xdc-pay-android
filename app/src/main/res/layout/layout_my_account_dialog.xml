@@ -27,12 +27,12 @@
 
 
     <com.app.xdcpay.Views.TextView
+        android:id="@+id/create_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_add"
         android:drawablePadding="@dimen/margin_10"
         android:padding="@dimen/margin_15"
-        android:id="@+id/create_account"
         android:text="@string/create_account"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />

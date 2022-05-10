@@ -32,6 +32,7 @@ public class ImportAccountActivity extends BaseActivity {
     private EditText etPrivateKey;
     private TextViewMedium title, btn_Import;
     private ImageView back;
+    private String str_accountName;
     AccountEntity accountEntity;
     NetworkDataBase networkDataBase;
 
@@ -82,8 +83,11 @@ public class ImportAccountActivity extends BaseActivity {
 
     @Override
     public void setData() {
+        Intent i = getIntent();
         title.setText(getString(R.string.import_account));
         networkDataBase = NetworkDataBase.getInstance(ImportAccountActivity.this);
+        if (i != null)
+            str_accountName = i.getStringExtra(getString(R.string.imported_text));
     }
 
     @Override
@@ -108,8 +112,7 @@ public class ImportAccountActivity extends BaseActivity {
                 saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
                 saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
                 saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
-                accountEntity = new AccountEntity(
-                        getString(R.string.imported_text), walletData.getAccountAddress() ,
+                accountEntity = new AccountEntity(str_accountName, walletData.getAccountAddress(),
                         walletData.getPrivateKey(), walletData.getPublickeyKey());
                 new InsertTask(ImportAccountActivity.this, accountEntity).execute();
 

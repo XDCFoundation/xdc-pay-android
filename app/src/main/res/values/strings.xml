@@ -37,12 +37,14 @@
     <string name="xdc_apothem_testnet">XDC Apothem Testnet</string>
     <string name="localhost_8545">Localhost 8545</string>
     <string name="_4550_xdc">4550 XDC</string>
-    <string name="_372_30_usd">$372.30 USD</string>
+    <string name="txt_usd">USD</string>
+    <string name="txt_dollar">$</string>
     <string name="code">Xdc58a9…7cA4</string>
     <string name="buy">Buy</string>
     <string name="send">Send</string>
     <string name="receive">Receive</string>
     <string name="select_service">Select Service</string>
+    <string name="select_network">Select Network</string>
     <string name="qr_code">QR code</string>
     <string name="send_from">Send From</string>
     <string name="from">From</string>
@@ -51,6 +53,7 @@
     <string name="wallet_address">Wallet address</string>
     <string name="amount">Amount</string>
     <string name="available_4550_xdc">Available: 4550 XDC</string>
+    <string name="available_amount">Available Amount:</string>
     <string name="availableBalance">Available:  %s XDC</string>
     <string name="gas_price_gwei">Gas Price (GWEI)</string>
     <string name="max_transaction">Max Transaction Fee</string>
@@ -203,6 +206,10 @@
     <string name="paste_private_key">Paste your private key string</string>
     <string name="private_key">Enter your private key</string>
     <string name="remove">Remove</string>
+    <string name="base_Currency">Base Currency</string>
+
+    <string name="delete_text_1">Before deleting please transfer the amount of this account in one of your available account or send it to another wallet address</string>
+    <string name="delete_text_2">Once deleted you will not be able to recover the amount</string>
     <string name="txt_imported">Imported accounts are viewable in your wallet but are not recoverable with your secret recovery phase</string>
     <string name="reset_account">Reset Account</string>
     <string name="reset_account_hint">Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</string>
@@ -213,6 +220,26 @@
 
     <string-array name="report_video_options">
         <item>Private</item>
+    </string-array>
+
+    <string-array name="time_locker">
+        <item>Immediately</item>
+        <item>5 seconds</item>
+        <item>15 seconds</item>
+        <item>30 seconds</item>
+        <item>60 seconds</item>
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+    </string-array>
+
+    <string-array name="base_Currency">
+        <item>USD- United State Dollar</item>
+        <!--        <item>RUB- Russian Ruble</item>-->
+        <!--        <item>SAI- SAI</item>-->
+        <!--        <item>SC- Siacoin</item>-->
+        <!--        <item>RUB- Russian Ruble</item>-->
+        <!--        <item>RUB- Russian Ruble</item>-->
+        <!--        <item>RUB- Russian Ruble</item>-->
 
     </string-array>
 </resources>

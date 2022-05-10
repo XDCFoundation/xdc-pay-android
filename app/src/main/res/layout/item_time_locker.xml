@@ -15,6 +15,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_13"
+        android:paddingBottom="@dimen/margin_13"
+        android:paddingLeft="@dimen/margin_23"
+        android:paddingRight="@dimen/margin_23"
+        android:gravity="center"
        android:padding="@dimen/margin_15"
         android:layout_marginRight="@dimen/margin_15"
         android:id="@+id/timer_ll"
@@ -29,7 +34,7 @@
             android:textColor="@color/colorBlackText"
             android:textSize="@dimen/margin_14" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/iv_Checked"

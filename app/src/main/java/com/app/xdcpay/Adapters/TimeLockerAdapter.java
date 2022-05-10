@@ -1,6 +1,5 @@
 package com.app.xdcpay.Adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,21 +8,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.xdcpay.Pref.SaveAutoLockTimerPref;
+import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Views.TextView;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class TimeLockerAdapter extends RecyclerView.Adapter<TimeLockerAdapter.SortByHolder> {
 
-    private final ArrayList<Integer> list;
+    private final List<String> list;
     private boolean isChecked;
-    private Context context;
+    private BottomSheetInterface bottomSheetInterface;
 
-    public TimeLockerAdapter(Context context, ArrayList<Integer> list) {
+    public TimeLockerAdapter(List<String> list, BottomSheetInterface bottomSheetInterface) {
         this.list = list;
-        this.context = context;
+        this.bottomSheetInterface = bottomSheetInterface;
     }
 
     @NonNull
@@ -35,19 +35,17 @@ public class TimeLockerAdapter extends RecyclerView.Adapter<TimeLockerAdapter.So
 
     @Override
     public void onBindViewHolder(@NonNull SortByHolder holder, int position) {
-//        holder.tvSortByOption.setText(list.get(position));
-        if (list.get(position) > 60)
-            holder.tvSortByOption.setText(context.getResources().getString(
-                    R.string.minutes,
-                    String.valueOf(list.get(position) / 60)));
-        else
-            holder.tvSortByOption.setText(context.getResources().getString(
-                    R.string.seconds,
-                    String.valueOf(list.get(position))));
+        holder.tvSortByOption.setText(list.get(position));
+        String CurrencyName = list.get(position);
         holder.tvSortByOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SaveAutoLockTimerPref saveAutoLockTimerPref=new SaveAutoLockTimerPref(context);
+                if (CurrencyName.contains("-")) {
+                    String[] split = CurrencyName.split("-");
+                    String currencySubString = split[0];
+//                    Toast.makeText(view.getContext(), "" + currencySubString, Toast.LENGTH_SHORT).show();
+                    bottomSheetInterface.BottomSheetOnClickListener(holder.getPosition(), currencySubString);
+                }
 
 //                holder.tvSortByOption.setChecked(!holder.tvSortByOption.isChecked());
             }

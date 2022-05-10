@@ -77,7 +77,7 @@ public class SettingsActivity extends BaseActivity {
                 case R.id.generalSetting:
                 Intent intentGeneral = new Intent(SettingsActivity.this, GeneralSettingsActivity.class);
                 startActivity(intentGeneral);
-                //finish();
+                finish();
                 break;
 
             case R.id.back:

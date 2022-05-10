@@ -57,4 +57,10 @@ public class ReadWalletDetails {
         res = prefs.getBoolean("isSeedPhraseConfirm", false);
         return res;
     }
+
+    public String getSelectedCurrency() {
+        res = "";
+        res = prefs.getString("selectedCurrency", "");
+        return res;
+    }
 }
