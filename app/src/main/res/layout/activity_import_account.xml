@@ -45,7 +45,6 @@
         android:layout_marginLeft="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_10"
         android:layout_marginRight="@dimen/margin_20"
-        android:background="@drawable/rounded_corner_5dp_light_grey1_border"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="@id/textSelectKey"
         app:layout_constraintTop_toBottomOf="@id/textSelectKey">
@@ -54,10 +53,26 @@
             android:id="@+id/spnType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:entries="@array/report_video_options"
+            android:dropDownHorizontalOffset="0dp"
+            android:dropDownWidth="160dp"
+            android:entries="@array/key_type_list"
+            android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+            android:layout_centerInParent="true"
             android:padding="@dimen/margin_10"
+            android:visibility="gone"
             android:textAlignment="center" />
+
+        <com.app.xdcpay.Views.TextView
+            android:id="@+id/tvDropDown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+            android:padding="@dimen/margin_10"
+            android:textSize="@dimen/text_14"
+            android:text="@string/key_private"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"

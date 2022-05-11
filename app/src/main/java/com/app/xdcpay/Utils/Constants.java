@@ -1,5 +1,8 @@
 package com.app.xdcpay.Utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Constants {
     public static String CONNECTED_NETWORK = "1";
     public static final String WALLET_DATA = "wallet_data";
@@ -50,4 +53,9 @@ public class Constants {
     public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
     public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
 
+
+    // list
+
+    public static final ArrayList<String> keyTypeList = new ArrayList<>(Arrays.asList("Private"));
+    public static final ArrayList<String> currencyList = new ArrayList<>(Arrays.asList("USD- United State Dollar"));
 }
