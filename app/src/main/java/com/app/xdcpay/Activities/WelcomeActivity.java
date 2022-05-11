@@ -32,7 +32,6 @@ public class WelcomeActivity extends BaseActivity {
     private ImageView[] dots;
     private Timer timer;
     private int currentPage = 0;
-//    LinearLayout SliderDots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class WelcomeActivity extends BaseActivity {
         WelcomePagerAdapter pagerAdapter = new WelcomePagerAdapter(imageId, this);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(0);
-//        addBottomDots(0);
 
         dotscount = pagerAdapter.getCount();
         dots = new ImageView[dotscount];
@@ -120,23 +118,6 @@ public class WelcomeActivity extends BaseActivity {
             }
         }, DELAY_MS, PERIOD_MS);
 
-       /* viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                addBottomDots(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });*/
-
     }
 
     @Override
@@ -147,25 +128,5 @@ public class WelcomeActivity extends BaseActivity {
                 finish();
                 break;
         }
-    }
-
-  /*  private void addBottomDots(int currentPage) {
-        ImageView[] dots = new ImageView[2];
-
-        dots_ll.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new ImageView(this);
-            dots[i].setImageResource(R.drawable.ic_not_filled);
-            dots[i].setPadding(10, 0, 10, 0);
-            dots_ll.addView(dots[i]);
-        }
-
-        if (dots.length > 0)
-            dots[currentPage].setImageResource(R.drawable.ic_filled);
-    }*/
-
-    private void addBottomDots(int currentPage) {
-
-
     }
 }
