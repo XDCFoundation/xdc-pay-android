@@ -45,6 +45,7 @@ import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 
 import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
 import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
+import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
 import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
 import com.app.xdcpay.Adapters.ImportedAccountAdapter;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
