@@ -148,6 +148,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
         findViewById(R.id.accountname).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
+        findViewById(R.id.tvtransaction).setOnClickListener(this);
+
         tvSettings.setOnClickListener(this);
         network_name.setOnClickListener(this);
         tvHelp.setOnClickListener(this);
