@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,11 +37,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
+import com.XDCJava.callback.CreateAccountCallback;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 
 import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
+import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
 import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
 import com.app.xdcpay.Adapters.ImportedAccountAdapter;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
@@ -68,7 +72,9 @@ import com.app.xdcpay.Views.TextViewBold;
 import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -152,7 +158,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         readAutoLockTimerPref = new ReadPreferences(HomeActivity.this);
         networkDataBase = NetworkDataBase.getInstance(HomeActivity.this);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
+        adapter.addFragment(new NFTFragment(), getResources().getString(R.string.nfts));
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -413,9 +419,30 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 if (account_addname.getText().toString().length() == 0) {
                     showtoast(getResources().getString(R.string.add_acc_name));
                 } else {
-                    Intent i = new Intent(HomeActivity.this, ImportAccountActivity.class);
-                    i.putExtra(ACCOUNT_NAME, account_addname.getText().toString());
-                    startActivity(i);
+                    File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES +
+                            File.separator + "web3j");
+                    path.mkdir();
+                    XDCpayClient.getInstance().generateWallet(path, "", new CreateAccountCallback() {
+                        @Override
+                        public void success(WalletData walletData) {
+                            if (walletData != null) {
+                                Toast.makeText(HomeActivity.this, walletData.getAccountAddress(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(HomeActivity.this, "No Data Found!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void failure(Throwable t) {
+
+
+                        }
+
+                        @Override
+                        public void failure(String message) {
+
+                        }
+                    });
                     bottomSheetDialog.dismiss();
                 }
 
