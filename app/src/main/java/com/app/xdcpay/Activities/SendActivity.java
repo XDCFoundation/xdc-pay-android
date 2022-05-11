@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
+import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -25,7 +26,7 @@ public class SendActivity extends BaseActivity {
     private String strAddress;
     private ReadWalletDetails readWalletDetails;
     private TextViewMedium btn_next, availableBalance;
-
+    ReadPreferences readNetworkPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,7 @@ public class SendActivity extends BaseActivity {
 
     @Override
     public void setData() {
+        readNetworkPref = new ReadPreferences(SendActivity.this);
         Intent i = getIntent();
         if (i != null) {
             strAddress = i.getStringExtra(ADDRESS);
@@ -106,8 +108,8 @@ public class SendActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-
-        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), Constants.CONNECTED_NETWORK, new EventCallback() {
+        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), readNetworkPref.getNetworkName(), true,
+                new EventCallback() {
             @Override
             public void success(final String balance) throws Exception {
                 runOnUiThread(new Runnable() {

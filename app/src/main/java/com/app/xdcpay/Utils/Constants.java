@@ -1,7 +1,10 @@
 package com.app.xdcpay.Utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Constants {
-    public static int CONNECTED_NETWORK = 1;
+    public static String CONNECTED_NETWORK = "1";
     public static final String WALLET_DATA = "wallet_data";
     public static final String TITLE = "title";
     public static final String URL = "url";
@@ -27,7 +30,7 @@ public class Constants {
     public static String ACCOUNT_NAME = "ACCOUNT_NAME";
 
     //MainNet Network
-    public static final String MAIN_NET_NAME = "XDC MAinnet";
+    public static final String MAIN_NET_NAME = "XDC Mainnet";
     public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";
     public static final String MAIN_NET_ID = "50";
     public static final String MAIN_NET_SYMBOL = "XDC";
@@ -50,4 +53,9 @@ public class Constants {
     public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
     public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
 
+
+    // list
+
+    public static final ArrayList<String> keyTypeList = new ArrayList<>(Arrays.asList("Private"));
+    public static final ArrayList<String> currencyList = new ArrayList<>(Arrays.asList("USD- United State Dollar"));
 }
