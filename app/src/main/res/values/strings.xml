@@ -104,7 +104,7 @@
     <string name="apothem_network">XDC Apothem Network</string>
     <string name="rpc_url">RPC URL</string>
     <string name="chain_id">Chain ID</string>
-    <string name="add_acc_name">Please add Accountname</string>
+    <string name="add_acc_name">Please add Account name</string>
     <string name="copied">Address Copied to clipboard</string>
     <string name="currency_symbol">Currency Symbol</string>
     <string name="block_explore_url">Block Explorer Url</string>
@@ -115,6 +115,7 @@
     <string name="log_in">Log in</string>
     <string name="restore_from_seed_phrase">Restore from seed phrase</string>
     <string name="edit_contact">Edit Contact</string>
+    <string name="add_contact">Add Contact</string>
     <string name="contacts_name">Username</string>
     <string name="reveal_seed_words">Reveal Seed Words</string>
     <string name="change_password">Change Password</string>

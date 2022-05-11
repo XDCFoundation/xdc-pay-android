@@ -16,7 +16,7 @@
         android:padding="@dimen/margin_15">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_Networks"
+            android:id="@+id/recycler_Contacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -39,7 +39,7 @@
             android:layout_height="@dimen/margin_50"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/margin_5"
-            android:src="@drawable/profile_icon" />
+            android:src="@drawable/ic_profile_new" />
 
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="wrap_content"

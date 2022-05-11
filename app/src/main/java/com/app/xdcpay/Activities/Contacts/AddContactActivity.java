@@ -42,11 +42,12 @@ public class AddContactActivity extends BaseActivity {
         btn_addContact.setOnClickListener(this);
         btn_contactCancel.setOnClickListener(this);
         back.setOnClickListener(this);
+        setData();
     }
 
     @Override
     public void setData() {
-
+        title.setText(getString(R.string.add_contact));
     }
 
     @Override
@@ -80,7 +81,7 @@ public class AddContactActivity extends BaseActivity {
         if (!Validations.hasText(etWalletAddress))
             etWalletAddress.setError(getResources().getString(R.string.error_empty));
         else if (!Validations.hasText(etUserName))
-            etUserName.setError(getResources().getString(R.string.error_password_empty));
+            etUserName.setError(getResources().getString(R.string.error_empty));
 
         else return true;
 
