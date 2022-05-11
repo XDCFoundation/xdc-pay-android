@@ -32,4 +32,5 @@
     <dimen name="margin_50">50dp</dimen>
     <dimen name="margin_200">200dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="image_20">20dp</dimen>
 </resources>

@@ -17,13 +17,13 @@ import java.util.List;
 public interface Add_ImportAccountDao {
 
     @Insert
-    void insertNetwork(AccountEntity networkModel);
+    void insertAccount(AccountEntity networkModel);
 
     @Update
-    void updateNetwork(AccountEntity networkModel);
+    void updateAccount(AccountEntity networkModel);
 
     @Delete
-    void deleteNetwork(AccountEntity networkModel);
+    void deleteAccount(AccountEntity networkModel);
 
     // on below line we are making query to delete data by id.
     @Query("DELETE FROM importAccount_table WHERE accountPrivateKey = :id")

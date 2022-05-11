@@ -54,7 +54,7 @@ public class AccountRepository {
 
         @Override
         protected Void doInBackground(AccountEntity... networkEntities) {
-            add_importAccountDao.insertNetwork(networkEntities[0]);
+            add_importAccountDao.insertAccount(networkEntities[0]);
 
             return null;
         }
@@ -72,7 +72,7 @@ public class AccountRepository {
         protected Void doInBackground(AccountEntity... models) {
             // below line is use to update
             // our modal in dao.
-            dao.updateNetwork(models[0]);
+            dao.updateAccount(models[0]);
             return null;
         }
     }
@@ -88,7 +88,7 @@ public class AccountRepository {
         @Override
         protected Void doInBackground(AccountEntity... models) {
             // below line is use to delete our course modal in dao.
-            dao.deleteNetwork(models[0]);
+            dao.deleteAccount(models[0]);
             return null;
         }
     }
