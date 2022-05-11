@@ -5,10 +5,8 @@ import static com.app.xdcpay.Utils.Constants.PERIOD_MS;
 import static com.app.xdcpay.Utils.Constants.imageId;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,7 +14,6 @@ import android.widget.LinearLayout;
 import com.app.xdcpay.Adapters.WelcomePagerAdapter;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
-import com.app.xdcpay.Views.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
