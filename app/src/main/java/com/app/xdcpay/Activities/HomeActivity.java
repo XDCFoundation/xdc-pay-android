@@ -43,6 +43,7 @@ import com.XDCJava.callback.CreateAccountCallback;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 
+import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
 import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
 import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
 import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
