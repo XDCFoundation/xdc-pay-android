@@ -14,14 +14,16 @@ import androidx.viewpager.widget.PagerAdapter;
 public class WelcomePagerAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     private Activity activity;
+    private Integer[] imagesArray;
 
-    public WelcomePagerAdapter(Activity activity) {
+    public WelcomePagerAdapter(Integer[] imagesArray, Activity activity) {
         this.activity = activity;
+        this.imagesArray = imagesArray;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return imagesArray.length;
     }
 
     @Override
@@ -32,11 +34,12 @@ public class WelcomePagerAdapter extends PagerAdapter {
         ImageView im_slider = view.findViewById(R.id.welcome_iv);
         TextView title = view.findViewById(R.id.welcome_title_tv);
         TextView msg = view.findViewById(R.id.welcome_msg_tv);
+        im_slider.setBackgroundResource(imagesArray[position]);
         if (position == 0) {
-            im_slider.setImageResource(R.drawable.ic_illustration);
+//            im_slider.setImageResource(R.drawable.ic_illustration);
             title.setText(R.string.welcome_to_xdc_pay);
         } else {
-            im_slider.setImageResource(R.drawable.ic_illustration_1);
+//            im_slider.setImageResource(R.drawable.ic_illustration_1);
             title.setText(R.string.manage_digital_assets);
         }
         container.addView(view);
