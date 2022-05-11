@@ -1,5 +1,7 @@
 package com.app.xdcpay.Activities.Settings;
 
+import static com.app.xdcpay.Utils.Constants.currencyList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -49,7 +51,6 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
-        findViewById(R.id.currency).setOnClickListener(this);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
                 TextView tvHeader = (TextView) bottomSheetDialogImport.findViewById(R.id.tvHeader);
                 RecyclerView rvTimeLocker = (RecyclerView) bottomSheetDialogImport.findViewById(R.id.rvTimeLocker);
                 tvHeader.setText(getString(R.string.base_Currency));
-                timeLockerAdapter = new TimeLockerAdapter(list, this);
+                timeLockerAdapter = new TimeLockerAdapter(currencyList, this);
 
                 rvTimeLocker.setLayoutManager(new LinearLayoutManager(this));
                 rvTimeLocker.setHasFixedSize(true);
