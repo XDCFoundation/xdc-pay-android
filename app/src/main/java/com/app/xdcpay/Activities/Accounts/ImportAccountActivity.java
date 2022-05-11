@@ -138,7 +138,7 @@ public class ImportAccountActivity extends BaseActivity {
         finish();
     }
 
-    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+     class InsertTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<ImportAccountActivity> activityReference;
         private AccountEntity networkEntity;
 
@@ -149,7 +149,7 @@ public class ImportAccountActivity extends BaseActivity {
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            activityReference.get().networkDataBase.getAccountDao().insertNetwork(networkEntity);
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
             Intent i = new Intent(ImportAccountActivity.this, HomeActivity.class);
             startActivity(i);
             finish();

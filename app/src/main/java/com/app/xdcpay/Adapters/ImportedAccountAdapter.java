@@ -40,20 +40,12 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         AccountEntity model = networkLists.get(position);
-        holder.tvAccountName.setText(context.getString(R.string.account) + " " + (position + 1));
-
-//        holder.id_linear_network.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                networkCallback.networkListOnClickListener(position, networkLists);
-
-//            }
-//        });
+        //  holder.tvAccountName.setText(context.getString(R.string.account) + " " + (position + 1));
+        holder.tvAccountName.setText(model.accountName);
         if (model.getAccountName().equals(context.getString(R.string.imported_text))) {
-            holder.linear_imported.setVisibility(View.VISIBLE);
+            holder.textImported.setVisibility(View.VISIBLE);
         } else {
-            holder.linear_imported.setVisibility(View.GONE);
+            holder.textImported.setVisibility(View.GONE);
         }
         holder.account_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +62,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     }
 
     public static class AccountViewHolder extends RecyclerView.ViewHolder {
-        private TextViewMedium tvAccountName;
+        private TextViewMedium tvAccountName, textImported;
         private ImageView account_delete;
         private LinearLayout linear_imported;
 
@@ -79,6 +71,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             tvAccountName = itemView.findViewById(R.id.tvAccountName);
             account_delete = itemView.findViewById(R.id.account_delete);
             linear_imported = itemView.findViewById(R.id.linear_imported);
+            textImported = itemView.findViewById(R.id.textImported);
 //            id_linear_network = itemView.findViewById(R.id.id_linear_network);
         }
     }
