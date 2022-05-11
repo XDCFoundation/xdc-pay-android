@@ -110,6 +110,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     private ImportedAccountAdapter importedAccountAdapter;
     BottomSheetDialog bottomSheetDialogImport;
     NetworkDataBase networkDataBase;
+    AccountEntity accountEntity;
     private CurrencyConversionPresenter currencyConversionPresenter;
     ReadPreferences readAutoLockTimerPref;
 
@@ -426,6 +427,13 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                         @Override
                         public void success(WalletData walletData) {
                             if (walletData != null) {
+
+
+                                accountEntity = new AccountEntity(account_addname.getText().toString(), walletData.getAccountAddress(),
+                                        walletData.getPrivateKey(), walletData.getPublickeyKey());
+                                new InsertAccountTask(HomeActivity.this, accountEntity).execute();
+
+
                                 Toast.makeText(HomeActivity.this, walletData.getAccountAddress(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(HomeActivity.this, "No Data Found!", Toast.LENGTH_SHORT).show();
@@ -493,18 +501,18 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             public void onClick(View v) {
                 bottomSheetDialogImport.dismiss();
                 bottomSheetDialog.dismiss();
-                new InsertTask(HomeActivity.this, strPrivateKey).execute();
+                new DeleteAccountTask(HomeActivity.this, strPrivateKey).execute();
 
             }
         });
         bottomSheetDialog.show();
     }
 
-    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+    private class DeleteAccountTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<HomeActivity> activityReference;
         private String strPrivateKey;
 
-        public InsertTask(HomeActivity addNetworkActivity, String strPrivateKey) {
+        public DeleteAccountTask(HomeActivity addNetworkActivity, String strPrivateKey) {
             activityReference = new WeakReference<>(addNetworkActivity);
             this.strPrivateKey = strPrivateKey;
             this.strPrivateKey = strPrivateKey;
@@ -546,6 +554,25 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 }
             }
         });
+    }
+
+    public static class InsertAccountTask extends AsyncTask<Void, Void, Boolean>
+    {
+        private WeakReference<HomeActivity> activityReference;
+        private AccountEntity networkEntity;
+
+        public InsertAccountTask(HomeActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids)
+        {
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
+
+            return null;
+        }
     }
 
     public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.TimerViewHolder> {
