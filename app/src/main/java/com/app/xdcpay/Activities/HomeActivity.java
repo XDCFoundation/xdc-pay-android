@@ -146,7 +146,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         findViewById(R.id.receive).setOnClickListener(this);
         findViewById(R.id.menu).setOnClickListener(this);
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
-        findViewById(R.id.accountname).setOnClickListener(this);
+        findViewById(R.id.account_rl).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
         tvSettings.setOnClickListener(this);
         network_name.setOnClickListener(this);
@@ -293,7 +293,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                     drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
-            case R.id.accountname:
+            case R.id.account_rl:
                 bottomSheetDialogImport = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialogImport.setContentView(R.layout.layout_my_account_dialog);

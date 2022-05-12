@@ -39,7 +39,6 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
     private EditText etReceiverAddress, etSenderAddress, etAmount, etGasPrice, etGasLimit, etNote;
     private String strAddress;
     private ReadWalletDetails readWalletDetails;
-    private TextViewMedium btn_next, availableBalance;
     ReadPreferences readNetworkPref;
     private TextView btn_next, availableBalance, tv_usd;
     private String bal_str;
@@ -163,32 +162,31 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
         super.onResume();
         readWalletDetails = new ReadWalletDetails(SendActivity.this);
 
-        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), Constants.CONNECTED_NETWORK, new EventCallback() {
-            @Override
-            public void success(final String balance) throws Exception {
-                runOnUiThread(new Runnable() {
+        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(),
+                Constants.CONNECTED_NETWORK,true, new EventCallback() {
                     @Override
-                    public void run() {
-                        bal_str = balance;
-                        availableBalance.setText(getResources().getString(
-                                R.string.availableBalance,
-                                balance.toString()));
+                    public void success(final String balance) throws Exception {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                bal_str = balance;
+                                availableBalance.setText(getResources().getString(
+                                        R.string.availableBalance,
+                                        balance.toString()));
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void failure(Throwable t) {
+                        Log.e("get balance t", t.getMessage() + "");
+                    }
+
+                    @Override
+                    public void failure(String message) {
+                        Log.e("get balance msg", message);
                     }
                 });
-
-            }
-
-            @Override
-            public void failure(Throwable t) {
-                Log.e("get balance t", t.getMessage() + "");
-            }
-
-            @Override
-            public void failure(String message) {
-                Log.e("get balance msg", message);
-            }
-        });
-
     }
 
     @Override

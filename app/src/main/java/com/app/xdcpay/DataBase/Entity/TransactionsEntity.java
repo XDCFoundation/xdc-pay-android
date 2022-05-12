@@ -3,6 +3,7 @@ package com.app.xdcpay.DataBase.Entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 import static com.app.xdcpay.Utils.DatabaseConstants.TRANSACTIONS_FIELD_1;
 import static com.app.xdcpay.Utils.DatabaseConstants.TRANSACTIONS_FIELD_2;
 import static com.app.xdcpay.Utils.DatabaseConstants.TRANSACTIONS_FIELD_3;
@@ -36,8 +37,7 @@ class TransactionsEntity {
     @ColumnInfo(name = TRANSACTIONS_FIELD_6)
     public String transaction_hash;
 
-    public TransactionsEntity(int id, String sender, String receiver, String amount, String gas_limit, String gas_price, String transaction_hash) {
-        this.id = id;
+    public TransactionsEntity(String sender, String receiver, String amount, String gas_limit, String gas_price, String transaction_hash) {
         this.sender = sender;
         this.receiver = receiver;
         this.amount = amount;

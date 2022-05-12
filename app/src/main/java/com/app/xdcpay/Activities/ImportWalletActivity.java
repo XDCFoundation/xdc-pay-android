@@ -56,7 +56,6 @@ public class ImportWalletActivity extends BaseActivity {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.import_tv).setOnClickListener(this);
         show.setOnClickListener(this);
-        if(seed_phrase.getText().toString().length()>0)
         show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -100,10 +99,10 @@ public class ImportWalletActivity extends BaseActivity {
             case R.id.show:
                 if (show.getText().toString().equals(getResources().getString(R.string.show))) {
                     if(password.getText().toString().length()>0)
-                    password.setTransformationMethod(new PasswordTransformationMethod());
+                    password.setTransformationMethod(null);
                     show.setText(getResources().getString(R.string.hide));
                 } else {
-                    password.setTransformationMethod(null);
+                    password.setTransformationMethod(new PasswordTransformationMethod());
                     show.setText(getResources().getString(R.string.show));
                 }
                 break;
