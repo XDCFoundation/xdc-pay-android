@@ -25,7 +25,9 @@
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_wallet_setup.xml" value="0.11302083333333333" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_welcome.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/fragment_nav_drawer.xml" value="0.20104166666666667" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/import_acount_row.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_add_account_dialog.xml" value="0.25729166666666664" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_delete_account_dialog.xml" value="0.22135416666666666" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_my_account_dialog.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_toolbar.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_plus.xml" value="0.149" />
@@ -53,7 +55,9 @@
         <entry key="app/src/main/res/drawable/warning_bg.xml" value="0.1325" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_add_network.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_advance_settings.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/activity_browser.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_buy.xml" value="0.19722222222222222" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password_screen.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_confirm_transaction.xml" value="0.23333333333333334" />
@@ -93,6 +97,7 @@
         <entry key="app/src/main/res/layout/layout_delete_account_dialog.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_my_account_dialog.xml" value="0.23013698630136986" />
         <entry key="app/src/main/res/layout/layout_network_row.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_timer_bottom_sheet_dialog.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/layout_tokens_list_row.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar_add.xml" value="0.2625" />
@@ -100,7 +105,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

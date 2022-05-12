@@ -1,5 +1,7 @@
 package com.app.xdcpay.Activities.Settings;
 
+import static com.app.xdcpay.Utils.Constants.currencyList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -18,6 +20,7 @@ import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Interface.BottomSheetInterface;
+import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -48,7 +51,6 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
-        findViewById(R.id.currency).setOnClickListener(this);
     }
 
     @Override
@@ -71,7 +73,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
                 TextView tvHeader = (TextView) bottomSheetDialogImport.findViewById(R.id.tvHeader);
                 RecyclerView rvTimeLocker = (RecyclerView) bottomSheetDialogImport.findViewById(R.id.rvTimeLocker);
                 tvHeader.setText(getString(R.string.base_Currency));
-                timeLockerAdapter = new TimeLockerAdapter(list, this);
+                timeLockerAdapter = new TimeLockerAdapter(currencyList, this);
 
                 rvTimeLocker.setLayoutManager(new LinearLayoutManager(this));
                 rvTimeLocker.setHasFixedSize(true);
@@ -96,7 +98,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
 
     @Override
     public void BottomSheetOnClickListener(int pos, String name) {
-        SaveWalletDetails saveWalletDetails = new SaveWalletDetails(GeneralSettingsActivity.this);
+        SavePreferences saveWalletDetails = new SavePreferences(GeneralSettingsActivity.this);
         saveWalletDetails.saveSelectedCurrency(name);
         bottomSheetDialogImport.dismiss();
     }

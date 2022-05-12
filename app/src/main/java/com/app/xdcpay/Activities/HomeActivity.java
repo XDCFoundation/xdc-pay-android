@@ -17,12 +17,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,10 +37,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
+import com.XDCJava.callback.CreateAccountCallback;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 
+import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
+import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
+import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
 import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
 import com.app.xdcpay.Adapters.ImportedAccountAdapter;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
@@ -50,7 +59,11 @@ import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.Interface.ImportAccountCallback;
 import com.app.xdcpay.Fragments.NFTFragment;
+import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
+import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.Pref.ReadWalletDetails;
+import com.app.xdcpay.Pref.SaveAutoLockTimerPref;
+import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -60,7 +73,9 @@ import com.app.xdcpay.Views.TextViewBold;
 import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,12 +106,14 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     String xdcBalance = "";
     String xdcWalletBalance = "";
     private ArrayList<String> list = new ArrayList<>();
-    private TimeLockerAdapter timeLockerAdapter;
+    private NetworkAdapter timeLockerAdapter;
     private List<NetworkEntity> networkLists = new ArrayList<>();
     private ImportedAccountAdapter importedAccountAdapter;
     BottomSheetDialog bottomSheetDialogImport;
     NetworkDataBase networkDataBase;
+    AccountEntity accountEntity;
     private CurrencyConversionPresenter currencyConversionPresenter;
+    ReadPreferences readAutoLockTimerPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,37 +156,53 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
     @Override
     public void setData() {
+        list.clear();
+        readAutoLockTimerPref = new ReadPreferences(HomeActivity.this);
         networkDataBase = NetworkDataBase.getInstance(HomeActivity.this);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TransactionsFragment(), getResources().getString(R.string.transactions));
+        adapter.addFragment(new NFTFragment(), getResources().getString(R.string.nfts));
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        network_name.setText(readAutoLockTimerPref.getNetworkName());
 
-        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), Constants.CONNECTED_NETWORK, new EventCallback() {
-            @Override
-            public void success(final String balance) throws Exception {
-                runOnUiThread(new Runnable() {
+        networkLists = NetworkDataBase.getInstance(getApplicationContext()).getDatabaseDao().getNetworkList();
+        list.add(MAIN_NET_NAME);
+        list.add(APOTHEM_NAME);
+        list.add(LOCALHOST_8545_NAME);
+        if (networkLists.size() > 0) {
+            for (int i = 0; i < networkLists.size(); i++) {
+                list.add(networkLists.get(i).getNetworkName());
+            }
+        }
+        for (int j = 0; j < list.size(); j++) {
+            if (list.get(j).equals(readAutoLockTimerPref.getNetworkName()))
+                XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(),
+                        network_name.getText().toString(),true, new EventCallback() {
                     @Override
-                    public void run() {
-                        wallet_address.setText(readWalletDetails.getAccountAddress());
-                        xdcWalletBalance = balance;
-                        xdcBalance = balance + " " + getString(R.string.txt_xdc);
-                        wallet_balance.setText(xdcBalance);
+                    public void success(final String balance) throws Exception {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                wallet_address.setText(readWalletDetails.getAccountAddress());
+                                xdcWalletBalance = balance;
+                                xdcBalance = balance + " " + getString(R.string.txt_xdc);
+                                wallet_balance.setText(xdcBalance);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void failure(Throwable t) {
+                        Log.e("get balance t", t.getMessage() + "");
+                    }
+
+                    @Override
+                    public void failure(String message) {
+                        Log.e("get balance msg", message);
                     }
                 });
-            }
-
-            @Override
-            public void failure(Throwable t) {
-                Log.e("get balance t", t.getMessage() + "");
-            }
-
-            @Override
-            public void failure(String message) {
-                Log.e("get balance msg", message);
-            }
-        });
+        }
 
         if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
 //            cameraSource.start(surfaceView.getHolder());
@@ -194,7 +227,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 //        currencyData.put("symbol", readWalletDetails.getSelectedCurrency());
         currencyData.put("symbol", strSymbol);
         currencyData.put("CMC_PRO_API_KEY", API_KEY);
-        currencyConversionPresenter.onGetUSDValueOfXDC(currencyData, HomeActivity.this,strSymbol);
+        currencyConversionPresenter.onGetUSDValueOfXDC(currencyData, HomeActivity.this, strSymbol);
 
     }
 
@@ -337,7 +370,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 break;
 
             case R.id.network_name:
-                list.clear();
+
                 bottomSheetDialogImport = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialogImport.setContentView(R.layout.fragment_timer_bottom_sheet);
@@ -345,7 +378,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 RecyclerView rvTimeLocker = (RecyclerView) bottomSheetDialogImport.findViewById(R.id.rvTimeLocker);
                 tvHeader.setText(getString(R.string.select_network));
 
-                chekNetworkInDB();
+                timeLockerAdapter = new NetworkAdapter();
 
                 rvTimeLocker.setLayoutManager(new LinearLayoutManager(this));
                 rvTimeLocker.setHasFixedSize(true);
@@ -367,18 +400,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
     }
 
-    private void chekNetworkInDB() {
-        list.add(MAIN_NET_NAME);
-        list.add(APOTHEM_NAME);
-        list.add(LOCALHOST_8545_NAME);
-        networkLists = NetworkDataBase.getInstance(getApplicationContext()).getDatabaseDao().getNetworkList();
-        if (networkLists.size() > 0) {
-            for (int i = 0; i <= networkLists.size(); i++) {
-                list.add(networkLists.get(i).getNetworkName());
-            }
-        }
-        timeLockerAdapter = new TimeLockerAdapter(list, this);
-    }
 
     private void opencreateAccountDialog() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
@@ -400,9 +421,37 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 if (account_addname.getText().toString().length() == 0) {
                     showtoast(getResources().getString(R.string.add_acc_name));
                 } else {
-                    Intent i = new Intent(HomeActivity.this, ImportAccountActivity.class);
-                    i.putExtra(ACCOUNT_NAME, account_addname.getText().toString());
-                    startActivity(i);
+                    File path = getExternalFilesDir(Environment.DIRECTORY_PICTURES +
+                            File.separator + "web3j");
+                    path.mkdir();
+                    XDCpayClient.getInstance().generateWallet(path, "", new CreateAccountCallback() {
+                        @Override
+                        public void success(WalletData walletData) {
+                            if (walletData != null) {
+
+
+                                accountEntity = new AccountEntity(account_addname.getText().toString(), walletData.getAccountAddress(),
+                                        walletData.getPrivateKey(), walletData.getPublickeyKey());
+                                new InsertAccountTask(HomeActivity.this, accountEntity).execute();
+
+
+                                Toast.makeText(HomeActivity.this, walletData.getAccountAddress(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(HomeActivity.this, "No Data Found!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void failure(Throwable t) {
+
+
+                        }
+
+                        @Override
+                        public void failure(String message) {
+
+                        }
+                    });
                     bottomSheetDialog.dismiss();
                 }
 
@@ -453,18 +502,18 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             public void onClick(View v) {
                 bottomSheetDialogImport.dismiss();
                 bottomSheetDialog.dismiss();
-                new InsertTask(HomeActivity.this, strPrivateKey).execute();
+                new DeleteAccountTask(HomeActivity.this, strPrivateKey).execute();
 
             }
         });
         bottomSheetDialog.show();
     }
 
-    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+    private class DeleteAccountTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<HomeActivity> activityReference;
         private String strPrivateKey;
 
-        public InsertTask(HomeActivity addNetworkActivity, String strPrivateKey) {
+        public DeleteAccountTask(HomeActivity addNetworkActivity, String strPrivateKey) {
             activityReference = new WeakReference<>(addNetworkActivity);
             this.strPrivateKey = strPrivateKey;
             this.strPrivateKey = strPrivateKey;
@@ -506,5 +555,81 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 }
             }
         });
+    }
+
+    public static class InsertAccountTask extends AsyncTask<Void, Void, Boolean>
+    {
+        private WeakReference<HomeActivity> activityReference;
+        private AccountEntity networkEntity;
+
+        public InsertAccountTask(HomeActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids)
+        {
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
+
+            return null;
+        }
+    }
+
+    public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.TimerViewHolder> {
+        @NonNull
+        @Override
+        public NetworkAdapter.TimerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new NetworkAdapter.TimerViewHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_time_locker, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull NetworkAdapter.TimerViewHolder holder, int position) {
+
+            holder.network.setText(list.get(position));
+            if (readAutoLockTimerPref.getNetworkName().equals(list.get(position))
+                    || (network_name.getText().toString().equals(list.get(position))))
+                holder.iv_Checked.setVisibility(View.VISIBLE);
+            else
+                holder.iv_Checked.setVisibility(View.GONE);
+
+            holder.timer_ll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SavePreferences savePreferences = new SavePreferences(HomeActivity.this);
+                    savePreferences.saveNetwork(list.get(holder.getAdapterPosition()));
+                    if (bottomSheetDialogImport != null)
+                        bottomSheetDialogImport.dismiss();
+                    network_name.setText(holder.network.getText().toString());
+                    onUserInteraction();
+                    onResume();
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return list.size();
+        }
+
+        public class TimerViewHolder extends RecyclerView.ViewHolder {
+            private com.app.xdcpay.Views.TextView network;
+            private ImageView iv_Checked;
+            private LinearLayout timer_ll;
+
+            public TimerViewHolder(@NonNull View itemView) {
+                super(itemView);
+                network = itemView.findViewById(R.id.tvTimer);
+                iv_Checked = itemView.findViewById(R.id.iv_Checked);
+                timer_ll = itemView.findViewById(R.id.timer_ll);
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setData();
     }
 }

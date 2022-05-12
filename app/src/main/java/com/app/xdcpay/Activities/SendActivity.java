@@ -20,6 +20,7 @@ import com.XDCAndroid.XDC20Client;
 import com.XDCAndroid.XDC721Client;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
+import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.Api.Presenter.CurrencyConversionPresenter;
 import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
 import com.app.xdcpay.Pref.ReadWalletDetails;
@@ -38,6 +39,8 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
     private EditText etReceiverAddress, etSenderAddress, etAmount, etGasPrice, etGasLimit, etNote;
     private String strAddress;
     private ReadWalletDetails readWalletDetails;
+    private TextViewMedium btn_next, availableBalance;
+    ReadPreferences readNetworkPref;
     private TextView btn_next, availableBalance, tv_usd;
     private String bal_str;
 
@@ -101,6 +104,7 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
 
     @Override
     public void setData() {
+        readNetworkPref = new ReadPreferences(SendActivity.this);
         Intent i = getIntent();
         if (i != null) {
             strAddress = i.getStringExtra(ADDRESS);

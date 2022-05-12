@@ -45,6 +45,7 @@
     <string name="receive">Receive</string>
     <string name="select_service">Select Service</string>
     <string name="select_network">Select Network</string>
+    <string name="select_key_Type">Select Key Type</string>
     <string name="qr_code">QR code</string>
     <string name="send_from">Send From</string>
     <string name="from">From</string>
@@ -217,9 +218,11 @@
     <string name="advance_gas_control_hint">Select this to show gas price and limit controls directly on the send and confirm screens.</string>
     <string name="minutes">%s minutes</string>
     <string name="seconds">%s seconds</string>
+    <string name="faucet">XDC Apothem Testnet Test Faucet</string>
+    <string name="key_private">Private</string>
     <string name="input_type_double">0123456789.</string>
 
-    <string-array name="report_video_options">
+    <string-array name="key_type_list">
         <item>Private</item>
     </string-array>
 

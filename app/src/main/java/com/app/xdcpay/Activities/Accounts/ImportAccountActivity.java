@@ -1,7 +1,13 @@
 package com.app.xdcpay.Activities.Accounts;
 
+import static com.app.xdcpay.Utils.Constants.ACCOUNT_NAME;
+import static com.app.xdcpay.Utils.Constants.keyTypeList;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,8 +16,13 @@ import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
@@ -24,17 +35,23 @@ import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ImportAccountActivity extends BaseActivity {
     private AppCompatSpinner spnType;
     private EditText etPrivateKey;
+    private com.app.xdcpay.Views.TextView tvDropDown;
     private TextViewMedium title, btn_Import;
     private ImageView back;
     private String str_accountName;
     AccountEntity accountEntity;
     NetworkDataBase networkDataBase;
+    BottomSheetDialog bottomSheetDialogImport;
+    KeyTypeAdapter keyTypeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +63,7 @@ public class ImportAccountActivity extends BaseActivity {
     @Override
     public void getId() {
         spnType = findViewById(R.id.spnType);
+        tvDropDown = findViewById(R.id.tvDropDown);
         etPrivateKey = findViewById(R.id.etPrivateKey);
         title = findViewById(R.id.title);
         back = findViewById(R.id.back);
@@ -57,6 +75,7 @@ public class ImportAccountActivity extends BaseActivity {
     public void setListener() {
         back.setOnClickListener(this);
         btn_Import.setOnClickListener(this);
+        tvDropDown.setOnClickListener(this);
 
         etPrivateKey.addTextChangedListener(new TextWatcher() {
             @Override
@@ -87,7 +106,7 @@ public class ImportAccountActivity extends BaseActivity {
         title.setText(getString(R.string.import_account));
         networkDataBase = NetworkDataBase.getInstance(ImportAccountActivity.this);
         if (i != null)
-            str_accountName = i.getStringExtra(getString(R.string.imported_text));
+            str_accountName = i.getStringExtra(ACCOUNT_NAME);
     }
 
     @Override
@@ -99,6 +118,22 @@ public class ImportAccountActivity extends BaseActivity {
             case R.id.btn_Import:
                 if (isValid())
                     checkYourKey(etPrivateKey.getText().toString());
+                break;
+
+            case R.id.tvDropDown:
+                bottomSheetDialogImport = new BottomSheetDialog(ImportAccountActivity.this);
+                bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                bottomSheetDialogImport.setContentView(R.layout.fragment_timer_bottom_sheet);
+                TextView tvHeader = (TextView) bottomSheetDialogImport.findViewById(R.id.tvHeader);
+                RecyclerView rvTimeLocker = (RecyclerView) bottomSheetDialogImport.findViewById(R.id.rvTimeLocker);
+                tvHeader.setText(getString(R.string.select_key_Type));
+
+                keyTypeAdapter = new KeyTypeAdapter();
+
+                rvTimeLocker.setLayoutManager(new LinearLayoutManager(this));
+                rvTimeLocker.setHasFixedSize(true);
+                rvTimeLocker.setAdapter(keyTypeAdapter);
+                bottomSheetDialogImport.show();
 
         }
     }
@@ -138,7 +173,7 @@ public class ImportAccountActivity extends BaseActivity {
         finish();
     }
 
-    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+     class InsertTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<ImportAccountActivity> activityReference;
         private AccountEntity networkEntity;
 
@@ -149,11 +184,60 @@ public class ImportAccountActivity extends BaseActivity {
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            activityReference.get().networkDataBase.getAccountDao().insertNetwork(networkEntity);
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
             Intent i = new Intent(ImportAccountActivity.this, HomeActivity.class);
             startActivity(i);
             finish();
             return null;
         }
     }
+
+    public class KeyTypeAdapter extends RecyclerView.Adapter<KeyTypeAdapter.TimerViewHolder> {
+        @NonNull
+        @Override
+        public KeyTypeAdapter.TimerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new KeyTypeAdapter.TimerViewHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_time_locker, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull KeyTypeAdapter.TimerViewHolder holder, int position) {
+
+            holder.keyType.setText(keyTypeList.get(position));
+            if (tvDropDown.getText().toString().equals(keyTypeList.get(position)))
+                holder.iv_Checked.setVisibility(View.VISIBLE);
+            else
+                holder.iv_Checked.setVisibility(View.GONE);
+
+            holder.timer_ll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (bottomSheetDialogImport != null)
+                        bottomSheetDialogImport.dismiss();
+                    tvDropDown.setText(holder.keyType.getText().toString());
+                    onUserInteraction();
+                    onResume();
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return keyTypeList.size();
+        }
+
+        public class TimerViewHolder extends RecyclerView.ViewHolder {
+            private com.app.xdcpay.Views.TextView keyType;
+            private ImageView iv_Checked;
+            private LinearLayout timer_ll;
+
+            public TimerViewHolder(@NonNull View itemView) {
+                super(itemView);
+                keyType = itemView.findViewById(R.id.tvTimer);
+                iv_Checked = itemView.findViewById(R.id.iv_Checked);
+                timer_ll = itemView.findViewById(R.id.timer_ll);
+            }
+        }
+    }
+
 }

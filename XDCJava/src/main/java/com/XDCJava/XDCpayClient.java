@@ -1,5 +1,8 @@
 package com.XDCJava;
 
+import static com.XDCJava.AppConstants.MAIN_NET;
+import static com.XDCJava.AppConstants.TESTNET;
+
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.XDCJava.callback.EventCallback;
@@ -48,25 +51,29 @@ public class XDCpayClient {
         return instance;
     }
 
-
-    public Boolean isWeb3jConnected(int connectedNetwork) {
-        if (connectedNetwork == 0) {
-            web3 = Web3j.build(new
-
-                    HttpService(AppConstants.BASE_TEST_URL));
+    // edited by shaili
+    public Boolean isWeb3jConnected(String connectedNetwork, boolean isPrimary) {
+        if (connectedNetwork.equals(MAIN_NET)) {
+            if (isPrimary)
+                web3 = Web3j.build(new HttpService(AppConstants.MAIN_NET_PRIMARY_URL));
+            else
+                web3 = Web3j.build(new HttpService(AppConstants.MAIN_NET_SECONDARY_URL));
+        } else if (connectedNetwork.equals(TESTNET)) {
+            if (isPrimary)
+                web3 = Web3j.build(new HttpService(AppConstants.APOTHEM_PRIMARY_URL));
+            else
+                web3 = Web3j.build(new HttpService(AppConstants.APOTHEM_SECONDARY_URL));
         } else {
-            web3 = Web3j.build(new
-
-                    HttpService(AppConstants.BASE_MAIN_URL));
+            web3 = Web3j.build(new HttpService(AppConstants.BASE_MAIN_URL));
         }
         try {
             Web3ClientVersion clientVersion = web3.web3ClientVersion().sendAsync().get();
             //Connected
             //Show Error
             return !clientVersion.hasError();
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             //Show Error
+            isWeb3jConnected(connectedNetwork, false);
             return false;
         }
     }
@@ -133,9 +140,9 @@ public class XDCpayClient {
                                 String uri,
                                 double nftPriceOld,
                                 String private_key,
-                                int connectedNetwork,
+                                String connectedNetwork,
                                 EventCallback eventCallback) {
-        if (isWeb3jConnected(connectedNetwork)) {
+        if (isWeb3jConnected(connectedNetwork, true)) {
             BigInteger nftPrice = (BigDecimal.valueOf(nftPriceOld * weiToXDC).toBigInteger());
             Credentials credentials = Credentials.create(private_key);
             Fleek fleek = Fleek.load(signer, web3, credentials, new DefaultGasProvider());
@@ -218,9 +225,9 @@ public class XDCpayClient {
                               BigInteger tokenId,
                               double nftPriceOld,
                               String private_key,
-                              int connectedNetwork,
+                              String connectedNetwork,
                               EventCallback eventCallback) {
-        if (isWeb3jConnected(connectedNetwork)) {
+        if (isWeb3jConnected(connectedNetwork, true)) {
             BigInteger nftPrice = (BigDecimal.valueOf(nftPriceOld * weiToXDC).toBigInteger());
             Credentials credentials = Credentials.create(private_key);
             Fleek fleek = Fleek.load(signer, web3, credentials, new DefaultGasProvider());
@@ -288,13 +295,8 @@ public class XDCpayClient {
         }
     }
 
-    /**
-     * @param owner_address The address to query the XDC balance
-     * @return An uint256 representing the amount owned by the passed address.
-     * @dev Gets the balance of the specified address.
-     */
-    public void getXdcBalance(String owner_address, int connectedNetwork, EventCallback callBack) {
-        if (isWeb3jConnected(connectedNetwork)) {
+    public void getXdcBalance(String owner_address, String connectedNetwork, boolean isPrimary, EventCallback callBack) {
+        if (isWeb3jConnected(connectedNetwork, isPrimary)) {
             try {
                 new Thread(new Runnable() {
                     @Override
@@ -371,13 +373,5 @@ public class XDCpayClient {
         }
 
         return walletData;
-    }
-
-
-   //Bhavisha
-    public String getAccountaddFromPrivatekey(String private_key) throws IOException {
-
-        Credentials credentials = Credentials.create(private_key);
-        return  credentials.getAddress();
     }
 }
