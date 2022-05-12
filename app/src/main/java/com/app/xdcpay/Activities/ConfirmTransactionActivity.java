@@ -22,6 +22,7 @@ import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Views.TextViewMedium;
 
 import java.lang.ref.WeakReference;
+import java.math.BigInteger;
 
 public class ConfirmTransactionActivity extends BaseActivity {
     private TextViewMedium btnConfirm;
@@ -75,14 +76,10 @@ public class ConfirmTransactionActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnConfirm:
-                String hash = XDC20Client.getInstance().TransferXdc(readWalletDetails.getPrivateKey(), sender_str, receiver_str, Double.parseDouble(amount_str), Double.parseDouble(gas_price_str), Double.parseDouble(gas_limit_str));
+                String hash = XDC20Client.getInstance().TransferXdc(readWalletDetails.getPrivateKey(), sender_str, receiver_str, BigInteger.valueOf(Long.parseLong(amount_str)),  Long.parseLong(gas_price_str),  Long.parseLong(gas_limit_str));
                 transactionsEntity = new TransactionsEntity(sender_str, receiver_str, amount_str, gas_limit_str, gas_price_str, hash);
                 new InsertTask(ConfirmTransactionActivity.this, transactionsEntity).execute();
-                Intent i = new Intent(ConfirmTransactionActivity.this, HomeActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
+
                 break;
             case R.id.iv_back:
                 onBackPressed();
@@ -111,6 +108,16 @@ public class ConfirmTransactionActivity extends BaseActivity {
             activityReference.get().networkDataBase.getTransactionsDao().insertTransaction(transactionsEntity);
             startActivity(new Intent(ConfirmTransactionActivity.this, NetworksActivity.class));
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            Intent i = new Intent(ConfirmTransactionActivity.this, HomeActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
         }
     }
 }
