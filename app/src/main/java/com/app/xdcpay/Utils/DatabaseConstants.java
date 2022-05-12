@@ -22,6 +22,6 @@ public class DatabaseConstants {
     public static final String CONTACT_TABLE_NAME = "AddContact_table";
     public static final String CONTACT_FIELD_1 = "contactName";
     public static final String CONTACT_FIELD_2 = "contactWalletAddress";
-//    public static final String CONTACT_FIELD_3 = "accountPrivateKey";
-//    public static final String CONTACT_FIELD_4 = "accountPublicKey";
+    public static final String CONTACT_FIELD_3 = "nameFirstLetter";
+    //    public static final String CONTACT_FIELD_4 = "accountPublicKey";
 }

@@ -30,14 +30,14 @@
                     android:layout_width="@dimen/margin_50"
                     android:layout_height="@dimen/margin_50"
                     android:layout_gravity="center"
-                    android:src="@drawable/profile_icon" />
+                    android:src="@drawable/ic_profile" />
 
                 <com.app.xdcpay.Views.TextViewMedium
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tvName"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/margin_12"
-                    android:text="Alexa Appleseed"
+                    android:layout_marginTop="@dimen/margin_10"
                     android:textColor="@color/colorBlackText"
                     android:textSize="@dimen/margin_16" />
 
@@ -53,14 +53,15 @@
                 <com.app.xdcpay.Views.TextViewMedium
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tvWalletAddress"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/margin_50"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_marginTop="@dimen/margin_12"
                     android:layout_marginRight="@dimen/margin_50"
                     android:drawableEnd="@drawable/ic_copy_grey"
                     android:drawablePadding="@dimen/margin_3"
                     android:gravity="center"
-                    android:text="1243254"
+                    android:text=""
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/margin_14" />
 

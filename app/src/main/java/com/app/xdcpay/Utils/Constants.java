@@ -31,6 +31,11 @@ public class Constants {
     public static String NO = "No";
     public static String ACCOUNT_NAME = "ACCOUNT_NAME";
 
+    //contact Constants
+    public static String CONTACT_NAME = "CONTACT_NAME";
+    public static String CONTACT_WALLET = "CONTACT_WALLET";
+    public static String CONTACT_ID = "CONTACT_ID";
+
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC Mainnet";
     public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";

@@ -88,6 +88,8 @@
         <entry key="app/src/main/res/layout/activity_show_private_key.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_wallet_setup.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.23013698630136986" />
+        <entry key="app/src/main/res/layout/contact_list_row.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/contact_sublist.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.21547669944420692" />
         <entry key="app/src/main/res/layout/fragment_nav_drawer.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/fragment_timer_bottom_sheet.xml" value="0.23333333333333334" />

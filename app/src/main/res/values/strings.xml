@@ -221,6 +221,8 @@
     <string name="seconds">%s seconds</string>
     <string name="faucet">XDC Apothem Testnet Test Faucet</string>
     <string name="key_private">Private</string>
+    <string name="no_contacts">No Contacts found</string>
+    <string name="contacts_details">Contact Details</string>
 
     <string-array name="key_type_list">
         <item>Private</item>
