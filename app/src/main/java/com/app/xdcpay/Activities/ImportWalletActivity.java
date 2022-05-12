@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -15,12 +16,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
+import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 import com.google.gson.Gson;
 
@@ -31,11 +35,13 @@ public class ImportWalletActivity extends BaseActivity {
     private TextView title, show;
     private ProgressBar progressBar;
     private CheckBox show_cb;
+    AccountEntity accountEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_import_wallet);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -56,16 +62,16 @@ public class ImportWalletActivity extends BaseActivity {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.import_tv).setOnClickListener(this);
         show.setOnClickListener(this);
-        if(seed_phrase.getText().toString().length()>0)
-        show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (!b)
-                    seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
-                else
-                    seed_phrase.setTransformationMethod(null);
-            }
-        });
+        if (seed_phrase.getText().toString().length() > 0)
+            show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (!b)
+                        seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
+                    else
+                        seed_phrase.setTransformationMethod(null);
+                }
+            });
 
         password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,8 +105,8 @@ public class ImportWalletActivity extends BaseActivity {
 
             case R.id.show:
                 if (show.getText().toString().equals(getResources().getString(R.string.show))) {
-                    if(password.getText().toString().length()>0)
-                    password.setTransformationMethod(new PasswordTransformationMethod());
+                    if (password.getText().toString().length() > 0)
+                        password.setTransformationMethod(new PasswordTransformationMethod());
                     show.setText(getResources().getString(R.string.hide));
                 } else {
                     password.setTransformationMethod(null);
@@ -129,6 +135,13 @@ public class ImportWalletActivity extends BaseActivity {
                                     saveWalletDetails.saveSeedPhrase(walletData.getSeedPhrase());
                                     saveWalletDetails.savePassword(walletData.getPassword());
                                     saveWalletDetails.saveIsLogin(true);
+
+
+                                    accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
+                                            walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
+
+                                    SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
+
 
                                     new Handler().postDelayed(new Runnable() {
                                         @Override

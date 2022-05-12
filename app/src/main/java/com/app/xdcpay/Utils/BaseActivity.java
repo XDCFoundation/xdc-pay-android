@@ -12,16 +12,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.app.xdcpay.Activities.CreateWalletActivity;
 import com.app.xdcpay.Activities.HomeActivity;
-import com.app.xdcpay.Activities.LoginActivity;
 import com.app.xdcpay.Activities.SplashActivity;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
-import com.app.xdcpay.R;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -127,6 +126,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void startHandler() {
         ReadAutoLockTimerPref readAutoLockTimer = new ReadAutoLockTimerPref(BaseActivity.this);
         handler.postDelayed(r, readAutoLockTimer.getTimer() * 1000);
+    }
+
+    public AccountEntity getselectedaccount() {
+        AccountEntity account =  NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
+        return  account;
     }
 
 }

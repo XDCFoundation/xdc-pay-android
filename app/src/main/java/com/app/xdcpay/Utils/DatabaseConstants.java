@@ -18,4 +18,5 @@ public class DatabaseConstants {
     public static final String ACCOUNT_FIELD_2 = "accountAddress";
     public static final String ACCOUNT_FIELD_3 = "accountPrivateKey";
     public static final String ACCOUNT_FIELD_4 = "accountPublicKey";
+    public static final String ACCOUNT_FIELD_5 = "seedphrase";
 }

@@ -1,20 +1,14 @@
 package com.app.xdcpay.Activities.CreateWallet;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.app.xdcpay.Activities.CreateWalletActivity;
 import com.app.xdcpay.Activities.HomeActivity;
-import com.app.xdcpay.Activities.ImportWalletActivity;
-import com.app.xdcpay.Activities.SplashActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
@@ -36,6 +30,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
     private EditText etWord1, etWord2, etWord3;
     private ReadWalletDetails readWalletDetails;
     private String[] splited;
+    private ImageView back;
     private String seedText1, seedText2, seedText3;
     private List<String> strList = new ArrayList<String>();
     private ImageView ivWord1, ivWord2, ivWord3;
@@ -44,6 +39,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_seed_phrase);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -57,6 +53,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         ivWord1 = findViewById(R.id.ivWord1);
         ivWord2 = findViewById(R.id.ivWord2);
         ivWord3 = findViewById(R.id.ivWord3);
+        back = findViewById(R.id.back);
         confirm_recovery_password = findViewById(R.id.confirm_recovery_password);
         readWalletDetails = new ReadWalletDetails(ConfirmSeedPhraseActivity.this);
         setData();
@@ -65,6 +62,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
     @Override
     public void setListener() {
         confirm_recovery_password.setOnClickListener(this);
+        back.setOnClickListener(this);
         etWord1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -164,12 +162,19 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.confirm_recovery_password:
                 if (isValid()) {
+
+
+
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ConfirmSeedPhraseActivity.this);
                     saveWalletDetails.IsSeedPhaseConfirm(true);
                     saveWalletDetails.saveIsLogin(true);
                     startActivity(new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class));
                     finish();
                 }
+                break;
+            case R.id.back:
+                finish();
+                break;
         }
     }
 

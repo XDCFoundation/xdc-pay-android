@@ -10,9 +10,13 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.xdcpay.Activities.HomeActivity;
+import com.app.xdcpay.Activities.ImportWalletActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.Interface.ImportAccountCallback;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
+import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Views.TextViewMedium;
 
 import java.util.ArrayList;
@@ -52,6 +56,14 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             public void onClick(View v) {
                 networkCallback.AccountDeleteOnClickListener(networkLists.get(position).accountPrivateKey);
 
+            }
+        });
+
+        holder.tvAccountName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferenceHelper.setSharedPreferenceString(context.getApplicationContext(), Constants.ACCOUNT, position+"");
+                HomeActivity.setAccount(context.getApplicationContext(),position);
             }
         });
     }

@@ -13,8 +13,10 @@
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_advance_settings.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_browser.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_buy.xml" value="0.27291666666666664" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_confirm_seed_phrase.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_create_wallet.xml" value="0.25" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_home.xml" value="0.23072916666666668" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_import_account.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_import_wallet.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_login.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_main.xml" value="0.25729166666666664" />
@@ -23,10 +25,13 @@
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_send.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_sent.xml" value="0.140625" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_settings.xml" value="0.27291666666666664" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_wallet_seed_phrase.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_wallet_setup.xml" value="0.11302083333333333" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/activity_welcome.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/fragment_nav_drawer.xml" value="0.20104166666666667" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/fragment_timer_bottom_sheet.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/import_acount_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/item_time_locker.xml" value="0.27291666666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_add_account_dialog.xml" value="0.25729166666666664" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_delete_account_dialog.xml" value="0.22135416666666666" />
         <entry key="..\:/NEW_PROJECT/xdcpay-android/app/src/main/res/layout/layout_my_account_dialog.xml" value="0.25729166666666664" />

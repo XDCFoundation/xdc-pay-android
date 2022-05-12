@@ -12,10 +12,8 @@ import android.widget.ImageView;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
 import com.app.xdcpay.Pref.ReadPreferences;
-import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
-import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -24,7 +22,6 @@ public class SendActivity extends BaseActivity {
     private ImageView iv_barcode;
     private EditText etReceiverAddress, etSenderAddress, etAmount, etGasPrice, etNote;
     private String strAddress;
-    private ReadWalletDetails readWalletDetails;
     private TextViewMedium btn_next, availableBalance;
     ReadPreferences readNetworkPref;
     @Override
@@ -43,7 +40,6 @@ public class SendActivity extends BaseActivity {
         etGasPrice = findViewById(R.id.etGasPrice);
         etAmount = findViewById(R.id.etAmount);
         etNote = findViewById(R.id.etNote);
-        readWalletDetails = new ReadWalletDetails(SendActivity.this);
         setData();
     }
 
@@ -62,7 +58,7 @@ public class SendActivity extends BaseActivity {
             strAddress = i.getStringExtra(ADDRESS);
             etReceiverAddress.setText(strAddress);
         }
-        etSenderAddress.setText(readWalletDetails.getAccountAddress());
+        etSenderAddress.setText(getselectedaccount().getAccountAddress());
 
     }
 
@@ -108,7 +104,7 @@ public class SendActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(), readNetworkPref.getNetworkName(), true,
+        XDCpayClient.getInstance().getXdcBalance(getselectedaccount().getAccountAddress(), readNetworkPref.getNetworkName(), true,
                 new EventCallback() {
             @Override
             public void success(final String balance) throws Exception {

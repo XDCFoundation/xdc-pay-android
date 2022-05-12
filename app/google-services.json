@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "31057668401",
+    "project_id": "xdcpay-7a02f",
+    "storage_bucket": "xdcpay-7a02f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31057668401:android:9310a389b3f7d58ac36810",
+        "android_client_info": {
+          "package_name": "com.app.xdcpay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31057668401-1tdll35f3fbi3sm46ln92ksa90odt2dc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.xdcpay",
+            "certificate_hash": "847ce1be983e760f299bc5e783aac036b9f5d0d8"
+          }
+        },
+        {
+          "client_id": "31057668401-r99t5bmh0kstp1bfl33uu3fhokfga4qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD-_jubh-wPUPyGp_am40QZ1Qi9UlURso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31057668401-r99t5bmh0kstp1bfl33uu3fhokfga4qv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31057668401-ehscnv722lg7fo1poclar97b66mae52c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.xdc.XDCPayApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
