@@ -1,11 +1,17 @@
 package com.app.xdcpay.Utils;
 
 public class Constants {
+    public static final String AMOUNT="amount";
+    public static final String SENDER="sender";
+    public static final String RECEIVER="receiver";
+    public static final String XDC_SEND="xdc_send";
+    public static final String GAS_PRICE="gas_price";
+    public static final String GAS_LIMIT="gas_limit";
     public static int CONNECTED_NETWORK = 1;
     public static final String WALLET_DATA = "wallet_data";
     public static final String TITLE = "title";
     public static final String URL = "url";
-        public static final String STRING_FORMAT = "%.2f";
+    public static final String STRING_FORMAT = "%.2f";
     public static final String TEXT_USD = " USD";
     public static final String OBSERVER_URL = "https://observer.xdc.org/address-details/";
     public static final String WEBSITE_URL = "https://www.xdc.org/";

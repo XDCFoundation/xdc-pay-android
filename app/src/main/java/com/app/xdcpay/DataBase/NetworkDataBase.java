@@ -17,10 +17,12 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.app.xdcpay.DataBase.DAO.AddNetworkDAO;
 import com.app.xdcpay.DataBase.DAO.Add_ImportAccountDao;
+import com.app.xdcpay.DataBase.DAO.TransactionsDao;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.Entity.TransactionsEntity;
 
-@Database(entities = {NetworkEntity.class, AccountEntity.class}, version = DATABASE_VERSION)
+@Database(entities = {NetworkEntity.class, AccountEntity.class, TransactionsEntity.class}, version = DATABASE_VERSION)
 public abstract class NetworkDataBase extends RoomDatabase {
 
     // below line is to create instance for our database class.
@@ -30,6 +32,8 @@ public abstract class NetworkDataBase extends RoomDatabase {
     public abstract AddNetworkDAO getDatabaseDao();
 
     public abstract Add_ImportAccountDao getAccountDao();
+
+    public abstract TransactionsDao getTransactionsDao();
 
     public static synchronized NetworkDataBase getInstance(Context context) {
         if (instance == null) {

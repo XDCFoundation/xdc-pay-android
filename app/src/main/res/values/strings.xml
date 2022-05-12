@@ -217,6 +217,7 @@
     <string name="advance_gas_control_hint">Select this to show gas price and limit controls directly on the send and confirm screens.</string>
     <string name="minutes">%s minutes</string>
     <string name="seconds">%s seconds</string>
+    <string name="input_type_double">0123456789.</string>
 
     <string-array name="report_video_options">
         <item>Private</item>
