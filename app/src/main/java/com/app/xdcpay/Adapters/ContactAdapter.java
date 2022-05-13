@@ -1,17 +1,19 @@
 package com.app.xdcpay.Adapters;
 
 import android.content.Context;
+import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.xdcpay.DataBase.Entity.ContactEntity;
-import com.app.xdcpay.Interface.NetworkListInterface;
+
 import com.app.xdcpay.R;
 import com.app.xdcpay.Views.TextViewMedium;
 
@@ -22,7 +24,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     private Context context;
     private List<ContactEntity> ContactEntity = new ArrayList<>();
     ContactSubListAdapter contactSubListAdapter;
-    List<String> name= new ArrayList<>();
+    List<String> name = new ArrayList<>();
+    String first = "", second;
 
     public ContactAdapter(Context context, List<ContactEntity> ContactEntity) {
         this.context = context;
@@ -37,13 +40,22 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         return new ContactViewHolder(v);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         ContactEntity model = ContactEntity.get(position);
-//        String name
+
+        if (model.getNameFirstLetter().equals(first)) {
+            holder.tvFirstLetter.setVisibility(View.GONE);
+        }
+        else {
+            first = model.getNameFirstLetter();
+            holder.tvFirstLetter.setVisibility(View.VISIBLE);
+        }
+
         holder.tvFirstLetter.setText(model.getNameFirstLetter());
 //        if (model.getNameFirstLetter())
-        contactSubListAdapter = new ContactSubListAdapter(context,ContactEntity, model, position);
+        contactSubListAdapter = new ContactSubListAdapter(context, ContactEntity, model, position);
         holder.rvContact.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.rvContact.setAdapter(contactSubListAdapter);
 
@@ -56,7 +68,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         private TextViewMedium tvFirstLetter;
-//        private LinearLayout id_linear_network;
+        //        private LinearLayout id_linear_network;
         private RecyclerView rvContact;
 
         public ContactViewHolder(@NonNull View itemView) {
