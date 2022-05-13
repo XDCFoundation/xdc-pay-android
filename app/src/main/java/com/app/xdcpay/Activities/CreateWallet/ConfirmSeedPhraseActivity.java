@@ -1,6 +1,7 @@
 package com.app.xdcpay.Activities.CreateWallet;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,15 +9,22 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.Activities.HomeActivity;
+import com.app.xdcpay.Activities.ImportWalletActivity;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +39,8 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
     private ReadWalletDetails readWalletDetails;
     private String[] splited;
     private ImageView back;
+    AccountEntity accountEntity;
+    NetworkDataBase networkDataBase;
     private String seedText1, seedText2, seedText3;
     private List<String> strList = new ArrayList<String>();
     private ImageView ivWord1, ivWord2, ivWord3;
@@ -39,6 +49,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_seed_phrase);
+        networkDataBase = NetworkDataBase.getInstance(ConfirmSeedPhraseActivity.this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
@@ -162,14 +173,12 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.confirm_recovery_password:
                 if (isValid()) {
-
-
-
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ConfirmSeedPhraseActivity.this);
                     saveWalletDetails.IsSeedPhaseConfirm(true);
                     saveWalletDetails.saveIsLogin(true);
-                    startActivity(new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class));
-                    finish();
+                    accountEntity = new AccountEntity(getResources().getString(R.string.account_1), readWalletDetails.getAccountAddress(),
+                            readWalletDetails.getPrivateKey(), readWalletDetails.getPublicKey(),readWalletDetails.getSeedPhrase());
+                    new  InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
                 }
                 break;
             case R.id.back:
@@ -194,6 +203,27 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         else return true;
 
         return false;
+    }
+
+    class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<ConfirmSeedPhraseActivity> activityReference;
+        private AccountEntity accountEntity;
+
+        public InsertTask(ConfirmSeedPhraseActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.accountEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids)
+        {
+            SharedPreferenceHelper.setSharedPreferenceString(ConfirmSeedPhraseActivity.this, Constants.ACCOUNT, "0");
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(accountEntity);
+            Intent i = new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class);
+            startActivity(i);
+            finish();
+            return null;
+        }
     }
 
 }

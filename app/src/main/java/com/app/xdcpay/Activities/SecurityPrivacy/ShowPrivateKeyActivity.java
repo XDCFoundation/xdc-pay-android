@@ -44,7 +44,9 @@ public class ShowPrivateKeyActivity extends BaseActivity {
 
     @Override
     public void setData() {
+
         title.setText(getString(R.string.show_private_key));
+        tvPrivateKey.setText(getselectedaccount().accountPrivateKey);
     }
 
     @Override

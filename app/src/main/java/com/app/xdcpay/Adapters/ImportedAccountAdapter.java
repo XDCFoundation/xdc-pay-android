@@ -18,6 +18,7 @@ import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Views.TextViewMedium;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,13 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     private Context context;
     private List<AccountEntity> networkLists = new ArrayList<>();
     ImportAccountCallback networkCallback;
+    BottomSheetDialog bottomSheetDialog;
 
-    public ImportedAccountAdapter(Context context, List<AccountEntity> networkLists, ImportAccountCallback networkCallback) {
+    public ImportedAccountAdapter(Context context, List<AccountEntity> networkLists, ImportAccountCallback networkCallback, BottomSheetDialog bottomSheetDialogImport) {
         this.context = context;
         this.networkLists = networkLists;
         this.networkCallback = networkCallback;
+        this.bottomSheetDialog  = bottomSheetDialogImport;
     }
 
     @NonNull
@@ -54,7 +57,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
         holder.account_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkCallback.AccountDeleteOnClickListener(networkLists.get(position).accountPrivateKey);
+                networkCallback.AccountDeleteOnClickListener(model.accountPrivateKey);
 
             }
         });
@@ -63,7 +66,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             @Override
             public void onClick(View view) {
                 SharedPreferenceHelper.setSharedPreferenceString(context.getApplicationContext(), Constants.ACCOUNT, position+"");
-                HomeActivity.setAccount(context.getApplicationContext(),position);
+                HomeActivity.setAccount(context.getApplicationContext(),model.id,bottomSheetDialog);
             }
         });
     }
