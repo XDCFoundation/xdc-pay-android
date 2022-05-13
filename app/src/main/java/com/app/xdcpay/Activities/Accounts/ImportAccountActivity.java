@@ -45,7 +45,7 @@ public class ImportAccountActivity extends BaseActivity {
     private ImageView back;
     private String str_accountName;
     AccountEntity accountEntity;
-    NetworkDataBase networkDataBase;
+
     BottomSheetDialog bottomSheetDialogImport;
     KeyTypeAdapter keyTypeAdapter;
 
@@ -100,7 +100,6 @@ public class ImportAccountActivity extends BaseActivity {
     public void setData() {
         Intent i = getIntent();
         title.setText(getString(R.string.import_account));
-        networkDataBase = NetworkDataBase.getInstance(ImportAccountActivity.this);
         if (i != null)
             str_accountName = i.getStringExtra(ACCOUNT_NAME);
     }

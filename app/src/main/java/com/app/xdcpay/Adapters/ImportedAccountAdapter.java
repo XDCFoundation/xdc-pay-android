@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.xdcpay.Activities.HomeActivity;
-import com.app.xdcpay.Activities.ImportWalletActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.Interface.ImportAccountCallback;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
@@ -33,7 +32,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
         this.context = context;
         this.networkLists = networkLists;
         this.networkCallback = networkCallback;
-        this.bottomSheetDialog  = bottomSheetDialogImport;
+        this.bottomSheetDialog = bottomSheetDialogImport;
     }
 
     @NonNull
@@ -65,8 +64,8 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
         holder.tvAccountName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferenceHelper.setSharedPreferenceString(context.getApplicationContext(), Constants.ACCOUNT, position+"");
-                HomeActivity.setAccount(context.getApplicationContext(),model.id,bottomSheetDialog);
+                SharedPreferenceHelper.setSharedPreferenceString(context.getApplicationContext(), Constants.ACCOUNT, position + "");
+                HomeActivity.setAccount(context.getApplicationContext(), model.id, bottomSheetDialog);
             }
         });
     }

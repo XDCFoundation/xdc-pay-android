@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Activities.SplashActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
@@ -25,6 +26,7 @@ import com.ybs.passwordstrengthmeter.PasswordStrength;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public NetworkDataBase networkDataBase;
     public abstract void getId();
 
     public abstract void setListener();
@@ -39,6 +41,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
+        networkDataBase = NetworkDataBase.getInstance(BaseActivity.this);
+
     }
 
     @Override

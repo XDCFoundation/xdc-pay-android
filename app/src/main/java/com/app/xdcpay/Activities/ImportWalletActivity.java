@@ -1,6 +1,7 @@
 package com.app.xdcpay.Activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
@@ -29,6 +31,7 @@ import com.app.xdcpay.Utils.Validations;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class ImportWalletActivity extends BaseActivity {
     private EditText seed_phrase, password, confirm_password;
@@ -139,20 +142,11 @@ public class ImportWalletActivity extends BaseActivity {
 
                                     accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
                                             walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
-
+                                    new InsertTask(ImportWalletActivity.this, accountEntity).execute();
                                     SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
 
 
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            startActivity(intent);
-                                        }
-                                    }, 500);
+
                                 }
                             }
 
@@ -173,6 +167,35 @@ public class ImportWalletActivity extends BaseActivity {
                 break;
         }
     }
+
+
+    class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<ImportWalletActivity> activityReference;
+        private AccountEntity networkEntity;
+
+        public InsertTask(ImportWalletActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }, 500);
+            finish();
+            return null;
+        }
+    }
+
 
     private boolean isValid() {
         if (!Validations.hasText(seed_phrase))
