@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     public NetworkDataBase networkDataBase;
 
+    public NetworkDataBase networkDataBase;
     public abstract void getId();
 
     public abstract void setListener();
@@ -43,6 +44,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
 
+
+        networkDataBase = NetworkDataBase.getInstance(BaseActivity.this);
 
     }
 

@@ -202,6 +202,35 @@ public class ImportWalletActivity extends BaseActivity {
     }
 
 
+
+    class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<ImportWalletActivity> activityReference;
+        private AccountEntity networkEntity;
+
+        public InsertTask(ImportWalletActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }, 500);
+            finish();
+            return null;
+        }
+    }
+
+
     private boolean isValid() {
         if (!Validations.hasText(seed_phrase))
             seed_phrase.setError(getResources().getString(R.string.error_empty));
