@@ -1,8 +1,6 @@
 package com.app.xdcpay.Activities.SecurityPrivacy;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
@@ -13,19 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.XDCJava.XDCpayClient;
-import com.XDCJava.Model.WalletData;
-import com.XDCJava.callback.CreateAccountCallback;
-import com.app.xdcpay.Activities.ImportWalletActivity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
-import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
-import com.app.xdcpay.Views.TextViewMedium;
-import com.google.gson.Gson;
-
-import java.io.File;
 
 public class ChangePasswordScreenActivity extends BaseActivity {
 

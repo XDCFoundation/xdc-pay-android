@@ -24,4 +24,5 @@ public class DatabaseConstants {
     public static final String CONTACT_FIELD_2 = "contactWalletAddress";
     public static final String CONTACT_FIELD_3 = "nameFirstLetter";
     //    public static final String CONTACT_FIELD_4 = "accountPublicKey";
+    public static final String ACCOUNT_FIELD_5 = "seedphrase";
 }
