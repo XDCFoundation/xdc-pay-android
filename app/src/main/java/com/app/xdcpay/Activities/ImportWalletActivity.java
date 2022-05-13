@@ -146,7 +146,7 @@ public class ImportWalletActivity extends BaseActivity {
                                     accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
                                             walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
                                     new InsertTask(ImportWalletActivity.this, accountEntity).execute();
-                                    SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
+                                    SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "1");
 
 
 
