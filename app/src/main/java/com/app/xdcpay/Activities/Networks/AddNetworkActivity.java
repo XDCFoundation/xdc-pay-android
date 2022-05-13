@@ -96,11 +96,11 @@ public class AddNetworkActivity extends BaseActivity {
 
     private boolean isValid() {
         if (!Validations.hasText(etNetworkName))
-            etNetworkName.setError(getResources().getString(R.string.error_empty));
+            etNetworkName.setError(getResources().getString(R.string.network_name_error));
         else if (!Validations.hasText(etRPCUrl))
-            etRPCUrl.setError(getResources().getString(R.string.error_password_empty));
+            etRPCUrl.setError(getResources().getString(R.string.rpc_url_error));
         else if (!Validations.hasText(etChainId))
-            etChainId.setError(getResources().getString(R.string.error_password_empty));
+            etChainId.setError(getResources().getString(R.string.chain_id_error));
         else return true;
 
         return false;

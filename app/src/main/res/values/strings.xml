@@ -85,6 +85,9 @@
     <string name="error_password_not_match">Password does not match</string>
     <string name="error_check_terms">Please Agree , XDCPay Can’t Recover Your Password</string>
     <string name="error_empty">This field cannot be empty</string>
+    <string name="network_name_error">Please enter network name</string>
+    <string name="rpc_url_error">Please enter RPC URL</string>
+    <string name="chain_id_error">Please enter Chain ID</string>
     <string name="import_from_seed">Import from seed</string>
     <string name="edit">Edit</string>
     <string name="view_on_observatory">View on Observatory</string>
