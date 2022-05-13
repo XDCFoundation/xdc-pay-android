@@ -45,7 +45,9 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
 
     @Override
     public void setListener() {
+
         findViewById(R.id.back).setOnClickListener(this);
+        findViewById(R.id.currency).setOnClickListener(this);
     }
 
     @Override
