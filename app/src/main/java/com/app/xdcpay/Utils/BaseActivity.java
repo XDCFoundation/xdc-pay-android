@@ -42,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        networkDataBase = NetworkDataBase.getInstance(BaseActivity.this);
+
 
     }
 

@@ -22,6 +22,7 @@ import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
@@ -38,12 +39,14 @@ public class ImportWalletActivity extends BaseActivity {
     private TextView title, show;
     private ProgressBar progressBar;
     private CheckBox show_cb;
+    NetworkDataBase networkDataBase;
     AccountEntity accountEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_import_wallet);
+        networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
@@ -181,16 +184,18 @@ public class ImportWalletActivity extends BaseActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
-            new Handler().postDelayed(new Runnable() {
+
+            Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            /*new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+
                 }
-            }, 500);
+            }, 500);*/
             finish();
             return null;
         }
