@@ -91,7 +91,6 @@ public class AddNetworkActivity extends BaseActivity {
         Intent intent = new Intent(AddNetworkActivity.this, NetworksActivity.class);
         startActivity(intent);
         finish();
-//        super.onBackPressed();
     }
 
     private boolean isValid() {
