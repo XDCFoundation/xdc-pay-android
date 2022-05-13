@@ -18,6 +18,7 @@ public class Constants {
 
     public static final String SIMPLEX_URL = "https://simplex.bringtotheblock.net/";
     public static final String APOTHEM_NET_URL = "http://faucet.apothem.network/";
+    public static String ACCOUNT = "account";
 
     //network Constants
     public static String NETWORK_NAME = "NETWORK_NAME";
