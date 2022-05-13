@@ -25,7 +25,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     private List<ContactEntity> ContactEntity = new ArrayList<>();
     ContactSubListAdapter contactSubListAdapter;
     List<String> name = new ArrayList<>();
-    String first = "", second;
+    String firstLetter = "";
 
     public ContactAdapter(Context context, List<ContactEntity> ContactEntity) {
         this.context = context;
@@ -45,16 +45,15 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         ContactEntity model = ContactEntity.get(position);
 
-        if (model.getNameFirstLetter().equals(first)) {
+        if (model.getNameFirstLetter().equals(firstLetter)) {
             holder.tvFirstLetter.setVisibility(View.GONE);
         }
         else {
-            first = model.getNameFirstLetter();
+            firstLetter = model.getNameFirstLetter();
             holder.tvFirstLetter.setVisibility(View.VISIBLE);
         }
 
         holder.tvFirstLetter.setText(model.getNameFirstLetter());
-//        if (model.getNameFirstLetter())
         contactSubListAdapter = new ContactSubListAdapter(context, ContactEntity, model, position);
         holder.rvContact.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.rvContact.setAdapter(contactSubListAdapter);
