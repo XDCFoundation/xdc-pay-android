@@ -15,6 +15,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
+import com.app.xdcpay.Activities.Contacts.AddContactActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -163,6 +164,17 @@ public class ScannerActivity extends BaseActivity {
             Intent intent = new Intent(ScannerActivity.this, SendActivity.class);
             intent.putExtra(ADDRESS, address);
             startActivity(intent);
+            finish();
+        } else if (str_Activity.equals("EditContactActivity")) {
+            Intent intentEdit = new Intent(ScannerActivity.this, EditContactActivity.class);
+            intentEdit.putExtra(ADDRESS, address);
+            startActivity(intentEdit);
+            finish();
+        }
+        else if (str_Activity.equals("AddContactActivity")) {
+            Intent intentEdit = new Intent(ScannerActivity.this, AddContactActivity.class);
+            intentEdit.putExtra(ADDRESS, address);
+            startActivity(intentEdit);
             finish();
         }
     }

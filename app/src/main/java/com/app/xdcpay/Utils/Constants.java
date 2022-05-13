@@ -1,5 +1,7 @@
 package com.app.xdcpay.Utils;
 
+import com.app.xdcpay.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,7 +10,7 @@ public class Constants {
     public static final String WALLET_DATA = "wallet_data";
     public static final String TITLE = "title";
     public static final String URL = "url";
-        public static final String STRING_FORMAT = "%.2f";
+    public static final String STRING_FORMAT = "%.2f";
     public static final String TEXT_USD = " USD";
     public static final String OBSERVER_URL = "https://observer.xdc.org/address-details/";
     public static final String WEBSITE_URL = "https://www.xdc.org/";
@@ -29,7 +31,11 @@ public class Constants {
     public static String NO = "No";
     public static String ACCOUNT_NAME = "ACCOUNT_NAME";
 
-    public static String ACCOUNT = "account";
+    //contact Constants
+    public static String CONTACT_NAME = "CONTACT_NAME";
+    public static String CONTACT_WALLET = "CONTACT_WALLET";
+    public static String CONTACT_ID = "CONTACT_ID";
+
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC Mainnet";
     public static final String MAIN_NET_RPC_URL = "https://xdcpayrpc.blocksscan.io/";
@@ -54,9 +60,12 @@ public class Constants {
     public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
     public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
 
-
     // list
-
     public static final ArrayList<String> keyTypeList = new ArrayList<>(Arrays.asList("Private"));
     public static final ArrayList<String> currencyList = new ArrayList<>(Arrays.asList("USD- United State Dollar"));
+
+    //splash
+   public static Integer[] imageId = {R.drawable.ic_illustration, R.drawable.ic_illustration_1};
+    public static long DELAY_MS = 500;//delay in milliseconds before task is to be executed
+    public static long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
 }

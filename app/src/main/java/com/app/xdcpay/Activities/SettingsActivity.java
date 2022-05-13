@@ -81,7 +81,6 @@ public class SettingsActivity extends BaseActivity {
                 break;
 
             case R.id.back:
-
                 finish();
                 break;
         }

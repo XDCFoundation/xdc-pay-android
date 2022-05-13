@@ -18,6 +18,7 @@
     <color name="colorLightBlue">#F4F6FC</color>
     <color name="colorRed">#FE0035</color>
     <color name="colorLine">#E3E7EB</color>
+    <color name="textBgColor">#F4F6FA</color>
     <color name="bgTextColor">#FAFAFA</color>
     <color name="bottom_sheet">#EBEBEB</color>
     <color name="edit_color">#1F48B8</color>
