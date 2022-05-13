@@ -1,5 +1,7 @@
 package com.app.xdcpay.Activities;
 
+import static com.app.xdcpay.Activities.ScannerActivity.ACTIVITY_NAME;
+import static com.app.xdcpay.Activities.ScannerActivity.ADDRESS;
 import static com.app.xdcpay.Utils.Constants.CONTACT_ID;
 import static com.app.xdcpay.Utils.Constants.CONTACT_NAME;
 import static com.app.xdcpay.Utils.Constants.CONTACT_WALLET;
@@ -30,7 +32,9 @@ public class EditContactActivity extends BaseActivity {
     private EditText etWalletAddress, etUserName;
     private ImageView back;
     private TextViewMedium title, ivEdit;
+    private ImageView iv_barcodeScanner;
     int contactId;
+    String strAddress;
     NetworkDataBase networkDataBase;
     String contactWalletAddress, contactName, contactNameSubstring;
 
@@ -47,6 +51,7 @@ public class EditContactActivity extends BaseActivity {
         back = findViewById(R.id.ivBack);
         ivEdit = findViewById(R.id.ivEdit);
         title = findViewById(R.id.tvTitle);
+        iv_barcodeScanner = findViewById(R.id.iv_barcodeScanner);
         etWalletAddress = findViewById(R.id.etWalletAddress);
         etUserName = findViewById(R.id.etUserName);
         title.setText(getString(R.string.edit_contact));
@@ -59,6 +64,7 @@ public class EditContactActivity extends BaseActivity {
         btn_updateContact.setOnClickListener(this);
         btn_contactCancel.setOnClickListener(this);
         ivEdit.setOnClickListener(this);
+        iv_barcodeScanner.setOnClickListener(this);
         back.setOnClickListener(this);
     }
 
@@ -72,6 +78,10 @@ public class EditContactActivity extends BaseActivity {
             contactId = i.getIntExtra(CONTACT_ID, 0);
             etUserName.setText(contactName);
             etWalletAddress.setText(contactWalletAddress);
+            strAddress = i.getStringExtra(ADDRESS);
+            if (strAddress != null) {
+                etWalletAddress.setText(strAddress);
+            }
         }
     }
 
@@ -85,14 +95,20 @@ public class EditContactActivity extends BaseActivity {
             case R.id.ivEdit:
                 deleteAccount();
                 break;
+
+            case R.id.iv_barcodeScanner:
+                Intent intent = new Intent(EditContactActivity.this, ScannerActivity.class);
+                intent.putExtra(ACTIVITY_NAME, "EditContactActivity");
+                startActivity(intent);
+                break;
             case R.id.btn_updateContact:
                 if (isValid()) {
                     new UpdateTask(EditContactActivity.this).execute();
                 }
                 break;
             case R.id.btn_contactCancel:
-                Intent intent = new Intent(EditContactActivity.this, ContactsActivity.class);
-                startActivity(intent);
+                Intent intentCancel = new Intent(EditContactActivity.this, ContactsActivity.class);
+                startActivity(intentCancel);
                 finish();
                 break;
         }
@@ -154,7 +170,7 @@ public class EditContactActivity extends BaseActivity {
             contactName = etUserName.getText().toString();
             contactNameSubstring = contactName.substring(0, 1);
             activityReference.get().networkDataBase.getContactDao().updateByID(contactName, contactNameSubstring,
-                    etWalletAddress.getText().toString(),contactId);
+                    etWalletAddress.getText().toString(), contactId);
             Intent i = new Intent(EditContactActivity.this, ContactsActivity.class);
             startActivity(i);
             finish();

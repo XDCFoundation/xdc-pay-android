@@ -1,5 +1,7 @@
 package com.app.xdcpay.Activities.Contacts;
 
+import static com.app.xdcpay.Activities.ScannerActivity.ACTIVITY_NAME;
+
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
@@ -8,8 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Activities.EditContactActivity;
 import com.app.xdcpay.Activities.Networks.AddNetworkActivity;
 import com.app.xdcpay.Activities.Networks.NetworksActivity;
+import com.app.xdcpay.Activities.ScannerActivity;
 import com.app.xdcpay.DataBase.Entity.ContactEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
@@ -30,6 +34,8 @@ public class AddContactActivity extends BaseActivity {
     private ContactEntity contactEntity;
     NetworkDataBase myDataBase;
     String contactName, contactNameSubstring;
+    private ImageView iv_barcodeScanner;
+    String strAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class AddContactActivity extends BaseActivity {
         btn_contactCancel = findViewById(R.id.btn_contactCancel);
         back = findViewById(R.id.back);
         title = findViewById(R.id.title);
+        iv_barcodeScanner = findViewById(R.id.iv_barcodeScanner);
         etWalletAddress = findViewById(R.id.etWalletAddress);
         etUserName = findViewById(R.id.etUserName);
         title.setText(getString(R.string.add_networks));
@@ -53,11 +60,18 @@ public class AddContactActivity extends BaseActivity {
         btn_addContact.setOnClickListener(this);
         btn_contactCancel.setOnClickListener(this);
         back.setOnClickListener(this);
+        iv_barcodeScanner.setOnClickListener(this);
         setData();
     }
 
     @Override
     public void setData() {
+        Intent i = getIntent();
+        if (i != null) {
+            if (strAddress != null) {
+                etWalletAddress.setText(strAddress);
+            }
+        }
         myDataBase = NetworkDataBase.getInstance(AddContactActivity.this);
         title.setText(getString(R.string.add_contact));
     }
@@ -81,6 +95,11 @@ public class AddContactActivity extends BaseActivity {
                 Intent intent = new Intent(AddContactActivity.this, ContactsActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+            case R.id.iv_barcodeScanner:
+                Intent intentScan = new Intent(AddContactActivity.this, ScannerActivity.class);
+                intentScan.putExtra(ACTIVITY_NAME, "AddContactActivity");
+                startActivity(intentScan);
                 break;
         }
     }
