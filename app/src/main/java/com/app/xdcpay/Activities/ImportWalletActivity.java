@@ -59,7 +59,7 @@ public class ImportWalletActivity extends BaseActivity {
         progressBar = findViewById(R.id.password_strength_progress);
         show_cb = findViewById(R.id.show_cb);
         show = findViewById(R.id.show);
-
+        networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
         setData();
     }
 
@@ -146,7 +146,7 @@ public class ImportWalletActivity extends BaseActivity {
                                     accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
                                             walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
                                     new InsertTask(ImportWalletActivity.this, accountEntity).execute();
-                                    SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "1");
+                                    SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
 
 
 
