@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.Activities.HomeActivity;
-import com.app.xdcpay.Activities.ImportWalletActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.ReadWalletDetails;
@@ -177,8 +175,8 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
                     saveWalletDetails.IsSeedPhaseConfirm(true);
                     saveWalletDetails.saveIsLogin(true);
                     accountEntity = new AccountEntity(getResources().getString(R.string.account_1), readWalletDetails.getAccountAddress(),
-                            readWalletDetails.getPrivateKey(), readWalletDetails.getPublicKey(),readWalletDetails.getSeedPhrase());
-                    new  InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
+                            readWalletDetails.getPrivateKey(), readWalletDetails.getPublicKey(), readWalletDetails.getSeedPhrase());
+                    new InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
                 }
                 break;
             case R.id.back:
@@ -215,8 +213,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         }
 
         @Override
-        protected Boolean doInBackground(Void... voids)
-        {
+        protected Boolean doInBackground(Void... voids) {
             SharedPreferenceHelper.setSharedPreferenceString(ConfirmSeedPhraseActivity.this, Constants.ACCOUNT, "0");
             activityReference.get().networkDataBase.getAccountDao().insertAccount(accountEntity);
             Intent i = new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class);
