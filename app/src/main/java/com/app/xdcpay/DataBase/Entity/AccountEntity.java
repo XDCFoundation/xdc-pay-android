@@ -4,6 +4,7 @@ import static com.app.xdcpay.Utils.DatabaseConstants.ACCOUNT_FIELD_1;
 import static com.app.xdcpay.Utils.DatabaseConstants.ACCOUNT_FIELD_2;
 import static com.app.xdcpay.Utils.DatabaseConstants.ACCOUNT_FIELD_3;
 import static com.app.xdcpay.Utils.DatabaseConstants.ACCOUNT_FIELD_4;
+import static com.app.xdcpay.Utils.DatabaseConstants.ACCOUNT_FIELD_5;
 import static com.app.xdcpay.Utils.DatabaseConstants.ACCOUNT_TABLE_NAME;
 
 import androidx.room.ColumnInfo;
@@ -27,12 +28,16 @@ public class AccountEntity {
     @ColumnInfo(name = ACCOUNT_FIELD_4)
     public String accountPublicKey;
 
-    public AccountEntity(String accountName, String accountAddress, String accountPrivateKey, String accountPublicKey) {
+    @ColumnInfo(name = ACCOUNT_FIELD_5)
+    public String seedphrase;
+
+    public AccountEntity(String accountName, String accountAddress, String accountPrivateKey, String accountPublicKey,String seedphrase) {
 //        this.id = id;
         this.accountName = accountName;
         this.accountAddress = accountAddress;
         this.accountPrivateKey = accountPrivateKey;
         this.accountPublicKey = accountPublicKey;
+        this.seedphrase = seedphrase;
     }
 
     public int getId() {
@@ -73,5 +78,13 @@ public class AccountEntity {
 
     public void setAccountPublicKey(String accountPublicKey) {
         this.accountPublicKey = accountPublicKey;
+    }
+
+    public String getAccountseedphrase() {
+        return accountPublicKey;
+    }
+
+    public void setAccountseedphrase(String accountPublicKey) {
+        this.seedphrase = accountPublicKey;
     }
 }

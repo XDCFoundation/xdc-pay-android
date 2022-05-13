@@ -12,10 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +36,6 @@ import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ImportAccountActivity extends BaseActivity {
     private AppCompatSpinner spnType;
@@ -148,10 +144,15 @@ public class ImportAccountActivity extends BaseActivity {
                 saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
                 saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
                 accountEntity = new AccountEntity(str_accountName, walletData.getAccountAddress(),
-                        walletData.getPrivateKey(), walletData.getPublickeyKey());
+                        walletData.getPrivateKey(), walletData.getPublickeyKey(),"");
                 new InsertTask(ImportAccountActivity.this, accountEntity).execute();
 
             }
+            else
+            {
+                showtoast(getResources().getString(R.string.invalid_privatekey));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

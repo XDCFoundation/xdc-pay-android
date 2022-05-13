@@ -30,59 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
-import com.XDCJava.Model.WalletData;
-import com.XDCJava.XDCpayClient;
-import com.XDCJava.callback.CreateAccountCallback;
-import com.XDCJava.callback.EventCallback;
-import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
-
-import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
-import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
-import com.app.xdcpay.Activities.SecurityPrivacy.SecurityAndPrivacyActivity;
-import com.app.xdcpay.Activities.Settings.GeneralSettingsActivity;
-import com.app.xdcpay.Adapters.ImportedAccountAdapter;
-import com.app.xdcpay.Adapters.TimeLockerAdapter;
-import com.app.xdcpay.Api.Presenter.CurrencyConversionPresenter;
-import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
-import com.app.xdcpay.DataBase.Entity.AccountEntity;
-import com.app.xdcpay.DataBase.Entity.NetworkEntity;
-import com.app.xdcpay.DataBase.NetworkDataBase;
-import com.app.xdcpay.Fragments.TokensFragment;
-import com.app.xdcpay.Fragments.TransactionsFragment;
-import com.app.xdcpay.Interface.BottomSheetInterface;
-import com.app.xdcpay.Interface.ImportAccountCallback;
-import com.app.xdcpay.Fragments.NFTFragment;
-import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
-import com.app.xdcpay.Pref.ReadPreferences;
-import com.app.xdcpay.Pref.ReadWalletDetails;
-import com.app.xdcpay.Pref.SaveAutoLockTimerPref;
-import com.app.xdcpay.Pref.SavePreferences;
-import com.app.xdcpay.Pref.SaveWalletDetails;
-import com.app.xdcpay.R;
-import com.app.xdcpay.Utils.BaseActivity;
-import com.app.xdcpay.Utils.Constants;
-import com.app.xdcpay.Views.EditText;
-import com.app.xdcpay.Views.TextViewBold;
-import com.app.xdcpay.Views.TextViewMedium;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
-
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -94,17 +41,57 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.XDCJava.Model.WalletData;
+import com.XDCJava.XDCpayClient;
+import com.XDCJava.callback.CreateAccountCallback;
+import com.XDCJava.callback.EventCallback;
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
+import com.app.xdcpay.Adapters.ImportedAccountAdapter;
+import com.app.xdcpay.Api.Presenter.CurrencyConversionPresenter;
+import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Fragments.NFTFragment;
+import com.app.xdcpay.Fragments.TokensFragment;
+import com.app.xdcpay.Interface.BottomSheetInterface;
+import com.app.xdcpay.Interface.ImportAccountCallback;
+import com.app.xdcpay.Pref.ReadPreferences;
+import com.app.xdcpay.Pref.SavePreferences;
+import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
+import com.app.xdcpay.R;
+import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Utils.Constants;
+import com.app.xdcpay.Views.EditText;
+import com.app.xdcpay.Views.TextViewBold;
+import com.app.xdcpay.Views.TextViewMedium;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.tabs.TabLayout;
+
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class HomeActivity extends BaseActivity implements ImportAccountCallback, IGetUSDValueOfXDCView, BottomSheetInterface {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private DrawerLayout drawerLayout;
-    private ReadWalletDetails readWalletDetails;
+    // private ReadWalletDetails readWalletDetails;
     private ImageView scan, img_copy_walletadd;
-    private TextView wallet_balance, currencyAmount, wallet_address, network_name;
+    private static TextView wallet_balance;
+    private TextView currencyAmount;
+    private static TextView wallet_address;
+    private static TextView network_name;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
-    TextViewMedium tvSettings, tvHelp;
+    TextViewMedium tvSettings;
+    TextViewMedium tvHelp;
+    static TextViewMedium account_name,selectedaccountname;
     String xdcBalance = "";
-    String xdcWalletBalance = "";
+    static String xdcWalletBalance = "";
     private ArrayList<String> list = new ArrayList<>();
     private NetworkAdapter timeLockerAdapter;
     private List<NetworkEntity> networkLists = new ArrayList<>();
@@ -115,6 +102,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     private CurrencyConversionPresenter currencyConversionPresenter;
     ReadPreferences readAutoLockTimerPref;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +111,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
     @Override
     public void getId() {
-        readWalletDetails = new ReadWalletDetails(HomeActivity.this);
+        //readWalletDetails = new ReadWalletDetails(HomeActivity.this);
         drawerLayout = findViewById(R.id.drawerLayout);
         viewPager = findViewById(R.id.favorite_view_pager);
         currencyAmount = findViewById(R.id.currencyAmount);
@@ -131,6 +119,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         wallet_address = findViewById(R.id.wallet_address);
         wallet_balance = findViewById(R.id.wallet_balance);
         network_name = findViewById(R.id.network_name);
+        account_name = findViewById(R.id.account_name);
+        selectedaccountname = findViewById(R.id.accountname);
         scan = findViewById(R.id.scan);
         img_copy_walletadd = findViewById(R.id.img_copywalletAd);
         tvSettings = findViewById(R.id.tvSettings);
@@ -146,8 +136,10 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         findViewById(R.id.receive).setOnClickListener(this);
         findViewById(R.id.menu).setOnClickListener(this);
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
-        findViewById(R.id.accountname).setOnClickListener(this);
+        selectedaccountname.setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
+        findViewById(R.id.tvtransaction).setOnClickListener(this);
+
         tvSettings.setOnClickListener(this);
         network_name.setOnClickListener(this);
         tvHelp.setOnClickListener(this);
@@ -176,32 +168,11 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             }
         }
         for (int j = 0; j < list.size(); j++) {
-            if (list.get(j).equals(readAutoLockTimerPref.getNetworkName()))
-                XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(),
-                        network_name.getText().toString(),true, new EventCallback() {
-                    @Override
-                    public void success(final String balance) throws Exception {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                wallet_address.setText(readWalletDetails.getAccountAddress());
-                                xdcWalletBalance = balance;
-                                xdcBalance = balance + " " + getString(R.string.txt_xdc);
-                                wallet_balance.setText(xdcBalance);
-                            }
-                        });
-                    }
+            if (list.get(j).equals(readAutoLockTimerPref.getNetworkName())) {
+                setAccount(this, getselectedaccount().getId(), null);
 
-                    @Override
-                    public void failure(Throwable t) {
-                        Log.e("get balance t", t.getMessage() + "");
-                    }
+            }
 
-                    @Override
-                    public void failure(String message) {
-                        Log.e("get balance msg", message);
-                    }
-                });
         }
 
         if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -231,10 +202,50 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
     }
 
+
     @Override
     public void BottomSheetOnClickListener(int pos, String name) {
 
     }
+
+
+    public static void setAccount(Context context, int id, BottomSheetDialog bottomSheetDialog) {
+        List<AccountEntity> accountlist = NetworkDataBase.getInstance(context).getAccountDao().getAccountList();
+        for (int i = 0; i < accountlist.size(); i++) {
+            if (id == accountlist.get(i).id) {
+                AccountEntity account = accountlist.get(i);
+                account_name.setText(account.accountName);
+                wallet_address.setText(account.accountAddress);
+                selectedaccountname.setText(account.accountName);
+
+                XDCpayClient.getInstance().getXdcBalance(account.getAccountAddress(),
+                        network_name.getText().toString(), true, new EventCallback() {
+                            @Override
+                            public void success(final String balance) throws Exception {
+                                xdcWalletBalance = balance + " " + context.getString(R.string.txt_xdc);
+
+                            }
+
+                            @Override
+                            public void failure(Throwable t) {
+                                Log.e("get balance t", t.getMessage() + "");
+                            }
+
+                            @Override
+                            public void failure(String message) {
+                                Log.e("get balance msg", message);
+                            }
+                        });
+                wallet_balance.setText(xdcWalletBalance);
+            }
+        }
+
+
+        if (bottomSheetDialog != null && bottomSheetDialog.isShowing())
+            bottomSheetDialog.dismiss();
+
+    }
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -302,7 +313,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 RecyclerView account_rv = (RecyclerView) bottomSheetDialogImport.findViewById(R.id.account_rv);
 
                 importedAccountAdapter = new ImportedAccountAdapter(getApplicationContext(),
-                        NetworkDataBase.getInstance(getApplicationContext()).getAccountDao().getAccountList(), this);
+                        NetworkDataBase.getInstance(getApplicationContext()).getAccountDao().getAccountList(), this, bottomSheetDialogImport);
 
                 account_rv.setLayoutManager(new LinearLayoutManager(this));
                 account_rv.setHasFixedSize(true);
@@ -331,7 +342,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                     @Override
                     public void onClick(View v) {
 
-//                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
                         Intent intent1 = new Intent(HomeActivity.this, ImportAccountActivity.class);
                         intent1.putExtra(ACCOUNT_NAME, getString(R.string.imported_text));
                         startActivity(intent1);
@@ -347,7 +357,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             case R.id.view_on_observatory:
                 Intent intent1 = new Intent(HomeActivity.this, BrowserActivity.class);
                 intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
-                intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
+                intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + NetworkDataBase.getInstance(HomeActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(HomeActivity.this, Constants.ACCOUNT, ""))));
                 startActivity(intent1);
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
@@ -389,6 +399,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             case R.id.logout:
                 SaveWalletDetails saveWalletDetails = new SaveWalletDetails(HomeActivity.this);
                 saveWalletDetails.saveIsLogin(false);
+                SharedPreferenceHelper.clearSharedPreference(HomeActivity.this);
                 Intent intent = new Intent(HomeActivity.this, SplashActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -431,11 +442,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
 
                                 accountEntity = new AccountEntity(account_addname.getText().toString(), walletData.getAccountAddress(),
-                                        walletData.getPrivateKey(), walletData.getPublickeyKey());
+                                        walletData.getPrivateKey(), walletData.getPublickeyKey(), "");
                                 new InsertAccountTask(HomeActivity.this, accountEntity).execute();
-
-
-                                Toast.makeText(HomeActivity.this, walletData.getAccountAddress(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(HomeActivity.this, "No Data Found!", Toast.LENGTH_SHORT).show();
                             }
@@ -516,7 +524,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         public DeleteAccountTask(HomeActivity addNetworkActivity, String strPrivateKey) {
             activityReference = new WeakReference<>(addNetworkActivity);
             this.strPrivateKey = strPrivateKey;
-            this.strPrivateKey = strPrivateKey;
         }
 
         @Override
@@ -557,8 +564,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         });
     }
 
-    public static class InsertAccountTask extends AsyncTask<Void, Void, Boolean>
-    {
+    public static class InsertAccountTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<HomeActivity> activityReference;
         private AccountEntity networkEntity;
 
@@ -568,8 +574,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
 
         @Override
-        protected Boolean doInBackground(Void... voids)
-        {
+        protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
 
             return null;

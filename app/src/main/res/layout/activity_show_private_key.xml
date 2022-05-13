@@ -38,7 +38,6 @@
                 android:background="@drawable/rounded_corner_5dp_light_grey1_border"
                 android:gravity="top"
                 android:hint="@string/hint_private_key"
-                android:inputType="textPassword|textMultiLine"
                 android:lines="4"
                 android:padding="@dimen/margin_10"
                 android:textSize="@dimen/margin_14" />
