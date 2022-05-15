@@ -1,5 +1,7 @@
 package com.app.xdcpay.Utils;
 
+import com.app.xdcpay.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -22,6 +24,7 @@ public class Constants {
 
     public static final String SIMPLEX_URL = "https://simplex.bringtotheblock.net/";
     public static final String APOTHEM_NET_URL = "http://faucet.apothem.network/";
+    public static String ACCOUNT = "account";
 
     //network Constants
     public static String NETWORK_NAME = "NETWORK_NAME";
@@ -34,6 +37,11 @@ public class Constants {
     public static String YES = "Yes";
     public static String NO = "No";
     public static String ACCOUNT_NAME = "ACCOUNT_NAME";
+
+    //contact Constants
+    public static String CONTACT_NAME = "CONTACT_NAME";
+    public static String CONTACT_WALLET = "CONTACT_WALLET";
+    public static String CONTACT_ID = "CONTACT_ID";
 
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC Mainnet";
@@ -59,9 +67,12 @@ public class Constants {
     public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
     public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
 
-
     // list
-
     public static final ArrayList<String> keyTypeList = new ArrayList<>(Arrays.asList("Private"));
     public static final ArrayList<String> currencyList = new ArrayList<>(Arrays.asList("USD- United State Dollar"));
+
+    //splash
+   public static Integer[] imageId = {R.drawable.ic_illustration, R.drawable.ic_illustration_1};
+    public static long DELAY_MS = 500;//delay in milliseconds before task is to be executed
+    public static long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
 }

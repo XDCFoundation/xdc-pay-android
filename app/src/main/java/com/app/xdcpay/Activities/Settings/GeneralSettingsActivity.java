@@ -3,25 +3,20 @@ package com.app.xdcpay.Activities.Settings;
 import static com.app.xdcpay.Utils.Constants.currencyList;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.app.xdcpay.Activities.CreateWalletActivity;
 import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
-import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.Pref.SavePreferences;
-import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;

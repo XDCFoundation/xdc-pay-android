@@ -145,7 +145,7 @@
                     android:drawableEnd="@drawable/ic_drop_down"
                     android:drawablePadding="@dimen/margin_12"
                     android:focusable="false"
-                    android:padding="@dimen/margin_12"
+                    android:padding="@dimen/margin_13"
                     android:singleLine="true"
                     android:text="@string/auto_lock_time"
                     android:textColor="@color/colorBlack"

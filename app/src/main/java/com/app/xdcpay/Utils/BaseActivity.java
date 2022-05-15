@@ -12,20 +12,21 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.app.xdcpay.Activities.CreateWalletActivity;
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
 import com.app.xdcpay.Activities.HomeActivity;
-import com.app.xdcpay.Activities.LoginActivity;
 import com.app.xdcpay.Activities.SplashActivity;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
-import com.app.xdcpay.R;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public NetworkDataBase networkDataBase;
     public abstract void getId();
 
     public abstract void setListener();
@@ -40,6 +41,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
+
+
     }
 
     @Override
@@ -127,6 +130,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void startHandler() {
         ReadAutoLockTimerPref readAutoLockTimer = new ReadAutoLockTimerPref(BaseActivity.this);
         handler.postDelayed(r, readAutoLockTimer.getTimer() * 1000);
+    }
+
+    public AccountEntity getselectedaccount() {
+        AccountEntity account =  NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
+        return  account;
     }
 
 }

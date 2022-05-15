@@ -31,18 +31,51 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
 
-            <com.app.xdcpay.Views.EditText
-                android:id="@+id/etWalletAddress"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
-                android:drawableEnd="@drawable/ic_scan"
-                android:hint="@string/hint_wallet_address"
-                android:inputType="textCapSentences"
-                android:padding="@dimen/margin_10"
-                android:singleLine="true"
-                android:textSize="@dimen/margin_14" />
+                android:padding="@dimen/margin_5">
+
+                <com.app.xdcpay.Views.EditText
+                    android:id="@+id/etWalletAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_5"
+                    android:layout_toLeftOf="@+id/iv_barcode"
+                    android:background="@color/colorWhite"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:ellipsize="middle"
+                    android:hint="@string/wallet_address"
+                    android:padding="@dimen/margin_5"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+                <ImageView
+                    android:id="@+id/iv_barcodeScanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_scan" />
+
+            </RelativeLayout>
+
+<!--            <com.app.xdcpay.Views.EditText-->
+<!--                android:id="@+id/etWalletAddress"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/margin_10"-->
+<!--                android:background="@drawable/rounded_corner_5dp_light_grey_border"-->
+<!--                android:drawableEnd="@drawable/ic_scan"-->
+<!--                android:hint="@string/hint_wallet_address"-->
+<!--                android:inputType="textCapSentences"-->
+<!--                android:padding="@dimen/margin_10"-->
+<!--                android:ellipsize="middle"-->
+<!--                android:singleLine="true"-->
+<!--                android:textSize="@dimen/margin_14" />-->
 
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"
@@ -92,7 +125,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_corner_5dp_green_bg"
-                    android:backgroundTint="@color/colorLightGreen"
                     android:padding="@dimen/margin_10"
                     android:text="@string/update"
                     android:textAllCaps="false"

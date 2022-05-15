@@ -19,6 +19,13 @@ public class DatabaseConstants {
     public static final String ACCOUNT_FIELD_3 = "accountPrivateKey";
     public static final String ACCOUNT_FIELD_4 = "accountPublicKey";
 
+    public static final String CONTACT_TABLE_NAME = "AddContact_table";
+    public static final String CONTACT_FIELD_1 = "contactName";
+    public static final String CONTACT_FIELD_2 = "contactWalletAddress";
+    public static final String CONTACT_FIELD_3 = "nameFirstLetter";
+    //    public static final String CONTACT_FIELD_4 = "accountPublicKey";
+    public static final String ACCOUNT_FIELD_5 = "seedphrase";
+
     public static final String TRANSACTIONS_TABLE_NAME = "transactions_table";
     public static final String TRANSACTIONS_FIELD_1 = "sender";
     public static final String TRANSACTIONS_FIELD_2 = "receiver";

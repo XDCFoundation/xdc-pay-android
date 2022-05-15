@@ -3,14 +3,12 @@ package com.app.xdcpay.Activities.SecurityPrivacy;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Adapters.SeedPhraseAdapter;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;

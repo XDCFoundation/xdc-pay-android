@@ -1,6 +1,7 @@
 package com.app.xdcpay.Activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -17,25 +19,36 @@ import android.widget.Toast;
 
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
+import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
+import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class ImportWalletActivity extends BaseActivity {
     private EditText seed_phrase, password, confirm_password;
     private TextView title, show;
     private ProgressBar progressBar;
     private CheckBox show_cb;
+    NetworkDataBase networkDataBase;
+    AccountEntity accountEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_import_wallet);
+        networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -129,16 +142,12 @@ public class ImportWalletActivity extends BaseActivity {
                                     saveWalletDetails.savePassword(walletData.getPassword());
                                     saveWalletDetails.saveIsLogin(true);
 
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            startActivity(intent);
-                                        }
-                                    }, 500);
+                                    accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
+                                            walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
+                                    new InsertTask(ImportWalletActivity.this, accountEntity).execute();
+                                    SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
+
+
                                 }
                             }
 
@@ -159,6 +168,37 @@ public class ImportWalletActivity extends BaseActivity {
                 break;
         }
     }
+
+
+    class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<ImportWalletActivity> activityReference;
+        private AccountEntity networkEntity;
+
+        public InsertTask(ImportWalletActivity addNetworkActivity, AccountEntity networkEntity) {
+            activityReference = new WeakReference<>(addNetworkActivity);
+            this.networkEntity = networkEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
+
+            Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            /*new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            }, 500);*/
+            finish();
+            return null;
+        }
+    }
+
 
     private boolean isValid() {
         if (!Validations.hasText(seed_phrase))

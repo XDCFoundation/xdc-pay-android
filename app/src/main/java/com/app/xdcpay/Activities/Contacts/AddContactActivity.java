@@ -1,17 +1,29 @@
 package com.app.xdcpay.Activities.Contacts;
 
+import static com.app.xdcpay.Activities.ScannerActivity.ACTIVITY_NAME;
+
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Activities.EditContactActivity;
+import com.app.xdcpay.Activities.Networks.AddNetworkActivity;
+import com.app.xdcpay.Activities.Networks.NetworksActivity;
+import com.app.xdcpay.Activities.ScannerActivity;
+import com.app.xdcpay.DataBase.Entity.ContactEntity;
+import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
 import com.app.xdcpay.Views.TextViewMedium;
+
+import java.lang.ref.WeakReference;
 
 public class AddContactActivity extends BaseActivity {
     private AppCompatButton btn_addContact, btn_contactCancel;
@@ -19,6 +31,11 @@ public class AddContactActivity extends BaseActivity {
     private EditText etWalletAddress, etUserName;
     private ImageView back;
     private TextViewMedium title;
+    private ContactEntity contactEntity;
+    NetworkDataBase myDataBase;
+    String contactName, contactNameSubstring;
+    private ImageView iv_barcodeScanner;
+    String strAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +49,7 @@ public class AddContactActivity extends BaseActivity {
         btn_contactCancel = findViewById(R.id.btn_contactCancel);
         back = findViewById(R.id.back);
         title = findViewById(R.id.title);
+        iv_barcodeScanner = findViewById(R.id.iv_barcodeScanner);
         etWalletAddress = findViewById(R.id.etWalletAddress);
         etUserName = findViewById(R.id.etUserName);
         title.setText(getString(R.string.add_networks));
@@ -42,11 +60,20 @@ public class AddContactActivity extends BaseActivity {
         btn_addContact.setOnClickListener(this);
         btn_contactCancel.setOnClickListener(this);
         back.setOnClickListener(this);
+        iv_barcodeScanner.setOnClickListener(this);
+        setData();
     }
 
     @Override
     public void setData() {
-
+        Intent i = getIntent();
+        if (i != null) {
+            if (strAddress != null) {
+                etWalletAddress.setText(strAddress);
+            }
+        }
+        myDataBase = NetworkDataBase.getInstance(AddContactActivity.this);
+        title.setText(getString(R.string.add_contact));
     }
 
     @Override
@@ -57,13 +84,22 @@ public class AddContactActivity extends BaseActivity {
                 break;
             case R.id.btn_addContact:
                 if (isValid()) {
-
+                    contactName = etUserName.getText().toString();
+                    contactNameSubstring = contactName.substring(0, 1);
+                    contactEntity = new ContactEntity(etUserName.getText().toString(),
+                            etWalletAddress.getText().toString(), contactNameSubstring);
+                    new InsertTask(AddContactActivity.this, contactEntity).execute();
                 }
                 break;
             case R.id.btn_contactCancel:
                 Intent intent = new Intent(AddContactActivity.this, ContactsActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+            case R.id.iv_barcodeScanner:
+                Intent intentScan = new Intent(AddContactActivity.this, ScannerActivity.class);
+                intentScan.putExtra(ACTIVITY_NAME, "AddContactActivity");
+                startActivity(intentScan);
                 break;
         }
     }
@@ -80,10 +116,28 @@ public class AddContactActivity extends BaseActivity {
         if (!Validations.hasText(etWalletAddress))
             etWalletAddress.setError(getResources().getString(R.string.error_empty));
         else if (!Validations.hasText(etUserName))
-            etUserName.setError(getResources().getString(R.string.error_password_empty));
+            etUserName.setError(getResources().getString(R.string.error_empty));
 
         else return true;
 
         return false;
+    }
+
+    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<AddContactActivity> activityReference;
+        private ContactEntity contactEntity;
+
+        public InsertTask(AddContactActivity addContactActivity, ContactEntity contactEntity) {
+            activityReference = new WeakReference<>(addContactActivity);
+            this.contactEntity = contactEntity;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityReference.get().myDataBase.getContactDao().InsertContact(contactEntity);
+            startActivity(new Intent(AddContactActivity.this, ContactsActivity.class));
+            finish();
+            return null;
+        }
     }
 }

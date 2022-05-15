@@ -15,10 +15,12 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
+import com.app.xdcpay.DataBase.DAO.AddContactDAO;
 import com.app.xdcpay.DataBase.DAO.AddNetworkDAO;
 import com.app.xdcpay.DataBase.DAO.Add_ImportAccountDao;
 import com.app.xdcpay.DataBase.DAO.TransactionsDao;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.Entity.ContactEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.Entity.TransactionsEntity;
 
@@ -32,6 +34,7 @@ public abstract class NetworkDataBase extends RoomDatabase {
     public abstract AddNetworkDAO getDatabaseDao();
 
     public abstract Add_ImportAccountDao getAccountDao();
+    public abstract AddContactDAO getContactDao();
 
     public abstract TransactionsDao getTransactionsDao();
 

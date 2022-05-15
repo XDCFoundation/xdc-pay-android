@@ -110,7 +110,7 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
             if (strAddress != null && Validations.hasText(strAddress))
                 etReceiverAddress.setText(strAddress);
         }
-        etSenderAddress.setText(readWalletDetails.getAccountAddress());
+        etSenderAddress.setText(getselectedaccount().getAccountAddress());
 
     }
 
@@ -162,20 +162,20 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
         super.onResume();
         readWalletDetails = new ReadWalletDetails(SendActivity.this);
 
-        XDCpayClient.getInstance().getXdcBalance(readWalletDetails.getAccountAddress(),
-                Constants.CONNECTED_NETWORK,true, new EventCallback() {
+        XDCpayClient.getInstance().getXdcBalance(getselectedaccount().getAccountAddress(), readNetworkPref.getNetworkName(), true,
+                new EventCallback() {
+            @Override
+            public void success(final String balance) throws Exception {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void success(final String balance) throws Exception {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                bal_str = balance;
-                                availableBalance.setText(getResources().getString(
-                                        R.string.availableBalance,
-                                        balance.toString()));
-                            }
-                        });
+                    public void run() {
+                        availableBalance.setText(getResources().getString(
+                                R.string.availableBalance,
+                                balance.toString()));
                     }
+                });
+
+            }
 
                     @Override
                     public void failure(Throwable t) {

@@ -1,7 +1,5 @@
 package com.app.xdcpay.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -63,7 +61,7 @@ public class SentActivity extends BaseActivity {
             case R.id.btnConfirm:
                 Intent intent1 = new Intent(SentActivity.this, BrowserActivity.class);
                 intent1.putExtra(Constants.TITLE, getResources().getString(R.string.view_on_observatory));
-                intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + readWalletDetails.getAccountAddress());
+                intent1.putExtra(Constants.URL, Constants.OBSERVER_URL + getselectedaccount().getAccountAddress());
                 startActivity(intent1);
                 finish();
                 break;
