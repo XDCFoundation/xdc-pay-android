@@ -1,33 +1,20 @@
 package com.app.xdcpay.Activities;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.AudioManager;
-import android.media.ToneGenerator;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.SparseArray;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.xdcpay.Adapters.TransactionsAdapter;
+import com.app.xdcpay.DataBase.Entity.TransactionsEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
-import com.google.android.gms.vision.CameraSource;
-import com.google.android.gms.vision.Detector;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.google.android.gms.vision.barcode.BarcodeDetector;
 
-import java.io.IOException;
+import java.util.List;
 
 public class TransactionActivity extends BaseActivity {
     public static String ACTIVITY_NAME = "ACTIVITY_NAME";
@@ -58,7 +45,9 @@ public class TransactionActivity extends BaseActivity {
 
     @Override
     public void setData() {
-        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(TransactionActivity.this);
+        List<TransactionsEntity> entity = NetworkDataBase.getInstance(getApplicationContext()).getTransactionsDao().getTransactionsList();
+
+        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(TransactionActivity.this, entity);
         recyclerView.setLayoutManager(new LinearLayoutManager(TransactionActivity.this));
         recyclerView.setAdapter(transactionsAdapter);
     }

@@ -34,5 +34,5 @@ public interface TransactionsDao {
 
     // below line is to read all the data from our database.
     @Query("SELECT * FROM " + TRANSACTIONS_TABLE_NAME)
-    List<NetworkEntity> getTransactionsList();
+    List<TransactionsEntity> getTransactionsList();
 }

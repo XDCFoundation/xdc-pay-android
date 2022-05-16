@@ -228,6 +228,8 @@
     <string name="no_contacts">No Contacts found</string>
     <string name="contacts_details">Contact Details</string>
     <string name="input_type_double">0123456789.</string>
+    <string name="none">None</string>
+    <string name="token_options">Token Options</string>
 
     <string-array name="key_type_list">
         <item>Private</item>

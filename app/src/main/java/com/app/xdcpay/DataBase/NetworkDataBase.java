@@ -24,7 +24,7 @@ import com.app.xdcpay.DataBase.Entity.ContactEntity;
 import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.Entity.TransactionsEntity;
 
-@Database(entities = {NetworkEntity.class, AccountEntity.class, TransactionsEntity.class}, version = DATABASE_VERSION)
+@Database(entities = {NetworkEntity.class, AccountEntity.class, TransactionsEntity.class, ContactEntity.class}, version = DATABASE_VERSION)
 public abstract class NetworkDataBase extends RoomDatabase {
 
     // below line is to create instance for our database class.
