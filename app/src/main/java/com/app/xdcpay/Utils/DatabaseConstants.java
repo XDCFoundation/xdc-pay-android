@@ -25,4 +25,12 @@ public class DatabaseConstants {
     public static final String CONTACT_FIELD_3 = "nameFirstLetter";
     //    public static final String CONTACT_FIELD_4 = "accountPublicKey";
     public static final String ACCOUNT_FIELD_5 = "seedphrase";
+
+    public static final String TRANSACTIONS_TABLE_NAME = "transactions_table";
+    public static final String TRANSACTIONS_FIELD_1 = "sender";
+    public static final String TRANSACTIONS_FIELD_2 = "receiver";
+    public static final String TRANSACTIONS_FIELD_3 = "amount";
+    public static final String TRANSACTIONS_FIELD_4 = "gas_limit";
+    public static final String TRANSACTIONS_FIELD_5 = "gas_price";
+    public static final String TRANSACTIONS_FIELD_6 = "transaction_hash";
 }

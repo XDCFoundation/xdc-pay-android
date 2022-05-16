@@ -54,9 +54,14 @@ import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Fragments.NFTFragment;
 import com.app.xdcpay.Fragments.TokensFragment;
+import com.app.xdcpay.Fragments.TransactionsFragment;
 import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.Interface.ImportAccountCallback;
+import com.app.xdcpay.Fragments.NFTFragment;
+import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
 import com.app.xdcpay.Pref.ReadPreferences;
+import com.app.xdcpay.Pref.ReadWalletDetails;
+import com.app.xdcpay.Pref.SaveAutoLockTimerPref;
 import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
@@ -68,13 +73,26 @@ import com.app.xdcpay.Views.TextViewBold;
 import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 public class HomeActivity extends BaseActivity implements ImportAccountCallback, IGetUSDValueOfXDCView, BottomSheetInterface {
     private ViewPager viewPager;
@@ -101,7 +119,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     AccountEntity accountEntity;
     private CurrencyConversionPresenter currencyConversionPresenter;
     ReadPreferences readAutoLockTimerPref;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +154,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         findViewById(R.id.menu).setOnClickListener(this);
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
         selectedaccountname.setOnClickListener(this);
+        findViewById(R.id.account_rl).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
         findViewById(R.id.tvtransaction).setOnClickListener(this);
 
@@ -201,7 +219,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         currencyConversionPresenter.onGetUSDValueOfXDC(currencyData, HomeActivity.this, strSymbol);
 
     }
-
 
     @Override
     public void BottomSheetOnClickListener(int pos, String name) {
@@ -304,7 +321,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                     drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
-            case R.id.accountname:
+            case R.id.account_rl:
                 bottomSheetDialogImport = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialogImport.setContentView(R.layout.layout_my_account_dialog);
@@ -342,6 +359,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                     @Override
                     public void onClick(View v) {
 
+//                        Intent intent1 = new Intent(HomeActivity.this, ImportWalletActivity.class);
                         Intent intent1 = new Intent(HomeActivity.this, ImportAccountActivity.class);
                         intent1.putExtra(ACCOUNT_NAME, getString(R.string.imported_text));
                         startActivity(intent1);
@@ -574,7 +592,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
 
         @Override
-        protected Boolean doInBackground(Void... voids) {
+        protected Boolean doInBackground(Void... voids)
+        {
             activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
 
             return null;

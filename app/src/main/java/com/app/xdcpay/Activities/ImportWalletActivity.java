@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
@@ -68,16 +69,15 @@ public class ImportWalletActivity extends BaseActivity {
         findViewById(R.id.back).setOnClickListener(this);
         findViewById(R.id.import_tv).setOnClickListener(this);
         show.setOnClickListener(this);
-        if (seed_phrase.getText().toString().length() > 0)
-            show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if (!b)
-                        seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
-                    else
-                        seed_phrase.setTransformationMethod(null);
-                }
-            });
+        show_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (!b)
+                    seed_phrase.setTransformationMethod(new PasswordTransformationMethod());
+                else
+                    seed_phrase.setTransformationMethod(null);
+            }
+        });
 
         password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -111,11 +111,11 @@ public class ImportWalletActivity extends BaseActivity {
 
             case R.id.show:
                 if (show.getText().toString().equals(getResources().getString(R.string.show))) {
-                    if (password.getText().toString().length() > 0)
-                        password.setTransformationMethod(new PasswordTransformationMethod());
+                    if(password.getText().toString().length()>0)
+                    password.setTransformationMethod(null);
                     show.setText(getResources().getString(R.string.hide));
                 } else {
-                    password.setTransformationMethod(null);
+                    password.setTransformationMethod(new PasswordTransformationMethod());
                     show.setText(getResources().getString(R.string.show));
                 }
                 break;
@@ -142,12 +142,10 @@ public class ImportWalletActivity extends BaseActivity {
                                     saveWalletDetails.savePassword(walletData.getPassword());
                                     saveWalletDetails.saveIsLogin(true);
 
-
                                     accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
                                             walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
                                     new InsertTask(ImportWalletActivity.this, accountEntity).execute();
                                     SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
-
 
 
                                 }
