@@ -230,7 +230,6 @@
     <string name="none">None</string>
     <string name="under_development">Under development</string>
     <string name="input_type_double">0123456789.</string>
-    <string name="none">None</string>
     <string name="token_options">Token Options</string>
 
     <string-array name="key_type_list">
