@@ -87,6 +87,9 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
             edit_timer.setText(getResources().getString(
                     R.string.minutes,
                     String.valueOf(readAutoLockTimerPref.getTimer() / 60)));
+        else if (readAutoLockTimerPref.getTimer() == 0){
+            edit_timer.setText(getResources().getString(R.string.none));
+        }
         else
             edit_timer.setText(getResources().getString(
                     R.string.seconds,
@@ -154,7 +157,9 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
                 holder.timer.setText(getResources().getString(
                         R.string.minutes,
                         String.valueOf(timeLockerList.get(position) / 60)));
-            else
+            else if (timeLockerList.get(position) == 0) {
+                edit_timer.setText(getResources().getString(R.string.none));
+            } else
                 holder.timer.setText(getResources().getString(
                         R.string.seconds,
                         String.valueOf(timeLockerList.get(position))));
@@ -166,7 +171,10 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
                     if (bottomSheetDialog != null)
                         bottomSheetDialog.dismiss();
                     edit_timer.setText(holder.timer.getText().toString());
-                    onUserInteraction();
+                    if (timeLockerList.get(position) == 0) {
+
+                    } else
+                        onUserInteraction();
                 }
             });
         }

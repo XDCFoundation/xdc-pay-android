@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".Activities.Settings.AdvanceSettings">
@@ -22,23 +23,24 @@
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/state_logs"
-                android:layout_marginTop="@dimen/margin_20"
                 android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="@string/state_logs"
                 android:textColor="@color/colorBlue"
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10"
                 android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_10"
                 android:layout_marginRight="@dimen/margin_20"
                 android:text="@string/state_log_txt"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.TextViewBold
+                android:id="@+id/tvDownloadLogs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_20"
@@ -68,15 +70,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_20"
-                android:layout_marginRight="@dimen/margin_20"
                 android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_20"
                 android:fontFamily="@font/inter_regular"
                 android:text="@string/reset_account_hint"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.TextViewBold
-                android:id="@+id/btn_changePassword"
+                android:id="@+id/btn_ResetAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_20"
@@ -108,12 +110,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_20"
-                android:layout_marginRight="@dimen/margin_20"
                 android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_20"
                 android:fontFamily="@font/inter_regular"
                 android:text="@string/advance_gas_control_hint"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_18"
+                android:layout_marginRight="@dimen/margin_16"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_btn_gas"
+                    app:switchPadding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:theme="@style/BrandedSwitch" />
+
+                <com.app.xdcpay.Views.TextView
+                    android:id="@+id/tv_gas_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@string/text_on"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
