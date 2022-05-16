@@ -32,6 +32,9 @@ public interface TransactionsDao {
     @Query("DELETE FROM transactions_table WHERE id = :id")
     void deleteById(int id);
 
+    @Query("DELETE FROM transactions_table")
+    void deleteTransaction();
+
     // below line is to read all the data from our database.
     @Query("SELECT * FROM " + TRANSACTIONS_TABLE_NAME)
     List<TransactionsEntity> getTransactionsList();

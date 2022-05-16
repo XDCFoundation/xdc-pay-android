@@ -28,7 +28,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     public NetworkDataBase networkDataBase;
 
-    public NetworkDataBase networkDataBase;
     public abstract void getId();
 
     public abstract void setListener();
