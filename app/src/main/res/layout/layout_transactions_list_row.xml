@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/code_txt"
                 android:layout_centerHorizontal="true"
+                android:id="@+id/transaction_id"
                 android:text="@string/code"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_5"
             android:text="01:21 PM, 2 Sep 2021"
+            android:id="@+id/date_time"
             android:textColor="@color/colorGrey"
             android:textSize="@dimen/margin_12" />
 

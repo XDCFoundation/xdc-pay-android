@@ -110,8 +110,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         } else if (str.getText(BaseActivity.this).equals("Medium")) {
             progressBar.setProgress(50);
         } else if (str.getText(BaseActivity.this).equals("Strong")) {
-            progressBar.setProgress(75);
-        } else {
             progressBar.setProgress(100);
         }
     }

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SecurityAndPrivacyActivity extends BaseActivity {
-    private final ArrayList<Integer> timeLockerList = new ArrayList<>(Arrays.asList(0, 5, 15, 30, 60, 300, 600));
+    private final ArrayList<Integer> timeLockerList = new ArrayList<>(Arrays.asList(86400, 5, 15, 30, 60, 300, 600));
     private TextViewBold btn_revealSeedPhrase, btn_changePassword, btn_showPrivateKey;
     private SwitchCompat switch_btn;
     private TextView tv_switch;
@@ -153,7 +153,9 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
                 holder.iv_Checked.setVisibility(View.VISIBLE);
             else
                 holder.iv_Checked.setVisibility(View.GONE);
-            if (timeLockerList.get(position) > 60)
+            if (timeLockerList.get(position) == 86400)
+                holder.timer.setText(R.string.none);
+            else if (timeLockerList.get(position) > 60)
                 holder.timer.setText(getResources().getString(
                         R.string.minutes,
                         String.valueOf(timeLockerList.get(position) / 60)));

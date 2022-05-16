@@ -7,7 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.xdcpay.Adapters.TransactionsAdapter;
+import com.app.xdcpay.DataBase.Entity.ContactEntity;
+import com.app.xdcpay.DataBase.Entity.TransactionsEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.R;
+
+import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,7 +45,9 @@ public class TransactionsFragment extends Fragment {
     }
 
     private void setData() {
-        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(getContext());
+        List<TransactionsEntity> entity = NetworkDataBase.getInstance(requireActivity()).getTransactionsDao().getTransactionsList();
+
+        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(getContext(),entity);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(transactionsAdapter);
     }

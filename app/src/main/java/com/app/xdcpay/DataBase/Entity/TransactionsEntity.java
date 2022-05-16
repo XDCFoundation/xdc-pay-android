@@ -46,6 +46,10 @@ class TransactionsEntity {
         this.transaction_hash = transaction_hash;
     }
 
+    public TransactionsEntity() {
+
+    }
+
     public int getId() {
         return id;
     }

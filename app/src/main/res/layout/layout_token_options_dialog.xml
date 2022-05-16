@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_corner"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_21"
+        android:background="@color/colorLightGrey" />
+
+    <com.app.xdcpay.Views.TextViewBold
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:text="@string/token_options"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_16" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_logout"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:text="@string/send"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/view_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_view_on_observatory"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:text="@string/view_on_observatory"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/copy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_copy_grey"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:text="@string/copy_to_clipboard"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGrey" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_delete"
+        android:drawablePadding="@dimen/margin_10"
+        android:padding="@dimen/margin_15"
+        android:text="@string/remove"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/margin_14" />
+</LinearLayout>
