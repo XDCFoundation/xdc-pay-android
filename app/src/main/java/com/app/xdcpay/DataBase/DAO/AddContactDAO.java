@@ -24,9 +24,9 @@ public interface AddContactDAO {
     @Delete
     void DeleteContact(ContactEntity contactEntity);
 
-    @Query(("UPDATE AddContact_table SET contactName= :name, " +
+    @Query("UPDATE AddContact_table SET contactName= :name, " +
             "contactWalletAddress = :address," +
-            " nameFirstLetter= :firstLetter WHERE contactId = :id"))
+            " nameFirstLetter= :firstLetter WHERE contactId = :id")
     void updateByID(String name, String firstLetter, String address, int id);
 
     @Query("DELETE FROM AddContact_table WHERE contactId = :id")

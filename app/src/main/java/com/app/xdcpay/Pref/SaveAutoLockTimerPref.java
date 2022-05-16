@@ -27,4 +27,11 @@ public class SaveAutoLockTimerPref {
         editor.putInt("timer", s);
         result = editor.commit();
     }
+
+    public void saveHideToken(boolean s) {
+        result = false;
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("hide_token", s);
+        result = editor.commit();
+    }
 }
