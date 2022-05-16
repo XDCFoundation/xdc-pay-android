@@ -21,4 +21,10 @@ public class ReadAutoLockTimerPref {
         return res;
     }
 
+    public boolean getHideToken() {
+        boolean res = false;
+        res = prefs.getBoolean("hide_token", false);
+        return res;
+    }
+
 }

@@ -11,11 +11,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
 import com.app.xdcpay.Interface.BottomSheetInterface;
+import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
+import com.app.xdcpay.Pref.SaveAutoLockTimerPref;
 import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -30,6 +34,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
     private TimeLockerAdapter timeLockerAdapter;
     private ArrayList<String> list = new ArrayList<>(Arrays.asList("USD- United State Dollar"));
     BottomSheetDialog bottomSheetDialogImport;
+    private Switch hide_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +45,29 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
     @Override
     public void getId() {
         title = findViewById(R.id.title);
+        hide_token = findViewById(R.id.hide_token_switch);
         setData();
     }
 
     @Override
     public void setListener() {
         findViewById(R.id.back).setOnClickListener(this);
+
+        hide_token.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SaveAutoLockTimerPref saveAutoLockTimerPref = new SaveAutoLockTimerPref(GeneralSettingsActivity.this);
+                saveAutoLockTimerPref.saveHideToken(b);
+            }
+        });
     }
 
     @Override
     public void setData() {
         title.setText(getString(R.string.general_settings));
+
+        ReadAutoLockTimerPref readAutoLockTimerPref = new ReadAutoLockTimerPref(GeneralSettingsActivity.this);
+        hide_token.setChecked(readAutoLockTimerPref.getHideToken());
 
     }
 
@@ -96,12 +113,5 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
         SavePreferences saveWalletDetails = new SavePreferences(GeneralSettingsActivity.this);
         saveWalletDetails.saveSelectedCurrency(name);
         bottomSheetDialogImport.dismiss();
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent i = new Intent(GeneralSettingsActivity.this, HomeActivity.class);
-        startActivity(i);
-        finish();
     }
 }

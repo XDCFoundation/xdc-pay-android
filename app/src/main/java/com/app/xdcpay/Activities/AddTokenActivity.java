@@ -23,7 +23,7 @@ public class AddTokenActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-
+        findViewById(R.id.add).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +33,10 @@ public class AddTokenActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.add:
+                finish();
+                break;
+        }
     }
 }
