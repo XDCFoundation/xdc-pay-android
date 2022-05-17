@@ -16,7 +16,9 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Activities.Networks.NetworkDetailsActivity;
 import com.app.xdcpay.Activities.Networks.NetworksActivity;
+import com.app.xdcpay.Activities.SendActivity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -34,6 +36,7 @@ public class AdvanceSettings extends BaseActivity {
     private TextViewMedium title;
     NetworkDataBase networkDataBase;
     SavePreferences savePreferences;
+    ReadPreferences readNetworkPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class AdvanceSettings extends BaseActivity {
         tv_gas_switch = findViewById(R.id.tv_gas_switch);
         title = findViewById(R.id.title);
         savePreferences = new SavePreferences(AdvanceSettings.this);
+        readNetworkPref = new ReadPreferences(AdvanceSettings.this);
     }
 
     @Override
@@ -76,6 +80,13 @@ public class AdvanceSettings extends BaseActivity {
     @Override
     public void setData() {
         networkDataBase = NetworkDataBase.getInstance(AdvanceSettings.this);
+        if (readNetworkPref.getIsGasPriceSelected()) {
+            tv_gas_switch.setText(getString(R.string.text_on));
+            switch_btn_gas.setChecked(true);
+        } else {
+            tv_gas_switch.setText(getString(R.string.text_off));
+            switch_btn_gas.setChecked(false);
+        }
         title.setText(getString(R.string.advance_settings));
     }
 
