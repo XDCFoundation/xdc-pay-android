@@ -13,9 +13,11 @@ import android.widget.CompoundButton;
 
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.Activities.Networks.NetworkDetailsActivity;
 import com.app.xdcpay.Activities.Networks.NetworksActivity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextView;
@@ -31,6 +33,7 @@ public class AdvanceSettings extends BaseActivity {
     private TextView tv_gas_switch;
     private TextViewMedium title;
     NetworkDataBase networkDataBase;
+    SavePreferences savePreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class AdvanceSettings extends BaseActivity {
         switch_btn_gas = findViewById(R.id.switch_btn_gas);
         tv_gas_switch = findViewById(R.id.tv_gas_switch);
         title = findViewById(R.id.title);
+        savePreferences = new SavePreferences(AdvanceSettings.this);
     }
 
     @Override
@@ -57,10 +61,13 @@ public class AdvanceSettings extends BaseActivity {
         switch_btn_gas.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
+                if (isChecked) {
+                    savePreferences.setIsGasPriceSelected(true);
                     tv_gas_switch.setText(getString(R.string.text_on));
-                else
+                } else {
+                    savePreferences.setIsGasPriceSelected(false);
                     tv_gas_switch.setText(getString(R.string.text_off));
+                }
             }
         });
         setData();
@@ -124,7 +131,7 @@ public class AdvanceSettings extends BaseActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getTransactionsDao().deleteTransaction();
-            Intent i = new Intent(AdvanceSettings.this, NetworksActivity.class);
+            Intent i = new Intent(AdvanceSettings.this, HomeActivity.class);
             startActivity(i);
             finish();
             return null;

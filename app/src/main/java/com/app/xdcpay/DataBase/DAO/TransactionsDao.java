@@ -1,6 +1,5 @@
 package com.app.xdcpay.DataBase.DAO;
 
-import com.app.xdcpay.DataBase.Entity.NetworkEntity;
 import com.app.xdcpay.DataBase.Entity.TransactionsEntity;
 
 import static com.app.xdcpay.Utils.DatabaseConstants.TRANSACTIONS_TABLE_NAME;
@@ -13,7 +12,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import static com.app.xdcpay.Utils.DatabaseConstants.NETWORK_TABLE_NAME;
 
 @Dao
 public interface TransactionsDao {

@@ -20,10 +20,12 @@ import com.XDCAndroid.XDC20Client;
 import com.XDCAndroid.XDC721Client;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.EventCallback;
+import com.app.xdcpay.Activities.Settings.AdvanceSettings;
 import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.Api.Presenter.CurrencyConversionPresenter;
 import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
 import com.app.xdcpay.Pref.ReadWalletDetails;
+import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
@@ -104,6 +106,17 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
     @Override
     public void setData() {
         readNetworkPref = new ReadPreferences(SendActivity.this);
+        if (readNetworkPref.getIsGasPriceSelected()) {
+            etGasLimit.setClickable(true);
+            etGasLimit.setFocusable(true);
+            etGasPrice.setFocusable(true);
+            etGasPrice.setFocusable(true);
+        } else {
+            etGasLimit.setClickable(false);
+            etGasLimit.setFocusable(false);
+            etGasPrice.setFocusable(false);
+            etGasPrice.setFocusable(false);
+        }
         Intent i = getIntent();
         if (i != null) {
             strAddress = i.getStringExtra(ADDRESS);
@@ -164,18 +177,18 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
 
         XDCpayClient.getInstance().getXdcBalance(getselectedaccount().getAccountAddress(), readNetworkPref.getNetworkName(), true,
                 new EventCallback() {
-            @Override
-            public void success(final String balance) throws Exception {
-                runOnUiThread(new Runnable() {
                     @Override
-                    public void run() {
-                        availableBalance.setText(getResources().getString(
-                                R.string.availableBalance,
-                                balance.toString()));
-                    }
-                });
+                    public void success(final String balance) throws Exception {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                availableBalance.setText(getResources().getString(
+                                        R.string.availableBalance,
+                                        balance.toString()));
+                            }
+                        });
 
-            }
+                    }
 
                     @Override
                     public void failure(Throwable t) {
