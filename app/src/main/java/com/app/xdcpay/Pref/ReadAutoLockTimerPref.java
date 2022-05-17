@@ -17,7 +17,7 @@ public class ReadAutoLockTimerPref {
 
     public int getTimer() {
         int res = 0;
-        res = prefs.getInt("timer", 30);
+        res = prefs.getInt("timer", 86400);
         return res;
     }
 

@@ -72,7 +72,7 @@ public class LoginActivity extends BaseActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } else
-                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_password_not_match), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_incorrect_password), Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.create_wallet:

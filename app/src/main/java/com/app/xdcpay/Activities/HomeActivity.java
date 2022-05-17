@@ -107,7 +107,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     TextViewMedium tvSettings;
     TextViewMedium tvHelp;
-    static TextViewMedium account_name,selectedaccountname;
+    static TextViewMedium account_name, selectedaccountname;
     String xdcBalance = "";
     static String xdcWalletBalance = "";
     private ArrayList<String> list = new ArrayList<>();
@@ -142,8 +142,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         img_copy_walletadd = findViewById(R.id.img_copywalletAd);
         tvSettings = findViewById(R.id.tvSettings);
         tvHelp = findViewById(R.id.tvHelp);
-        setData();
-
     }
 
     @Override
@@ -167,6 +165,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     @Override
     public void setData() {
         list.clear();
+        Log.e("home_set_data ", "set data called");
         readAutoLockTimerPref = new ReadPreferences(HomeActivity.this);
         networkDataBase = NetworkDataBase.getInstance(HomeActivity.this);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -187,7 +186,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
         for (int j = 0; j < list.size(); j++) {
             if (list.get(j).equals(readAutoLockTimerPref.getNetworkName())) {
-                setAccount(this, getselectedaccount().getId(), null);
+                setAccount(HomeActivity.this, getselectedaccount().getId(), null);
 
             }
 
@@ -232,14 +231,21 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             if (id == accountlist.get(i).id) {
                 AccountEntity account = accountlist.get(i);
                 account_name.setText(account.accountName);
-                wallet_address.setText(account.accountAddress);
+                String add = account.accountAddress;
+                if (add.startsWith("0x"))
+                    add = add.replaceFirst("0x", "xdc");
+                wallet_address.setText(add);
                 selectedaccountname.setText(account.accountName);
 
                 XDCpayClient.getInstance().getXdcBalance(account.getAccountAddress(),
                         network_name.getText().toString(), true, new EventCallback() {
                             @Override
                             public void success(final String balance) throws Exception {
-                                xdcWalletBalance = balance + " " + context.getString(R.string.txt_xdc);
+                                xdcWalletBalance = balance;
+                                Log.e("home_wallet_balance ", xdcWalletBalance);
+
+                                HomeActivity.wallet_balance.setText(xdcWalletBalance + " " + context.getString(R.string.txt_xdc));
+
 
                             }
 
@@ -253,11 +259,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                                 Log.e("get balance msg", message);
                             }
                         });
-                wallet_balance.setText(xdcWalletBalance);
             }
         }
-
-
         if (bottomSheetDialog != null && bottomSheetDialog.isShowing())
             bottomSheetDialog.dismiss();
 
@@ -592,8 +595,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
 
         @Override
-        protected Boolean doInBackground(Void... voids)
-        {
+        protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
 
             return null;

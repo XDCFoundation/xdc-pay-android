@@ -6,6 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validations {
+    public static Pattern letter_lower = Pattern.compile("[a-z]");
+    public static Pattern letter_upper = Pattern.compile("[A-z]");
+    public static Pattern digit = Pattern.compile("[0-9]");
+    public static Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+
     public static boolean hasText(String s) {
         if (s.equalsIgnoreCase(""))
             return false;
@@ -30,10 +35,6 @@ public class Validations {
     public static boolean isPasswordValid(String password) {
 
         if (password.length() >= 8) {
-            Pattern letter_lower = Pattern.compile("[a-z]");
-            Pattern letter_upper = Pattern.compile("[A-Z]");
-            Pattern digit = Pattern.compile("[0-9]");
-            Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
             //Pattern eight = Pattern.compile (".{8}");
 
 
@@ -47,5 +48,26 @@ public class Validations {
         } else
             return false;
 
+    }
+
+    public static int calculatePasswordStrength(String password) {
+        if (password.length() == 0)
+            return 0;
+        if (password.length() < 8)
+            return 25;
+        else {
+            Matcher hasLetterLower = letter_lower.matcher(password);
+            Matcher hasLetterUpper = letter_upper.matcher(password);
+            Matcher hasDigit = digit.matcher(password);
+            Matcher hasSpecial = special.matcher(password);
+
+            if (hasLetterUpper.find() && hasLetterLower.find() && !hasDigit.find() && !hasSpecial.find())
+                return 60;
+
+            if (hasLetterUpper.find() && hasLetterLower.find() && hasDigit.find() && hasSpecial.find())
+                return 100;
+
+        }
+        return 25;
     }
 }

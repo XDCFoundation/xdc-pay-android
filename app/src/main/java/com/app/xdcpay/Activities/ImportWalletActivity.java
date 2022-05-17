@@ -22,6 +22,7 @@ import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
+
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.SaveWalletDetails;
@@ -182,47 +183,16 @@ public class ImportWalletActivity extends BaseActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
-
-            Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            /*new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            }, 500);*/
-            finish();
-            return null;
-        }
-    }
-
-
-
-    class InsertTask extends AsyncTask<Void, Void, Boolean> {
-        private WeakReference<ImportWalletActivity> activityReference;
-        private AccountEntity networkEntity;
-
-        public InsertTask(ImportWalletActivity addNetworkActivity, AccountEntity networkEntity) {
-            activityReference = new WeakReference<>(addNetworkActivity);
-            this.networkEntity = networkEntity;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... voids) {
-            activityReference.get().networkDataBase.getAccountDao().insertAccount(networkEntity);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
                     Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                }
-            }, 500);
+//                }
+//            }, 500);
             finish();
             return null;
         }
