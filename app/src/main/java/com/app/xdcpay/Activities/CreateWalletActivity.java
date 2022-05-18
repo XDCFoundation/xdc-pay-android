@@ -97,10 +97,14 @@ public class CreateWalletActivity extends BaseActivity {
                                 SaveWalletDetails saveWalletDetails = new SaveWalletDetails(CreateWalletActivity.this);
                                 saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
                                 saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
-                                saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
+//                                saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
                                 saveWalletDetails.saveSeedPhrase(walletData.getSeedPhrase());
                                 saveWalletDetails.savePassword(walletData.getPassword());
 //                                saveWalletDetails.saveIsLogin(true);
+                                String add = walletData.getAccountAddress();
+                                if (add.startsWith("0x"))
+                                    add = add.replaceFirst("0x", "xdc");
+                                saveWalletDetails.saveAccountAddress(add);
 
                                 Intent intent = new Intent(CreateWalletActivity.this, WalletSeedPhraseActivity.class);
                                 intent.putExtra(Constants.WALLET_DATA, new Gson().toJson(walletData));

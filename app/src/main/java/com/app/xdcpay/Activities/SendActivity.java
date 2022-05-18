@@ -123,7 +123,10 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
             if (strAddress != null && Validations.hasText(strAddress))
                 etReceiverAddress.setText(strAddress);
         }
-        etSenderAddress.setText(getselectedaccount().getAccountAddress());
+        String add = getselectedaccount().getAccountAddress();
+        if (add.startsWith("0x"))
+            add = add.replaceFirst("0x", "xdc");
+        etSenderAddress.setText(add);
 
     }
 

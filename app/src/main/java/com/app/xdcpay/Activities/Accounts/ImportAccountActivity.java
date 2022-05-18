@@ -142,13 +142,14 @@ public class ImportAccountActivity extends BaseActivity {
                 saveWalletDetails.savePrivateKey(walletData.getPrivateKey());
                 saveWalletDetails.savePublicKey(walletData.getPublickeyKey());
                 saveWalletDetails.saveAccountAddress(walletData.getAccountAddress());
-                accountEntity = new AccountEntity(str_accountName, walletData.getAccountAddress(),
-                        walletData.getPrivateKey(), walletData.getPublickeyKey(),"");
+                String add = walletData.getAccountAddress();
+                if (add.startsWith("0x"))
+                    add = add.replaceFirst("0x", "xdc");
+                accountEntity = new AccountEntity(str_accountName, add,
+                        walletData.getPrivateKey(), walletData.getPublickeyKey(), "");
                 new InsertTask(ImportAccountActivity.this, accountEntity).execute();
 
-            }
-            else
-            {
+            } else {
                 showtoast(getResources().getString(R.string.invalid_privatekey));
             }
 
@@ -173,7 +174,7 @@ public class ImportAccountActivity extends BaseActivity {
         finish();
     }
 
-     class InsertTask extends AsyncTask<Void, Void, Boolean> {
+    class InsertTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<ImportAccountActivity> activityReference;
         private AccountEntity networkEntity;
 

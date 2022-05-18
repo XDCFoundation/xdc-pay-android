@@ -82,13 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <ImageView
-            android:id="@+id/copy_to_clipboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/margin_5"
-            android:src="@drawable/ic_copy_grey_small" />
 
         <com.app.xdcpay.Views.TextViewMedium
             android:id="@+id/wallet_address"
@@ -100,6 +93,15 @@
             android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textSize="@dimen/margin_12" />
+
+        <ImageView
+            android:id="@+id/copy_to_clipboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/margin_5"
+            android:src="@drawable/ic_copy_grey_small" />
+
     </LinearLayout>
 
 
