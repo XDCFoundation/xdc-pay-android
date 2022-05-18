@@ -28,9 +28,10 @@ public class AppUtility {
         }
     }
 
-    public static void showAlert(Context context, String message) {
+    public static void showResetAlert(Context context, String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Alert");
+
+        builder.setTitle(title);
         builder.setMessage(message);
         builder.setCancelable(true);
         builder.setPositiveButton(context.getString(android.R.string.ok), new DialogInterface.OnClickListener() {

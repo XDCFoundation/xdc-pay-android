@@ -22,7 +22,6 @@ import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
-
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.SaveWalletDetails;

@@ -28,6 +28,7 @@
     <color name="reset_color">#2149BA</color>
     <color name="wallet_color">#084FBC</color>
     <color name="network_color">#2049B9</color>
+    <color name="cancel_color">#007AFB</color>
     <color name="network_color1">#0CB0BE</color>
     <color name="network_color2">#E58A0F</color>
 </resources>

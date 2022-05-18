@@ -31,4 +31,11 @@ public class SavePreferences {
         result = editor.commit();
     }
 
+    public void setIsGasPriceSelected(boolean s) {
+        result = false;
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("GasPriceSelected", s);
+        result = editor.commit();
+    }
+
 }
