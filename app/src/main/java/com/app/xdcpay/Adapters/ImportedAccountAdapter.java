@@ -1,6 +1,7 @@
 package com.app.xdcpay.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,16 +48,21 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         AccountEntity model = networkLists.get(position);
         //  holder.tvAccountName.setText(context.getString(R.string.account) + " " + (position + 1));
-        holder.tvAccountName.setText(model.accountName);
+        int accountId = model.getId();
+
         if (model.getAccountName().equals(context.getString(R.string.imported_text))) {
+            holder.tvAccountName.setText(context.getString(R.string.account) + " " + accountId);
             holder.textImported.setVisibility(View.VISIBLE);
+            holder.account_delete.setVisibility(View.VISIBLE);
         } else {
+            holder.tvAccountName.setText(model.getAccountName());
             holder.textImported.setVisibility(View.GONE);
+            holder.account_delete.setVisibility(View.GONE);
         }
         holder.account_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkCallback.AccountDeleteOnClickListener(model.accountPrivateKey);
+                networkCallback.AccountDeleteOnClickListener(model.getId());
 
             }
         });

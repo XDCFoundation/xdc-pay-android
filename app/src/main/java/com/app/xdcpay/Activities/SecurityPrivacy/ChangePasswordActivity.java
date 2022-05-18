@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Activities.LoginActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -51,7 +52,7 @@ public class ChangePasswordActivity extends BaseActivity {
             case R.id.confirmBtn:
                 if (isValid())
                     if (et_password.getText().toString().equals(readWalletDetails.getPassword())) {
-                        Intent i = new Intent(ChangePasswordActivity.this, ChangePasswordScreenActivity.class);
+                        Intent i = new Intent(ChangePasswordActivity.this, LoginActivity.class);
                         startActivity(i);
                         finish();
                         break;

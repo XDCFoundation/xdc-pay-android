@@ -44,6 +44,7 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
     ReadPreferences readNetworkPref;
     private TextView btn_next, availableBalance, tv_usd;
     private String bal_str;
+    private TextViewMedium tvGasLimit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
         etNote = findViewById(R.id.etNote);
         tv_usd = findViewById(R.id.tv_usd);
         etGasLimit = findViewById(R.id.etGasLimit);
+        tvGasLimit = findViewById(R.id.tvGasLimit);
         readWalletDetails = new ReadWalletDetails(SendActivity.this);
         setData();
     }
@@ -128,6 +130,31 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
             add = add.replaceFirst("0x", "xdc");
         etSenderAddress.setText(add);
 
+        etGasLimit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String strGasLimit = etGasLimit.getText().toString();
+                if (strGasLimit.equals("")) {
+                    tvGasLimit.setVisibility(View.VISIBLE);
+                } else {
+                    int gasLimit = Integer.parseInt(strGasLimit);
+                    if (!Validations.hasGasLimit(gasLimit))
+                        tvGasLimit.setVisibility(View.VISIBLE);
+                    else
+                        tvGasLimit.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override
@@ -159,6 +186,8 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
     }
 
     private boolean isValid() {
+        String strGasLimit = etGasLimit.getText().toString();
+        int gasLimit = Integer.parseInt(strGasLimit);
         if (!Validations.hasText(etReceiverAddress))
             etReceiverAddress.setError(getResources().getString(R.string.recipient_address_required));
         else if (!Validations.hasText(etSenderAddress))
@@ -167,6 +196,10 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
             etGasPrice.setError(getResources().getString(R.string.gas_price_required));
         else if (!Validations.hasText(etAmount))
             etAmount.setError(getResources().getString(R.string.amount_required));
+        else if (strGasLimit.equals(""))
+            etGasLimit.setError(getString(R.string.gas_limit_required));
+        else if (!Validations.hasGasLimit(gasLimit))
+            tvGasLimit.setVisibility(View.VISIBLE);
         else
             return true;
 

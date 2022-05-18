@@ -119,6 +119,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     AccountEntity accountEntity;
     private CurrencyConversionPresenter currencyConversionPresenter;
     ReadPreferences readAutoLockTimerPref;
+    SavePreferences savePreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +143,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         img_copy_walletadd = findViewById(R.id.img_copywalletAd);
         tvSettings = findViewById(R.id.tvSettings);
         tvHelp = findViewById(R.id.tvHelp);
+        savePreferences = new SavePreferences(HomeActivity.this);
+        setData();
     }
 
     @Override
@@ -153,6 +156,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         findViewById(R.id.view_on_observatory).setOnClickListener(this);
         selectedaccountname.setOnClickListener(this);
         findViewById(R.id.account_rl).setOnClickListener(this);
+        findViewById(R.id.accountname).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
         findViewById(R.id.tvtransaction).setOnClickListener(this);
 
@@ -234,6 +238,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 String add = account.accountAddress;
                 if (add.startsWith("0x"))
                     add = add.replaceFirst("0x", "xdc");
+                Log.d("address:",""+add);
                 wallet_address.setText(add);
                 selectedaccountname.setText(account.accountName);
 
@@ -325,6 +330,9 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 break;
 
             case R.id.account_rl:
+                break;
+
+                case R.id.accountname:
                 bottomSheetDialogImport = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialogImport.setContentView(R.layout.layout_my_account_dialog);
@@ -339,16 +347,16 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 account_rv.setHasFixedSize(true);
                 account_rv.setAdapter(importedAccountAdapter);
 
-                new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-                    @Override
-                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                        return false;
-                    }
-
-                    @Override
-                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    }
-                }).attachToRecyclerView(account_rv);
+//                new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//                    @Override
+//                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+//                    }
+//                }).attachToRecyclerView(account_rv);
 
                 createAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -432,7 +440,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
     }
 
-
     private void opencreateAccountDialog() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
         bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
@@ -503,13 +510,13 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     }
 
     @Override
-    public void AccountDeleteOnClickListener(String strPrivateKey) {
+    public void AccountDeleteOnClickListener(int AccountId) {
 
-        verifyAccountDelete(strPrivateKey);
+        verifyAccountDelete(AccountId);
 
     }
 
-    private void verifyAccountDelete(String strPrivateKey) {
+    private void verifyAccountDelete(int AccountID) {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
         bottomSheetDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         bottomSheetDialog.setContentView(R.layout.layout_delete_account_dialog);
@@ -531,7 +538,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             public void onClick(View v) {
                 bottomSheetDialogImport.dismiss();
                 bottomSheetDialog.dismiss();
-                new DeleteAccountTask(HomeActivity.this, strPrivateKey).execute();
+                new DeleteAccountTask(HomeActivity.this, AccountID).execute();
 
             }
         });
@@ -540,17 +547,18 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
     private class DeleteAccountTask extends AsyncTask<Void, Void, Boolean> {
         private WeakReference<HomeActivity> activityReference;
-        private String strPrivateKey;
+        private int AccountID;
 
-        public DeleteAccountTask(HomeActivity addNetworkActivity, String strPrivateKey) {
+        public DeleteAccountTask(HomeActivity addNetworkActivity, int strPrivateKey) {
             activityReference = new WeakReference<>(addNetworkActivity);
-            this.strPrivateKey = strPrivateKey;
+            this.AccountID = strPrivateKey;
         }
 
         @Override
         protected Boolean doInBackground(Void... voids) {
 
-            activityReference.get().networkDataBase.getAccountDao().deleteById(strPrivateKey);
+            activityReference.get().networkDataBase.getAccountDao().deleteById(AccountID);
+
             Intent i = new Intent(HomeActivity.this, HomeActivity.class);
             startActivity(i);
             finish();
@@ -623,7 +631,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             holder.timer_ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    SavePreferences savePreferences = new SavePreferences(HomeActivity.this);
                     savePreferences.saveNetwork(list.get(holder.getAdapterPosition()));
                     if (bottomSheetDialogImport != null)
                         bottomSheetDialogImport.dismiss();

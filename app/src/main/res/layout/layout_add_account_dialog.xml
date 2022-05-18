@@ -55,8 +55,6 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />
 
-
-
     <com.app.xdcpay.Views.EditText
         android:id="@+id/account_addname"
         android:layout_width="match_parent"
@@ -65,6 +63,7 @@
         android:padding="@dimen/margin_15"
         android:layout_marginStart="@dimen/margin_15"
         android:layout_marginEnd="@dimen/margin_15"
+        android:maxLength="20"
         android:background="@drawable/grey_border"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />

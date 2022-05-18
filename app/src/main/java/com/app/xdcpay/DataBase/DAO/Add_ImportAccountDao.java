@@ -26,8 +26,8 @@ public interface Add_ImportAccountDao {
     void deleteAccount(AccountEntity networkModel);
 
     // on below line we are making query to delete data by id.
-    @Query("DELETE FROM importAccount_table WHERE accountPrivateKey = :id")
-    void deleteById(String id);
+    @Query("DELETE FROM importAccount_table WHERE id = :id")
+    void deleteById(int id);
 
     // below line is to read all the data from our database.
     @Query("SELECT * FROM " + ACCOUNT_TABLE_NAME)

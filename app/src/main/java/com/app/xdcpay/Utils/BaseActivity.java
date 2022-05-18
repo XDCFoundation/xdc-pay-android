@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -146,9 +147,13 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public AccountEntity getselectedaccount() {
         AccountEntity account;
         if (NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().size() > 0) {
-            account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
+            String in = SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "");
+
+//            int conversion = Integer.parseInt(in);
+//            Log.d("String",""+in);
+            account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().
+                    get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
             return account;
         } else return null;
     }
-
 }

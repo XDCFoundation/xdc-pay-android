@@ -60,6 +60,7 @@
     <string name="max_transaction">Max Transaction Fee</string>
     <string name="total">Total</string>
     <string name="gas_limit">Gas Limit</string>
+    <string name="gas_limit_required">Gas limit required</string>
     <string name="gas_limit_must_be_greater_than_2100_and_less_than_415800000">Gas Limit must be greater than 2100 and less than 415800000</string>
     <string name="transaction_note_optional">Transaction Note (Optional)</string>
     <string name="next">Next</string>

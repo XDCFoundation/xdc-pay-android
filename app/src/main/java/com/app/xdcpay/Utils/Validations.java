@@ -25,6 +25,15 @@ public class Validations {
             return true;
     }
 
+    public static boolean hasGasLimit(int gasLimit) {
+        if (gasLimit <= 2100)
+            return false;
+        else if (gasLimit >= 415800000)
+            return false;
+        else
+            return true;
+    }
+
     public static boolean isEmailValid(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);

@@ -45,6 +45,7 @@ public class ImportAccountActivity extends BaseActivity {
     private ImageView back;
     private String str_accountName;
     AccountEntity accountEntity;
+    public NetworkDataBase networkDataBase;
 
     BottomSheetDialog bottomSheetDialogImport;
     KeyTypeAdapter keyTypeAdapter;
@@ -64,6 +65,7 @@ public class ImportAccountActivity extends BaseActivity {
         title = findViewById(R.id.title);
         back = findViewById(R.id.back);
         btn_Import = findViewById(R.id.btn_Import);
+        networkDataBase = NetworkDataBase.getInstance(ImportAccountActivity.this);
         setData();
     }
 

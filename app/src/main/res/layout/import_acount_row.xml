@@ -32,7 +32,8 @@
             android:layout_toRightOf="@+id/account_profile"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/margin_14"
+            android:padding="@dimen/margin_7"
+            android:layout_marginLeft="@dimen/margin_7"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/margin_14" />
 
