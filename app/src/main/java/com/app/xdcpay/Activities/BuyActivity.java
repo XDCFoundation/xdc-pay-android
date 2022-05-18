@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.R;
@@ -14,7 +15,7 @@ import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Views.TextViewMedium;
 
 public class BuyActivity extends BaseActivity {
-    private TextViewMedium tvSimplex, tvFaucet;
+    private TextView tvSimplex, tvFaucet, tvTitle;
     ReadPreferences readNetworkPref;
 
     @Override
@@ -27,6 +28,7 @@ public class BuyActivity extends BaseActivity {
     public void getId() {
         tvSimplex = findViewById(R.id.tvSimplex);
         tvFaucet = findViewById(R.id.tvFaucet);
+        tvTitle = findViewById(R.id.title);
         setData();
     }
 
@@ -39,6 +41,7 @@ public class BuyActivity extends BaseActivity {
 
     @Override
     public void setData() {
+        tvTitle.setText(R.string.buy);
         readNetworkPref = new ReadPreferences(BuyActivity.this);
         if (readNetworkPref.getNetworkName().equals(MAIN_NET_NAME)) {
             tvFaucet.setVisibility(View.GONE);

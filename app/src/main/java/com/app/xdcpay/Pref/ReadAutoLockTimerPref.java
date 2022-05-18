@@ -17,7 +17,13 @@ public class ReadAutoLockTimerPref {
 
     public int getTimer() {
         int res = 0;
-        res = prefs.getInt("timer", 5);
+        res = prefs.getInt("timer", 30);
+        return res;
+    }
+
+    public boolean getHideToken() {
+        boolean res = false;
+        res = prefs.getBoolean("hide_token", false);
         return res;
     }
 

@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/welcome_iv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/margin_200"
         android:src="@drawable/ic_illustration" />
 
     <com.app.xdcpay.Views.TextViewMedium
@@ -16,6 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_to_xdc_pay"
+        android:layout_marginTop="@dimen/margin_30"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_18" />
 
@@ -26,7 +27,9 @@
         android:layout_marginLeft="@dimen/margin_20"
         android:layout_marginRight="@dimen/margin_20"
         android:gravity="center"
-        android:padding="@dimen/margin_20"
+        android:paddingLeft="@dimen/margin_20"
+        android:paddingRight="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_20"
         android:text="@string/sample_text"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_14" />

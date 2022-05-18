@@ -66,7 +66,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation project(':XDCJava')
-//    implementation project(":XDC3Android")
+    implementation project(":XDC3Android")
 
     //password strength
     implementation 'com.github.yesterselga:password-strength-checker-android:v1.0'

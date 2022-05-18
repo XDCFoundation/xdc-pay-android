@@ -30,17 +30,19 @@ public class Validations {
     public static boolean isPasswordValid(String password) {
 
         if (password.length() >= 8) {
-            Pattern letter = Pattern.compile("[a-zA-z]");
+            Pattern letter_lower = Pattern.compile("[a-z]");
+            Pattern letter_upper = Pattern.compile("[A-Z]");
             Pattern digit = Pattern.compile("[0-9]");
             Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
             //Pattern eight = Pattern.compile (".{8}");
 
 
-            Matcher hasLetter = letter.matcher(password);
+            Matcher hasLetterLower = letter_lower.matcher(password);
+            Matcher hasLetterUpper = letter_upper.matcher(password);
             Matcher hasDigit = digit.matcher(password);
             Matcher hasSpecial = special.matcher(password);
 
-            return hasLetter.find() && hasDigit.find() && hasSpecial.find();
+            return hasLetterLower.find() && hasDigit.find() && hasSpecial.find() && hasLetterUpper.find();
 
         } else
             return false;
