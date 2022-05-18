@@ -60,7 +60,7 @@ public class ImportWalletActivity extends BaseActivity {
         progressBar = findViewById(R.id.password_strength_progress);
         show_cb = findViewById(R.id.show_cb);
         show = findViewById(R.id.show);
-
+        networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
         setData();
     }
 
@@ -198,7 +198,6 @@ public class ImportWalletActivity extends BaseActivity {
             return null;
         }
     }
-
 
     private boolean isValid() {
         if (!Validations.hasText(seed_phrase))

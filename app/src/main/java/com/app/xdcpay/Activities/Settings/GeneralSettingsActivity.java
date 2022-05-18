@@ -60,6 +60,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
                 saveAutoLockTimerPref.saveHideToken(b);
             }
         });
+        findViewById(R.id.currency).setOnClickListener(this);
     }
 
     @Override
@@ -113,5 +114,12 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
         SavePreferences saveWalletDetails = new SavePreferences(GeneralSettingsActivity.this);
         saveWalletDetails.saveSelectedCurrency(name);
         bottomSheetDialogImport.dismiss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(GeneralSettingsActivity.this, HomeActivity.class);
+        startActivity(i);
+        finish();
     }
 }

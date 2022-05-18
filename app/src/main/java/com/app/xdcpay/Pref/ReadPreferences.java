@@ -29,4 +29,10 @@ public class ReadPreferences {
         res = prefs.getString("NetworkPref", Constants.MAIN_NET_NAME);
         return res;
     }
+
+    public boolean getIsGasPriceSelected() {
+        boolean res;
+        res = prefs.getBoolean("GasPriceSelected", false);
+        return res;
+    }
 }

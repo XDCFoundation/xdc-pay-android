@@ -8,10 +8,13 @@ import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.app.xdcpay.R;
+import com.google.android.material.snackbar.Snackbar;
 
 public class AppUtility {
     private static Dialog progress;
@@ -25,9 +28,10 @@ public class AppUtility {
         }
     }
 
-    public static void showAlert(Context context, String message) {
+    public static void showResetAlert(Context context, String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Alert");
+
+        builder.setTitle(title);
         builder.setMessage(message);
         builder.setCancelable(true);
         builder.setPositiveButton(context.getString(android.R.string.ok), new DialogInterface.OnClickListener() {
@@ -52,6 +56,7 @@ public class AppUtility {
         progress.setCancelable(false);
         progress.show();
     }
+
     public static void hideKeyboard(Activity activity) {
         if (activity != null) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -62,4 +67,13 @@ public class AppUtility {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
+    public static void showSnackBar(Context context, String message, View view) {
+        if (view != null) {
+            Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

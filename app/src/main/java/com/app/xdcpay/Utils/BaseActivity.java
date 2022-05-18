@@ -27,6 +27,7 @@ import com.ybs.passwordstrengthmeter.PasswordStrength;
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     public NetworkDataBase networkDataBase;
+
     public abstract void getId();
 
     public abstract void setListener();
@@ -42,6 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
 
+
+        networkDataBase = NetworkDataBase.getInstance(BaseActivity.this);
 
     }
 
@@ -131,8 +134,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     public AccountEntity getselectedaccount() {
-        AccountEntity account =  NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
-        return  account;
+        AccountEntity account;
+        if (NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().size() > 0) {
+            account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
+            return account;
+        } else return null;
     }
 
 }
