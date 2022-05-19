@@ -150,7 +150,7 @@
     <string name="reset_password">Reset Password</string>
     <string name="reset">Reset</string>
     <string name="security_privacy_settings">Security and Privacy Settings</string>
-    <string name="secret_content">Write down these 12 words and keep it safe on multiple places. You will not be able to recover your wallet if you lose this recover phrase.</string>
+    <string name="secret_content">These 12 words are the only way to restore your XDCPay accounts. Save them somewhere safe and secret.</string>
 
     <!--    hint-->
     <string name="hint_private_key">Your private key</string>

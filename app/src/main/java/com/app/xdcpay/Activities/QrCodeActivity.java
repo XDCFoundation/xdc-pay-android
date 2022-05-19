@@ -13,18 +13,33 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.DataBase.Entity.NetworkEntity;
+import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Pref.ReadPreferences;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.zxing.WriterException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
+import static com.app.xdcpay.Utils.Constants.APOTHEM_NAME;
+import static com.app.xdcpay.Utils.Constants.LOCALHOST_8545_NAME;
+import static com.app.xdcpay.Utils.Constants.MAIN_NET_NAME;
+
 public class QrCodeActivity extends BaseActivity {
     private ImageView qr_code_iv;
-    private TextView address;
+    private TextView address, account_name;
+    private List<NetworkEntity> networkLists = new ArrayList<>();
+    private ArrayList<String> list = new ArrayList<>();
+    ReadPreferences readAutoLockTimerPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +51,7 @@ public class QrCodeActivity extends BaseActivity {
     public void getId() {
         qr_code_iv = findViewById(R.id.qr_code_iv);
         address = findViewById(R.id.wallet_address);
+        account_name=findViewById(R.id.account_name);
         setData();
     }
 
@@ -47,41 +63,73 @@ public class QrCodeActivity extends BaseActivity {
 
     @Override
     public void setData() {
-        ReadWalletDetails readWalletDetails = new ReadWalletDetails(QrCodeActivity.this);
-        if (Validations.hasText(readWalletDetails.getAccountAddress())) {
-            address.setText(readWalletDetails.getAccountAddress());
-            WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        readAutoLockTimerPref = new ReadPreferences(QrCodeActivity.this);
+        networkLists = NetworkDataBase.getInstance(getApplicationContext()).getDatabaseDao().getNetworkList();
+        list.add(MAIN_NET_NAME);
+        list.add(APOTHEM_NAME);
+        list.add(LOCALHOST_8545_NAME);
+        if (networkLists.size() > 0) {
+            for (int i = 0; i < networkLists.size(); i++) {
+                list.add(networkLists.get(i).getNetworkName());
+            }
+        }
+        for (int j = 0; j < list.size(); j++) {
+            if (list.get(j).equals(readAutoLockTimerPref.getNetworkName())) {
+                setAccount(QrCodeActivity.this, getselectedaccount().getId(), null);
 
-            // initializing a variable for default display.
-            Display display = manager.getDefaultDisplay();
+            }
 
-            // creating a variable for point which
-            // is to be displayed in QR Code.
-            Point point = new Point();
-            display.getSize(point);
+        }
 
-            // getting width and
-            // height of a point
-            int width = point.x;
-            int height = point.y;
+    }
 
-            // generating dimension from width and height.
-            int dimen = width < height ? width : height;
-            dimen = dimen * 3 / 4;
+    public void setAccount(Context context, int id, BottomSheetDialog bottomSheetDialog) {
+        List<AccountEntity> accountlist = NetworkDataBase.getInstance(context).getAccountDao().getAccountList();
+        for (int i = 0; i < accountlist.size(); i++) {
+            if (id == accountlist.get(i).id) {
+                AccountEntity account = accountlist.get(i);
+                account_name.setText(account.accountName);
+                String add = account.accountAddress;
+                if (add.startsWith("0x"))
+                    add = add.replaceFirst("0x", "xdc");
+                address.setText(add);
 
-            // setting this dimensions inside our qr code
-            // encoder to generate our qr code.
-            QRGEncoder qrgEncoder = new QRGEncoder(readWalletDetails.getAccountAddress(), null, QRGContents.Type.TEXT, dimen);
-            try {
-                // getting our qrcode in the form of bitmap.
-                Bitmap bitmap = qrgEncoder.encodeAsBitmap();
-                // the bitmap is set inside our image
-                // view using .setimagebitmap method.
-                qr_code_iv.setImageBitmap(bitmap);
-            } catch (WriterException e) {
-                // this method is called for
-                // exception handling.
-                Log.e("qr_code_excep", e.toString());
+                if (Validations.hasText(account.accountAddress)) {
+
+                    WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+
+                    // initializing a variable for default display.
+                    Display display = manager.getDefaultDisplay();
+
+                    // creating a variable for point which
+                    // is to be displayed in QR Code.
+                    Point point = new Point();
+                    display.getSize(point);
+
+                    // getting width and
+                    // height of a point
+                    int width = point.x;
+                    int height = point.y;
+
+                    // generating dimension from width and height.
+                    int dimen = width < height ? width : height;
+                    dimen = dimen * 3 / 4;
+
+                    // setting this dimensions inside our qr code
+                    // encoder to generate our qr code.
+                    QRGEncoder qrgEncoder = new QRGEncoder(account.accountAddress, null, QRGContents.Type.TEXT, dimen);
+                    try {
+                        // getting our qrcode in the form of bitmap.
+                        Bitmap bitmap = qrgEncoder.encodeAsBitmap();
+                        // the bitmap is set inside our image
+                        // view using .setimagebitmap method.
+                        qr_code_iv.setImageBitmap(bitmap);
+                    } catch (WriterException e) {
+                        // this method is called for
+                        // exception handling.
+                        Log.e("qr_code_excep", e.toString());
+                    }
+                }
             }
         }
     }

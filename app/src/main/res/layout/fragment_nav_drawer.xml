@@ -23,11 +23,11 @@
 
         <com.app.xdcpay.Views.TextViewMedium
             android:id="@+id/accountname"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/profile_iv"
             android:drawableRight="@drawable/ic_drop_down"
-            android:drawablePadding="@dimen/margin_5"
+            android:drawablePadding="@dimen/margin_10"
             android:text="@string/account_1"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/margin_16" />

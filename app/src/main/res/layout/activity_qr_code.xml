@@ -73,6 +73,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_margin="@dimen/margin_10"
+        android:id="@+id/account_name"
         android:text="@string/account_1"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/margin_16" />

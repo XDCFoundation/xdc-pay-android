@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Validations {
     public static Pattern letter_lower = Pattern.compile("[a-z]");
-    public static Pattern letter_upper = Pattern.compile("[A-z]");
+    public static Pattern letter_upper = Pattern.compile("[A-Z]");
     public static Pattern digit = Pattern.compile("[0-9]");
     public static Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
 
