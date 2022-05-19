@@ -81,7 +81,11 @@ public class ConfirmTransactionActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnConfirm:
-                String hash = XDC20Client.getInstance().TransferXdc(getselectedaccount().getAccountPrivateKey(), sender_str, receiver_str, BigInteger.valueOf(Long.parseLong(amount_str)),  Long.parseLong(gas_price_str),  Long.parseLong(gas_limit_str));
+                if (sender_str.startsWith("xdc"))
+                    sender_str = sender_str.replaceFirst("xdc", "0x");
+                if (receiver_str.startsWith("xdc"))
+                    receiver_str = receiver_str.replaceFirst("xdc", "0x");
+                String hash = XDC20Client.getInstance().TransferXdc(getselectedaccount().getAccountPrivateKey(), sender_str, receiver_str, BigInteger.valueOf(Long.parseLong(amount_str)*1000000000000000000l),  Long.parseLong("250000000"),  Long.parseLong("50005"));
                 transactionsEntity = new TransactionsEntity(sender_str, receiver_str, amount_str, gas_limit_str, gas_price_str, hash);
                 new InsertTask(ConfirmTransactionActivity.this, transactionsEntity).execute();
 

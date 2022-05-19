@@ -82,14 +82,12 @@ public class SecurityAndPrivacyActivity extends BaseActivity {
     @Override
     public void setData() {
         title.setText(getString(R.string.security_privacy_settings));
-
-        if (readAutoLockTimerPref.getTimer() > 60)
+        if (readAutoLockTimerPref.getTimer() == 86400) {
+            edit_timer.setText(getResources().getString(R.string.none));
+        } else if (readAutoLockTimerPref.getTimer() > 60)
             edit_timer.setText(getResources().getString(
                     R.string.minutes,
                     String.valueOf(readAutoLockTimerPref.getTimer() / 60)));
-        else if (readAutoLockTimerPref.getTimer() == 0){
-            edit_timer.setText(getResources().getString(R.string.none));
-        }
         else
             edit_timer.setText(getResources().getString(
                     R.string.seconds,

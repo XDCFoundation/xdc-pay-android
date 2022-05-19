@@ -196,12 +196,6 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
         }
 
-        if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-//            cameraSource.start(surfaceView.getHolder());
-        } else {
-            ActivityCompat.requestPermissions(HomeActivity.this, new
-                    String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
-        }
 
         img_copy_walletadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -317,9 +311,16 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                 break;
 
             case R.id.scan:
-                Intent i = new Intent(HomeActivity.this, ScannerActivity.class);
-                i.putExtra(ACTIVITY_NAME, "HomeActivity");
-                startActivity(i);
+                if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+//            cameraSource.start(surfaceView.getHolder());
+                    Intent i = new Intent(HomeActivity.this, ScannerActivity.class);
+                    i.putExtra(ACTIVITY_NAME, "HomeActivity");
+                    startActivity(i);
+                } else {
+                    ActivityCompat.requestPermissions(HomeActivity.this, new
+                            String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+                }
+
                 break;
 
             case R.id.menu:
@@ -495,6 +496,16 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         });
 
         bottomSheetDialog.show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==REQUEST_CAMERA_PERMISSION && grantResults.length>0){
+            Intent i = new Intent(HomeActivity.this, ScannerActivity.class);
+            i.putExtra(ACTIVITY_NAME, "HomeActivity");
+            startActivity(i);
+        }
     }
 
     @Override
