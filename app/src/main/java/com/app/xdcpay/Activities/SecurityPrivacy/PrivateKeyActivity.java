@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
@@ -15,6 +16,7 @@ public class PrivateKeyActivity extends BaseActivity {
     EditText et_password;
     TextViewMedium revealBtn, title;
     ImageView back;
+    private ReadWalletDetails readWalletDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class PrivateKeyActivity extends BaseActivity {
 
     @Override
     public void getId() {
+        readWalletDetails=new ReadWalletDetails(PrivateKeyActivity.this);
         et_password = findViewById(R.id.et_password);
         revealBtn = findViewById(R.id.revealBtn);
         back = findViewById(R.id.back);
@@ -46,12 +49,14 @@ public class PrivateKeyActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.revealBtn:
-                if (isValid()) {
+                if (isValid())
+                if (et_password.getText().toString().equals(readWalletDetails.getPassword())){
                     Intent i = new Intent(PrivateKeyActivity.this, ShowPrivateKeyActivity.class);
                     startActivity(i);
                     finish();
                     break;
-                }
+                }else
+                    et_password.setError(getResources().getString(R.string.error_incorrect_password));
                 break;
             case R.id.back:
                 finish();

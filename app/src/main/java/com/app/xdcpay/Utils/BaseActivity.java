@@ -146,7 +146,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public AccountEntity getselectedaccount() {
         AccountEntity account;
         if (NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().size() > 0) {
-            account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
+            account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "0")));
             return account;
         } else return null;
     }

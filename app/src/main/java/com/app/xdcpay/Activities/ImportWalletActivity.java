@@ -48,7 +48,7 @@ public class ImportWalletActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_import_wallet);
         networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override

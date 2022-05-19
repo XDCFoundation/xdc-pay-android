@@ -217,8 +217,10 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
             SharedPreferenceHelper.setSharedPreferenceString(ConfirmSeedPhraseActivity.this, Constants.ACCOUNT, "0");
             activityReference.get().networkDataBase.getAccountDao().insertAccount(accountEntity);
             Intent i = new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
-            finish();
             return null;
         }
     }
