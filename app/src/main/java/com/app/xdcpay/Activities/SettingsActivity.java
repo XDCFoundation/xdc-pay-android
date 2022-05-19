@@ -56,7 +56,7 @@ public class SettingsActivity extends BaseActivity {
             case R.id.tv_Networks:
                 Intent intent = new Intent(SettingsActivity.this, NetworksActivity.class);
                 startActivity(intent);
-               // finish();
+                finish();
                 break;
             case R.id.tv_Contacts:
                 Intent intentContact = new Intent(SettingsActivity.this, ContactsActivity.class);

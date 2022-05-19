@@ -1,5 +1,6 @@
 package com.app.xdcpay.Utils;
 
+import android.util.Patterns;
 import android.widget.EditText;
 
 import java.util.regex.Matcher;
@@ -78,5 +79,11 @@ public class Validations {
 
         }
         return 25;
+    }
+
+    public static boolean isValidUrl(String url) {
+        Pattern p = Patterns.WEB_URL;
+        Matcher m = p.matcher(url.toLowerCase());
+        return m.matches();
     }
 }

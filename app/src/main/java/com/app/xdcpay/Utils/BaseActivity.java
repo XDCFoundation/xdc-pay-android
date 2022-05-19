@@ -116,7 +116,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         int pr = Validations.calculatePasswordStrength(password.getText().toString());
         if (pr <= 25)
             progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorRed), android.graphics.PorterDuff.Mode.SRC_IN);
-        else if ( pr <= 60)
+        else if (pr <= 60)
             progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorYellow), android.graphics.PorterDuff.Mode.SRC_IN);
         else
             progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.SRC_IN);
@@ -147,12 +147,13 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public AccountEntity getselectedaccount() {
         AccountEntity account;
         if (NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().size() > 0) {
-            String in = SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "");
+            String accountId = SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "");
 
-//            int conversion = Integer.parseInt(in);
-//            Log.d("String",""+in);
-            account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().
-                    get(Integer.parseInt(SharedPreferenceHelper.getSharedPreferenceString(BaseActivity.this, Constants.ACCOUNT, "")));
+            int conversion = Integer.parseInt(accountId);
+            if (NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().size() == conversion)
+                account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(0);
+            else
+                account = NetworkDataBase.getInstance(BaseActivity.this).getAccountDao().getAccountList().get(conversion);
             return account;
         } else return null;
     }

@@ -1,7 +1,7 @@
 package com.app.xdcpay.Adapters;
 
 import android.content.Context;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +54,10 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             holder.tvAccountName.setText(context.getString(R.string.account) + " " + accountId);
             holder.textImported.setVisibility(View.VISIBLE);
             holder.account_delete.setVisibility(View.VISIBLE);
+        } else if (model.getAccountName().equals(context.getString(R.string.account_1))) {
+            holder.tvAccountName.setText(model.getAccountName());
+            holder.textImported.setVisibility(View.VISIBLE);
+            holder.account_delete.setVisibility(View.INVISIBLE);
         } else {
             holder.tvAccountName.setText(model.getAccountName());
             holder.textImported.setVisibility(View.GONE);
@@ -71,7 +75,7 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             @Override
             public void onClick(View view) {
                 SharedPreferenceHelper.setSharedPreferenceString(context.getApplicationContext(), Constants.ACCOUNT, position + "");
-                HomeActivity.setAccount(context.getApplicationContext(), model.id, bottomSheetDialog);
+                HomeActivity.setAccount(context.getApplicationContext(), model.getId(), bottomSheetDialog);
             }
         });
     }

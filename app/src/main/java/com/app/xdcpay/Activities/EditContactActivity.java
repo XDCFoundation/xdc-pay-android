@@ -15,8 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.app.xdcpay.Activities.Contacts.ContactsActivity;
-import com.app.xdcpay.Activities.Networks.NetworkDetailsActivity;
-import com.app.xdcpay.Activities.Networks.NetworksActivity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;

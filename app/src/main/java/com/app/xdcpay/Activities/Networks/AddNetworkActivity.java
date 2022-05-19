@@ -98,6 +98,8 @@ public class AddNetworkActivity extends BaseActivity {
             etNetworkName.setError(getResources().getString(R.string.network_name_error));
         else if (!Validations.hasText(etRPCUrl))
             etRPCUrl.setError(getResources().getString(R.string.rpc_url_error));
+        else if (!Validations.isValidUrl(etRPCUrl.getText().toString()))
+            etRPCUrl.setError(getResources().getString(R.string.rpc_url_error));
         else if (!Validations.hasText(etChainId))
             etChainId.setError(getResources().getString(R.string.chain_id_error));
         else return true;
@@ -118,6 +120,7 @@ public class AddNetworkActivity extends BaseActivity {
         protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getDatabaseDao().insertNetwork(networkEntity);
             startActivity(new Intent(AddNetworkActivity.this, NetworksActivity.class));
+            finish();
             return null;
         }
     }

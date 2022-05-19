@@ -88,7 +88,7 @@
     <string name="error_check_terms">Please Agree , XDCPay Can’t Recover Your Password</string>
     <string name="error_empty">This field cannot be empty</string>
     <string name="network_name_error">Please enter network name</string>
-    <string name="rpc_url_error">Please enter RPC URL</string>
+    <string name="rpc_url_error">Please enter valid RPC URL</string>
     <string name="chain_id_error">Please enter Chain ID</string>
     <string name="import_from_seed">Import from seed</string>
     <string name="edit">Edit</string>
@@ -161,7 +161,7 @@
     <string name="hint_address">xdc084f58d39d6a0d5e89464….4594</string>
     <string name="hint_key">eg. ce4085d87dc63992e358f5c1a8bd4c4de647bb0cfdec034d00c3c9532535f324</string>
     <string name="hint_username">Contact’s Name</string>
-    <string name="hint_XDC">100 XDC</string>
+    <string name="hint_XDC">0 XDC</string>
     <string name="reveal_seed_words_hint">Do not recover your seed words in a public place! These words can be used to steal all your accounts.</string>
     <string name="change_password_hint">Create your new password for XDC Pay so that you can login to your account.</string>
     <string name="private_key_hint">This is the private key for the current selected account. Never disclose this key.</string>

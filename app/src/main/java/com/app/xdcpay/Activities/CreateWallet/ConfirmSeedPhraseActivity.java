@@ -174,9 +174,17 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ConfirmSeedPhraseActivity.this);
                     saveWalletDetails.IsSeedPhaseConfirm(true);
                     saveWalletDetails.saveIsLogin(true);
-                    accountEntity = new AccountEntity(getResources().getString(R.string.account_1), readWalletDetails.getAccountAddress(),
-                            readWalletDetails.getPrivateKey(), readWalletDetails.getPublicKey(), readWalletDetails.getSeedPhrase());
-                    new InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
+                    if (NetworkDataBase.getInstance(ConfirmSeedPhraseActivity.this).getAccountDao().getAccountList().size() > 0){
+                        SharedPreferenceHelper.setSharedPreferenceString(ConfirmSeedPhraseActivity.this, Constants.ACCOUNT, "0");
+                        Intent i = new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else {
+                        accountEntity = new AccountEntity(getResources().getString(R.string.account_1), readWalletDetails.getAccountAddress(),
+                                readWalletDetails.getPrivateKey(), readWalletDetails.getPublicKey(), readWalletDetails.getSeedPhrase());
+                        new InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
+                    }
                 }
                 break;
             case R.id.back:

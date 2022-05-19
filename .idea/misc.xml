@@ -70,6 +70,7 @@
         <entry key="app/src/main/res/layout/activity_browser.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_change_password_screen.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_confirm_seed_phrase.xml" value="0.2013888888888889" />
         <entry key="app/src/main/res/layout/activity_confirm_transaction.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_contact_details.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_contacts.xml" value="0.21435185185185185" />

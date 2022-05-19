@@ -177,6 +177,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         adapter.addFragment(new TokensFragment(), getResources().getString(R.string.tokens));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        Log.d("networkName:", " .. " + readAutoLockTimerPref.getNetworkName());
         network_name.setText(readAutoLockTimerPref.getNetworkName());
 
         networkLists = NetworkDataBase.getInstance(getApplicationContext()).getDatabaseDao().getNetworkList();
@@ -226,15 +227,22 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
     public static void setAccount(Context context, int id, BottomSheetDialog bottomSheetDialog) {
         List<AccountEntity> accountlist = NetworkDataBase.getInstance(context).getAccountDao().getAccountList();
         for (int i = 0; i < accountlist.size(); i++) {
-            if (id == accountlist.get(i).id) {
+            if (id == accountlist.get(i).getId()) {
                 AccountEntity account = accountlist.get(i);
-                account_name.setText(account.accountName);
+                if (account.accountName.equals(context.getString(R.string.imported_text))) {
+                    account_name.setText(context.getString(R.string.account) + " " + account.getId());
+                    selectedaccountname.setText(context.getString(R.string.account) + " " + account.getId());
+
+                } else {
+                    account_name.setText(account.accountName);
+                    selectedaccountname.setText(account.accountName);
+                }
                 String add = account.accountAddress;
                 if (add.startsWith("0x"))
                     add = add.replaceFirst("0x", "xdc");
-                Log.d("address:",""+add);
+                Log.d("address:", "" + add);
                 wallet_address.setText(add);
-                selectedaccountname.setText(account.accountName);
+//                selectedaccountname.setText(account.accountName);
 
                 XDCpayClient.getInstance().getXdcBalance(account.getAccountAddress(),
                         network_name.getText().toString(), true, new EventCallback() {
@@ -243,7 +251,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                                 xdcWalletBalance = balance;
                                 Log.e("home_wallet_balance ", xdcWalletBalance);
 
-                                HomeActivity.wallet_balance.setText(xdcWalletBalance + " " + context.getString(R.string.txt_xdc));
+                                wallet_balance.setText(xdcWalletBalance + " " + context.getString(R.string.txt_xdc));
 
 
                             }
@@ -333,7 +341,7 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
             case R.id.account_rl:
                 break;
 
-                case R.id.accountname:
+            case R.id.accountname:
                 bottomSheetDialogImport = new BottomSheetDialog(HomeActivity.this);
                 bottomSheetDialogImport.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 bottomSheetDialogImport.setContentView(R.layout.layout_my_account_dialog);
@@ -647,7 +655,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                         bottomSheetDialogImport.dismiss();
                     network_name.setText(holder.network.getText().toString());
                     onUserInteraction();
-                    onResume();
+//                    onResume();
+                    refreshThisPage();
                 }
             });
         }
@@ -671,9 +680,18 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         }
     }
 
+    private void refreshThisPage() {
+//        this.recreate();
+        Intent i = new Intent(HomeActivity.this,HomeActivity.class);
+        startActivity(i);
+        finish();
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        setData();
+//        setData();
     }
+
 }
