@@ -168,12 +168,12 @@
                 app:tabMinWidth="@dimen/margin_40"
                 app:tabSelectedTextColor="@color/colorBlue"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                app:tabTextColor="@color/colorGrey" />
+                app:tabTextColor="@color/colorGreyText" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey" />
+                android:layout_height=".5dp"
+                android:background="@color/colorGreyText" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/favorite_view_pager"
