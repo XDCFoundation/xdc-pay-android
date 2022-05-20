@@ -1,5 +1,6 @@
 package com.app.xdcpay.Activities.Accounts;
 
+import static com.app.xdcpay.Utils.Constants.ACCOUNT_IMPORTED;
 import static com.app.xdcpay.Utils.Constants.ACCOUNT_NAME;
 import static com.app.xdcpay.Utils.Constants.keyTypeList;
 
@@ -147,8 +148,8 @@ public class ImportAccountActivity extends BaseActivity {
                 String add = walletData.getAccountAddress();
                 if (add.startsWith("0x"))
                     add = add.replaceFirst("0x", "xdc");
-                accountEntity = new AccountEntity(str_accountName, add,
-                        walletData.getPrivateKey(), walletData.getPublickeyKey(), "");
+                accountEntity = new AccountEntity(str_accountName, add, walletData.getPrivateKey(),
+                        walletData.getPublickeyKey(), "", ACCOUNT_IMPORTED);
                 new InsertTask(ImportAccountActivity.this, accountEntity).execute();
 
             } else {

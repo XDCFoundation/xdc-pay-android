@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.app.xdcpay.Activities.CreateWallet.CreateWalletActivity;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 

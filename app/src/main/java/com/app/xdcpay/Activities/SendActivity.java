@@ -161,7 +161,7 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
-                finish();
+                onBackPressed();
                 break;
 
             case R.id.iv_barcode:
@@ -179,7 +179,6 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
                     i.putExtra(Constants.GAS_LIMIT, etGasLimit.getText().toString());
                     i.putExtra(Constants.AMOUNT, etAmount.getText().toString());
                     startActivity(i);
-                    finish();
                     break;
                 }
         }
@@ -262,5 +261,12 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(SendActivity.this, HomeActivity.class);
+        startActivity(i);
+        finish();
     }
 }

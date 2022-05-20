@@ -3,6 +3,9 @@ package com.app.xdcpay.Utils;
 import android.util.Patterns;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -82,8 +85,50 @@ public class Validations {
     }
 
     public static boolean isValidUrl(String url) {
-        Pattern p = Patterns.WEB_URL;
-        Matcher m = p.matcher(url.toLowerCase());
-        return m.matches();
+
+        boolean urlPattern = false;
+
+        String[] https = {"https://", "http://"};
+        for (int i = 0; i < 2; i++) {
+            if (url.startsWith(https[i])) {
+                Pattern p = Patterns.WEB_URL;
+                urlPattern = Patterns.WEB_URL.matcher(url.toLowerCase()).matches();
+            } else
+                urlPattern = false;
+        }
+        return urlPattern;
+
+    }
+
+    public static boolean isContainNo(String seedPhrase) {
+
+        boolean correctSeedPhrase = false;
+
+        String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        for (int i = 0; i < 10; i++) {
+            if (seedPhrase.contains(numbers[i])) {
+                correctSeedPhrase = false;
+            } else
+                correctSeedPhrase = true;
+        }
+        return correctSeedPhrase;
+
+    }
+
+    public static boolean seedPhraseDigits(String seedPhrase) {
+        boolean correctSeedPhrase = false;
+        if (seedPhrase.contains(" ")) {
+            List<String> seedPhraseList = new ArrayList<String>(Arrays.asList(seedPhrase.split(" ")));
+            if (seedPhraseList.size() == 12)
+                correctSeedPhrase = true;
+            else
+                correctSeedPhrase = false;
+
+        } else
+            correctSeedPhrase = false;
+
+
+        return correctSeedPhrase;
+
     }
 }

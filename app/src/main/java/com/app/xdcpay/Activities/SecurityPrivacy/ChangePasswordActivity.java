@@ -52,7 +52,7 @@ public class ChangePasswordActivity extends BaseActivity {
             case R.id.confirmBtn:
                 if (isValid())
                     if (et_password.getText().toString().equals(readWalletDetails.getPassword())) {
-                        Intent i = new Intent(ChangePasswordActivity.this, LoginActivity.class);
+                        Intent i = new Intent(ChangePasswordActivity.this, ChangePasswordScreenActivity.class);
                         startActivity(i);
                         finish();
                         break;

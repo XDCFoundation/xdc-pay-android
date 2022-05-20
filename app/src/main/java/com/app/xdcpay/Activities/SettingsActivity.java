@@ -81,10 +81,18 @@ public class SettingsActivity extends BaseActivity {
                 break;
 
             case R.id.back:
+                Intent intentHome = new Intent(SettingsActivity.this, HomeActivity.class);
+                startActivity(intentHome);
                 finish();
                 break;
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intentHome = new Intent(SettingsActivity.this, HomeActivity.class);
+        startActivity(intentHome);
+        finish();
+    }
 }
 

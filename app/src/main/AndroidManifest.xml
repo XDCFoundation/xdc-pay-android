@@ -95,7 +95,7 @@
         <activity android:name=".Activities.BuyActivity" />
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.SecureWalletActivity" />
-        <activity android:name=".Activities.CreateWalletActivity" />
+        <activity android:name=".Activities.CreateWallet.CreateWalletActivity" />
         <activity android:name=".Activities.ImportWalletActivity" />
         <activity android:name=".Activities.WalletSetupActivity" />
         <activity android:name=".Activities.WelcomeActivity" />

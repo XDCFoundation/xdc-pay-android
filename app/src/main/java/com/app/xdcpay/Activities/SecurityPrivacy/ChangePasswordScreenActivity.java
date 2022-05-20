@@ -1,5 +1,6 @@
 package com.app.xdcpay.Activities.SecurityPrivacy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.xdcpay.Activities.LoginActivity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -84,6 +86,8 @@ public class ChangePasswordScreenActivity extends BaseActivity {
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ChangePasswordScreenActivity.this);
                     saveWalletDetails.savePassword(password.getText().toString());
                     Toast.makeText(ChangePasswordScreenActivity.this, getResources().getString(R.string.password_updated), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(ChangePasswordScreenActivity.this, LoginActivity.class);
+                    startActivity(i);
                     finish();
                 }
 

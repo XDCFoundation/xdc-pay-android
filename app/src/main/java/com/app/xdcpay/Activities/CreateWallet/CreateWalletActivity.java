@@ -1,4 +1,4 @@
-package com.app.xdcpay.Activities;
+package com.app.xdcpay.Activities.CreateWallet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
-import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
