@@ -24,6 +24,7 @@ import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
+import com.app.xdcpay.Views.TextView;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -99,7 +100,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void updatePasswordStrengthView(EditText password, ProgressBar progressBar) {
+    public void updatePasswordStrengthView(EditText password, ProgressBar progressBar, TextView tvPasswordStrength) {
         if (password.getText().toString().isEmpty()) {
             progressBar.setProgress(0);
             return;
@@ -114,13 +115,19 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 //            progressBar.setProgress(100);
 //        }
         int pr = Validations.calculatePasswordStrength(password.getText().toString());
-        if (pr <= 25)
-            progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorRed), android.graphics.PorterDuff.Mode.SRC_IN);
-        else if (pr <= 60)
-            progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorYellow), android.graphics.PorterDuff.Mode.SRC_IN);
-        else
-            progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.SRC_IN);
-
+        if (pr <= 25) {
+            tvPasswordStrength.setText(getString(R.string.strength_poor));
+            progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorRed),
+                    android.graphics.PorterDuff.Mode.SRC_IN);
+        } else if (pr <= 60) {
+            tvPasswordStrength.setText(getString(R.string.strength_Moderate));
+            progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorYellow),
+                    android.graphics.PorterDuff.Mode.SRC_IN);
+        } else {
+            progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.btn_green),
+                    android.graphics.PorterDuff.Mode.SRC_IN);
+            tvPasswordStrength.setText(getString(R.string.strength_Strong));
+        }
         progressBar.setProgress(pr);
     }
 

@@ -44,6 +44,7 @@ public class ImportWalletActivity extends BaseActivity {
     private CheckBox show_cb;
     NetworkDataBase networkDataBase;
     AccountEntity accountEntity;
+    private com.app.xdcpay.Views.TextView tvPasswordStrength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class ImportWalletActivity extends BaseActivity {
         progressBar = findViewById(R.id.password_strength_progress);
         show_cb = findViewById(R.id.show_cb);
         show = findViewById(R.id.show);
+        tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
         networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
         setData();
     }
@@ -89,7 +91,7 @@ public class ImportWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updatePasswordStrengthView(password, progressBar);
+                updatePasswordStrengthView(password, progressBar,tvPasswordStrength);
             }
 
             @Override

@@ -24,6 +24,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
     private CheckBox terms_cb;
     private TextView title, show_hide;
     private ProgressBar progressBar;
+    private com.app.xdcpay.Views.TextView tvPasswordStrength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
         title = findViewById(R.id.title);
         show_hide = findViewById(R.id.show_hide);
         progressBar = findViewById(R.id.password_strength_progress);
+        tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
         setData();
     }
 
@@ -56,7 +58,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updatePasswordStrengthView(password, progressBar);
+                updatePasswordStrengthView(password, progressBar, tvPasswordStrength);
             }
 
             @Override

@@ -25,13 +25,14 @@ import java.lang.ref.WeakReference;
 import java.math.BigInteger;
 
 public class ConfirmTransactionActivity extends BaseActivity {
-    private TextViewMedium btnConfirm,tvTotal;
+    private TextViewMedium btnConfirm, tvTotal;
     private ImageView iv_back;
     private String sender_str, receiver_str, amount_str, gas_limit_str, gas_price_str;
     private TextView sender, receiver, amount, gas_limit, gas_price, transaction_fee, total;
     private ReadWalletDetails readWalletDetails;
     private NetworkDataBase networkDataBase;
     private TransactionsEntity transactionsEntity;
+    private com.app.xdcpay.Views.TextView tvReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class ConfirmTransactionActivity extends BaseActivity {
         gas_limit = findViewById(R.id.tvGasAmount);
         gas_price = findViewById(R.id.tvGasPriceGwei);
         tvTotal = findViewById(R.id.tvTotal);
+        tvReset = findViewById(R.id.tvReset);
         setData();
     }
 
@@ -57,6 +59,7 @@ public class ConfirmTransactionActivity extends BaseActivity {
     public void setListener() {
         btnConfirm.setOnClickListener(this);
         iv_back.setOnClickListener(this);
+        tvReset.setOnClickListener(this);
     }
 
     @Override
@@ -99,6 +102,10 @@ public class ConfirmTransactionActivity extends BaseActivity {
                 break;
             case R.id.iv_back:
                 onBackPressed();
+                break;
+            case R.id.tvReset:
+                startActivity(new Intent(ConfirmTransactionActivity.this, SendActivity.class));
+                finish();
                 break;
         }
     }

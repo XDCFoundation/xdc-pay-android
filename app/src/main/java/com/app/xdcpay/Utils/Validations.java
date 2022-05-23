@@ -1,5 +1,6 @@
 package com.app.xdcpay.Utils;
 
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.EditText;
 
@@ -64,24 +65,30 @@ public class Validations {
     }
 
     public static int calculatePasswordStrength(String password) {
+        int strengthMeter = 0;
         if (password.length() == 0)
-            return 0;
+            strengthMeter = 0;
         if (password.length() < 8)
-            return 25;
+            strengthMeter = 25;
         else {
             Matcher hasLetterLower = letter_lower.matcher(password);
             Matcher hasLetterUpper = letter_upper.matcher(password);
             Matcher hasDigit = digit.matcher(password);
             Matcher hasSpecial = special.matcher(password);
 
-            if (hasLetterUpper.find() && hasLetterLower.find() && !hasDigit.find() && !hasSpecial.find())
-                return 60;
+//            Log.d("strengthPassword:", "" + hasLetterUpper.find() + " .. " + hasLetterLower.find() + " .. "
+//                    + hasDigit.find() + " .. " + hasSpecial.find());
+//            if (hasLetterUpper.find() && hasLetterLower.find() && !hasDigit.find() && !hasSpecial.find())
+//                strengthMeter = 60;
 
-            if (hasLetterUpper.find() && hasLetterLower.find() && hasDigit.find() && hasSpecial.find())
-                return 100;
+            if (hasLetterUpper.find() && hasLetterLower.find() && hasDigit.find() && hasSpecial.find()) {
+                strengthMeter = 100;
+            } else {
+                strengthMeter = 60;
+            }
 
         }
-        return 25;
+        return strengthMeter;
     }
 
     public static boolean isValidUrl(String url) {
@@ -93,8 +100,7 @@ public class Validations {
             if (url.startsWith(https[i])) {
                 Pattern p = Patterns.WEB_URL;
                 urlPattern = Patterns.WEB_URL.matcher(url.toLowerCase()).matches();
-            } else
-                urlPattern = false;
+            }
         }
         return urlPattern;
 
