@@ -58,7 +58,7 @@
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:hint="@string/hint_rpc_url"
-                android:inputType="textCapSentences"
+                android:inputType="text"
                 android:padding="@dimen/margin_10"
                 android:singleLine="true"
                 android:textSize="@dimen/margin_14" />

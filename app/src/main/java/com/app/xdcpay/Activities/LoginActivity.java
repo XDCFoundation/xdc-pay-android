@@ -3,15 +3,16 @@ package com.app.xdcpay.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.app.xdcpay.Activities.CreateWallet.CreateWalletActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 
 public class LoginActivity extends BaseActivity {
@@ -66,13 +67,14 @@ public class LoginActivity extends BaseActivity {
                 else if (password.getText().toString().equals(readWalletDetails.getPassword())) {
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(LoginActivity.this);
                     saveWalletDetails.saveIsLogin(true);
+                    SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this, Constants.ACCOUNT, "0");
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } else
-                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_password_not_match), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_incorrect_password), Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.create_wallet:

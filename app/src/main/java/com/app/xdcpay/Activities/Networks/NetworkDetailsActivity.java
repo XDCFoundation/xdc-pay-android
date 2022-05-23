@@ -15,7 +15,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Views.TextViewMedium;
@@ -31,6 +33,7 @@ public class NetworkDetailsActivity extends BaseActivity {
     private String str_currencySymbol, str_blockExplorer;
     NetworkDataBase networkDataBase;
     private int networkId = 0;
+    SavePreferences savePreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class NetworkDetailsActivity extends BaseActivity {
         tvCurrencySymbol = findViewById(R.id.tvCurrencySymbol);
         tvBlockExplorer = findViewById(R.id.tvBlockExplorer);
         tvRemove = findViewById(R.id.tvRemove);
+        savePreferences = new SavePreferences(NetworkDetailsActivity.this);
         setData();
     }
 
@@ -104,6 +108,7 @@ public class NetworkDetailsActivity extends BaseActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             activityReference.get().networkDataBase.getDatabaseDao().deleteById(networkId);
+            savePreferences.saveNetwork(getString(R.string.xdc_mainnet));
             Intent i = new Intent(NetworkDetailsActivity.this, NetworksActivity.class);
             startActivity(i);
             finish();

@@ -16,6 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.app.xdcpay.Activities.HomeActivity;
+import com.app.xdcpay.Activities.SettingsActivity;
 import com.app.xdcpay.Adapters.TimeLockerAdapter;
 import com.app.xdcpay.Interface.BottomSheetInterface;
 import com.app.xdcpay.Pref.ReadAutoLockTimerPref;
@@ -118,7 +119,7 @@ public class GeneralSettingsActivity extends BaseActivity implements BottomSheet
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(GeneralSettingsActivity.this, HomeActivity.class);
+        Intent i = new Intent(GeneralSettingsActivity.this, SettingsActivity.class);
         startActivity(i);
         finish();
     }

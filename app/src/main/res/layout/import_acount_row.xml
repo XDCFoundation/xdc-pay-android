@@ -23,16 +23,17 @@
             android:src="@drawable/profile_icon" />
 
         <com.app.xdcpay.Views.TextViewMedium
+            android:id="@+id/tvAccountName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvAccountName"
-            android:text="account1"
-            android:singleLine="true"
-            android:layout_toLeftOf="@+id/linear_imported"
-            android:layout_toRightOf="@+id/account_profile"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginLeft="@dimen/margin_7"
+            android:layout_toLeftOf="@+id/linear_imported"
+            android:layout_toRightOf="@+id/account_profile"
+            android:padding="@dimen/margin_7"
+            android:singleLine="true"
+            android:text="account1"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/margin_14" />
 

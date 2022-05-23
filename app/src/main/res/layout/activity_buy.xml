@@ -33,7 +33,7 @@
             android:background="@drawable/rounded_corner_5dp_light_grey_border"
             android:drawableLeft="@drawable/ic_simplex"
             android:drawableRight="@drawable/ic_next"
-            android:padding="@dimen/margin_10" />
+            android:padding="@dimen/margin_15" />
 
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="match_parent"

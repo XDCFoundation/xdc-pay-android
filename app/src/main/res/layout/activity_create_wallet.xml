@@ -6,7 +6,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".Activities.CreateWalletActivity">
+    tools:context=".Activities.CreateWallet.CreateWalletActivity">
 
     <include layout="@layout/layout_toolbar" />
 

@@ -68,7 +68,6 @@
                     android:drawablePadding="@dimen/margin_10"
                     android:ellipsize="middle"
                     android:hint="@string/wallet_address"
-                    android:text="xdce5de205588ec5289abf0457e731c2d48fd8ffeea"
                     android:padding="@dimen/margin_5"
                     android:singleLine="true"
                     android:textColor="@color/colorBlack"
@@ -122,8 +121,7 @@
                     android:background="@color/colorWhite"
                     android:digits="@string/input_type_double"
                     android:hint="0.00"
-                    android:text="10"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/margin_14" />
 
@@ -156,7 +154,7 @@
                 android:singleLine="true"
                 android:hint="1"
                 android:text="1"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:digits="@string/input_type_double"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_14" />
@@ -178,6 +176,7 @@
                 android:hint="0.00"
                 android:text="200000"
                 android:padding="@dimen/margin_10"
+                android:maxLength="9"
                 android:inputType="numberDecimal"
                 android:digits="@string/input_type_double"
                 android:singleLine="true"
@@ -187,6 +186,7 @@
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvGasLimit"
                 android:layout_marginTop="@dimen/margin_10"
                 android:text="@string/gas_limit_must_be_greater_than_2100_and_less_than_415800000"
                 android:textColor="@color/colorRed"

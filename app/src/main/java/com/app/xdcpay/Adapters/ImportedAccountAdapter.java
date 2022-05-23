@@ -1,6 +1,9 @@
 package com.app.xdcpay.Adapters;
 
+import static com.app.xdcpay.Utils.Constants.ACCOUNT_CREATED;
+
 import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.xdcpay.Activities.HomeActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
+import com.app.xdcpay.Interface.AccountCallbackInterface;
 import com.app.xdcpay.Interface.ImportAccountCallback;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
@@ -27,12 +31,15 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     private List<AccountEntity> networkLists = new ArrayList<>();
     ImportAccountCallback networkCallback;
     BottomSheetDialog bottomSheetDialog;
+    AccountCallbackInterface accountCallbackInterface;
 
-    public ImportedAccountAdapter(Context context, List<AccountEntity> networkLists, ImportAccountCallback networkCallback, BottomSheetDialog bottomSheetDialogImport) {
+    public ImportedAccountAdapter(Context context, List<AccountEntity> networkLists, ImportAccountCallback networkCallback,
+                                  BottomSheetDialog bottomSheetDialogImport,AccountCallbackInterface accountCallbackInterface) {
         this.context = context;
         this.networkLists = networkLists;
         this.networkCallback = networkCallback;
         this.bottomSheetDialog = bottomSheetDialogImport;
+        this.accountCallbackInterface = accountCallbackInterface;
     }
 
     @NonNull
@@ -47,16 +54,31 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         AccountEntity model = networkLists.get(position);
         //  holder.tvAccountName.setText(context.getString(R.string.account) + " " + (position + 1));
-        holder.tvAccountName.setText(model.accountName);
+        int accountId = model.getId();
+
         if (model.getAccountName().equals(context.getString(R.string.imported_text))) {
+            holder.tvAccountName.setText(context.getString(R.string.account) + " " + accountId);
             holder.textImported.setVisibility(View.VISIBLE);
+            holder.account_delete.setVisibility(View.VISIBLE);
+        } else if (model.getAccountName().equals(context.getString(R.string.account_1))) {
+            if (model.getAccountType().equals(ACCOUNT_CREATED)) {
+                holder.tvAccountName.setText(model.getAccountName());
+                holder.textImported.setVisibility(View.GONE);
+                holder.account_delete.setVisibility(View.INVISIBLE);
+            } else {
+                holder.tvAccountName.setText(model.getAccountName());
+                holder.textImported.setVisibility(View.VISIBLE);
+                holder.account_delete.setVisibility(View.INVISIBLE);
+            }
         } else {
+            holder.tvAccountName.setText(model.getAccountName());
             holder.textImported.setVisibility(View.GONE);
+            holder.account_delete.setVisibility(View.GONE);
         }
         holder.account_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkCallback.AccountDeleteOnClickListener(model.accountPrivateKey);
+                networkCallback.AccountDeleteOnClickListener(model.getId());
 
             }
         });
@@ -65,7 +87,8 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             @Override
             public void onClick(View view) {
                 SharedPreferenceHelper.setSharedPreferenceString(context.getApplicationContext(), Constants.ACCOUNT, position + "");
-                HomeActivity.setAccount(context.getApplicationContext(), model.id, bottomSheetDialog);
+                accountCallbackInterface.onAccountClickListener(context.getApplicationContext(), model.getId(), bottomSheetDialog);
+//                HomeActivity.setAccount(context.getApplicationContext(), model.getId(), bottomSheetDialog);
             }
         });
     }

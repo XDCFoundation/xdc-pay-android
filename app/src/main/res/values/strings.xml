@@ -60,6 +60,7 @@
     <string name="max_transaction">Max Transaction Fee</string>
     <string name="total">Total</string>
     <string name="gas_limit">Gas Limit</string>
+    <string name="gas_limit_required">Gas limit required</string>
     <string name="gas_limit_must_be_greater_than_2100_and_less_than_415800000">Gas Limit must be greater than 2100 and less than 415800000</string>
     <string name="transaction_note_optional">Transaction Note (Optional)</string>
     <string name="next">Next</string>
@@ -87,7 +88,7 @@
     <string name="error_check_terms">Please Agree , XDCPay Can’t Recover Your Password</string>
     <string name="error_empty">This field cannot be empty</string>
     <string name="network_name_error">Please enter network name</string>
-    <string name="rpc_url_error">Please enter RPC URL</string>
+    <string name="rpc_url_error">Please enter valid RPC URL</string>
     <string name="chain_id_error">Please enter Chain ID</string>
     <string name="import_from_seed">Import from seed</string>
     <string name="edit">Edit</string>
@@ -149,7 +150,7 @@
     <string name="reset_password">Reset Password</string>
     <string name="reset">Reset</string>
     <string name="security_privacy_settings">Security and Privacy Settings</string>
-    <string name="secret_content">Write down these 12 words and keep it safe on multiple places. You will not be able to recover your wallet if you lose this recover phrase.</string>
+    <string name="secret_content">These 12 words are the only way to restore your XDCPay accounts. Save them somewhere safe and secret.</string>
 
     <!--    hint-->
     <string name="hint_private_key">Your private key</string>
@@ -160,7 +161,7 @@
     <string name="hint_address">xdc084f58d39d6a0d5e89464….4594</string>
     <string name="hint_key">eg. ce4085d87dc63992e358f5c1a8bd4c4de647bb0cfdec034d00c3c9532535f324</string>
     <string name="hint_username">Contact’s Name</string>
-    <string name="hint_XDC">100 XDC</string>
+    <string name="hint_XDC">0 XDC</string>
     <string name="reveal_seed_words_hint">Do not recover your seed words in a public place! These words can be used to steal all your accounts.</string>
     <string name="change_password_hint">Create your new password for XDC Pay so that you can login to your account.</string>
     <string name="private_key_hint">This is the private key for the current selected account. Never disclose this key.</string>
@@ -228,10 +229,12 @@
     <string name="key_private">Private</string>
     <string name="no_contacts">No Contacts found</string>
     <string name="contacts_details">Contact Details</string>
-    <string name="input_type_double">0123456789.</string>
     <string name="none">None</string>
-    <string name="token_options">Token Options</string>
     <string name="under_development">Under development</string>
+    <string name="input_type_double">0123456789.</string>
+    <string name="input_type_text_space">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="token_options">Token Options</string>
+    <string name="error_incorrect_password">Incorrect Password</string>
 
     <string-array name="key_type_list">
         <item>Private</item>

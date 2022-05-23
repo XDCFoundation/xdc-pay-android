@@ -89,20 +89,20 @@
             android:textSize="@dimen/margin_12" />
 
         <com.app.xdcpay.Views.TextView
-            android:id="@+id/scan"
+            android:id="@+id/sender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/from"
             android:layout_marginLeft="@dimen/margin_10"
+            android:singleLine="true"
             android:layout_marginTop="@dimen/margin_5"
-            android:text="@string/hint_address"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/margin_14" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@+id/scan"
+            android:layout_below="@+id/sender"
             android:layout_marginTop="@dimen/margin_20"
             android:background="@color/colorWhite" />
 
@@ -110,7 +110,7 @@
             android:id="@+id/id_circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/scan"
+            android:layout_below="@+id/sender"
             android:layout_marginLeft="@dimen/margin_10"
             android:layout_marginTop="@dimen/margin_10">
 
@@ -144,11 +144,12 @@
         <com.app.xdcpay.Views.TextViewMedium
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/receiver"
             android:layout_below="@+id/tv_to"
             android:layout_marginLeft="@dimen/margin_10"
+            android:singleLine="true"
             android:layout_marginTop="@dimen/margin_5"
             android:layout_marginBottom="@dimen/margin_15"
-            android:text="@string/hint_address"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/margin_14" />
 
@@ -261,7 +262,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/view3"
             android:layout_alignParentRight="true"
-            android:text="@string/hint_XDC"
+            android:text="0 XDC"
             android:textColor="@color/colorGrey"
             android:textSize="@dimen/margin_14" />
 

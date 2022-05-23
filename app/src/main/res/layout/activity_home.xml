@@ -51,6 +51,7 @@
                     android:drawableStart="@drawable/ic_green_dot"
                     android:drawableEnd="@drawable/ic_drop_down"
                     android:drawablePadding="@dimen/margin_5"
+                    android:gravity="center"
                     android:padding="@dimen/margin_10"
                     android:text="@string/xdc_mainnet"
                     android:textColor="@color/colorGrey"
@@ -73,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_10"
+                android:text="@string/hint_XDC"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/margin_32" />
 
@@ -168,12 +170,12 @@
                 app:tabMinWidth="@dimen/margin_40"
                 app:tabSelectedTextColor="@color/colorBlue"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                app:tabTextColor="@color/colorGrey" />
+                app:tabTextColor="@color/colorGreyText" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey" />
+                android:layout_height=".5dp"
+                android:background="@color/colorGreyText" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/favorite_view_pager"
