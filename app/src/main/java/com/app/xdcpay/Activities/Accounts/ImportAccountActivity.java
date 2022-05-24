@@ -164,8 +164,9 @@ public class ImportAccountActivity extends BaseActivity {
     private boolean isValid() {
         if (!Validations.hasText(etPrivateKey))
             etPrivateKey.setError(getResources().getString(R.string.private_key));
-
-        else return true;
+        else if (etPrivateKey.getText().length() < 64) {
+            showtoast(getResources().getString(R.string.invalid_privatekey));
+        } else return true;
 
         return false;
     }

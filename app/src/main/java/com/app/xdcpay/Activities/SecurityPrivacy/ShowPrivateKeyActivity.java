@@ -53,9 +53,9 @@ public class ShowPrivateKeyActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_copyClip:
-                if (!tv_copyClip.getText().toString().isEmpty()) {
+                if (!tvPrivateKey.getText().toString().isEmpty()) {
                     ClipboardManager clipboard = (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("Private Key", tv_copyClip.getText().toString());
+                    ClipData clip = ClipData.newPlainText("Private Key", tvPrivateKey.getText().toString());
                     clipboard.setPrimaryClip(clip);
                     Toast.makeText(getApplicationContext(), getString(R.string.copy_to_clipboard), Toast.LENGTH_LONG).show();
                 } else {
