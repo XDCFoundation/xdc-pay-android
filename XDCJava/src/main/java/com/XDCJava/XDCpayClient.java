@@ -364,12 +364,13 @@ public class XDCpayClient {
         WalletData walletData = null;
         try {
             Credentials credentials = Credentials.create(private_key);
+            System.out.println("PrivateKey: " + private_key);
             walletData = new WalletData();
             walletData.setAccountAddress(credentials.getAddress());
             walletData.setPrivateKey(credentials.getEcKeyPair().getPrivateKey().toString(16));
             walletData.setPublickeyKey(credentials.getEcKeyPair().getPublicKey().toString(16));
         } catch (Exception e) {
-//            callback.failure(e.getLocalizedMessage());
+            System.out.println("PrivateKey: " + e.getMessage());
         }
 
         return walletData;
