@@ -1,4 +1,4 @@
-package com.app.xdcpay.Activities;
+package com.app.xdcpay.Activities.CreateWallet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +15,12 @@ import android.widget.Toast;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
 import com.XDCJava.callback.CreateAccountCallback;
-import com.app.xdcpay.Activities.CreateWallet.WalletSeedPhraseActivity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
+import com.app.xdcpay.Views.TextView;
 import com.app.xdcpay.Views.TextViewMedium;
 import com.google.gson.Gson;
 
@@ -31,6 +31,7 @@ public class CreateWalletActivity extends BaseActivity {
     private CheckBox terms_cb;
     private ProgressBar progressBar;
     private TextViewMedium show_hide, title;
+    private TextView tvPasswordStrength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class CreateWalletActivity extends BaseActivity {
         terms_cb = findViewById(R.id.terms_cb);
         progressBar = findViewById(R.id.password_strength_progress);
         show_hide = findViewById(R.id.show_hide);
+        tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
         title = findViewById(R.id.title);
     }
 
@@ -62,7 +64,7 @@ public class CreateWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updatePasswordStrengthView(password, progressBar);
+                updatePasswordStrengthView(password, progressBar, tvPasswordStrength);
             }
 
             @Override
@@ -162,10 +164,6 @@ public class CreateWalletActivity extends BaseActivity {
         else return true;
 
         return false;
-    }
-
-    private void updatePasswordStrengthView(String password) {
-
     }
 
 }

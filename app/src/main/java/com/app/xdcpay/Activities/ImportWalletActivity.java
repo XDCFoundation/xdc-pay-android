@@ -1,5 +1,7 @@
 package com.app.xdcpay.Activities;
 
+import static com.app.xdcpay.Utils.Constants.ACCOUNT_IMPORTED;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -42,6 +44,7 @@ public class ImportWalletActivity extends BaseActivity {
     private CheckBox show_cb;
     NetworkDataBase networkDataBase;
     AccountEntity accountEntity;
+    private com.app.xdcpay.Views.TextView tvPasswordStrength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,7 @@ public class ImportWalletActivity extends BaseActivity {
         progressBar = findViewById(R.id.password_strength_progress);
         show_cb = findViewById(R.id.show_cb);
         show = findViewById(R.id.show);
+        tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
         networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
         setData();
     }
@@ -87,7 +91,7 @@ public class ImportWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updatePasswordStrengthView(password, progressBar);
+                updatePasswordStrengthView(password, progressBar,tvPasswordStrength);
             }
 
             @Override
@@ -111,8 +115,8 @@ public class ImportWalletActivity extends BaseActivity {
 
             case R.id.show:
                 if (show.getText().toString().equals(getResources().getString(R.string.show))) {
-                    if(password.getText().toString().length()>0)
-                    password.setTransformationMethod(null);
+                    if (password.getText().toString().length() > 0)
+                        password.setTransformationMethod(null);
                     show.setText(getResources().getString(R.string.hide));
                 } else {
                     password.setTransformationMethod(new PasswordTransformationMethod());
@@ -143,7 +147,7 @@ public class ImportWalletActivity extends BaseActivity {
                                     saveWalletDetails.saveIsLogin(true);
 
                                     accountEntity = new AccountEntity(getResources().getString(R.string.account_1), walletData.getAccountAddress(),
-                                            walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase());
+                                            walletData.getPrivateKey(), walletData.getPublickeyKey(), walletData.getSeedPhrase(), ACCOUNT_IMPORTED);
                                     new InsertTask(ImportWalletActivity.this, accountEntity).execute();
                                     SharedPreferenceHelper.setSharedPreferenceString(ImportWalletActivity.this, Constants.ACCOUNT, "0");
 
@@ -185,11 +189,11 @@ public class ImportWalletActivity extends BaseActivity {
 //            new Handler().postDelayed(new Runnable() {
 //                @Override
 //                public void run() {
-                    Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+            Intent intent = new Intent(ImportWalletActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
 //                }
 //            }, 500);
             finish();
@@ -201,6 +205,10 @@ public class ImportWalletActivity extends BaseActivity {
     private boolean isValid() {
         if (!Validations.hasText(seed_phrase))
             seed_phrase.setError(getResources().getString(R.string.error_empty));
+        if (!Validations.isContainNo(seed_phrase.getText().toString()))
+            seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
+        if (!Validations.seedPhraseDigits(seed_phrase.getText().toString()))
+            seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
         else if (!Validations.hasText(password))
             password.setError(getResources().getString(R.string.error_password_empty));
         else if (!Validations.hasText(confirm_password))

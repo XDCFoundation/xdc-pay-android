@@ -262,7 +262,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/view3"
             android:layout_alignParentRight="true"
-            android:text="0"
+            android:text="0 XDC"
             android:textColor="@color/colorGrey"
             android:textSize="@dimen/margin_14" />
 

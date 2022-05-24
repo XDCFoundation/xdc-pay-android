@@ -56,7 +56,7 @@ public class BuyActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
-                finish();
+              onBackPressed();
                 break;
             case R.id.tvSimplex:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.SIMPLEX_URL)));
@@ -69,7 +69,8 @@ public class BuyActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+       Intent i = new Intent(BuyActivity.this,HomeActivity.class);
+       startActivity(i);
+       finish();
     }
 }

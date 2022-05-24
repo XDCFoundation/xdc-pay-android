@@ -1,5 +1,7 @@
 package com.app.xdcpay.Activities.CreateWallet;
 
+import static com.app.xdcpay.Utils.Constants.ACCOUNT_CREATED;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,7 +50,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_seed_phrase);
         networkDataBase = NetworkDataBase.getInstance(ConfirmSeedPhraseActivity.this);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -174,9 +176,18 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ConfirmSeedPhraseActivity.this);
                     saveWalletDetails.IsSeedPhaseConfirm(true);
                     saveWalletDetails.saveIsLogin(true);
-                    accountEntity = new AccountEntity(getResources().getString(R.string.account_1), readWalletDetails.getAccountAddress(),
-                            readWalletDetails.getPrivateKey(), readWalletDetails.getPublicKey(), readWalletDetails.getSeedPhrase());
-                    new InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
+                    if (NetworkDataBase.getInstance(ConfirmSeedPhraseActivity.this).getAccountDao().getAccountList().size() > 0){
+                        SharedPreferenceHelper.setSharedPreferenceString(ConfirmSeedPhraseActivity.this, Constants.ACCOUNT, "0");
+                        Intent i = new Intent(ConfirmSeedPhraseActivity.this, HomeActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else {
+                        accountEntity = new AccountEntity(getResources().getString(R.string.account_1),
+                                readWalletDetails.getAccountAddress(), readWalletDetails.getPrivateKey(),
+                                readWalletDetails.getPublicKey(), readWalletDetails.getSeedPhrase(),ACCOUNT_CREATED);
+                        new InsertTask(ConfirmSeedPhraseActivity.this, accountEntity).execute();
+                    }
                 }
                 break;
             case R.id.back:

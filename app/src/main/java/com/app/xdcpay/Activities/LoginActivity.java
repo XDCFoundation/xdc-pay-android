@@ -3,15 +3,16 @@ package com.app.xdcpay.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.app.xdcpay.Activities.CreateWallet.CreateWalletActivity;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
+import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
+import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 
 public class LoginActivity extends BaseActivity {
@@ -66,6 +67,7 @@ public class LoginActivity extends BaseActivity {
                 else if (password.getText().toString().equals(readWalletDetails.getPassword())) {
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(LoginActivity.this);
                     saveWalletDetails.saveIsLogin(true);
+                    SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this, Constants.ACCOUNT, "0");
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

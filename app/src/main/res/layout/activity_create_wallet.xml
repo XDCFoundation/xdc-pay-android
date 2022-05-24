@@ -6,7 +6,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".Activities.CreateWalletActivity">
+    tools:context=".Activities.CreateWallet.CreateWalletActivity">
 
     <include layout="@layout/layout_toolbar" />
 
@@ -77,15 +77,28 @@
                 android:layout_marginTop="@dimen/margin_10"
                 android:outlineSpotShadowColor="@color/colorGreen" />
 
-
-            <com.app.xdcpay.Views.TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="@string/password_strength"
-                android:textColor="@color/colorGrey"
-                android:textSize="@dimen/margin_10" />
+                android:orientation="vertical">
+
+                <com.app.xdcpay.Views.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password_strength"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/margin_10" />
+
+                <com.app.xdcpay.Views.TextView
+                    android:id="@+id/tvPasswordStrength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/strength_poor"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="@dimen/margin_10" />
+
+            </RelativeLayout>
 
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"
@@ -103,8 +116,8 @@
                 android:background="@drawable/rounded_corner_5dp_light_grey_border"
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
-                android:padding="@dimen/margin_10"
                 android:maxLength="15"
+                android:padding="@dimen/margin_10"
 
                 android:singleLine="true"
                 android:textSize="@dimen/margin_14" />
@@ -143,10 +156,13 @@
                 android:id="@+id/terms_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_50"
-                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_40"
+                android:paddingLeft="@dimen/margin_10"
+                android:paddingRight="@dimen/margin_10"
+                android:paddingTop="@dimen/margin_10"
                 android:text="@string/i_understand_that_xdc_pay_cannot_recover_this_password_for_me"
                 android:textColor="@color/colorBlack"
+                android:button="@drawable/checkbox_background"
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.TextViewMedium
@@ -154,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/margin_30"
+                android:layout_marginTop="@dimen/margin_32"
                 android:background="@drawable/rounded_corner_5dp_green_bg"
                 android:gravity="center"
                 android:padding="@dimen/margin_10"

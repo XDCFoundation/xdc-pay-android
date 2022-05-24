@@ -42,6 +42,8 @@ public class Constants {
     public static String CONTACT_NAME = "CONTACT_NAME";
     public static String CONTACT_WALLET = "CONTACT_WALLET";
     public static String CONTACT_ID = "CONTACT_ID";
+    public static String ACCOUNT_IMPORTED = "Imported";
+    public static String ACCOUNT_CREATED = "Created";
 
     //MainNet Network
     public static final String MAIN_NET_NAME = "XDC Mainnet";
@@ -64,8 +66,8 @@ public class Constants {
     public static final String LOCALHOST_SYMBOL = "";
     public static final String LOCALHOST_URL = "";
 
-    public static final String PRIVACY_POLICY_URL = "https://www.xdc.org";
-    public static final String SUPPORT_CENTER_URL = "https://www.xdc.org/resources";
+    public static final String PRIVACY_POLICY_URL = "https://xinfin.org/privacy";
+    public static final String SUPPORT_CENTER_URL = "https://xinfin.org/";
 
     // list
     public static final ArrayList<String> keyTypeList = new ArrayList<>(Arrays.asList("Private"));

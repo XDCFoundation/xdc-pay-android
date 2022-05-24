@@ -1,5 +1,6 @@
 package com.app.xdcpay.Activities.SecurityPrivacy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.xdcpay.Activities.LoginActivity;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
@@ -22,6 +24,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
     private CheckBox terms_cb;
     private TextView title, show_hide;
     private ProgressBar progressBar;
+    private com.app.xdcpay.Views.TextView tvPasswordStrength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
         title = findViewById(R.id.title);
         show_hide = findViewById(R.id.show_hide);
         progressBar = findViewById(R.id.password_strength_progress);
+        tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
         setData();
     }
 
@@ -54,7 +58,7 @@ public class ChangePasswordScreenActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updatePasswordStrengthView(password, progressBar);
+                updatePasswordStrengthView(password, progressBar, tvPasswordStrength);
             }
 
             @Override
@@ -84,6 +88,8 @@ public class ChangePasswordScreenActivity extends BaseActivity {
                     SaveWalletDetails saveWalletDetails = new SaveWalletDetails(ChangePasswordScreenActivity.this);
                     saveWalletDetails.savePassword(password.getText().toString());
                     Toast.makeText(ChangePasswordScreenActivity.this, getResources().getString(R.string.password_updated), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(ChangePasswordScreenActivity.this, LoginActivity.class);
+                    startActivity(i);
                     finish();
                 }
 

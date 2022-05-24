@@ -176,6 +176,7 @@
                 android:hint="0.00"
                 android:text="200000"
                 android:padding="@dimen/margin_10"
+                android:maxLength="9"
                 android:inputType="numberDecimal"
                 android:digits="@string/input_type_double"
                 android:singleLine="true"
@@ -185,6 +186,7 @@
             <com.app.xdcpay.Views.TextViewMedium
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvGasLimit"
                 android:layout_marginTop="@dimen/margin_10"
                 android:text="@string/gas_limit_must_be_greater_than_2100_and_less_than_415800000"
                 android:textColor="@color/colorRed"

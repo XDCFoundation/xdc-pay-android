@@ -25,13 +25,14 @@ import java.lang.ref.WeakReference;
 import java.math.BigInteger;
 
 public class ConfirmTransactionActivity extends BaseActivity {
-    private TextViewMedium btnConfirm;
+    private TextViewMedium btnConfirm, tvTotal;
     private ImageView iv_back;
     private String sender_str, receiver_str, amount_str, gas_limit_str, gas_price_str;
     private TextView sender, receiver, amount, gas_limit, gas_price, transaction_fee, total;
     private ReadWalletDetails readWalletDetails;
     private NetworkDataBase networkDataBase;
     private TransactionsEntity transactionsEntity;
+    private com.app.xdcpay.Views.TextView tvReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,13 @@ public class ConfirmTransactionActivity extends BaseActivity {
         readWalletDetails = new ReadWalletDetails(ConfirmTransactionActivity.this);
         btnConfirm = findViewById(R.id.btnConfirm);
         iv_back = findViewById(R.id.iv_back);
-        sender=findViewById(R.id.sender);
+        sender = findViewById(R.id.sender);
         receiver = findViewById(R.id.receiver);
-        amount=findViewById(R.id.tvAmount);
+        amount = findViewById(R.id.tvAmount);
         gas_limit = findViewById(R.id.tvGasAmount);
-        gas_price=findViewById(R.id.tvGasPriceGwei);
+        gas_price = findViewById(R.id.tvGasPriceGwei);
+        tvTotal = findViewById(R.id.tvTotal);
+        tvReset = findViewById(R.id.tvReset);
         setData();
     }
 
@@ -56,6 +59,7 @@ public class ConfirmTransactionActivity extends BaseActivity {
     public void setListener() {
         btnConfirm.setOnClickListener(this);
         iv_back.setOnClickListener(this);
+        tvReset.setOnClickListener(this);
     }
 
     @Override
@@ -67,11 +71,13 @@ public class ConfirmTransactionActivity extends BaseActivity {
             amount_str = intent.getStringExtra(Constants.AMOUNT);
             gas_limit_str = intent.getStringExtra(Constants.GAS_LIMIT);
             gas_price_str = intent.getStringExtra(Constants.GAS_PRICE);
+
             sender.setText(sender_str + getResources().getString(R.string.txt_xdc));
             receiver.setText(receiver_str + getResources().getString(R.string.txt_xdc));
             gas_limit.setText(gas_limit_str + getResources().getString(R.string.txt_xdc));
             gas_price.setText(gas_price_str + getResources().getString(R.string.txt_xdc));
             amount.setText(amount_str + getResources().getString(R.string.txt_xdc));
+            tvTotal.setText(amount_str + getResources().getString(R.string.txt_xdc));
         }
 
         networkDataBase = NetworkDataBase.getInstance(ConfirmTransactionActivity.this);
@@ -85,13 +91,21 @@ public class ConfirmTransactionActivity extends BaseActivity {
                     sender_str = sender_str.replaceFirst("xdc", "0x");
                 if (receiver_str.startsWith("xdc"))
                     receiver_str = receiver_str.replaceFirst("xdc", "0x");
-                String hash = XDC20Client.getInstance().TransferXdc(getselectedaccount().getAccountPrivateKey(), sender_str, receiver_str, BigInteger.valueOf(Long.parseLong(amount_str)*1000000000000000000l),  Long.parseLong("250000000"),  Long.parseLong("50005"));
+                String hash = XDC20Client.getInstance().TransferXdc(getselectedaccount().getAccountPrivateKey(),
+                        sender_str, receiver_str,
+                        BigInteger.valueOf(Long.parseLong(amount_str)),
+                        Long.parseLong("250000000"),
+                        Long.parseLong("50005"));
                 transactionsEntity = new TransactionsEntity(sender_str, receiver_str, amount_str, gas_limit_str, gas_price_str, hash);
                 new InsertTask(ConfirmTransactionActivity.this, transactionsEntity).execute();
 
                 break;
             case R.id.iv_back:
                 onBackPressed();
+                break;
+            case R.id.tvReset:
+                startActivity(new Intent(ConfirmTransactionActivity.this, SendActivity.class));
+                finish();
                 break;
         }
     }
@@ -119,6 +133,13 @@ public class ConfirmTransactionActivity extends BaseActivity {
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
+            finish();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
