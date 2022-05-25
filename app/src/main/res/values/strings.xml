@@ -240,6 +240,7 @@
     <string name="strength_poor">Poor</string>
     <string name="strength_Moderate">Moderate</string>
     <string name="strength_Strong">Strong</string>
+    <string name="account_exist">Account already exist!</string>
 
     <string-array name="key_type_list">
         <item>Private</item>

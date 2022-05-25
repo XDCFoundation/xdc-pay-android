@@ -60,7 +60,8 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
             holder.tvAccountName.setText(context.getString(R.string.account) + " " + accountId);
             holder.textImported.setVisibility(View.VISIBLE);
             holder.account_delete.setVisibility(View.VISIBLE);
-        } else if (model.getAccountName().equals(context.getString(R.string.account_1))) {
+        }
+      /*  } else if (model.getAccountName().equals(context.getString(R.string.account_1))) {
             if (model.getAccountType().equals(ACCOUNT_CREATED)) {
                 holder.tvAccountName.setText(model.getAccountName());
                 holder.textImported.setVisibility(View.GONE);
@@ -70,7 +71,8 @@ public class ImportedAccountAdapter extends RecyclerView.Adapter<ImportedAccount
                 holder.textImported.setVisibility(View.VISIBLE);
                 holder.account_delete.setVisibility(View.INVISIBLE);
             }
-        } else {
+        } */
+        else {
             holder.tvAccountName.setText(model.getAccountName());
             holder.textImported.setVisibility(View.GONE);
             holder.account_delete.setVisibility(View.GONE);

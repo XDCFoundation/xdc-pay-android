@@ -83,7 +83,7 @@ public class NetworkDetailsActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
-                finish();
+                onBackPressed();
                 break;
 
             case R.id.tvRemove:

@@ -625,6 +625,8 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                         currencyAmount.setText(getString(R.string.txt_dollar)
                                 + String.format(STRING_FORMAT, Double.parseDouble(xdcWalletBalance) * USDValue)
                                 + TEXT_USD);
+                    } else {
+                        currencyAmount.setText(getString(R.string.txt_dollar) + "0 " + TEXT_USD);
                     }
                 }
             }
@@ -712,8 +714,10 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
         super.onResume();
 //        setData();
     }
+
     @Override
     public void onAccountClickListener(Context context, int id, BottomSheetDialog bottomSheetDialog) {
         setAccount(context, id, bottomSheetDialog);
+        refreshThisPage();
     }
 }
