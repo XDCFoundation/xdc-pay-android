@@ -235,6 +235,12 @@
     <string name="input_type_text_space">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="token_options">Token Options</string>
     <string name="error_incorrect_password">Incorrect Password</string>
+    <string name="marketing_screen_text_1">A simple and secure wallet for your crypto tokens</string>
+    <string name="marketing_screen_text_2">A safe place to buy, send, receive, store and swap tokens</string>
+    <string name="strength_poor">Poor</string>
+    <string name="strength_Moderate">Moderate</string>
+    <string name="strength_Strong">Strong</string>
+    <string name="account_exist">Account already exist!</string>
 
     <string-array name="key_type_list">
         <item>Private</item>

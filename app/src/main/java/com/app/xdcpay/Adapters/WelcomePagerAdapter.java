@@ -38,9 +38,11 @@ public class WelcomePagerAdapter extends PagerAdapter {
         if (position == 0) {
 //            im_slider.setImageResource(R.drawable.ic_illustration);
             title.setText(R.string.welcome_to_xdc_pay);
+            msg.setText(R.string.marketing_screen_text_1);
         } else {
 //            im_slider.setImageResource(R.drawable.ic_illustration_1);
             title.setText(R.string.manage_digital_assets);
+            msg.setText(R.string.marketing_screen_text_2);
         }
         container.addView(view);
 

@@ -57,7 +57,7 @@ public class ChangePasswordActivity extends BaseActivity {
                         finish();
                         break;
                     } else
-                        et_password.setError(getResources().getString(R.string.error_password_not_match));
+                        et_password.setError(getResources().getString(R.string.error_incorrect_password));
                 break;
             case R.id.back:
                 finish();

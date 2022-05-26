@@ -37,6 +37,7 @@ import com.app.xdcpay.Views.TextViewMedium;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class ImportAccountActivity extends BaseActivity {
     private AppCompatSpinner spnType;
@@ -47,6 +48,8 @@ public class ImportAccountActivity extends BaseActivity {
     private String str_accountName;
     AccountEntity accountEntity;
     public NetworkDataBase networkDataBase;
+    List<AccountEntity> networkLists;
+    private boolean isAccountExist = false;
 
     BottomSheetDialog bottomSheetDialogImport;
     KeyTypeAdapter keyTypeAdapter;
@@ -101,6 +104,7 @@ public class ImportAccountActivity extends BaseActivity {
 
     @Override
     public void setData() {
+        networkLists = NetworkDataBase.getInstance(getApplicationContext()).getAccountDao().getAccountList();
         Intent i = getIntent();
         title.setText(getString(R.string.import_account));
         if (i != null)
@@ -164,8 +168,18 @@ public class ImportAccountActivity extends BaseActivity {
     private boolean isValid() {
         if (!Validations.hasText(etPrivateKey))
             etPrivateKey.setError(getResources().getString(R.string.private_key));
-
-        else return true;
+        else if (etPrivateKey.getText().length() < 64) {
+            showtoast(getResources().getString(R.string.invalid_privatekey));
+        } else if (networkLists.size() > 0) {
+            for (int i = 0; i < networkLists.size(); i++) {
+                if (networkLists.get(i).getAccountPrivateKey().equals(etPrivateKey.getText().toString()))
+                    isAccountExist = true;
+            }
+            if (isAccountExist)
+                showtoast(getResources().getString(R.string.account_exist));
+            else return true;
+        } else
+            return true;
 
         return false;
     }

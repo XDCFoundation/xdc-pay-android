@@ -24,8 +24,10 @@ import com.XDCJava.Model.WalletData;
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
 import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
+import com.app.xdcpay.Activities.SecurityPrivacy.RevealSeedPhraseActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
+import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
@@ -44,6 +46,9 @@ public class ImportWalletActivity extends BaseActivity {
     private CheckBox show_cb;
     NetworkDataBase networkDataBase;
     AccountEntity accountEntity;
+    String str_SeedPhrase = "";
+    private ReadWalletDetails readWalletDetails;
+    private com.app.xdcpay.Views.TextView tvPasswordStrength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +67,10 @@ public class ImportWalletActivity extends BaseActivity {
         progressBar = findViewById(R.id.password_strength_progress);
         show_cb = findViewById(R.id.show_cb);
         show = findViewById(R.id.show);
+        tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
         networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
+        readWalletDetails = new ReadWalletDetails(ImportWalletActivity.this);
+
         setData();
     }
 
@@ -89,7 +97,7 @@ public class ImportWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updatePasswordStrengthView(password, progressBar);
+                updatePasswordStrengthView(password, progressBar, tvPasswordStrength);
             }
 
             @Override
@@ -102,6 +110,8 @@ public class ImportWalletActivity extends BaseActivity {
     @Override
     public void setData() {
         title.setText(getResources().getString(R.string.import_from_seed));
+        str_SeedPhrase = readWalletDetails.getSeedPhrase();
+
     }
 
     @Override
@@ -201,9 +211,15 @@ public class ImportWalletActivity extends BaseActivity {
 
 
     private boolean isValid() {
+
+        if (str_SeedPhrase.equals(""))
+            str_SeedPhrase = seed_phrase.getText().toString();
+
         if (!Validations.hasText(seed_phrase))
             seed_phrase.setError(getResources().getString(R.string.error_empty));
         if (!Validations.isContainNo(seed_phrase.getText().toString()))
+            seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
+        if (!str_SeedPhrase.equals(seed_phrase.getText().toString()))
             seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
         if (!Validations.seedPhraseDigits(seed_phrase.getText().toString()))
             seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
