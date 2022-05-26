@@ -36,7 +36,7 @@ import static com.app.xdcpay.Utils.Constants.MAIN_NET_NAME;
 
 public class QrCodeActivity extends BaseActivity {
     private ImageView qr_code_iv;
-    private TextView address, account_name;
+    private TextView address, account_name, network_name;
     private List<NetworkEntity> networkLists = new ArrayList<>();
     private ArrayList<String> list = new ArrayList<>();
     ReadPreferences readAutoLockTimerPref;
@@ -51,7 +51,8 @@ public class QrCodeActivity extends BaseActivity {
     public void getId() {
         qr_code_iv = findViewById(R.id.qr_code_iv);
         address = findViewById(R.id.wallet_address);
-        account_name=findViewById(R.id.account_name);
+        account_name = findViewById(R.id.account_name);
+        network_name = findViewById(R.id.network_name);
         setData();
     }
 
@@ -76,11 +77,9 @@ public class QrCodeActivity extends BaseActivity {
         for (int j = 0; j < list.size(); j++) {
             if (list.get(j).equals(readAutoLockTimerPref.getNetworkName())) {
                 setAccount(QrCodeActivity.this, getselectedaccount().getId(), null);
-
+                network_name.setText(readAutoLockTimerPref.getNetworkName());
             }
-
         }
-
     }
 
     public void setAccount(Context context, int id, BottomSheetDialog bottomSheetDialog) {

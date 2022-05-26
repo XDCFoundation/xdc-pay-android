@@ -217,11 +217,11 @@ public class ImportWalletActivity extends BaseActivity {
 
         if (!Validations.hasText(seed_phrase))
             seed_phrase.setError(getResources().getString(R.string.error_empty));
-        if (!Validations.isContainNo(seed_phrase.getText().toString()))
+        else if (!Validations.isContainNo(seed_phrase.getText().toString()))
             seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
-        if (!str_SeedPhrase.equals(seed_phrase.getText().toString()))
+        else if (!str_SeedPhrase.equals(seed_phrase.getText().toString()))
             seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
-        if (!Validations.seedPhraseDigits(seed_phrase.getText().toString()))
+        else if (!Validations.seedPhraseDigits(seed_phrase.getText().toString()))
             seed_phrase.setError(getResources().getString(R.string.wrong_secret_phrase));
         else if (!Validations.hasText(password))
             password.setError(getResources().getString(R.string.error_password_empty));
