@@ -17,14 +17,10 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.XDCJava.XDCpayClient;
 import com.XDCJava.Model.WalletData;
-import com.XDCJava.XDCpayClient;
 import com.XDCJava.callback.CreateAccountCallback;
-import com.app.xdcpay.Activities.Accounts.ImportAccountActivity;
-import com.app.xdcpay.Activities.SecurityPrivacy.RevealSeedPhraseActivity;
 import com.app.xdcpay.DataBase.Entity.AccountEntity;
 import com.app.xdcpay.DataBase.NetworkDataBase;
 import com.app.xdcpay.Pref.ReadWalletDetails;
@@ -48,7 +44,7 @@ public class ImportWalletActivity extends BaseActivity {
     AccountEntity accountEntity;
     String str_SeedPhrase = "";
     private ReadWalletDetails readWalletDetails;
-    private com.app.xdcpay.Views.TextView tvPasswordStrength;
+    private com.app.xdcpay.Views.TextView tvPasswordStrength, tvPasswordErr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +64,7 @@ public class ImportWalletActivity extends BaseActivity {
         show_cb = findViewById(R.id.show_cb);
         show = findViewById(R.id.show);
         tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
+        tvPasswordErr = findViewById(R.id.tvPasswordErr);
         networkDataBase = NetworkDataBase.getInstance(ImportWalletActivity.this);
         readWalletDetails = new ReadWalletDetails(ImportWalletActivity.this);
 
@@ -97,6 +94,8 @@ public class ImportWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvPasswordErr.setText(getString(R.string.password_strength));
+                tvPasswordErr.setTextColor(getResources().getColor(R.color.colorGrey));
                 updatePasswordStrengthView(password, progressBar, tvPasswordStrength);
             }
 
@@ -209,7 +208,6 @@ public class ImportWalletActivity extends BaseActivity {
         }
     }
 
-
     private boolean isValid() {
 
         if (str_SeedPhrase.equals(""))
@@ -227,10 +225,16 @@ public class ImportWalletActivity extends BaseActivity {
             password.setError(getResources().getString(R.string.error_password_empty));
         else if (!Validations.hasText(confirm_password))
             confirm_password.setError(getResources().getString(R.string.error_password_empty));
-        else if (password.getText().toString().length() < 8)
-            Toast.makeText(ImportWalletActivity.this, getResources().getString(R.string.password_length_msg), Toast.LENGTH_SHORT).show();
-        else if (!Validations.isPasswordValid(password.getText().toString()))
-            Toast.makeText(ImportWalletActivity.this, getResources().getString(R.string.password_strength_msg), Toast.LENGTH_SHORT).show();
+        else if (password.getText().toString().length() < 8) {
+            tvPasswordErr.setText(getString(R.string.password_length_msg));
+            tvPasswordErr.setTextColor(getResources().getColor(R.color.colorRed));
+//            Toast.makeText(ImportWalletActivity.this, getResources().getString(R.string.password_length_msg), Toast.LENGTH_SHORT).show();
+        }
+        else if (!Validations.isPasswordValid(password.getText().toString())) {
+            tvPasswordErr.setText(getString(R.string.password_strength_msg));
+            tvPasswordErr.setTextColor(getResources().getColor(R.color.colorRed));
+//            Toast.makeText(ImportWalletActivity.this, getResources().getString(R.string.password_strength_msg), Toast.LENGTH_SHORT).show();
+        }
         else if (!password.getText().toString().equals(confirm_password.getText().toString()))
             confirm_password.setError(getResources().getString(R.string.error_password_not_match));
         else return true;

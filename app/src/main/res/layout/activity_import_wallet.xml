@@ -104,8 +104,10 @@
                 android:orientation="vertical">
 
                 <com.app.xdcpay.Views.TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvPasswordErr"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/tvPasswordStrength"
                     android:text="@string/password_strength"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/margin_10" />
@@ -114,6 +116,7 @@
                     android:id="@+id/tvPasswordStrength"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
                     android:layout_alignParentRight="true"
                     android:text="@string/strength_poor"
                     android:textColor="@color/colorGreyText"

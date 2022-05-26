@@ -127,6 +127,7 @@
         app:layout_constraintTop_toBottomOf="@id/rl2" />
 
     <RelativeLayout
+        android:id="@+id/rlWord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16"
@@ -162,6 +163,19 @@
             android:src="@drawable/ic_check"
             android:visibility="gone" />
     </RelativeLayout>
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/tvConfirmPasswordError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_10"
+        android:text="@string/incorrect_seed_phrase"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/margin_10"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/rlWord"
+        app:layout_constraintTop_toBottomOf="@id/rlWord" />
 
     <com.app.xdcpay.Views.TextViewMedium
         android:id="@+id/confirm_recovery_password"

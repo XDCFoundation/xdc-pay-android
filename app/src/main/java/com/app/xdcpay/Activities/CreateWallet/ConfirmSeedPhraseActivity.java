@@ -22,6 +22,7 @@ import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
+import com.app.xdcpay.Views.TextView;
 import com.app.xdcpay.Views.TextViewMedium;
 
 import java.lang.ref.WeakReference;
@@ -44,6 +45,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
     private String seedText1, seedText2, seedText3;
     private List<String> strList = new ArrayList<String>();
     private ImageView ivWord1, ivWord2, ivWord3;
+    private TextView tvConfirmPasswordError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
         ivWord1 = findViewById(R.id.ivWord1);
         ivWord2 = findViewById(R.id.ivWord2);
         ivWord3 = findViewById(R.id.ivWord3);
+        tvConfirmPasswordError = findViewById(R.id.tvConfirmPasswordError);
         back = findViewById(R.id.back);
         confirm_recovery_password = findViewById(R.id.confirm_recovery_password);
         readWalletDetails = new ReadWalletDetails(ConfirmSeedPhraseActivity.this);
@@ -82,6 +85,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvConfirmPasswordError.setVisibility(View.GONE);
                 if (charSequence.toString().equals(seedText1)) {
                     ivWord1.setVisibility(View.VISIBLE);
                 } else
@@ -105,6 +109,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvConfirmPasswordError.setVisibility(View.GONE);
                 if (charSequence.toString().equals(seedText2)) {
                     ivWord2.setVisibility(View.VISIBLE);
                 } else
@@ -125,6 +130,7 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvConfirmPasswordError.setVisibility(View.GONE);
                 if (charSequence.toString().equals(seedText3)) {
                     ivWord3.setVisibility(View.VISIBLE);
                 } else
@@ -205,12 +211,18 @@ public class ConfirmSeedPhraseActivity extends BaseActivity {
             etWord2.setError(getResources().getString(R.string.error_empty));
         else if (!Validations.hasText(etWord3))
             etWord3.setError(getResources().getString(R.string.error_empty));
-        else if (!etWord1.getText().toString().equals(seedText1))
+        else if (!etWord1.getText().toString().equals(seedText1)) {
             etWord1.setError(getResources().getString(R.string.wrong_secret_phrase));
-        else if (!etWord2.getText().toString().equals(seedText2))
+            tvConfirmPasswordError.setVisibility(View.VISIBLE);
+        }
+        else if (!etWord2.getText().toString().equals(seedText2)) {
             etWord2.setError(getResources().getString(R.string.wrong_secret_phrase));
-        else if (!etWord3.getText().toString().equals(seedText3))
+            tvConfirmPasswordError.setVisibility(View.VISIBLE);
+        }
+        else if (!etWord3.getText().toString().equals(seedText3)) {
+            tvConfirmPasswordError.setVisibility(View.VISIBLE);
             etWord3.setError(getResources().getString(R.string.wrong_secret_phrase));
+        }
         else return true;
 
         return false;

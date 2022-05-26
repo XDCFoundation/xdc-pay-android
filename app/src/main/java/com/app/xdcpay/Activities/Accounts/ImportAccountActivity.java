@@ -50,6 +50,7 @@ public class ImportAccountActivity extends BaseActivity {
     public NetworkDataBase networkDataBase;
     List<AccountEntity> networkLists;
     private boolean isAccountExist = false;
+    private com.app.xdcpay.Views.TextView tvPrivateKeyErr;
 
     BottomSheetDialog bottomSheetDialogImport;
     KeyTypeAdapter keyTypeAdapter;
@@ -69,6 +70,7 @@ public class ImportAccountActivity extends BaseActivity {
         title = findViewById(R.id.title);
         back = findViewById(R.id.back);
         btn_Import = findViewById(R.id.btn_Import);
+        tvPrivateKeyErr = findViewById(R.id.tvPrivateKeyErr);
         networkDataBase = NetworkDataBase.getInstance(ImportAccountActivity.this);
         setData();
     }
@@ -87,6 +89,7 @@ public class ImportAccountActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvPrivateKeyErr.setVisibility(View.GONE);
                 if (charSequence.toString().equals("")) {
                     btn_Import.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.rounded_corner_5dp_light_green_bg));
                 } else {
@@ -166,17 +169,26 @@ public class ImportAccountActivity extends BaseActivity {
     }
 
     private boolean isValid() {
-        if (!Validations.hasText(etPrivateKey))
-            etPrivateKey.setError(getResources().getString(R.string.private_key));
+        if (!Validations.hasText(etPrivateKey)) {
+            tvPrivateKeyErr.setText(getResources().getString(R.string.private_key));
+            tvPrivateKeyErr.setVisibility(View.VISIBLE);
+
+//            etPrivateKey.setError(getResources().getString(R.string.private_key));
+        }
         else if (etPrivateKey.getText().length() < 64) {
-            showtoast(getResources().getString(R.string.invalid_privatekey));
+            tvPrivateKeyErr.setText(getResources().getString(R.string.invalid_privatekey));
+            tvPrivateKeyErr.setVisibility(View.VISIBLE);
+//            showtoast(getResources().getString(R.string.invalid_privatekey));
         } else if (networkLists.size() > 0) {
             for (int i = 0; i < networkLists.size(); i++) {
                 if (networkLists.get(i).getAccountPrivateKey().equals(etPrivateKey.getText().toString()))
                     isAccountExist = true;
             }
-            if (isAccountExist)
-                showtoast(getResources().getString(R.string.account_exist));
+            if (isAccountExist) {
+                tvPrivateKeyErr.setText(getResources().getString(R.string.account_exist));
+                tvPrivateKeyErr.setVisibility(View.VISIBLE);
+            }
+//                showtoast(getResources().getString(R.string.account_exist));
             else return true;
         } else
             return true;

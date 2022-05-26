@@ -31,7 +31,7 @@ public class CreateWalletActivity extends BaseActivity {
     private CheckBox terms_cb;
     private ProgressBar progressBar;
     private TextViewMedium show_hide, title;
-    private TextView tvPasswordStrength;
+    private TextView tvPasswordStrength, tvPasswordError, tvConfirmPasswordError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,9 @@ public class CreateWalletActivity extends BaseActivity {
         terms_cb = findViewById(R.id.terms_cb);
         progressBar = findViewById(R.id.password_strength_progress);
         show_hide = findViewById(R.id.show_hide);
+        tvPasswordError = findViewById(R.id.tvPasswordError);
         tvPasswordStrength = findViewById(R.id.tvPasswordStrength);
+        tvConfirmPasswordError = findViewById(R.id.tvConfirmPasswordError);
         title = findViewById(R.id.title);
     }
 
@@ -64,6 +66,9 @@ public class CreateWalletActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvPasswordError.setText(getString(R.string.password_strength));
+                tvPasswordError.setTextColor(getResources().getColor(R.color.colorGrey));
+                tvPasswordStrength.setVisibility(View.VISIBLE);
                 updatePasswordStrengthView(password, progressBar, tvPasswordStrength);
             }
 
@@ -149,18 +154,24 @@ public class CreateWalletActivity extends BaseActivity {
     private boolean isValid() {
         String strPassword = password.getText().toString().trim();
         String strConfirmPassword = confirm_password.getText().toString().trim();
-        if (!Validations.hasText(password))
-            password.setError(getResources().getString(R.string.error_password_empty));
+        if (!Validations.hasText(password)) {
+            tvPasswordError.setText(getResources().getString(R.string.error_password_empty));
+            tvPasswordError.setTextColor(getResources().getColor(R.color.colorRed));
+        }
         else if (!Validations.hasText(confirm_password))
             confirm_password.setError(getResources().getString(R.string.error_password_empty));
-        else if (password.getText().toString().length() < 8)
-            Toast.makeText(CreateWalletActivity.this, getResources().getString(R.string.password_length_msg), Toast.LENGTH_SHORT).show();
-        else if (!Validations.isPasswordValid(password.getText().toString()))
-            Toast.makeText(CreateWalletActivity.this, getResources().getString(R.string.password_strength_msg), Toast.LENGTH_SHORT).show();
+        else if (password.getText().toString().length() < 8) {
+            tvPasswordError.setText(getResources().getString(R.string.password_length_msg));
+            tvPasswordError.setTextColor(getResources().getColor(R.color.colorRed));
+        }
+        else if (!Validations.isPasswordValid(password.getText().toString())) {
+            tvPasswordError.setText(getResources().getString(R.string.password_strength_msg));
+            tvPasswordError.setTextColor(getResources().getColor(R.color.colorRed));
+        }
         else if (!strPassword.equals(strConfirmPassword))
             confirm_password.setError(getResources().getString(R.string.error_password_not_match));
         else if (!terms_cb.isChecked())
-            Toast.makeText(CreateWalletActivity.this, getResources().getString(R.string.error_check_terms), Toast.LENGTH_SHORT).show();
+            tvConfirmPasswordError.setVisibility(View.VISIBLE);
         else return true;
 
         return false;

@@ -2,6 +2,8 @@ package com.app.xdcpay.Activities.SecurityPrivacy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -12,6 +14,7 @@ import com.app.xdcpay.R;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Validations;
 import com.app.xdcpay.Views.EditText;
+import com.app.xdcpay.Views.TextView;
 import com.app.xdcpay.Views.TextViewMedium;
 
 public class SeedPhrasePasswordActivity extends BaseActivity {
@@ -19,6 +22,7 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
     TextViewMedium reveal_tv, title;
     ImageView back;
     private ReadWalletDetails readWalletDetails;
+    private TextView tvPasswordErr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
         reveal_tv = findViewById(R.id.reveal_tv);
         back = findViewById(R.id.back);
         title = findViewById(R.id.title);
+        tvPasswordErr = findViewById(R.id.tvPasswordErr);
         setData();
     }
 
@@ -41,6 +46,24 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
     public void setListener() {
         reveal_tv.setOnClickListener(this);
         back.setOnClickListener(this);
+
+        et_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tvPasswordErr.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     @Override
@@ -58,8 +81,11 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
                         startActivity(i);
                         finish();
                         break;
-                    } else
-                        Toast.makeText(this, getResources().getString(R.string.error_password_not_match), Toast.LENGTH_SHORT).show();
+                    } else {
+                        tvPasswordErr.setVisibility(View.VISIBLE);
+                        tvPasswordErr.setText(getResources().getString(R.string.error_password_not_match));
+//                        Toast.makeText(this, getResources().getString(R.string.error_password_not_match), Toast.LENGTH_SHORT).show();
+                    }
                 break;
             case R.id.back:
                 finish();
@@ -68,8 +94,11 @@ public class SeedPhrasePasswordActivity extends BaseActivity {
     }
 
     private boolean isValid() {
-        if (!Validations.hasText(et_password))
-            et_password.setError(getResources().getString(R.string.error_password_empty));
+        if (!Validations.hasText(et_password)) {
+//            et_password.setError(getResources().getString(R.string.error_password_empty));
+            tvPasswordErr.setVisibility(View.VISIBLE);
+            tvPasswordErr.setText(getResources().getString(R.string.error_password_empty));
+        }
         else return true;
 
         return false;

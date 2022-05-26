@@ -53,14 +53,14 @@
             android:id="@+id/spnType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:dropDownHorizontalOffset="0dp"
-            android:dropDownWidth="160dp"
-            android:entries="@array/key_type_list"
-            android:background="@drawable/rounded_corner_5dp_light_grey1_border"
             android:layout_centerInParent="true"
+            android:background="@drawable/rounded_corner_5dp_light_grey1_border"
+            android:dropDownWidth="160dp"
+            android:dropDownHorizontalOffset="0dp"
+            android:entries="@array/key_type_list"
             android:padding="@dimen/margin_10"
-            android:visibility="gone"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="gone" />
 
         <com.app.xdcpay.Views.TextView
             android:id="@+id/tvDropDown"
@@ -69,17 +69,17 @@
             android:layout_centerInParent="true"
             android:background="@drawable/rounded_corner_5dp_light_grey1_border"
             android:padding="@dimen/margin_10"
-            android:textSize="@dimen/text_14"
             android:text="@string/key_private"
             android:textAlignment="center"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_14" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/margin_5"
             android:layout_centerInParent="true"
+            android:layout_margin="@dimen/margin_5"
             android:padding="@dimen/margin_5"
             android:src="@drawable/ic_drop_down" />
     </RelativeLayout>
@@ -106,27 +106,41 @@
         android:layout_marginRight="@dimen/margin_20"
         android:background="@drawable/rounded_corner_5dp_light_grey_border"
         android:hint="@string/hint_key"
-        android:textColorHint="@color/colorGreyText"
         android:inputType="textMultiLine"
         android:maxLength="64"
         android:padding="@dimen/margin_10"
+        android:textColorHint="@color/colorGreyText"
         android:textSize="@dimen/margin_14"
         app:layout_constraintStart_toStartOf="@id/textPrivateKey"
         app:layout_constraintTop_toBottomOf="@id/textPrivateKey" />
+
+    <com.app.xdcpay.Views.TextView
+        android:id="@+id/tvPrivateKeyErr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_incorrect_password"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/margin_10"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginRight="@dimen/margin_20"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/etPrivateKey"
+        app:layout_constraintTop_toBottomOf="@id/etPrivateKey" />
 
     <com.app.xdcpay.Views.TextViewMedium
         android:id="@+id/btn_Import"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_20"
-        android:layout_marginRight="@dimen/margin_22"
         android:layout_marginTop="@dimen/margin_22"
+        android:layout_marginRight="@dimen/margin_22"
         android:background="@drawable/rounded_corner_5dp_light_green_bg"
         android:gravity="center"
         android:padding="@dimen/margin_10"
         android:text="@string/import_text"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/margin_16"
-        app:layout_constraintStart_toStartOf="@id/etPrivateKey"
-        app:layout_constraintTop_toBottomOf="@id/etPrivateKey"/>
+        app:layout_constraintStart_toStartOf="@id/tvPrivateKeyErr"
+        app:layout_constraintTop_toBottomOf="@id/tvPrivateKeyErr" />
 </androidx.constraintlayout.widget.ConstraintLayout>
