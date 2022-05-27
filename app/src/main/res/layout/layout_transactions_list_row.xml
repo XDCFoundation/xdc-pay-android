@@ -1,74 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_10">
-
-    <ImageView
-        android:id="@+id/transaction_iv"
-        android:layout_width="@dimen/margin_30"
-        android:layout_height="@dimen/margin_30"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_send_transaction" />
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/amount"
-        android:layout_toRightOf="@id/transaction_iv"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_10">
+        android:padding="@dimen/margin_10"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/transaction_iv"
+            android:layout_width="@dimen/margin_30"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_send_transaction" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/amount"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10">
 
-            <com.app.xdcpay.Views.TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/code_txt"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/transaction_id"
-                android:text="@string/code"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/margin_14" />
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="@dimen/margin_30"
-                android:layout_height="@dimen/margin_20"
-                android:layout_gravity="center"
-                android:paddingLeft="@dimen/margin_10"
-                android:src="@drawable/ic_copy_grey" />
+                <com.app.xdcpay.Views.TextView
+                    android:id="@+id/transaction_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/code_txt"
+                    android:layout_weight="1"
+                    android:ellipsize="middle"
+                    android:maxLines="1"
+                    android:drawableRight="@drawable/ic_copy_grey_small"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:text="@string/code"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_14" />
+
+            </LinearLayout>
+
+            <com.app.xdcpay.Views.TextView
+                android:id="@+id/date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:text="01:21 PM, 2 Sep 2021"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/margin_12" />
         </LinearLayout>
 
-        <com.app.xdcpay.Views.TextView
+        <com.app.xdcpay.Views.TextViewMedium
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_5"
-            android:text="01:21 PM, 2 Sep 2021"
-            android:id="@+id/date_time"
-            android:textColor="@color/colorGrey"
-            android:textSize="@dimen/margin_12" />
-
-
+            android:layout_gravity="center"
+            android:text="100.00"
+            android:layout_marginLeft="@dimen/margin_5"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/margin_14" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/ll"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/margin_5"
         android:background="@color/colorGrey" />
 
-    <com.app.xdcpay.Views.TextViewMedium
-        android:id="@+id/amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="100.00"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/margin_14" />
-</RelativeLayout>
+
+</LinearLayout>

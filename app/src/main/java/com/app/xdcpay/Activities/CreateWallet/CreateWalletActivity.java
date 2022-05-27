@@ -177,4 +177,9 @@ public class CreateWalletActivity extends BaseActivity {
         return false;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

@@ -36,6 +36,7 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
     public void onBindViewHolder(@NonNull TransactionsViewHolder holder, int position) {
         holder.transaction_id.setText(entity.get(position).getTransaction_hash());
         holder.amount.setText(entity.get(position).getAmount());
+//        holder.date_time.setText(entity.get(position).get());
     }
 
     @Override

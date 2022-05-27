@@ -16,6 +16,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.app.xdcpay.R;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.DecimalFormat;
+
 public class AppUtility {
     private static Dialog progress;
 
@@ -74,6 +76,11 @@ public class AppUtility {
         } else {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static String currencyFormat(String amount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
+        return formatter.format(Double.parseDouble(amount));
     }
 
 }

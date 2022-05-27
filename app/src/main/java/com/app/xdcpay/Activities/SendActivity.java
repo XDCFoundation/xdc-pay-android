@@ -27,6 +27,7 @@ import com.app.xdcpay.Api.View.IGetUSDValueOfXDCView;
 import com.app.xdcpay.Pref.ReadWalletDetails;
 import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.R;
+import com.app.xdcpay.Utils.AppUtility;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Utils.Validations;
@@ -217,9 +218,10 @@ public class SendActivity extends BaseActivity implements IGetUSDValueOfXDCView 
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                String strInternationalAmount = AppUtility.currencyFormat(balance);
                                 availableBalance.setText(getResources().getString(
                                         R.string.availableBalance,
-                                        balance.toString()));
+                                        strInternationalAmount));
                             }
                         });
 

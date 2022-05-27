@@ -11,6 +11,7 @@ import static com.app.xdcpay.Utils.Constants.STRING_FORMAT;
 import static com.app.xdcpay.Utils.Constants.TEXT_USD;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -68,6 +69,7 @@ import com.app.xdcpay.Pref.SavePreferences;
 import com.app.xdcpay.Pref.SaveWalletDetails;
 import com.app.xdcpay.Pref.SharedPreferenceHelper;
 import com.app.xdcpay.R;
+import com.app.xdcpay.Utils.AppUtility;
 import com.app.xdcpay.Utils.BaseActivity;
 import com.app.xdcpay.Utils.Constants;
 import com.app.xdcpay.Views.EditText;
@@ -263,19 +265,20 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
                             public void run() {
                                 xdcWalletBalance = balance;
 
+                                String strInternationalAmount = AppUtility.currencyFormat(xdcWalletBalance);
                                 if (networkLists.size() > 0) {
                                     for (int i = 0; i < networkLists.size(); i++) {
                                         Log.e("home_wallet_balance ", xdcWalletBalance + " .. " + networkLists.size()
                                                 + ".. " + readAutoLockTimerPref.getNetworkName() + " .. " + networkLists.get(i).getNetworkName());
                                         if (networkLists.get(i).getNetworkName().equals(readAutoLockTimerPref.getNetworkName())) {
-                                            wallet_balance.setText(balance + " " + networkLists.get(i).getCurrencySymbol());
+                                            wallet_balance.setText(strInternationalAmount + " " + networkLists.get(i).getCurrencySymbol());
 
                                         } else {
-                                            wallet_balance.setText(balance + " " + getString(R.string.txt_xdc));
+                                            wallet_balance.setText(strInternationalAmount + " " + getString(R.string.txt_xdc));
                                         }
                                     }
                                 } else
-                                    wallet_balance.setText(balance + " " + getString(R.string.txt_xdc));
+                                    wallet_balance.setText(strInternationalAmount + " " + getString(R.string.txt_xdc));
                             }
                         });
                     }
@@ -617,14 +620,14 @@ public class HomeActivity extends BaseActivity implements ImportAccountCallback,
 
     private void updateBalance(double USDValue) {
         runOnUiThread(new Runnable() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void run() {
-
                 if (!TextUtils.isEmpty(xdcWalletBalance)) {
                     if (USDValue > 0) {
-                        currencyAmount.setText(getString(R.string.txt_dollar)
-                                + String.format(STRING_FORMAT, Double.parseDouble(xdcWalletBalance) * USDValue)
-                                + TEXT_USD);
+                        String strInternationalAmount = String.format(STRING_FORMAT, Double.parseDouble(xdcWalletBalance) * USDValue);
+
+                        currencyAmount.setText(getString(R.string.txt_dollar)+AppUtility.currencyFormat(strInternationalAmount) + TEXT_USD);
                     } else {
                         currencyAmount.setText(getString(R.string.txt_dollar) + "0 " + TEXT_USD);
                     }

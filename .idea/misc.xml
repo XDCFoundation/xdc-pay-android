@@ -101,6 +101,7 @@
         <entry key="app/src/main/res/layout/activity_sent.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/activity_show_private_key.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/activity_transaction.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_wallet_seed_phrase.xml" value="0.1865740740740741" />
         <entry key="app/src/main/res/layout/activity_wallet_setup.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.23013698630136986" />
@@ -124,6 +125,7 @@
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar_add.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/layout_toolbar_edit.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/layout_transactions_list_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_welcome_viewpager.xml" value="0.23333333333333334" />
       </map>
     </option>

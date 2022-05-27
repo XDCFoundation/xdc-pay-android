@@ -103,9 +103,9 @@ public class LoginActivity extends BaseActivity {
             case R.id.create_wallet:
 
                 Intent intent = new Intent(LoginActivity.this, CreateWalletActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
                 break;
@@ -113,9 +113,9 @@ public class LoginActivity extends BaseActivity {
             case R.id.restore_from_seed:
 
                 Intent intentsedd = new Intent(LoginActivity.this, ImportWalletActivity.class);
-                intentsedd.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intentsedd.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intentsedd.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intentsedd.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intentsedd.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intentsedd.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intentsedd);
 
                 break;

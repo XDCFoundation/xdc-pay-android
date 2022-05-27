@@ -241,4 +241,10 @@ public class ImportWalletActivity extends BaseActivity {
 
         return false;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
