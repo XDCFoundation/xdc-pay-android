@@ -29,6 +29,7 @@
                 android:textSize="@dimen/margin_14" />
 
             <com.app.xdcpay.Views.EditText
+                android:id="@+id/tokenAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
